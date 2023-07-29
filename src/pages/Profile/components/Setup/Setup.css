@@ -1,0 +1,75 @@
+.setup-img>h3 {
+  color: #1E1E1E;
+  font-family: Archivo;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.setup-img-upload {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+}
+
+.setup-img-upload>span {
+  color: #F26957;
+  font-family: Archivo;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.18px;
+}
+
+.setup-img-default {
+  position: relative;
+}
+
+.setup-img-default>img,
+.setup-img-upload>img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.setup-img-default>svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+}
+
+.setup-img-upload>input {
+  display: none;
+}
+
+.setup-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.setup-logOut {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  color: #FF463A;
+  font-family: Archivo;
+  font-size: 22px;
+  font-weight: 400;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.setup-logOut>svg {
+  width: 24px;
+  height: 24px;
+  color: #FF463A;
+}

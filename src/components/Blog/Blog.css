@@ -1,0 +1,167 @@
+.bloks {
+  max-width: 1010px;
+  margin: 0 auto;
+  margin-top: 48px;
+  /* border: 1px solid red; */
+}
+
+.bloks__imgBox {
+  max-width: 1010px;
+  height: 347px;
+}
+
+.blok__section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.blok__section_left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.blok__section_title {
+  padding: 8px 26px;
+  gap: 10px;
+  border-radius: 40px;
+  background: #e9e9e9;
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.blok__titels {
+  max-width: 1010px;
+}
+
+.blok__section_timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer__title {
+  color: #232323;
+  font-family: Archivo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.blok__section_eye {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eye__title {
+  color: #232323;
+  font-family: Archivo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.blog-about-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.blok__section_right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--foundation-grey-normal, #232323);
+  text-align: right;
+  font-family: Archivo;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.blok__right_title {
+  color: #232323;
+  font-family: Archivo;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.titels_donation {
+  width: 100%;
+  color: #000;
+  font-family: Archivo;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 50px;
+  margin-top: 15px;
+}
+
+.titels__light {
+  width: 100%;
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+
+}
+
+.titels__maqola {
+  width: 830px;
+  font-family: Archivo;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 34px;
+  
+}
+
+.titles__heshteg {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: -10px;
+  margin-bottom: 40px;
+}
+
+.heshteg__left {
+  width: 100%;
+  color: #0c82ee;
+  font-family: Archivo;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.heshteg__right {
+  color: #0c82ee;
+  font-family: Archivo;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+
+@media (max-width: 730px) {
+  .titels_donation {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .titels__light {
+    font-size: 17px;
+    line-height: 28px;
+  }
+}

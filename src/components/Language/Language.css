@@ -1,0 +1,62 @@
+.navbarvictorina_language {
+  position: relative;
+}
+
+.navbarvictorina_language-wrapper {
+  padding: 8px 12px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.navbarvictorina_language-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--foundation-grey-normal, #232323);
+}
+.navbarvictorina_language-iconArrow {
+  width: 16px;
+  height: 16px;
+  color: var(--foundation-grey-normal, #232323);
+}
+.navbarvictorina_language span {
+  display: flex;
+  align-items: center;
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  gap: 15px 10px;
+  cursor: pointer;
+}
+
+.navbarvictorina_language-bar {
+  border-radius: 8px;
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  right: 0;
+  top: 41px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.navbarvictorina_language p {
+  display: flex;
+  align-items: center;
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  margin-top: 0;
+  margin-left: -15px;
+}

@@ -1,0 +1,60 @@
+.profile .container {
+  background-image: url("../../assets/img/Banner\ \(2\).png");
+  background-repeat: no-repeat;
+  height: 327px;
+}
+
+.profile-img {
+  width: 154px;
+  height: 154px;
+  flex-shrink: 0;
+  border-radius: 154px;
+  border: 4px solid #fff;
+  background: lightgray 0px -18.5px / 100% 150% no-repeat, #d9d9d9;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+  padding: 20px 0;
+  padding-bottom: 80px;
+}
+
+.profile-list {
+  display: flex;
+  align-items: center;
+  padding-top: 200px;
+  padding-left: 50px;
+}
+
+.profile-name {
+  color: #fff;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.profile-number {
+  color: #fff;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile-item {
+  margin-top: -55px;
+  margin-left: 15px;
+}
+
+.App .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #232323;
+}
+
+.App .css-1aquho2-MuiTabs-indicator {
+  background-color: #232323;
+}

@@ -1,0 +1,67 @@
+body .modal-login-body {
+  background: #c96a30 !important;
+  backdrop-filter: blur(9px) !important;
+}
+
+body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop{
+  background-color: transparent;
+}
+
+.navbar-profile {
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 15px;
+}
+
+.login-button {
+  background: var(--foundation-grey-light-active, #bbb);
+  width: 220px;
+  height: 45px;
+  color: #fff;
+  font-family: Archivo;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  border: none;
+}
+
+.login-button:nth-child(1) {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.login-button:nth-child(2) {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.login-list {
+  margin-top: 100px;
+  margin-left: 52px;
+}
+
+.modal-left {
+  width: 50%;
+}
+
+.modal-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-right {
+  width: 50%;
+}
+
+.modal-img {
+  width: 650px;
+}

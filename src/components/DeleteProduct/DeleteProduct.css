@@ -1,0 +1,57 @@
+body .delete-modal-product {
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.4) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin: 0 auto;
+}
+
+.delete-button {
+  border: none;
+  background-color: transparent;
+}
+
+.delete-name {
+  color: var(--color-dark-dark, #23262f);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Archivo;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 100% */
+}
+
+.delete-text {
+  color: var(--color-dark-dark-2, #87898e);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Archivo;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px; /* 150% */
+}
+
+.delete-submit {
+  border-radius: 50px;
+  background: var(--foundation-orange-normal, #f26957);
+  width: 482px;
+  height: 45px;
+  border: none;
+  color: var(--color-light-light, #fcfcfd);
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; /* 100% */
+  cursor: pointer;
+}
+
+.delete-list {
+  text-align: center;
+}

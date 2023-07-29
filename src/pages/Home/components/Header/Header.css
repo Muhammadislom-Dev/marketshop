@@ -1,0 +1,193 @@
+.header {
+  /* max-width: 100vw; */
+  padding: 25px 0;
+  /* border: 1px solid red; */
+}
+
+/* .header .container {
+  background-image: url("../../../../assets/img/Banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 593px;
+  border-radius: 32px;
+  padding: 0 10px;
+} */
+
+.header-bgimage {
+  background-image: url("../../../../assets/img/Banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 593px;
+  border-radius: 32px;
+  padding: 0 10px;
+}
+
+.header h1 {
+  color: #fff;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px;
+  padding-top: 74px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header select {
+  border-radius: 100px;
+  background: var(--foundation-grey-light, #e9e9e9);
+  display: inline-flex;
+  padding: 15px 28px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  outline: none;
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  margin-left: 12px;
+  display: none;
+}
+
+.header .css-1nrlq1o-MuiFormControl-root {
+  width: 220px;
+  margin: 0 5px;
+  /* display: none; */
+}
+
+.header .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  border-radius: 100px;
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo;
+  background: var(--foundation-grey-light, #E9E9E9);
+}
+
+.header-item {
+  display: flex;
+  align-items: center;
+  border-radius: 1000px;
+  background: #fff;
+  max-width: 790px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 42px;
+  gap: 10px 15px;
+}
+
+.header label {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.header input {
+  border: none;
+  outline: none;
+  padding: 5px 12px;
+  width: 100%;
+}
+
+.header input::placeholder {
+  color: var(--foundation-grey-light-active, #bbb);
+  font-family: Archivo;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.header-list {
+  /* border: 1px solid red; */
+  max-width: 1320px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  justify-content: space-around;
+  /* gap: 25px 81px; */
+  margin-top: 69px;
+}
+
+.header-link {
+  color: #fff;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* border: 1px solid red; */
+  width: 120px;
+  height: 150px;
+}
+
+.header-subname {
+  margin-top: 5px;
+}
+
+
+@media (max-width: 780px) {
+  .header input {
+    padding: 12px 5px;
+  }
+
+  .header .css-1nrlq1o-MuiFormControl-root {
+    display: none;
+  }
+
+  .header h1 {
+    font-size: 55px;
+    line-height: 70px;
+  }
+
+  .header-link:nth-child(6), 
+  .header-link:nth-child(7),
+  .header-link:nth-child(8) {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .header-link {
+    font-size: 18px;
+  }
+
+  .header-icons {
+    width: 50px;
+    height: 50px; 
+  }
+
+  .header h1 {
+    font-size: 40px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-link:nth-child(5) {
+    display: none;
+  }
+
+  .header h1 {
+    font-size: 38px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 455px) {
+  .header h1 {
+    font-size: 37px;
+    line-height: 60px;
+  }
+
+  .header-link:nth-child(4) {
+    display: none;
+  }
+  
+}

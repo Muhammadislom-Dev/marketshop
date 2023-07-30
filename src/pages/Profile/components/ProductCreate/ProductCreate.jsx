@@ -33,27 +33,24 @@ export default function ProductCreate() {
     onSuccess: (data) => {
       setProduct((state) => ({
         ...state,
-        photosId: [...state.photosId, data.objectKoinot[0]?.id],
+        photosId: [...state.photosId, data?.objectKoinot[0]?.id],
       }));
     },
-    onError: (error) => alert(error?.message),
+    onError: (error) => console.log(error?.message),
   });
 
-  const { productMutation, isLoading } = useMutation(
-    (data) => createProduct(data),
-    {
-      onSuccess: (data) => {
-        setActiveModal(true);
-      },
-      onError: (error) => {
-        alert(error.message);
-      },
-    }
-  );
+  const { mutate, isLoading } = useMutation((data) => createProduct(data), {
+    onSuccess: (data) => {
+      setActiveModal(true);
+    },
+    onError: (error) => {
+      console.log(error.message);
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    productMutation.mutate(product);
+    mutate(product);
   };
   const { data } = useQuery("category", getCategory);
   const region = useQuery("regionId", fetchRegionData);

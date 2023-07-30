@@ -65,7 +65,7 @@ function Header({ code, setCode, setSearch, handleClear,age,setAge }) {
                 value={age}
                 onChange={handleChange}
               >
-                <MenuItem onClick={handleClear} value="">
+                <MenuItem  onClick={handleClear} value="">
                   Barchasi
                 </MenuItem>
                 {region.objectKoinot.content.map((data) => (

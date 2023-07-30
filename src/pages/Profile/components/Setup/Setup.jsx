@@ -8,7 +8,7 @@ import { editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 
 export default function Setup() {
-  // const [data, setData] = useState({ img: null });
+  const [data, setData] = useState(null);
   const [open, setOpen] = useState(false);
   const [product, setProduct] = useState({
     photosId: 15,
@@ -16,27 +16,35 @@ export default function Setup() {
     codeToVerifyPhoneNumber: null,
     tokenToVerifyPhoneNumber: null,
   });
+  const [profile, setProfile] = useState({
+    photosId: null,
+    firstname: null,
+    lastname: null,
+    password: null,
+    oldpassword: null,
+    sendAgain: true,
+    codeToVerifyPhoneNumber: "",
+    tokenToVerifyPhoneNumber: "",
+  });
   const navigate = useNavigate();
 
-  const mutation = useMutation((post) => uploadImage(post), {
+  const mutation = useMutation((post) => uploadImage(post, setData), {
     onSuccess: (data) => {
       setProduct(() => ({
         photosId: [data?.objectKoinot[0]?.id],
       }));
     },
-    onError: (error) => alert(error?.message),
+    onError: (error) => console.log(error?.message),
   });
 
   const { mutate, isLoading } = useMutation(
     (data) => editUserPost(data, setOpen),
     {
       onSuccess: (data) => {
-        // setActiveModal(true);
         console.log(data);
       },
       onError: (error) => {
         console.log(error);
-        // alert(error.message);
       },
     }
   );
@@ -52,24 +60,27 @@ export default function Setup() {
     navigate("/");
   }
 
+  console.log(data);
   return (
     <div className="setup">
       <div className="setup-img">
         <h3>Profil rasmi</h3>
         <label htmlFor="setup-profile-img" className="setup-img-upload">
-          {/* {data.img ? (
-            <img src={URL.createObjectURL(data.img)} alt="error" />
+          {data ? (
+            <img src={!!data && URL?.createObjectURL(data)} alt="error" />
           ) : (
             <div className="setup-img-default">
               <img src={defaultImg} alt="error" />
               <FaCamera />
             </div>
-          )} */}
+          )}
+
           <input
             type="file"
             id="setup-profile-img"
             accept="image/*"
             onChange={(e) => {
+              setData(e.target.files[0]);
               mutation.mutate({ key: e.target.files[0] });
             }}
           />

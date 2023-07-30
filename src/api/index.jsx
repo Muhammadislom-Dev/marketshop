@@ -30,7 +30,6 @@ export const editUserPost = async (userData, setOpen) => {
       if (res.status === 200) {
         setOpen(true);
       }
-      // localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
     });
   return response.data;
 };
@@ -88,7 +87,9 @@ export const uploadImage = async (image) => {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((res) => toast.success("Muvaffaqiyatli rasm yuklandi!"));
+    .then((res) => {
+      toast.success("Muvaffaqiyatli rasm yuklandi!");
+    });
   return response.data;
 };
 

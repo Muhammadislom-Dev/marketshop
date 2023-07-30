@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Announcement.css";
-import images24 from "../../../../assets/images24.png";
 import edit from "../../../../assets/edit.svg";
-import backet from "../../../../assets/backet.svg";
 import cricle from "../../../../assets/cricle.svg";
 import { deleteProduct, getProductData } from "../../../../api";
 import { useMutation, useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteProduct from "../../../../components/DeleteProduct/DeleteProduct";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function Announcement() {
   const { data, isLoading, isError } = useQuery("productData", getProductData);
@@ -33,10 +33,16 @@ function Announcement() {
           {data?.content?.map((evt, index) => (
             <div key={index} className="announcement-card">
               <div className="card__left">
-                <img
-                  className="announcement-picture"
+                <LazyLoadImage
                   src={evt?.photos[0]?.filePath}
-                  alt="images24"
+                  placeholderSrc={evt?.photos[0]?.filePath}
+                  alt="Image"
+                  draggable={false}
+                  effect="blur"
+                  className="announcement-picture"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                  }}
                 />
               </div>
               <div className="card__right">

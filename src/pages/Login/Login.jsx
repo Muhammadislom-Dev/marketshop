@@ -32,6 +32,7 @@ function Login() {
             value={formData.phoneNumber}
             onChange={handleChange}
             type="number"
+            maxLength="14"
             className="register-input"
           />
         </label>

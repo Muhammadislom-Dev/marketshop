@@ -32,12 +32,13 @@ function Register({ handleClose }) {
             <label htmlFor="phoneNumber">
               Telefon raqam
               <input
-                type="text"
+                type="number"
                 id="phoneNumber"
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 className="register-input"
+                maxLength="14"
                 required
               />
             </label>

@@ -52,7 +52,7 @@
   line-height: normal;
   cursor: pointer;
   margin-left: 12px;
-  display: none;
+  /* display: none; */
 }
 
 .header .css-1nrlq1o-MuiFormControl-root {

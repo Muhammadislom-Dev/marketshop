@@ -69,7 +69,6 @@ function Profile() {
     );
   }
 
-  console.log(data);
   return (
     <>
       <div className="profile">

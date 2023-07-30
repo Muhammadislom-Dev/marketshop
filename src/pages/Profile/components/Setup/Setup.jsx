@@ -8,6 +8,7 @@ import { editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 
 export default function Setup() {
+  const token = localStorage.getItem("tokenReview");
   const [data, setData] = useState(null);
   const [open, setOpen] = useState(false);
   const [product, setProduct] = useState({
@@ -23,12 +24,11 @@ export default function Setup() {
     password: null,
     oldpassword: null,
     sendAgain: true,
-    codeToVerifyPhoneNumber: "",
-    tokenToVerifyPhoneNumber: "",
+    tokenToVerifyPhoneNumber: token,
   });
   const navigate = useNavigate();
 
-  const mutation = useMutation((post) => uploadImage(post, setData), {
+  const mutation = useMutation((post) => uploadImage(post), {
     onSuccess: (data) => {
       setProduct(() => ({
         photosId: [data?.objectKoinot[0]?.id],
@@ -54,13 +54,17 @@ export default function Setup() {
     mutate(product);
   };
 
+  const handleReview = (e) => {
+    e.preventDefault();
+    mutate(profile);
+  };
+
   function handleDeleteProfile() {
     localStorage.removeItem("accessToken");
     window.location.reload();
     navigate("/");
   }
 
-  console.log(data);
   return (
     <div className="setup">
       <div className="setup-img">
@@ -168,13 +172,13 @@ export default function Setup() {
             <h4>Sms Code</h4>
             <input
               onChange={(e) =>
-                setProduct((state) => ({
+                setProfile((state) => ({
                   ...state,
                   codeToVerifyPhoneNumber: e.target.value,
                 }))
               }
               type="number"
-              maxLength={500}
+              maxLength={5}
               min={3}
               required
             />
@@ -184,7 +188,9 @@ export default function Setup() {
         )}
         <div className="setup-btn-wrapper">
           {open === true ? (
-            <button className="product-create-form-button" type="submit">
+            <button
+              onClick={handleReview}
+              className="product-create-form-button">
               Tasdiqlash
             </button>
           ) : (

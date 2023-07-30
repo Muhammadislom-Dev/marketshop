@@ -26,6 +26,7 @@ export const editUserPost = async (userData, setOpen) => {
       },
     })
     .then((res) => {
+      localStorage.setItem("tokenReview", `${res?.data?.objectKoinot?.token}`);
       toast.success("Telefon raqamingizga tasdiqlash uchun sms yuborildi!");
       if (res.status === 200) {
         setOpen(true);

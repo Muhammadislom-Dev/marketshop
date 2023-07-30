@@ -10,7 +10,7 @@
 }
 
 .announcement-card {
-  width: 400px;
+  width: 420px;
   display: flex;
   align-items: center;
   padding: 12px;
@@ -123,6 +123,7 @@
 .announcement-picture {
   width: 148px;
   height: 163px;
+  border-radius: 10px !important;
 }
 
 .card__left__check:active {

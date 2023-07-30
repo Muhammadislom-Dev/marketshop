@@ -7,11 +7,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useQuery } from "react-query";
-import { fetchDistrictData, fetchRegionData } from "../../../../api";
+import { fetchDistrictData, fetchRegionData, getCategory } from "../../../../api";
 import { Box, CircularProgress } from "@mui/material";
 
-function Header({ code, setCode, setSearch, handleClear,age,setAge }) {
-  
+function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
+  const { data: category } = useQuery("get category", getCategory);
   const [district, setDistrict] = useState("Shahar");
   const handleChange = (event) => {
     setAge(event?.target?.value);
@@ -34,8 +34,7 @@ function Header({ code, setCode, setSearch, handleClear,age,setAge }) {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        height={"80vh"}
-      >
+        height={"80vh"}>
         <CircularProgress
           color="success"
           style={{ width: "100px", height: "100px" }}
@@ -52,6 +51,8 @@ function Header({ code, setCode, setSearch, handleClear,age,setAge }) {
     setDistrict(event?.target?.value);
   };
 
+  console.log(category)
+
   return (
     <div className="header">
       <div className="container">
@@ -63,9 +64,8 @@ function Header({ code, setCode, setSearch, handleClear,age,setAge }) {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={age}
-                onChange={handleChange}
-              >
-                <MenuItem  onClick={handleClear} value="">
+                onChange={handleChange}>
+                <MenuItem onClick={handleClear} value="">
                   Barchasi
                 </MenuItem>
                 {region.objectKoinot.content.map((data) => (
@@ -80,8 +80,7 @@ function Header({ code, setCode, setSearch, handleClear,age,setAge }) {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={district}
-                onChange={handleDistrict}
-              >
+                onChange={handleDistrict}>
                 {districtData?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
                     {data.name}

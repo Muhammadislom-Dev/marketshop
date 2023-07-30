@@ -139,6 +139,12 @@
   backdrop-filter: blur(13px);
 }
 
+.product-hero-category {
+  height: 100px;
+  min-height: 120px;
+  overflow-y: scroll;
+}
+
 .product-hero-filter-category-item {
   padding: 11px 0;
   display: flex;
@@ -188,4 +194,9 @@
   line-height: 18px;
   letter-spacing: 0.36px;
   cursor: pointer;
+}
+
+.filter-product {
+  margin: 50px 0;
+  margin-top: 80px;
 }

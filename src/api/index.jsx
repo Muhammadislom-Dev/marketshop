@@ -270,3 +270,15 @@ export const getProfileData = async () => {
   });
   return response.data;
 };
+
+export const getFilterProductData = async (regionId, search, category) => {
+  const response = await axios.get(
+    `${API_BASE_URL}/product/v1?active=true&category=${category}&page=0&region=${regionId}&search=${search}&size=24&top=true`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }
+  );
+  return response.data;
+};

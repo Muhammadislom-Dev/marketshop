@@ -36,7 +36,7 @@
 }
 
 .header select {
-  border-radius: 100px;
+  /* border-radius: 100px;
   background: var(--foundation-grey-light, #e9e9e9);
   display: inline-flex;
   padding: 15px 28px;
@@ -51,8 +51,7 @@
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
-  margin-left: 12px;
-  /* display: none; */
+  margin-left: 12px; */
 }
 
 .header .css-1nrlq1o-MuiFormControl-root {
@@ -62,10 +61,10 @@
 }
 
 .header .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
-  border-radius: 100px;
-  color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
-  background: var(--foundation-grey-light, #E9E9E9);
+  border-radius: 100px !important;
+  color: var(--foundation-grey-normal, #232323) !important;
+  font-family: Archivo !important;
+  background: var(--foundation-grey-light, #E9E9E9) !important;
 }
 
 .header-item {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Announcement.css";
 import edit from "../../../../assets/edit.svg";
 import cricle from "../../../../assets/cricle.svg";
-import { deleteProduct, getProductData } from "../../../../api";
+import { deleteProduct, getProfileProductData } from "../../../../api";
 import { useMutation, useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteProduct from "../../../../components/DeleteProduct/DeleteProduct";
@@ -10,7 +10,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 function Announcement() {
-  const { data, isLoading, isError } = useQuery("productData", getProductData);
+  const { data, isLoading, isError } = useQuery(
+    "profileData",
+    getProfileProductData
+  );
   const { mutate } = useMutation((productId) => deleteProduct(productId));
   if (isLoading) {
     return (

@@ -151,4 +151,14 @@
   .footer-bottomlast {
     display: none;
   }
+  .footer-link {
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width:450px) {
+  .footer-left {
+    gap: 0 20px;
+  }
 }

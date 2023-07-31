@@ -17,8 +17,21 @@ function Register({ handleClose }) {
   };
 
   const handleSubmit = (e) => {
+    if (validatePhoneNumber(formData.phoneNumber)) {
+      // Telefon raqamini serverga jo'natish yoki qo'shimcha logika
+      console.log("Phone number is valid:", formData.phoneNumber);
+    } else {
+      console.log("Invalid phone number:", formData.phoneNumber);
+    }
     e.preventDefault();
     mutation.mutate(formData);
+  };
+
+  const validatePhoneNumber = (phone) => {
+    // Telefon raqamini tekshirish uchun qo'shimcha logika
+    // Misol uchun: faqat raqamlardan iborat bo'lishi kerak
+    const regex = /^[0-9]+$/;
+    return regex.test(phone);
   };
 
   return (

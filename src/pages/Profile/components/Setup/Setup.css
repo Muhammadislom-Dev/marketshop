@@ -1,5 +1,5 @@
-.setup-img>h3 {
-  color: #1E1E1E;
+.setup-img > h3 {
+  color: #1e1e1e;
   font-family: Archivo;
   font-size: 26px;
   font-weight: 600;
@@ -13,8 +13,8 @@
   cursor: pointer;
 }
 
-.setup-img-upload>span {
-  color: #F26957;
+.setup-img-upload > span {
+  color: #f26957;
   font-family: Archivo;
   font-size: 18px;
   font-weight: 500;
@@ -26,15 +26,15 @@
   position: relative;
 }
 
-.setup-img-default>img,
-.setup-img-upload>img {
+.setup-img-default > img,
+.setup-img-upload > img {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.setup-img-default>svg {
+.setup-img-default > svg {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -44,14 +44,15 @@
   color: #ffffff;
 }
 
-.setup-img-upload>input {
+.setup-img-upload > input {
   display: none;
 }
 
 .setup-btn-wrapper {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 60px;
+  justify-content: space-between;
 }
 
 .setup-logOut {
@@ -60,7 +61,7 @@
   align-items: center;
   gap: 12px;
   border: none;
-  color: #FF463A;
+  color: #ff463a;
   font-family: Archivo;
   font-size: 22px;
   font-weight: 400;
@@ -68,8 +69,20 @@
   cursor: pointer;
 }
 
-.setup-logOut>svg {
+.setup-logOut > svg {
   width: 24px;
   height: 24px;
-  color: #FF463A;
+  color: #ff463a;
+}
+
+@media (max-width: 560px) {
+  .product-create-form-button {
+    padding: 16px 30px;
+    font-size: 15px;
+  }
+
+  .setup-logOut {
+    font-size: 15px;
+    gap: 8px;
+  }
 }

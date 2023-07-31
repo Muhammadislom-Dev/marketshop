@@ -1,27 +1,37 @@
 .announcement-list {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   padding: 48px 0;
-  gap: 20px;
 }
 
 .announcement {
-  margin-left: -35px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .announcement-card {
-  width: 420px;
+  max-width: 420px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 12px;
-  gap: 20px;
+  gap: 10px;
   border-radius: 20px;
   background: #f1f1f1;
   position: relative;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.profile-tab .css-19kzrtu{
+  padding: 0;
 }
 
 .card__right_title {
-  width: 219px;
+  width: 210px;
   color: var(--foundation-grey-normal, #232323);
   font-family: Archivo;
   font-size: 16px;

@@ -48,7 +48,7 @@ function a11yProps(index) {
 
 function Profile() {
   const [value, setValue] = React.useState(0);
-  const { data, isLoading } = useQuery("profile", getProfileData);
+  const { data, isLoading, refetch } = useQuery("profile", getProfileData);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -73,21 +73,29 @@ function Profile() {
     <>
       <div className="profile">
         <div className="container">
-          <div className="profile-list">
-            <img
-              src={
-                data.objectKoinot.photo ? data?.objectKoinot?.photo : AvatarIcon
-              }
-              alt=""
-              className="profile-img"
-            />
-            <div className="profile-item">
-              <h3 className="profile-name">User Name</h3>
-              <a
-                href={`tel:+${data?.objectKoinot?.phoneNumber}`}
-                className="profile-number">
-                +{data?.objectKoinot?.phoneNumber}
-              </a>
+          <div className="profileBackground">
+            <div className="profile-list">
+              <img
+                src={
+                  data.objectKoinot.photo.filePath === null
+                    ? AvatarIcon
+                    : data?.objectKoinot?.photo.filePath
+                }
+                alt=""
+                className="profile-img"
+              />
+              <div className="profile-item">
+                <h3 className="profile-name">
+                  {data.objectKoinot.firstName === null
+                    ? ""
+                    : data.objectKoinot.firstName}
+                </h3>
+                <a
+                  href={`tel:+${data?.objectKoinot?.phoneNumber}`}
+                  className="profile-number">
+                  +{data?.objectKoinot?.phoneNumber}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -113,7 +121,7 @@ function Profile() {
               <ProductCreate />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-              <Setup />
+              <Setup refetch={refetch} />
             </CustomTabPanel>
           </Box>
         </div>

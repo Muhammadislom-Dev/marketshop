@@ -18,7 +18,7 @@ export const registerUser = async (userData, setCode) => {
   return response.data;
 };
 
-export const editUserPost = async (userData, setOpen) => {
+export const editUserPost = async (userData) => {
   const response = await axios
     .post(`${API_BASE_URL}/auth/v1/editMe`, userData, {
       headers: {
@@ -27,10 +27,10 @@ export const editUserPost = async (userData, setOpen) => {
     })
     .then((res) => {
       localStorage.setItem("tokenReview", `${res?.data?.objectKoinot?.token}`);
-      toast.success("Telefon raqamingizga tasdiqlash uchun sms yuborildi!");
-      if (res.status === 200) {
-        setOpen(true);
-      }
+      toast.success("Sizning profilingiz muvaffaqiyatli tahrirlandi!");
+      // if (res.status === 200) {
+      //   setOpen(true);
+      // }
     });
   return response.data;
 };
@@ -152,7 +152,10 @@ export const likeProductPost = async (id) => {
       toast.success(
         "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatiga qo'shildi!"
       );
-    });
+    }).catch((err) => {
+      console.log(err)
+      toast.danger("Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!")
+    })
   return response.data;
 };
 

@@ -7,7 +7,7 @@ import { useMutation, useQuery } from "react-query";
 import { editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 
-export default function Setup() {
+export default function Setup({ refetch }) {
   const token = localStorage.getItem("tokenReview");
   const [data, setData] = useState(null);
   const [open, setOpen] = useState(false);
@@ -37,17 +37,15 @@ export default function Setup() {
     onError: (error) => console.log(error?.message),
   });
 
-  const { mutate, isLoading } = useMutation(
-    (data) => editUserPost(data, setOpen),
-    {
-      onSuccess: (data) => {
-        console.log(data);
-      },
-      onError: (error) => {
-        console.log(error);
-      },
-    }
-  );
+  const { mutate, isLoading } = useMutation((data) => editUserPost(data), {
+    onSuccess: (data) => {
+      refetch();
+      console.log(data);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -167,7 +165,7 @@ export default function Setup() {
             required
           />
         </label>
-        {open === true ? (
+        {/* {open === true ? (
           <label className="product-create-label">
             <h4>Sms Code</h4>
             <input
@@ -185,9 +183,12 @@ export default function Setup() {
           </label>
         ) : (
           " "
-        )}
+        )} */}
         <div className="setup-btn-wrapper">
-          {open === true ? (
+          <button className="product-create-form-button" type="submit">
+            Yangilash
+          </button>
+          {/* {open === true ? (
             <button
               onClick={handleReview}
               className="product-create-form-button">
@@ -197,7 +198,7 @@ export default function Setup() {
             <button className="product-create-form-button" type="submit">
               Yangilash
             </button>
-          )}
+          )} */}
           <button
             onClick={handleDeleteProfile}
             className="setup-logOut"

@@ -44,9 +44,9 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox">
-              <Link to="/" className="fixed-navbar-Ic">
+              <Link to="/profile" className="fixed-navbar-Ic">
                 <BiUser className="fixNavIconL" />
-                <h4>Profile</h4>
+                <h4>Hisobingiz</h4>
               </Link>
             </div>
           </div>
@@ -60,8 +60,7 @@ function Navbar() {
           </Link>
           <button
             className="navbar-category"
-            onClick={() => setisCategory((state) => !state)}
-          >
+            onClick={() => setisCategory((state) => !state)}>
             <img src={CategoryIcon} alt="" className="navbar-icons" />
             Barcha bo‘limlar
           </button>

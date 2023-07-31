@@ -23,7 +23,7 @@ const style = {
 function CallModal({ number }) {
   const [open, setOpen] = React.useState(false);
   const accessToken = localStorage.getItem("accessToken");
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(3);
   const handleOpen = () => {
     setOpen(true);
     setCount(count - 1 < 0 ? 0 : count - 1);

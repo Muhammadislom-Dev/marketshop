@@ -6,32 +6,32 @@ import SmsCode from "../SmsCode/SmsCode";
 
 function Register({ handleClose }) {
   const [formData, setFormData] = useState({
-    phoneNumber: "998",
+    phoneNumber: "",
   });
   const [code, setCode] = useState(false);
   const mutation = useMutation((userData) => registerUser(userData, setCode));
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    if (/^[0-9+-]*$/.test(value)) {
+      // 998 bilan boshlanganligini tekshiramiz
+      if (value.startsWith("998")) {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+        }));
+      } else {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: "998" + value, // 998 bilan boshlash
+        }));
+      }
+    }
   };
 
   const handleSubmit = (e) => {
-    if (validatePhoneNumber(formData.phoneNumber)) {
-      // Telefon raqamini serverga jo'natish yoki qo'shimcha logika
-      console.log("Phone number is valid:", formData.phoneNumber);
-    } else {
-      console.log("Invalid phone number:", formData.phoneNumber);
-    }
     e.preventDefault();
     mutation.mutate(formData);
-  };
-
-  const validatePhoneNumber = (phone) => {
-    // Telefon raqamini tekshirish uchun qo'shimcha logika
-    // Misol uchun: faqat raqamlardan iborat bo'lishi kerak
-    const regex = /^[0-9]+$/;
-    return regex.test(phone);
   };
 
   return (
@@ -45,14 +45,16 @@ function Register({ handleClose }) {
             <label htmlFor="phoneNumber">
               Telefon raqam
               <input
-                type="number"
+                type="tell"
                 id="phoneNumber"
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 className="register-input"
-                maxLength="14"
+                maxLength="13"
                 required
+                placeholder="998"
+                pattern="^[0-9+-]*$"
               />
             </label>
             <p style={{ width: "450px" }}>

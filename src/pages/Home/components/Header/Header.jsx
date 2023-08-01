@@ -7,7 +7,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useQuery } from "react-query";
-import { fetchDistrictData, fetchRegionData, getCategory } from "../../../../api";
+import {
+  fetchDistrictData,
+  fetchRegionData,
+  getCategory,
+} from "../../../../api";
 import { Box, CircularProgress } from "@mui/material";
 
 function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
@@ -51,7 +55,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
     setDistrict(event?.target?.value);
   };
 
-  console.log(category)
+  console.log(category);
 
   return (
     <div className="header">
@@ -59,7 +63,9 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
         <div className="header-bgimage">
           <h1>EHSONNING MUKOFATI EHSON</h1>
           <div className="header-item">
-            <FormControl className="header-select">
+            <FormControl
+              sx={{ m: 1, minWidth: 160, width: 160 }}
+              className="header-select">
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -75,7 +81,9 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 ))}
               </Select>
             </FormControl>
-            <FormControl className="header-select">
+            <FormControl
+              sx={{ m: 1, minWidth: 160, width: 160 }}
+              className="header-select">
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"

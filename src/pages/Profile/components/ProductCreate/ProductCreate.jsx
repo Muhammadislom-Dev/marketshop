@@ -188,7 +188,7 @@ export default function ProductCreate() {
               inputProps={{ "aria-label": "Without label" }}>
               <MenuItem value="AVERAGE">AVERAGE</MenuItem>
               <MenuItem value="NEW">NEW</MenuItem>
-              <MenuItem value="TOP">TOP</MenuItem>
+              <MenuItem value="OLD">OLD</MenuItem>
             </Select>
           </FormControl>
         </label>

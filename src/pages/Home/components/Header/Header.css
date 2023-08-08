@@ -1,20 +1,9 @@
 .header {
-  /* max-width: 100vw; */
   padding: 25px 0;
-  /* border: 1px solid red; */
 }
 
-/* .header .container {
-  background-image: url("../../../../assets/img/Banner.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 593px;
-  border-radius: 32px;
-  padding: 0 10px;
-} */
-
 .header-bgimage {
-  background-image: url("../../../../assets/img/Banner.png");
+  background-image: url("../../../../assets/Banner.png");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 593px;
@@ -24,7 +13,6 @@
 
 .header h1 {
   color: #fff;
-  text-align: center;
   font-family: Archivo;
   font-size: 64px;
   font-style: normal;
@@ -32,33 +20,8 @@
   line-height: 80px;
   padding-top: 74px;
   max-width: 600px;
-  margin: 0 auto;
+  margin-left: 100px;
 }
-
-.header select {
-  /* border-radius: 100px;
-  background: var(--foundation-grey-light, #e9e9e9);
-  display: inline-flex;
-  padding: 15px 28px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  outline: none;
-  color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  cursor: pointer;
-  margin-left: 12px; */
-}
-/* 
-.header .css-1nrlq1o-MuiFormControl-root {
-  width: 220px;
-  margin: 0 5px;
-  /* display: none; */
-/* } */
 
 .header .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   border-radius: 100px !important;
@@ -75,10 +38,6 @@
   margin: 0 5px !important;
 }
 
-/* .header .header-select {
-  width: 200px !important;
-} */
-
 .header-item {
   display: flex;
   align-items: center;
@@ -86,9 +45,9 @@
   background: #fff;
   max-width: 790px;
   padding: 10px;
-  margin: 0 auto;
   margin-top: 42px;
   gap: 10px 15px;
+  margin-left: 100px;
 }
 
 .header label {
@@ -115,14 +74,12 @@
 }
 
 .header-list {
-  /* border: 1px solid red; */
-  max-width: 1320px;
+  max-width: 1120px;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   justify-content: space-around;
-  /* gap: 25px 81px; */
   margin-top: 69px;
+  margin-left: 60px;
 }
 
 .header-link {
@@ -133,7 +90,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /* border: 1px solid red; */
   width: 120px;
   height: 150px;
 }

@@ -4,15 +4,15 @@ import defaultImg from "../../../../assets/img/default-profile-img.png";
 import { FaCamera } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { useMutation, useQuery } from "react-query";
-import { editUserPost, getSetupData, uploadImage } from "../../../../api";
+import { API, editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Setup({ refetch }) {
   const token = localStorage.getItem("tokenReview");
   const [data, setData] = useState(null);
-  const [open, setOpen] = useState(false);
   const [product, setProduct] = useState({
-    photosId: 15,
+    photosId: "",
     sendAgain: true,
     codeToVerifyPhoneNumber: null,
     tokenToVerifyPhoneNumber: null,
@@ -28,13 +28,19 @@ export default function Setup({ refetch }) {
   });
   const navigate = useNavigate();
 
-  const mutation = useMutation((post) => uploadImage(post), {
-    onSuccess: (data) => {
-      setProduct(() => ({
-        photosId: [data?.objectKoinot[0]?.id],
-      }));
-    },
-    onError: (error) => console.log(error?.message),
+  const { mutate: imageMutate } = useMutation(async (payload) => {
+    return await API.fileUpload(payload)
+      .then((res) => {
+        setProduct((prev) => ({
+          ...prev,
+          photoId: res.data.objectKoinot[0].id,
+        }));
+        toast.success("Rasim muvofaqiyatli yuklandi");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.danger("Rasim yuklanmadi qaytadan urinib ko'ring");
+      });
   });
 
   const { mutate, isLoading } = useMutation((data) => editUserPost(data), {
@@ -63,6 +69,8 @@ export default function Setup({ refetch }) {
     navigate("/");
   }
 
+  console.log(product);
+
   return (
     <div className="setup">
       <div className="setup-img">
@@ -83,7 +91,7 @@ export default function Setup({ refetch }) {
             accept="image/*"
             onChange={(e) => {
               setData(e.target.files[0]);
-              mutation.mutate({ key: e.target.files[0] });
+              imageMutate({ key: e.target.files[0] });
             }}
           />
           <span>Rasm yuklash</span>

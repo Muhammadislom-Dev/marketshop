@@ -1,8 +1,45 @@
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
-export const API_URL = "http://64.227.105.70:1777/api";
-const API_BASE_URL = "http://64.227.105.70:1777/api"; // API ning manzili
+export const API_URL = "http://143.198.64.152:1777/api";
+const API_BASE_URL = "http://143.198.64.152:1777/api"; // API ning manzili
+
+const axiosInstance = axios;
+axiosInstance.defaults.baseURL = API_BASE_URL;
+
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    if (!config.headers.Authorization) {
+      const token = localStorage.getItem("accessToken");
+
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+export const API = {
+  //POST REQUEST
+  fileUpload: (payload) =>
+    axiosInstance.post("/attachment/v1/upload-photo", payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+  postBlog: (payload) => axiosInstance.post("/blog/v1", payload),
+  postCategoryData: (payload) => axiosInstance.post("/category/v1", payload),
+  postUserData: (payload) => axiosInstance.post("/user/v1/register", payload),
+
+  //GET REQUEST
+  getUserData: (payload) =>
+    axiosInstance.get("/user/v1?page=0&size=100&sortBy=id", payload),
+
+  deleteProductData: (payload) =>
+    axiosInstance.delete(`/product/v1/${payload}`),
+};
 
 // Register uchun POST so'rov yuborish uchun funktsiya
 export const registerUser = async (userData, setCode) => {
@@ -26,6 +63,7 @@ export const editUserPost = async (userData) => {
       },
     })
     .then((res) => {
+      window.location.reload();
       localStorage.setItem("tokenReview", `${res?.data?.objectKoinot?.token}`);
       toast.success("Sizning profilingiz muvaffaqiyatli tahrirlandi!");
       // if (res.status === 200) {
@@ -70,7 +108,10 @@ export const PhoneSmsCode = async (userData, handleClose) => {
 
 export const createProduct = async (data) => {
   const response = await axios.post(`${API_BASE_URL}/product/v1/`, data, {
-    headers: "multipart/form-data",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      "Content-Type": "application/json",
+    },
   });
   return response.data;
 };
@@ -164,10 +205,13 @@ export const likeProductPost = async (id) => {
       toast.success(
         "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatiga qo'shildi!"
       );
-    }).catch((err) => {
-      console.log(err)
-      toast.danger("Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!")
     })
+    .catch((err) => {
+      console.log(err);
+      toast.danger(
+        "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!"
+      );
+    });
   return response.data;
 };
 

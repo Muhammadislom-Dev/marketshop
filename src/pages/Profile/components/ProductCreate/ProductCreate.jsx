@@ -6,6 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useMutation, useQuery } from "react-query";
 import {
+  API,
   createProduct,
   fetchDistrictData,
   fetchRegionData,
@@ -14,6 +15,7 @@ import {
 } from "../../../../api";
 import ProductModal from "../ProductModal/ProductModal";
 import { Box, CircularProgress } from "@mui/material";
+import { toast } from "react-toastify";
 
 export default function ProductCreate() {
   const [imgBox, setimageBox] = useState([]);
@@ -23,20 +25,24 @@ export default function ProductCreate() {
     active: true,
     delete: true,
     top: true,
-    photosId: [],
     productQuality: "AVERAGE",
     regionId: 1,
     districtId: 1,
   });
 
-  const mutation = useMutation((post) => uploadImage(post), {
-    onSuccess: (data) => {
-      setProduct((state) => ({
-        ...state,
-        photosId: [...state.photosId, data?.objectKoinot[0]?.id],
-      }));
-    },
-    onError: (error) => console.log(error?.message),
+  const { mutate: imageMutate } = useMutation(async (payload) => {
+    return await API.fileUpload(payload)
+      .then((res) => {
+        setProduct((prev) => ({
+          ...prev,
+          photosId: [res.data.objectKoinot[0].id],
+        }));
+        toast.success("Rasm muvaffaqiyatli yuklandi");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
+      });
   });
 
   const { mutate, isLoading } = useMutation((data) => createProduct(data), {
@@ -83,6 +89,8 @@ export default function ProductCreate() {
     );
   }
 
+  console.log(product);
+
   return (
     <div>
       {activeModal ? <ProductModal /> : null}
@@ -108,7 +116,7 @@ export default function ProductCreate() {
               accept="image/*"
               onChange={(e) => {
                 setimageBox((state) => [...state, e.target.files[0]]);
-                mutation.mutate({ key: e.target.files[0] });
+                imageMutate({ key: e.target.files[0] });
               }}
             />
           </label>

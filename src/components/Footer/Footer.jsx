@@ -18,11 +18,6 @@ function Footer() {
               <ul className="footer-item">
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Savol Javob
-                  </a>
-                </li>
-                <li className="footer-items">
-                  <a href="#" className="footer-link">
                     Yordam
                   </a>
                 </li>

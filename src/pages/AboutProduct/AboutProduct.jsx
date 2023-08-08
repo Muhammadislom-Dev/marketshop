@@ -183,7 +183,7 @@ function AboutProduct() {
               <Card data={evt} key={index} />
             ))}
           </div>
-          <button className="about-more">Barchasini ko‘rish</button>
+          {/* <button className="about-more">Barchasini ko‘rish</button> */}
         </div>
       </div>
 

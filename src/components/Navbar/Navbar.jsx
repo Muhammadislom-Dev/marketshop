@@ -12,9 +12,11 @@ import { BsHeart, BsPlusCircleFill } from "react-icons/bs";
 import LoginModal from "../Modal/Modal";
 import Language from "../Language/Language";
 import Category from "../Category/Category";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [isCategory, setisCategory] = useState(false);
+  const { t } = useTranslation();
   return (
     <div className="navbar">
       <div className="responsiveNavbar">
@@ -62,23 +64,23 @@ function Navbar() {
             className="navbar-category"
             onClick={() => setisCategory((state) => !state)}>
             <img src={CategoryIcon} alt="" className="navbar-icons" />
-            Barcha bo‘limlar
+            {t("barcha")}
           </button>
         </div>
         <div className="navbar-right">
           <Link to="/blog" className="navbar-link">
             <img src={DocumentIcon} alt="" className="navbar-icon" />
-            Blog
+            {t("blog")}
           </Link>
           <Link to="/like" className="navbar-link">
             <img src={HeartIcon} alt="" className="navbar-icon" />
-            Sevimlilar
+            {t("like")}
           </Link>
           <Language />
           <LoginModal />
           <Link to="/profile" className="navbar-submit">
             <span>+</span>
-            E’lon berish
+            {t("give")}
           </Link>
         </div>
       </div>

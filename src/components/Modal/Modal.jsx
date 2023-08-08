@@ -9,6 +9,7 @@ import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import { ObjectIcon } from "../../assets/icon";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -29,13 +30,14 @@ export default function LoginModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [login, setLogin] = React.useState("Kirish");
+  const { t } = useTranslation();
 
   return (
     <>
       {token ? (
         <Link to="/profile" className="navbar-profile">
           <img src={UserIcon} alt="" className="navbar-icon" />
-          Hisobingiz
+          {t("profile")}
         </Link>
       ) : (
         <div onClick={handleOpen} className="navbar-link">

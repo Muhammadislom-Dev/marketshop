@@ -6,8 +6,10 @@ import {
   TelegramIcon,
 } from "../../assets/icon";
 import "./Footer.css";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <div className="footer">
       <div className="container">
@@ -18,34 +20,34 @@ function Footer() {
               <ul className="footer-item">
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Yordam
+                    {t("yordam")}
                   </a>
                 </li>
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Saytda reklama
+                    {t("site")}
                   </a>
                 </li>
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Maxfiylik siyosati
+                    {t("security")}
                   </a>
                 </li>
               </ul>
               <ul className="footer-item">
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Xavsizlik qoidalari
+                    {t("xavfsizlik")}
                   </a>
                 </li>
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Sayt xaritasi
+                    {t("website")}
                   </a>
                 </li>
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    Foydalanish shartlari
+                    {t("useful")}
                   </a>
                 </li>
               </ul>

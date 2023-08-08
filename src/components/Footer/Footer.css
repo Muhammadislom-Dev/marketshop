@@ -14,7 +14,7 @@
 
 .footer-link {
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -51,7 +51,7 @@
   border: none;
   cursor: pointer;
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -80,7 +80,7 @@
 
 .footer-input::placeholder {
   color: var(--foundation-grey-light, #e9e9e9);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -89,7 +89,7 @@
 
 .footer-name {
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -99,7 +99,7 @@
 
 .footer-text {
   color: var(--foundation-grey-light, #e9e9e9);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -129,7 +129,7 @@
 
 .footer-texts {
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 300;
@@ -156,8 +156,7 @@
   }
 }
 
-
-@media (max-width:450px) {
+@media (max-width: 450px) {
   .footer-left {
     gap: 0 20px;
   }

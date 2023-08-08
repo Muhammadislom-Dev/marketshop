@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -102,7 +102,7 @@
   align-items: center;
   gap: 8px;
   color: var(--foundation-orange-normal, #f26957);
-  font-family: Archivo;
+  font-family: Archivo, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -129,7 +129,7 @@
   justify-content: center;
   cursor: pointer;
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

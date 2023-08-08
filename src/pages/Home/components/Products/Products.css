@@ -22,11 +22,10 @@
   /* border: 1px solid red; */
 }
 
-
 .product-name {
   color: var(--foundation-grey-light-active, #bbb);
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

@@ -9,7 +9,7 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
 
 .navbar-profile {
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -25,7 +25,7 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   width: 220px;
   height: 45px;
   color: #fff;
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

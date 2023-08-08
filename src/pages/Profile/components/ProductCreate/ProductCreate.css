@@ -3,7 +3,7 @@
   font-size: 26px;
   font-weight: 600;
   line-height: 120%;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
 }
 
 .addImage-box {
@@ -37,7 +37,7 @@
   color: #313137;
   font-size: 16px;
   font-weight: 500;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   line-height: 120%;
   letter-spacing: 0.16px;
 }
@@ -55,7 +55,7 @@
 .addImage-warning {
   margin-bottom: 10px;
   color: var(--foundation-orange-normal, #F26957);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 22px;
   font-weight: 500;
   line-height: 120%;
@@ -64,7 +64,7 @@
 
 .addImage-warning-desc {
   color: #313137;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -81,7 +81,7 @@
 .product-create-label>h4 {
   margin-bottom: 12px;
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 500;
 }
@@ -95,7 +95,7 @@
   background: #FFF;
   outline: none;
   color: #000;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 500;
   box-sizing: border-box;
@@ -110,7 +110,7 @@
   background: #FFF;
   outline: none;
   resize: none;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 500;
   box-sizing: border-box;
@@ -127,7 +127,7 @@
   border-radius: 40px;
   background: var(--foundation-orange-normal, #F26957);
   color: #FFF;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 22px;
   font-weight: 400;
   cursor: pointer;

@@ -13,7 +13,7 @@
 
 .header h1 {
   color: #fff;
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
@@ -66,7 +66,7 @@
 
 .header input::placeholder {
   color: var(--foundation-grey-light-active, #bbb);
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -85,7 +85,7 @@
 .header-link {
   color: #fff;
   text-align: center;
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;

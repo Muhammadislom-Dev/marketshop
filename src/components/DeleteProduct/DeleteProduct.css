@@ -18,7 +18,7 @@ body .delete-modal-product {
   color: var(--color-dark-dark, #23262f);
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -29,7 +29,7 @@ body .delete-modal-product {
   color: var(--color-dark-dark-2, #87898e);
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -44,7 +44,7 @@ body .delete-modal-product {
   border: none;
   color: var(--color-light-light, #fcfcfd);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Archivo;
+   font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

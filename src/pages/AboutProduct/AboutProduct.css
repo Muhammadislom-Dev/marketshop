@@ -23,7 +23,7 @@
 .blok__right_title {
   width: 584px;
   color: #000;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 40px;
   font-weight: 600;
   line-height: 50px;
@@ -39,7 +39,7 @@
   width: 558px;
   margin-top: -12px;
   color: #000;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -77,7 +77,7 @@
 
 .icons__oblast_subTitle {
   color: #232323;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -99,7 +99,7 @@
   border-radius: 40px;
   background: #f26957;
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
@@ -116,7 +116,7 @@
 
 .orderer_title {
   color: #000;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 2px;
@@ -124,7 +124,7 @@
 
 .orderer_subTitle {
   color: #000;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 5px;
@@ -135,7 +135,7 @@
   width: 480px;
   margin-top: 30px;
   color: #222;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -174,7 +174,7 @@
 .about-button {
   color: #000;
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -199,7 +199,7 @@
   background: var(--foundation-orange-normal, #f26957);
   color: #fff;
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;

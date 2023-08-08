@@ -5,7 +5,7 @@
 .like .product-name {
   color: #000;
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

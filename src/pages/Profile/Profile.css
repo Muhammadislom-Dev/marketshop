@@ -33,7 +33,7 @@
 .profile-name {
   color: #fff;
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -43,7 +43,7 @@
 .profile-number {
   color: #fff;
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

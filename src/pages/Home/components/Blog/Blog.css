@@ -18,7 +18,7 @@
 .blog-name {
   color: #000;
   text-align: center;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -44,7 +44,7 @@
 
 .blog-names {
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -60,7 +60,7 @@
 
 .blog-text {
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -76,7 +76,7 @@
 
 .blog-time {
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

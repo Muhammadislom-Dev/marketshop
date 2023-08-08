@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -51,7 +51,7 @@
   display: flex;
   align-items: center;
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

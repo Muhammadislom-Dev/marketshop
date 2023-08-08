@@ -52,7 +52,7 @@
   border: none;
   outline: none;
   color: var(--foundation-grey-light-active, #000);
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
@@ -115,7 +115,7 @@
   display: flex;
   align-items: center;
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
@@ -154,7 +154,7 @@
 
 .product-hero-filter-category-item > span {
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 18px;
@@ -188,7 +188,7 @@
 
 .product-hero-filter-subcategory-item > span {
   color: #fff;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 18px;

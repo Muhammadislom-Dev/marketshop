@@ -16,6 +16,7 @@ export default function Category({ setisCategory }) {
   // console.log(activeCategory);
   const icons = [clothes, electronic, transport, cat, baby];
 
+
   return (
     <div className="category">
       <ul className="category-section-main">
@@ -29,7 +30,16 @@ export default function Category({ setisCategory }) {
                     ? "category-section-main-item category-section-main-item-active"
                     : "category-section-main-item"
                 }>
-                <img src={icons[index]} alt="icon" />
+                {el.photo ? (
+                  <img
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      objectFit: "cover",
+                    }}
+                    src={el.photo.filePath}
+                  />
+                ) : null}
                 <span>{el.nameUz}</span>
                 <SlArrowRight />
               </li>

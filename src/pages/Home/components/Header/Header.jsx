@@ -32,6 +32,12 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
     fetchDistrictData(code)
   );
 
+  const handleDistrict = (event) => {
+    setDistrict(event?.target?.value);
+  };
+
+  console.log(category);
+
   if (isLoading) {
     return (
       <Box
@@ -50,12 +56,6 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   if (isError) {
     return <p>Xatolik yuz berdi.</p>;
   }
-
-  const handleDistrict = (event) => {
-    setDistrict(event?.target?.value);
-  };
-
-  console.log(category);
 
   return (
     <div className="header">

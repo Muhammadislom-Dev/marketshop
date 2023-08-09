@@ -1,4 +1,10 @@
-import { FormControl, MenuItem, Select } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  FormControl,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import "./ProductHero.css";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
@@ -21,11 +27,24 @@ export default function ProductHero() {
 
   const { data } = useQuery("get category", getCategory);
   const { data: region } = useQuery("exampleData", fetchRegionData);
-  const { data: paramsData } = useQuery(
+  const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
     () => getFilterProductData(category, regionId, search)
   );
-
+  if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height={"80vh"}>
+        <CircularProgress
+          color="success"
+          style={{ width: "100px", height: "100px" }}
+        />
+      </Box>
+    );
+  }
   return (
     <>
       <div className="product-hero">
@@ -186,16 +205,14 @@ export default function ProductHero() {
         </div>
         {/*  */}
       </div>
-      <div className="container">
-        <div className="products filter-product">
-          {paramsData.content ? (
-            paramsData?.content?.map((evt, index) => (
-              <Card data={evt} key={index} />
-            ))
-          ) : (
-            <div>Filter bo‘yicha hech qanday ma’lumot topilmadi!</div>
-          )}
-        </div>
+      <div className="products filter-product">
+        {paramsData?.content?.length ? (
+          paramsData?.content?.map((evt, index) => (
+            <Card data={evt} key={index} />
+          ))
+        ) : (
+          <div>Filter bo‘yicha hech qanday ma’lumot topilmadi!</div>
+        )}
       </div>
     </>
   );

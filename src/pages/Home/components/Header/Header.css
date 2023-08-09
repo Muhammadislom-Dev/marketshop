@@ -13,7 +13,7 @@
 
 .header h1 {
   color: #fff;
-   font-family: "Archivo", sans-serif;
+  font-family: "Archivo", sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
@@ -66,7 +66,7 @@
 
 .header input::placeholder {
   color: var(--foundation-grey-light-active, #bbb);
-   font-family: "Archivo", sans-serif;
+  font-family: "Archivo", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -85,7 +85,7 @@
 .header-link {
   color: #fff;
   text-align: center;
-   font-family: "Archivo", sans-serif;
+  font-family: "Archivo", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -132,6 +132,18 @@
   .header h1 {
     font-size: 40px;
     line-height: 60px;
+    margin-left: 20px;
+  }
+
+  .header-item {
+    margin-left: 20px;
+  }
+
+  .header .css-vmru51-MuiFormControl-root {
+    display: none;
+  }
+  .header-list {
+    margin-left: 20px;
   }
 }
 
@@ -148,8 +160,16 @@
 
 @media (max-width: 455px) {
   .header h1 {
-    font-size: 37px;
-    line-height: 60px;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .header-bgimage {
+    min-height: 450px;
+  }
+
+  .header-subname {
+    font-size: 14px;
   }
 
   .header-link:nth-child(4) {

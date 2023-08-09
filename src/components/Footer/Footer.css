@@ -160,4 +160,12 @@
   .footer-left {
     gap: 0 20px;
   }
+
+  .footer {
+    margin-bottom: 100px;
+  }
+
+  .footer-name {
+    font-size: 20px;
+  }
 }

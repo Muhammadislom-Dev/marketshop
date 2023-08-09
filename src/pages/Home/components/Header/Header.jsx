@@ -12,7 +12,7 @@ import {
   fetchRegionData,
   getCategory,
 } from "../../../../api";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, InputLabel } from "@mui/material";
 
 function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   const { data: category } = useQuery("get category", getCategory);
@@ -35,8 +35,6 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   const handleDistrict = (event) => {
     setDistrict(event?.target?.value);
   };
-
-  console.log(category);
 
   if (isLoading) {
     return (
@@ -66,9 +64,11 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
             <FormControl
               sx={{ m: 1, minWidth: 160, width: 160 }}
               className="header-select">
+              <InputLabel id="demo-simple-select-label1">Barchasi</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
+                labelId="demo-simple-select-label1"
                 id="demo-simple-select"
+                label="Barchasi"
                 value={age}
                 onChange={handleChange}>
                 <MenuItem onClick={handleClear} value="">
@@ -89,6 +89,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 id="demo-simple-select"
                 value={district}
                 onChange={handleDistrict}>
+                <MenuItem value="Shahar">Shahar</MenuItem>
                 {districtData?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
                     {data.name}

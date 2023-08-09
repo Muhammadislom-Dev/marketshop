@@ -2,3 +2,27 @@
   width: 100%;
   min-width: 100%;
 }
+
+.likes .container {
+  background-image: url("../../assets/icon/Rectangle\ 1.svg");
+  background-repeat: no-repeat;
+  min-height: 350px;
+}
+
+.likes .likes__page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px;
+}
+.likes h2 {
+  color: #fff;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px; /* 125% */
+  margin-top: 0;
+}

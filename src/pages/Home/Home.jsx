@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 
 function Home() {
   const [code, setCode] = useState(null);
-  const [age, setAge] = React.useState("Barchasi");
+  const [age, setAge] = React.useState("");
   const [search, setSearch] = useState("");
   const { data: product } = useQuery(["paramsData", code, search], () =>
     getParamsProductData(code, search)
@@ -21,6 +21,8 @@ function Home() {
     setCode("");
     setAge("");
   };
+
+  console.log(age);
 
   return (
     <>

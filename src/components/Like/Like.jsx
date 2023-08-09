@@ -1,12 +1,15 @@
 import React from "react";
-import { LikeBanner } from "../../assets/img";
 import "./Like.css";
+import heartIcon from "../../assets/category-icons/heart.svg";
 
 function Like() {
   return (
-    <div className="like">
+    <div className="likes">
       <div className="container">
-        <img src={LikeBanner} alt="" className="like-img" />
+        <div className="likes__page">
+          <img src={heartIcon} alt="" className="likes-icon" />
+          <h2>Tanlanganlar</h2>
+        </div>
       </div>
     </div>
   );

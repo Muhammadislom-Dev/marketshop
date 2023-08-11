@@ -35,16 +35,19 @@ function Language() {
         </div>
         <div
           className="navbarvictorina_language-bar"
-          style={activeLang ? { display: "flex" } : null}>
-          {languageList.map((el, index) => (
-            <p
-              key={index}
-              onClick={() => {
-                handleChangeLng(el.type);
-              }}>
-              {el.label}
-            </p>
-          ))}
+          style={activeLang ? { display: "flex" } : null}
+          >
+          <div className="navbar-language-card">
+            {languageList.map((el, index) => (
+              <p
+                key={index}
+                onClick={() => {
+                  handleChangeLng(el.type);
+                }}>
+                {el.label}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -47,3 +47,9 @@
     justify-content: space-evenly;
   }
 }
+
+@media (max-width: 450px) {
+  .product-name {
+    font-size: 20px;
+  }
+}

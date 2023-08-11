@@ -1,39 +1,50 @@
-import { HeaderOne, HeaderThree, HeaderTwo } from "../../../../assets/icon";
+import {
+  HeaderOne,
+  HeaderThree,
+  HeaderTwo,
+  HobbyIcon,
+  HouseIcon,
+  WeddingIcon,
+  SportCarIcon,
+  ChildIcon,
+  CatIcon,
+  TvIcon,
+} from "../../../../assets/icon";
 
 export const data = [
   {
     id: 1,
     title: "Bolalar uchun",
-    img: HeaderOne,
+    img: ChildIcon,
   },
   {
     id: 2,
     title: "Transport",
-    img: HeaderTwo,
+    img: SportCarIcon,
   },
   {
     id: 3,
     title: "Hayvonlar",
-    img: HeaderThree,
+    img: CatIcon,
   },
   {
     id: 4,
     title: "Uy va bog‘",
-    img: HeaderOne,
+    img: HouseIcon,
   },
   {
     id: 5,
     title: "Elektr jihozlar",
-    img: HeaderTwo,
+    img: TvIcon,
   },
   {
     id: 6,
     title: "Kiyim kechak",
-    img: HeaderThree,
+    img: WeddingIcon,
   },
   {
     id: 7,
     title: "Xobbi uchun",
-    img: HeaderThree,
+    img: HobbyIcon,
   },
 ];

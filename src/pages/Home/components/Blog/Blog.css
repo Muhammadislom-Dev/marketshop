@@ -88,3 +88,14 @@
     justify-content: space-evenly;
   }
 }
+
+
+@media (max-width:450px) {
+  
+  .blog-item{
+    width: 100%;
+  }
+  .blog-img{
+    width: 100%;
+  }
+}

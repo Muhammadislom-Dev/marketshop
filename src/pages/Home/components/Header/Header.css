@@ -90,8 +90,20 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 120px;
-  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-link-span {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: #a65822;
 }
 
 .header-subname {
@@ -124,9 +136,14 @@
     font-size: 18px;
   }
 
-  .header-icons {
+  .header-link-span{
     width: 50px;
     height: 50px;
+  }
+
+  .header-icons {
+    width: 25px;
+    height: 25px;
   }
 
   .header h1 {
@@ -168,16 +185,16 @@
     min-height: 450px;
   }
 
-  .header-item{
+  .header-item {
     margin-left: 0 !important;
   }
-  .header h1{
+  .header h1 {
     margin-left: 10px !important;
   }
-  .header-list{
+  .header-list {
     margin-left: 0 !important;
   }
-  .header-link{
+  .header-link {
     height: 50px;
   }
 

@@ -40,9 +40,9 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox">
-              <Link to="/" className="fixed-navbar-Ic">
+              <Link to="/like" className="fixed-navbar-Ic">
                 <BsHeart className="fixNavIconL" />
-                <h4>Tanlanganlar</h4>
+                <h4> {t("like")}</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox">

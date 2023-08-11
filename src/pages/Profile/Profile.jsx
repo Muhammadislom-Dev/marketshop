@@ -73,7 +73,7 @@ function Profile() {
     <>
       <div className="profile">
         <div className="container">
-          <div className="profileBackground">
+          <div className="profileBackground profileBackground-mobile">
             <div className="profile-list">
               <img
                 src={

@@ -18,6 +18,16 @@
   border-radius: 30px;
 }
 
+.profileBackground-mobile {
+  background-image: url("../../assets/banner.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 30px;
+  background-size: contain;
+  width: 100%;
+  display: none;
+}
+
 .profile {
   padding: 20px 0;
   padding-bottom: 80px;
@@ -61,4 +71,41 @@
 
 .App .css-1aquho2-MuiTabs-indicator {
   background-color: #232323;
+}
+
+@media (max-width: 480px) {
+  .profileBackground {
+    display: none;
+    height: auto;
+  }
+  .profileBackground-mobile {
+    display: block;
+  }
+
+  .profile-img {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-list {
+    padding-top: 130px;
+  }
+
+  .profile-name {
+    margin-top: 20px;
+    font-size: 17px;
+    margin-bottom: 0;
+  }
+
+  .profile{
+    padding-bottom: 40px;
+  }
+
+  .profile-number{
+    font-size: 12px;
+    padding-left: 15px;
+  }
+
+  .profile-item{
+    margin-left: 0;
+  }
 }

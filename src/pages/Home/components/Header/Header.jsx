@@ -110,7 +110,9 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
           <div className="header-list">
             {data?.map((data) => (
               <Link key={data.id} to="/" className="header-link">
-                <img src={data.img} alt="" className="header-icons" />
+                <span className="header-link-span">
+                  <img src={data.img} alt="" className="header-icons" />
+                </span>
                 <p className="header-subname">{data.title}</p>
               </Link>
             ))}

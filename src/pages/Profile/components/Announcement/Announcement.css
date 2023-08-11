@@ -26,7 +26,7 @@
   margin-top: 20px;
 }
 
-.profile-tab .css-19kzrtu{
+.profile-tab .css-19kzrtu {
   padding: 0;
 }
 
@@ -157,4 +157,26 @@
   right: 0;
   bottom: 0;
   border-bottom-right-radius: 20px;
+}
+
+@media (max-width: 450px) {
+  .announcement .container {
+    padding: 0 10px;
+  }
+
+  .announcement-picture {
+    width: 110px;
+    height: 100px;
+  }
+  .card__right_title {
+    font-size: 15px;
+    line-height: 18px;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    margin-bottom: 5px;
+  }
+
+  .card__right_blok {
+    flex-wrap: wrap;
+  }
 }

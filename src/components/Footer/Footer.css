@@ -1,6 +1,8 @@
 .footer {
   width: 100vw;
   padding: 10px 0;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .footer-flex {

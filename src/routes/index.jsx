@@ -29,7 +29,6 @@ function AppRoutes() {
           path="/blog"
           element={
             <>
-              <BlogPage />
               <BlogAbout />
             </>
           }

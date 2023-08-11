@@ -35,7 +35,7 @@ function Home() {
         setCode={setCode}
       />
       <Products code={code} paramsData={paramsData} product={product} />
-      <Blog />
+      {/* <Blog /> */}
     </>
   );
 }

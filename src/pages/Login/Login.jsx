@@ -3,13 +3,15 @@ import "./Login.css";
 import { useMutation } from "react-query";
 import { loginUser } from "../../api";
 
-function Login() {
+function Login({ handleClose }) {
   const [formData, setFormData] = useState({
     phoneNumber: "998",
     password: "",
   });
   const [code, setCode] = useState(false);
-  const mutation = useMutation((userData) => loginUser(userData, setCode));
+  const mutation = useMutation((userData) =>
+    loginUser(userData, setCode, handleClose)
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;

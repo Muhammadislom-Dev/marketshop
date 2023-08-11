@@ -168,6 +168,19 @@
     min-height: 450px;
   }
 
+  .header-item{
+    margin-left: 0 !important;
+  }
+  .header h1{
+    margin-left: 10px !important;
+  }
+  .header-list{
+    margin-left: 0 !important;
+  }
+  .header-link{
+    height: 50px;
+  }
+
   .header-subname {
     font-size: 14px;
   }

@@ -73,11 +73,14 @@ export const editUserPost = async (userData) => {
   return response.data;
 };
 
-export const loginUser = async (userData, setCode) => {
+export const loginUser = async (userData, setCode, handleClose) => {
   const response = await axios
     .post(`${API_BASE_URL}/auth/v1/login`, userData)
     .then((res) => {
       toast.success("Siz muvaffaqiyatli login qildingiz!");
+      <Navigate to="/profile" replace />;
+      window.location.reload();
+      handleClose();
       if (res.status === 200) {
         setCode(true);
       }

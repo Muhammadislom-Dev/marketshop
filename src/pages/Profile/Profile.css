@@ -48,6 +48,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-bottom: 10px;
 }
 
 .profile-number {
@@ -58,6 +59,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  padding-left: 12px;
 }
 
 .profile-item {
@@ -73,10 +75,31 @@
   background-color: #232323;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 510px) {
   .profileBackground {
     display: none;
     height: auto;
+  }
+
+  .delete-list{
+    width: 350px !important;
+  }
+  .delete-submit{
+    width: 100% !important;
+  }
+
+  .delete-img{
+    width: 280px;
+  }
+
+
+
+  .announcement .container {
+    padding: 0 ;
+  }
+
+  .announcement-card {
+    width: 100%;
   }
   .profileBackground-mobile {
     display: block;
@@ -96,16 +119,16 @@
     margin-bottom: 0;
   }
 
-  .profile{
+  .profile {
     padding-bottom: 40px;
   }
 
-  .profile-number{
+  .profile-number {
     font-size: 12px;
     padding-left: 15px;
   }
 
-  .profile-item{
+  .profile-item {
     margin-left: 0;
   }
 }

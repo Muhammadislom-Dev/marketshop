@@ -73,7 +73,32 @@ function Profile() {
     <>
       <div className="profile">
         <div className="container">
-          <div className="profileBackground profileBackground-mobile">
+          <div className="profileBackground">
+            <div className="profile-list">
+              <img
+                src={
+                  data?.objectKoinot?.photo?.filePath === null
+                    ? AvatarIcon
+                    : data?.objectKoinot?.photo?.filePath
+                }
+                alt=""
+                className="profile-img"
+              />
+              <div className="profile-item">
+                <h3 className="profile-name">
+                  {data.objectKoinot.firstName === null
+                    ? ""
+                    : data.objectKoinot.firstName}
+                </h3>
+                <a
+                  href={`tel:+${data?.objectKoinot?.phoneNumber}`}
+                  className="profile-number">
+                  +{data?.objectKoinot?.phoneNumber}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="profileBackground-mobile">
             <div className="profile-list">
               <img
                 src={

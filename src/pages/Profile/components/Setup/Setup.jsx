@@ -21,8 +21,6 @@ export default function Setup({ refetch }) {
     photosId: null,
     firstname: null,
     lastname: null,
-    password: null,
-    oldpassword: null,
     sendAgain: true,
     tokenToVerifyPhoneNumber: token,
   });
@@ -123,36 +121,6 @@ export default function Setup({ refetch }) {
               }))
             }
             type="text"
-            maxLength={500}
-            min={3}
-            required
-          />
-        </label>
-        <label className="product-create-label">
-          <h4>Password</h4>
-          <input
-            onChange={(e) =>
-              setProduct((state) => ({
-                ...state,
-                password: e.target.value,
-              }))
-            }
-            type="password"
-            maxLength={500}
-            min={3}
-            required
-          />
-        </label>
-        <label className="product-create-label">
-          <h4>Old Password</h4>
-          <input
-            onChange={(e) =>
-              setProduct((state) => ({
-                ...state,
-                oldpassword: e.target.value,
-              }))
-            }
-            type="password"
             maxLength={500}
             min={3}
             required

@@ -1,5 +1,6 @@
 .header {
   padding: 25px 0;
+  padding-top: 0;
 }
 
 .header-bgimage {
@@ -67,7 +68,7 @@
 .header input::placeholder {
   color: var(--foundation-grey-light-active, #bbb);
   font-family: "Archivo", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

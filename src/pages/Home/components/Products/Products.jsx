@@ -26,6 +26,8 @@ function Products({ code, product, paramsData }) {
     );
   }
 
+  console.log(trueData)
+
   return (
     <div className="product-all-div">
       <div className="container">

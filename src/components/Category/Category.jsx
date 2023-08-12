@@ -4,18 +4,15 @@ import { SlArrowRight } from "react-icons/sl";
 import { useQuery } from "react-query";
 import { getCategory } from "../../api";
 import { useState } from "react";
-import clothes from "../../assets/category-icons/clothes.svg";
-import electronic from "../../assets/category-icons/electronic.svg";
-import transport from "../../assets/category-icons/transport.svg";
-import cat from "../../assets/category-icons/cat.svg";
-import baby from "../../assets/category-icons/baby.svg";
+// import clothes from "../../assets/category-icons/clothes.svg";
+// import electronic from "../../assets/category-icons/electronic.svg";
+// import transport from "../../assets/category-icons/transport.svg";
+// import cat from "../../assets/category-icons/cat.svg";
+// import baby from "../../assets/category-icons/baby.svg";
 
 export default function Category({ setisCategory }) {
   const [activeCategory, setactiveCategory] = useState(1);
   const { data } = useQuery("get category", getCategory);
-  // console.log(activeCategory);
-  const icons = [clothes, electronic, transport, cat, baby];
-
 
   return (
     <div className="category">

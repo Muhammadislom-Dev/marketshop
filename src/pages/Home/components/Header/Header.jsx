@@ -16,11 +16,13 @@ import { Box, CircularProgress, InputLabel } from "@mui/material";
 
 function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   const { data: category } = useQuery("get category", getCategory);
-  const [district, setDistrict] = useState("Shahar");
+  const [district, setDistrict] = useState("Tuman");
   const handleChange = (event) => {
     setAge(event?.target?.value);
     setCode(event?.target?.value);
   };
+
+  const i18next = localStorage.getItem("i18nextLng");
 
   const {
     data: region,
@@ -35,6 +37,8 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   const handleDistrict = (event) => {
     setDistrict(event?.target?.value);
   };
+
+  console.log(category);
 
   if (isLoading) {
     return (
@@ -64,15 +68,15 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
             <FormControl
               sx={{ m: 1, minWidth: 160, width: 160 }}
               className="header-select">
-              <InputLabel id="demo-simple-select-label1">Barchasi</InputLabel>
+              <InputLabel id="demo-simple-select-label1">Shahar</InputLabel>
               <Select
                 labelId="demo-simple-select-label1"
                 id="demo-simple-select"
-                label="Barchasi"
+                label="Shahar"
                 value={age}
                 onChange={handleChange}>
                 <MenuItem onClick={handleClear} value="">
-                  Barchasi
+                  Shahar
                 </MenuItem>
                 {region.objectKoinot.content.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
@@ -89,7 +93,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 id="demo-simple-select"
                 value={district}
                 onChange={handleDistrict}>
-                <MenuItem value="Shahar">Shahar</MenuItem>
+                <MenuItem value="Tuman">Tuman</MenuItem>
                 {districtData?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
                     {data.name}
@@ -108,12 +112,18 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
             </label>
           </div>
           <div className="header-list">
-            {data?.map((data) => (
-              <Link key={data.id} to="/" className="header-link">
+            {category?.objectKoinot?.map((data) => (
+              <Link key={data.id} to={`/${data.id}`} className="header-link">
                 <span className="header-link-span">
-                  <img src={data.img} alt="" className="header-icons" />
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: data.icon,
+                    }}
+                  />
                 </span>
-                <p className="header-subname">{data.title}</p>
+                <p className="header-subname">
+                  {i18next === "ru" ? data.nameRu : data.nameUz}
+                </p>
               </Link>
             ))}
           </div>

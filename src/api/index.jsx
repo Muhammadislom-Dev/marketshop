@@ -175,7 +175,7 @@ export const getProductData = async () => {
 
 export const getProfileProductData = async () => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?my=true&page=0&size=20`,
+    `${API_BASE_URL}/product/v1?my=true&page=0&size=100`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -68,11 +68,11 @@
 }
 
 .App .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  color: #232323;
+  color: #232323 !important;
 }
 
 .App .css-1aquho2-MuiTabs-indicator {
-  background-color: #232323;
+  background-color: #232323 !important;
 }
 
 @media (max-width: 510px) {
@@ -91,8 +91,6 @@
   .delete-img{
     width: 280px;
   }
-
-
 
   .announcement .container {
     padding: 0 ;

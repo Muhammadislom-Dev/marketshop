@@ -11,11 +11,10 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { toast } from "react-toastify";
 
 function Announcement() {
-  const { data, isLoading, isError, refetch } = useQuery(
+  const { data, isLoading, refetch } = useQuery(
     "profileData",
     getProfileProductData
   );
-  // const { mutate } = useMutation((productId) => deleteProduct(productId));
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
     return await API.deleteProductData(payload)

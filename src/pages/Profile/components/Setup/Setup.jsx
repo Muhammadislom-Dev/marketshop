@@ -8,7 +8,7 @@ import { API, editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function Setup({ refetch }) {
+export default function Setup({ refetch, dataValue }) {
   const token = localStorage.getItem("tokenReview");
   const [data, setData] = useState(null);
   const [product, setProduct] = useState({
@@ -67,7 +67,7 @@ export default function Setup({ refetch }) {
     navigate("/");
   }
 
-  console.log(product);
+  console.log(dataValue);
 
   return (
     <div className="setup">
@@ -99,6 +99,7 @@ export default function Setup({ refetch }) {
         <label className="product-create-label">
           <h4>First Name</h4>
           <input
+            defaultValue={dataValue.objectKoinot.firstName}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
@@ -114,6 +115,7 @@ export default function Setup({ refetch }) {
         <label className="product-create-label">
           <h4>Last Name</h4>
           <input
+            defaultValue={dataValue.objectKoinot.lastname}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
@@ -129,6 +131,7 @@ export default function Setup({ refetch }) {
         <label className="product-create-label">
           <h4>Telefon raqam</h4>
           <input
+            defaultValue={dataValue.objectKoinot.phoneNumber}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,

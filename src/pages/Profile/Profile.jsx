@@ -146,7 +146,7 @@ function Profile() {
               <ProductCreate />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-              <Setup refetch={refetch} />
+              <Setup dataValue={data} refetch={refetch} />
             </CustomTabPanel>
           </Box>
         </div>

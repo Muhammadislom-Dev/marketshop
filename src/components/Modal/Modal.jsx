@@ -42,7 +42,7 @@ export default function LoginModal() {
       ) : (
         <div onClick={handleOpen} className="navbar-link">
           <img src={UserIcon} alt="" className="navbar-icon" />
-          Kirish
+          {t("hello15")}
         </div>
       )}
       <Modal
@@ -63,7 +63,7 @@ export default function LoginModal() {
                     color: login === "Kirish" ? "#fff" : null,
                   }}
                   className="login-button">
-                  Kirish
+                  {t("hello15")}
                 </button>
                 <button
                   value="Ro‘yhatdan o‘tish"
@@ -74,7 +74,7 @@ export default function LoginModal() {
                     color: login === "Ro‘yhatdan o‘tish" ? "#fff" : null,
                   }}
                   className="login-button">
-                  Ro‘yhatdan o‘tish
+                  {t("hello14")}
                 </button>
               </div>
 

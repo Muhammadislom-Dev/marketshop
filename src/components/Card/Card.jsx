@@ -8,8 +8,10 @@ import { likeProductPost } from "../../api";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ data, key, like }) => {
+  const { t } = useTranslation();
   const { mutate } = useMutation((productId) => likeProductPost(productId));
 
   const [hoverEffect, setHoverEffect] = useState(false);
@@ -68,16 +70,16 @@ const Card = ({ data, key, like }) => {
 
           <h2 className="card__title">{data?.name}</h2>
           <p className="card__subTitle">
-            {data?.region?.name}, {data?.district?.name} tumani {"  "}
+            {data?.region?.name}, {data?.district?.name} {t("hello3")} {"  "}
             {formattedDate}
           </p>
           {/* </Link> */}
           {data?.quality === "NEW" ? (
-            <span className="card__link card__new">Yangi</span>
+            <span className="card__link card__new">{t("hello4")}</span>
           ) : data?.quality === "TOP" ? (
-            <span className="card__link card__medium">O'rtacha</span>
+            <span className="card__link card__medium">{t("hello5")}</span>
           ) : data?.quality === "AVERAGE" ? (
-            <span className="card__link">Eski</span>
+            <span className="card__link">{t("hello6")}</span>
           ) : (
             ""
           )}

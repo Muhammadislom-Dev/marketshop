@@ -25,13 +25,13 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BiHomeAlt2 className="fixNavIconL" />
-                <h4>Bosh sahifa</h4>
+                <h4>{t("hello16")}</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BiCategory className="fixNavIconL" />
-                <h4>Kategoriya</h4>
+                <h4>{t("hello17")}</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox plus">
@@ -48,7 +48,7 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <Link to="/profile" className="fixed-navbar-Ic">
                 <BiUser className="fixNavIconL" />
-                <h4>Profile</h4>
+                <h4>{t("profile")}</h4>
               </Link>
             </div>
           </div>

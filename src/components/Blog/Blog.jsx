@@ -7,14 +7,14 @@ import { useParams } from "react-router-dom";
 import { getByIdBlogContent, getByIdBlogData } from "../../api";
 import { useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function Blog() {
+  const { t } = useTranslation();
   const { id } = useParams();
-  const {
-    data: blog,
-    isError,
-    isLoading,
-  } = useQuery(["blog", id], () => getByIdBlogData(id));
+  const { data: blog, isLoading } = useQuery(["blog", id], () =>
+    getByIdBlogData(id)
+  );
   const { data: content } = useQuery(["content", id], () =>
     getByIdBlogContent(id)
   );
@@ -52,7 +52,7 @@ function Blog() {
         />
         <div className="blok__section">
           <div className="blok__section_left">
-            <h2 className="blok__section_title">Blog</h2>
+            <h2 className="blok__section_title">{t("hello1")}</h2>
             <div className="blok__section_timer">
               <img src={clock} alt="clock" />
               <h2 className="timer__title">{formattedDate}</h2>
@@ -64,7 +64,7 @@ function Blog() {
           </div>
           <div className="blok__section_right">
             <img src={share} alt="share" />
-            <p>Ulashish</p>
+            <p>{t("hello2")}</p>
           </div>
         </div>
         <div className="blok__titels">

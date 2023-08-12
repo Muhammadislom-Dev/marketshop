@@ -6,6 +6,7 @@ import Modal from "@mui/material/Modal";
 import backet from "../../assets/backet.svg";
 import "./DeleteProduct.css";
 import { DeleteBanner } from "../../assets/img";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -19,6 +20,7 @@ const style = {
 };
 
 function DeleteProduct({ mutate, data }) {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -41,10 +43,10 @@ function DeleteProduct({ mutate, data }) {
         <Box sx={style}>
           <div className="delete-list">
             <img src={DeleteBanner} alt="" className="delete-img" />
-            <h3 className="delete-name">E’lonni o‘chirish</h3>
-            <p className="delete-text">Qilgan ehsoningiz qabul bo‘lsin</p>
+            <h3 className="delete-name">{t("hello7")}</h3>
+            <p className="delete-text">{t("hello8")}</p>
             <button onClick={handleDelete} className="delete-submit">
-              O’chirish
+              {t("hello9")}
             </button>
           </div>
         </Box>

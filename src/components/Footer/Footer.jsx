@@ -69,10 +69,9 @@ function Footer() {
               </a>
             </div>
             <div className="footer-right">
-              <h4 className="footer-name">Obuna bo‘ling</h4>
+              <h4 className="footer-name">{t("hello10")}</h4>
               <p className="footer-text">
-                Bizda bo‘layotgan yangiliklardan xabordor bo‘lishni istasangiz
-                bizga obuna bo’ling!
+                {t("hello11")}
               </p>
               <label htmlFor="">
                 <input
@@ -80,7 +79,7 @@ function Footer() {
                   placeholder="E-pochta kiriting"
                   className="footer-input"
                 />
-                <button className="footer-button">Obuna bo‘lish</button>
+                <button className="footer-button">{t("hello10")}</button>
               </label>
             </div>
           </div>
@@ -97,7 +96,7 @@ function Footer() {
           </div>
 
           <p className="footer-texts">
-            © 2023 - Tekin Market Barcha huquqlar ximoyalangan
+            © 2023 - {t("hello12")}
           </p>
         </div>
       </div>

@@ -5,8 +5,10 @@ import share from "../../assets/share.svg";
 import { getBlogData, getByIdBlogContent } from "../../api";
 import { useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function BlogPage() {
+  const { t } = useTranslation();
   const { data, isLoading } = useQuery("blogData", getBlogData);
   const newData = data?.objectKoinot?.content[0];
   const { data: content } = useQuery(["content", newData?.id], () =>
@@ -39,15 +41,15 @@ function BlogPage() {
     <div className="container">
       <div className="bloks">
         <div className="bloks__imgBox">
-        <img
-          className="blog-about-img"
-          src={newData?.photo?.filePath}
-          alt="images1"
-        />
+          <img
+            className="blog-about-img"
+            src={newData?.photo?.filePath}
+            alt="images1"
+          />
         </div>
         <div className="blok__section">
           <div className="blok__section_left">
-            <h2 className="blok__section_title">Blog</h2>
+            <h2 className="blok__section_title">{t("hello2")}</h2>
             <div className="blok__section_timer">
               <img src={clock} alt="clock" />
               <h2 className="timer__title">{formattedDate}</h2>
@@ -59,7 +61,7 @@ function BlogPage() {
           </div>
           <div className="blok__section_right">
             <img src={share} alt="share" />
-            <p>Ulashish</p>
+            <p>{t("hello2")}</p>
           </div>
         </div>
         <div className="blok__titels">

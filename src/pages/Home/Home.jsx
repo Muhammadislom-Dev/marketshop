@@ -22,7 +22,12 @@ function Home() {
     setAge("");
   };
 
-  console.log(age);
+  const handleChangeValue = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue.length > 5) {
+      setSearch(inputValue);
+    }
+  };
 
   return (
     <>
@@ -33,9 +38,9 @@ function Home() {
         age={age}
         setAge={setAge}
         setCode={setCode}
+        handleChangeValue={handleChangeValue}
       />
       <Products code={code} paramsData={paramsData} product={product} />
-      {/* <Blog /> */}
     </>
   );
 }

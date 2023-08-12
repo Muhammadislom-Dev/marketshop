@@ -14,7 +14,15 @@ import {
 } from "../../../../api";
 import { Box, CircularProgress, InputLabel } from "@mui/material";
 
-function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
+function Header({
+  code,
+  setCode,
+  setSearch,
+  handleClear,
+  age,
+  setAge,
+  handleChangeValue,
+}) {
   const { data: category } = useQuery("get category", getCategory);
   const [district, setDistrict] = useState("Tuman");
   const handleChange = (event) => {
@@ -37,8 +45,6 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   const handleDistrict = (event) => {
     setDistrict(event?.target?.value);
   };
-
-  console.log(category);
 
   if (isLoading) {
     return (
@@ -107,7 +113,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 type="search"
                 placeholder="Nimadir qidiramizmi?"
                 className="header-input"
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={handleChangeValue}
               />
             </label>
           </div>

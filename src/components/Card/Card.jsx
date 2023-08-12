@@ -38,23 +38,6 @@ const Card = ({ data, key, like }) => {
         onMouseEnter={() => handleHover(data.id)}
         onMouseLeave={() => setHoverEffect(false)}
         className="card">
-        {data.photos ? (
-          <LazyLoadImage
-            src={data.photos[0].filePath}
-            placeholderSrc={data.photos[0].filePath}
-            alt="Image"
-            draggable={false}
-            effect="blur"
-            className="card__img"
-            style={{
-              objectFit: "cover",
-              borderRadius: "15px",
-            }}
-            onError={(e) => {
-              e.target.onerror = null;
-            }}
-          />
-        ) : null}
         {like ? (
           <button className="card-heart">
             <img src={heart} alt="heart" className="card__heart" />
@@ -64,24 +47,40 @@ const Card = ({ data, key, like }) => {
             <img src={headerLike} alt="heart" className="card__heart" />
           </button>
         )}
-
         <Link className="card-link" to={`/products/about/${data?.id}`}>
+          {data.photos ? (
+            <LazyLoadImage
+              src={data.photos[0].filePath}
+              placeholderSrc={data.photos[0].filePath}
+              alt="Image"
+              draggable={false}
+              effect="blur"
+              className="card__img"
+              style={{
+                objectFit: "cover",
+                borderRadius: "15px",
+              }}
+              onError={(e) => {
+                e.target.onerror = null;
+              }}
+            />
+          ) : null}
+
           <h2 className="card__title">{data?.name}</h2>
           <p className="card__subTitle">
             {data?.region?.name}, {data?.district?.name} tumani {"  "}
             {formattedDate}
           </p>
-        </Link>
-        {data?.quality === "NEW" ? (
-          <span className="card__link card__new">Yangi</span>
-        ) : data?.quality === "TOP" ? (
-          <span className="card__link card__medium">O'rtacha</span>
-        ) : data?.quality === "AVERAGE" ? (
-          <span className="card__link">Eski</span>
-        ) : (
-          ""
-        )}
-        <Link to={`/products/about/${data?.id}`}>
+          {/* </Link> */}
+          {data?.quality === "NEW" ? (
+            <span className="card__link card__new">Yangi</span>
+          ) : data?.quality === "TOP" ? (
+            <span className="card__link card__medium">O'rtacha</span>
+          ) : data?.quality === "AVERAGE" ? (
+            <span className="card__link">Eski</span>
+          ) : (
+            ""
+          )}
           <img
             src={ArrowIcon}
             alt="cricle"

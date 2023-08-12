@@ -14,8 +14,7 @@
 }
 
 .card__img {
-  margin-top: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   margin-right: 12px;
   margin-left: 12px;
   width: 291px;
@@ -31,6 +30,7 @@
   position: absolute;
   top: 20px;
   right: 10px;
+  z-index: 1001;
 }
 
 .card__title {
@@ -83,6 +83,7 @@
   background-color: transparent;
   cursor: pointer;
   fill: rgba(0, 0, 0, 0.15);
+  z-index: 1001;
 }
 
 .card__medium {

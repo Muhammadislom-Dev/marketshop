@@ -346,3 +346,12 @@ export const getFilterProductData = async (regionId, search, category) => {
   );
   return response.data;
 };
+
+export const footerLinkApiData = async () => {
+  const response = await axios.get(`${API_BASE_URL}/adminVariables/v1/static`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+  return response.data.objectKoinot;
+};

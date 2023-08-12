@@ -7,9 +7,14 @@ import {
 } from "../../assets/icon";
 import "./Footer.css";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "react-query";
+import { footerLinkApiData } from "../../api";
 
 function Footer() {
   const { t } = useTranslation();
+
+  const { data } = useQuery("footer", footerLinkApiData);
+
   return (
     <div className="footer">
       <div className="container">
@@ -56,10 +61,10 @@ function Footer() {
               <a href="#" className="footer-links">
                 <img src={FacebookIcon} alt="" className="footer-icon" />
               </a>
-              <a href="#" className="footer-links">
+              <a href={data?.telegramChannel} className="footer-links">
                 <img src={TelegramIcon} alt="" className="footer-icon" />
               </a>
-              <a href="#" className="footer-links">
+              <a href={data?.instagram} className="footer-links">
                 <img src={InstagramIcon} alt="" className="footer-icon" />
               </a>
             </div>
@@ -83,10 +88,10 @@ function Footer() {
             <a href="#" className="footer-links">
               <img src={FacebookIcon} alt="" className="footer-icon" />
             </a>
-            <a href="#" className="footer-links">
+            <a href={data?.telegramChannel} className="footer-links">
               <img src={TelegramIcon} alt="" className="footer-icon" />
             </a>
-            <a href="#" className="footer-links">
+            <a href={data?.instagram} className="footer-links">
               <img src={InstagramIcon} alt="" className="footer-icon" />
             </a>
           </div>

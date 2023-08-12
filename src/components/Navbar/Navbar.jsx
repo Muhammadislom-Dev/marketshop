@@ -48,7 +48,7 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <Link to="/profile" className="fixed-navbar-Ic">
                 <BiUser className="fixNavIconL" />
-                <h4>Hisobingiz</h4>
+                <h4>Profile</h4>
               </Link>
             </div>
           </div>

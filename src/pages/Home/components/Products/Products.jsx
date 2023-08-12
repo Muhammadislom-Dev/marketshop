@@ -16,8 +16,7 @@ function Products({ code, product, paramsData }) {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        height={"80vh"}
-      >
+        height={"80vh"}>
         <CircularProgress
           color="success"
           style={{ width: "100px", height: "100px" }}
@@ -25,8 +24,6 @@ function Products({ code, product, paramsData }) {
       </Box>
     );
   }
-
-  console.log(trueData)
 
   return (
     <div className="product-all-div">
@@ -39,8 +36,7 @@ function Products({ code, product, paramsData }) {
               color: popular === "YANGILARI" ? "#000" : null,
               borderBottom: popular === "YANGILARI" ? "2px solid #000" : null,
             }}
-            className="product-name"
-          >
+            className="product-name">
             YANGILARI
           </button>
           <button
@@ -50,36 +46,35 @@ function Products({ code, product, paramsData }) {
               color: popular === "OMMABOP" ? "#000" : null,
               borderBottom: popular === "OMMABOP" ? "2px solid #000" : null,
             }}
-            className="product-name"
-          >
+            className="product-name">
             OMMABOP
           </button>
         </div>
       </div>
       {/* <div className="product-box"> */}
-        <div className="container">
-          {popular === "YANGILARI" ? (
-            <div className="products">
-              {code === null
-                ? data?.content?.map((evt, index) => (
-                    <Card data={evt} key={index} />
-                  ))
-                : paramsData?.content?.map((evt, index) => (
-                    <Card data={evt} key={index} />
-                  ))}
-            </div>
-          ) : (
-            <div className="products">
-              {code === null
-                ? trueData?.content?.map((evt, index) => (
-                    <Card data={evt} key={index} />
-                  ))
-                : product?.content?.map((evt, index) => (
-                    <Card data={evt} key={index} />
-                  ))}
-            </div>
-          )}
-        </div>
+      <div className="container">
+        {popular === "YANGILARI" ? (
+          <div className="products">
+            {code === null
+              ? data?.content?.map((evt, index) => (
+                  <Card data={evt} key={index} />
+                ))
+              : paramsData?.content?.map((evt, index) => (
+                  <Card data={evt} key={index} />
+                ))}
+          </div>
+        ) : (
+          <div className="products">
+            {code === null
+              ? trueData?.content?.map((evt, index) => (
+                  <Card data={evt} key={index} />
+                ))
+              : product?.content?.map((evt, index) => (
+                  <Card data={evt} key={index} />
+                ))}
+          </div>
+        )}
+      </div>
       {/* </div> */}
     </div>
   );

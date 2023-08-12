@@ -11,7 +11,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { toast } from "react-toastify";
 
 function Announcement() {
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError, refetch } = useQuery(
     "profileData",
     getProfileProductData
   );
@@ -21,6 +21,7 @@ function Announcement() {
     return await API.deleteProductData(payload)
       .then((res) => {
         toast.success("Mahsulot muvaffaqiyatli o'chirildi");
+        refetch();
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +98,7 @@ function Announcement() {
                 </label> */}
               </div>
 
-              <img src={cricle} alt="cricle" className="card__cricle" />
+              <img src={cricle} alt="cricle" className="card__cricles" />
             </div>
           ))}
         </div>

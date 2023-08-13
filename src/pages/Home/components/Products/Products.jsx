@@ -76,7 +76,6 @@ function Products({ code, product, paramsData }) {
           </div>
         )}
       </div>
-      {/* </div> */}
     </div>
   );
 }

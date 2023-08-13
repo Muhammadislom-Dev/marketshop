@@ -44,11 +44,27 @@
   align-items: center;
   border-radius: 1000px;
   background: #fff;
-  max-width: 790px;
-  padding: 10px;
+  max-width: 810px;
+  padding: 5px 10px;
   margin-top: 42px;
   gap: 10px 15px;
   margin-left: 100px;
+}
+
+.header__item {
+  display: flex;
+  align-items: center;
+  border-radius: 1000px;
+  background: #fff;
+  max-width: 810px;
+  padding: 15px 10px;
+  margin-top: 42px;
+  gap: 10px 15px;
+  margin-left: 100px;
+}
+
+.header__items {
+  display: none;
 }
 
 .header label {
@@ -115,6 +131,7 @@
 @media (max-width: 780px) {
   .header input {
     padding: 12px 5px;
+    width: 90%;
   }
 
   .header .css-1nrlq1o-MuiFormControl-root {
@@ -124,6 +141,16 @@
   .header h1 {
     font-size: 55px;
     line-height: 70px;
+  }
+
+  .header-item {
+    display: none;
+  }
+  .header__items {
+    display: block;
+    margin-left: 10px;
+    width: 98%;
+    padding: 8px 12px;
   }
 
   .header-link:nth-child(6),

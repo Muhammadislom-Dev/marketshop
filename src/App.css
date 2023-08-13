@@ -11,3 +11,11 @@
   border-radius: 10px;
   background: linear-gradient(130deg, #f26957 0%, #ffa00e 100%);
 }
+
+.loading-market {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 85px);
+  width: 100%;
+}

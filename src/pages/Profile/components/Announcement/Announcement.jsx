@@ -16,7 +16,7 @@ function Announcement({ setValue, setEditId }) {
     "profileData",
     getProfileProductData
   );
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const { mutate: imageMutate } = useMutation(async (payload) => {
     return await API.deleteProductData(payload)
       .then((res) => {
@@ -24,8 +24,11 @@ function Announcement({ setValue, setEditId }) {
         refetch();
       })
       .catch((err) => {
-        console.log(err);
-        toast.danger("Mahsulot o'chirilmadi qaytadan urinib ko'ring");
+        if (err.message == "Request failed with status code 403") {
+          toast.error(
+            "Mahsulot o'chirish uchun admin tomonidan ruxsat olishingiz kerak"
+          );
+        }
       });
   });
 
@@ -72,13 +75,16 @@ function Announcement({ setValue, setEditId }) {
               <div className="card__right">
                 <h2 className="card__right_title">{evt.name}</h2>
                 <div className="card__right_subTitle">
-                  {evt?.region?.name}, {evt?.district?.name} {t("hello3")} Bugun 13:11
+                  {evt?.region?.name}, {evt?.district?.name} {t("hello3")} Bugun
+                  13:11
                 </div>
                 <div className="card__right_blok">
                   {evt.quality === "NEW" ? (
                     <span className="blok__old card__new">{t("hello4")}</span>
                   ) : evt.quality === "TOP" ? (
-                    <span className="blok__old card__medium">{t("hello5")}</span>
+                    <span className="blok__old card__medium">
+                      {t("hello5")}
+                    </span>
                   ) : evt.quality === "AVERAGE" ? (
                     <span className="blok__old">{t("hello6")}</span>
                   ) : (

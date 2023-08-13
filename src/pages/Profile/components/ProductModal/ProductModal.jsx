@@ -3,9 +3,9 @@ import modalImg from "../../../../assets/img/product-modal-img.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export default function ProductModal() {
+export default function ProductModal({ setActiveModal }) {
   const history = useNavigate();
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <div className="product-modal">
       <div className="product-modal-overlay"></div>

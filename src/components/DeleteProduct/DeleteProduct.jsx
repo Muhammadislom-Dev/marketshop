@@ -27,6 +27,7 @@ function DeleteProduct({ mutate, data }) {
 
   const handleDelete = () => {
     mutate(data);
+    handleClose()
   };
   return (
     <div className="delete">

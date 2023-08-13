@@ -13,7 +13,6 @@
     linear-gradient(130deg, #61c1b9 0%, #ed6c5a 100%);
   background-repeat: no-repeat;
   background-position: bottom left, bottom -150px left, right top;
-  /* border: 1px solid red; */
 }
 
 .product-hero
@@ -26,7 +25,7 @@
 .product-hero-form {
   width: 100%;
   max-width: 790px;
-  padding: 10px 16px;
+  padding: 5px 16px;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -104,6 +103,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width: 160px;
 }
 
 .product-hero-filter-item:not(:last-child) {

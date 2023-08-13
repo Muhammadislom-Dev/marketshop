@@ -283,44 +283,15 @@ function ProductEdit({ editId }) {
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
-                phoneNumber: e.target.value,
+                phoneNumber: e.target.value.slice(1, 13),
               }))
             }
-            defaultValue={content?.phoneNumber}
-            type="tel"
-            maxLength={500}
+            type="tell"
+            maxLength={14}
             min={3}
             required
-          />
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello62")}</h4>
-          <input
-            onChange={(e) =>
-              setProduct((state) => ({
-                ...state,
-                price: e.target.value,
-              }))
-            }
-            type="text"
-            maxLength={500}
-            min={3}
-            required
-          />
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello63")}</h4>
-          <input
-            onChange={(e) =>
-              setProduct((state) => ({
-                ...state,
-                address: e.target.value,
-              }))
-            }
-            type="text"
-            maxLength={500}
-            min={3}
-            required
+            placeholder="998"
+            pattern="^[0-9+-]*$"
           />
         </label>
 

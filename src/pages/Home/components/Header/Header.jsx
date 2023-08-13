@@ -15,15 +15,7 @@ import {
 import { Box, CircularProgress, InputLabel } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-function Header({
-  code,
-  setCode,
-  setSearch,
-  handleClear,
-  age,
-  setAge,
-  handleChangeValue,
-}) {
+function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
   const { data: category } = useQuery("get category", getCategory);
   const [district, setDistrict] = useState("Tuman");
   const handleChange = (event) => {
@@ -116,7 +108,18 @@ function Header({
                 type="search"
                 placeholder={t("hello42")}
                 className="header-input"
-                onChange={handleChangeValue}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="header__item header__items">
+            <label htmlFor="">
+              <img src={SearchIcon} alt="" className="header-icon" />
+              <input
+                type="search"
+                placeholder={t("hello42")}
+                className="header-input"
+                onChange={(e) => setSearch(e.target.value)}
               />
             </label>
           </div>

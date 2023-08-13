@@ -52,7 +52,7 @@ function Profile() {
   const [value, setValue] = React.useState(0);
   const { data, isLoading, refetch } = useQuery("profile", getProfileData);
   const [editId, setEditId] = useState("");
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -80,7 +80,7 @@ function Profile() {
             <div className="profile-list">
               <img
                 src={
-                  data?.objectKoinot?.photo?.filePath === null
+                  data?.objectKoinot?.photo === null
                     ? AvatarIcon
                     : data?.objectKoinot?.photo?.filePath
                 }

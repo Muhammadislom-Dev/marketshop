@@ -78,10 +78,10 @@ function Navbar() {
           </Link>
           <Language />
           <LoginModal />
-          <Link to="/profile" className="navbar-submit">
+          {/* <Link to="/profile" className="navbar-submit">
             <span>+</span>
             {t("give")}
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

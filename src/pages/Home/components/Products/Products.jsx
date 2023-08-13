@@ -4,12 +4,13 @@ import Card from "../../../../components/Card/Card";
 import { getProductNewsData, getProductTrueData } from "../../../../api";
 import { useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function Products({ code, product, paramsData }) {
   const [popular, setPopular] = useState("YANGILARI");
   const { data, isLoading } = useQuery("productData", getProductNewsData);
   const { data: trueData } = useQuery("dataLoading", getProductTrueData);
-
+  const { t } = useTranslation();
   if (isLoading) {
     return (
       <Box
@@ -37,7 +38,7 @@ function Products({ code, product, paramsData }) {
               borderBottom: popular === "YANGILARI" ? "2px solid #000" : null,
             }}
             className="product-name">
-            YANGILARI
+            {t("hello43")}
           </button>
           <button
             value="OMMABOP"
@@ -47,7 +48,7 @@ function Products({ code, product, paramsData }) {
               borderBottom: popular === "OMMABOP" ? "2px solid #000" : null,
             }}
             className="product-name">
-            OMMABOP
+            {t("hello44")}
           </button>
         </div>
       </div>

@@ -14,6 +14,7 @@ import { useQuery } from "react-query";
 import { API_URL, getProfileData } from "../../api";
 import { CircularProgress } from "@mui/material";
 import ProductEdit from "./components/ProductEdit/ProductEdit";
+import { useTranslation } from "react-i18next";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,7 +52,7 @@ function Profile() {
   const [value, setValue] = React.useState(0);
   const { data, isLoading, refetch } = useQuery("profile", getProfileData);
   const [editId, setEditId] = useState("");
-
+  const {t} = useTranslation()
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -136,10 +137,10 @@ function Profile() {
                 value={value}
                 onChange={handleChange}
                 aria-label="basic tabs example">
-                <Tab label="E’LONLARIM" {...a11yProps(0)} />
-                <Tab label="E’LON QO’SHISH" {...a11yProps(1)} />
-                <Tab label="SOZLAMALAR" {...a11yProps(2)} />
-                <Tab label="MAHSULOT TAHRIRLASH" {...a11yProps(3)} />
+                <Tab label={t("hello48")} {...a11yProps(0)} />
+                <Tab label={t("hello49")} {...a11yProps(1)} />
+                <Tab label={t("hello50")} {...a11yProps(2)} />
+                <Tab label={t("hello51")} {...a11yProps(3)} />
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useMutation } from "react-query";
 import { loginUser } from "../../api";
+import { useTranslation } from "react-i18next";
 
 function Login({ handleClose }) {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ function Login({ handleClose }) {
   const mutation = useMutation((userData) =>
     loginUser(userData, setCode, handleClose)
   );
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,10 +26,10 @@ function Login({ handleClose }) {
   };
   return (
     <div>
-      <h3 className="register-name">Ro‘yhatdan o‘tish</h3>
+      <h3 className="register-name">{t("hello30")}</h3>
       <form onSubmit={handleSubmit} action="" className="register-form">
         <label htmlFor="">
-          Telefon raqam
+          {t("hello45")}
           <input
             id="phoneNumber"
             name="phoneNumber"
@@ -39,7 +41,7 @@ function Login({ handleClose }) {
           />
         </label>
         <label htmlFor="">
-          Parol
+          {t("hello46")}
           <input
             id="password"
             name="password"
@@ -50,10 +52,10 @@ function Login({ handleClose }) {
           />
         </label>
         <a className="login-password" href="#">
-          Parolni unutdingizmi?
+          {t("hello47")}
         </a>
         <button type="submit" className="form-button">
-          Kirish
+          {t("hello15")}
         </button>
       </form>
     </div>

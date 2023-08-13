@@ -13,6 +13,7 @@ import {
   getCategory,
 } from "../../../../api";
 import { Box, CircularProgress, InputLabel } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function Header({
   code,
@@ -29,7 +30,7 @@ function Header({
     setAge(event?.target?.value);
     setCode(event?.target?.value);
   };
-
+  const { t } = useTranslation();
   const i18next = localStorage.getItem("i18nextLng");
 
   const {
@@ -69,20 +70,22 @@ function Header({
     <div className="header">
       <div className="container">
         <div className="header-bgimage">
-          <h1>EHSONNING MUKOFATI EHSON</h1>
+          <h1>{t("hello39")}</h1>
           <div className="header-item">
             <FormControl
               sx={{ m: 1, minWidth: 160, width: 160 }}
               className="header-select">
-              <InputLabel id="demo-simple-select-label1">Shahar</InputLabel>
+              <InputLabel id="demo-simple-select-label1">
+                {t("hello40")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label1"
                 id="demo-simple-select"
-                label="Shahar"
+                label={t("hello40")}
                 value={age}
                 onChange={handleChange}>
                 <MenuItem onClick={handleClear} value="">
-                  Shahar
+                  {t("hello40")}
                 </MenuItem>
                 {region.objectKoinot.content.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
@@ -99,7 +102,7 @@ function Header({
                 id="demo-simple-select"
                 value={district}
                 onChange={handleDistrict}>
-                <MenuItem value="Tuman">Tuman</MenuItem>
+                <MenuItem value="Tuman">{t("hello41")}</MenuItem>
                 {districtData?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
                     {data.name}
@@ -111,7 +114,7 @@ function Header({
               <img src={SearchIcon} alt="" className="header-icon" />
               <input
                 type="search"
-                placeholder="Nimadir qidiramizmi?"
+                placeholder={t("hello42")}
                 className="header-input"
                 onChange={handleChangeValue}
               />

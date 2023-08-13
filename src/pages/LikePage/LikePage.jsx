@@ -5,6 +5,7 @@ import "./LikePage.css";
 import { useQuery } from "react-query";
 import { getLikeProductData } from "../../api";
 import { Box, CircularProgress } from "@mui/material";
+import { t } from "i18next";
 
 function LikePage() {
   const { data, isLoading } = useQuery("likeData", getLikeProductData);
@@ -30,7 +31,7 @@ function LikePage() {
       <div className="like">
         <div className="container">
           <div className="product-list">
-            <h2 className="product-name">TANLANGANLAR</h2>
+            <h2 className="product-name">{t("hello13")}</h2>
           </div>
           <div className="products">
             {data?.objectKoinot?.content?.map((evt, index) => (

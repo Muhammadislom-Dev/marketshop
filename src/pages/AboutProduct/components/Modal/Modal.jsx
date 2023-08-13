@@ -7,6 +7,7 @@ import {
   DeveloperIcon,
 } from "../../../../assets/icon";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -22,6 +23,7 @@ const style = {
 
 function CallModal({ number }) {
   const [open, setOpen] = React.useState(false);
+  const { t } = useTranslation();
   const accessToken = localStorage.getItem("accessToken");
   const [count, setCount] = useState(3);
   const handleOpen = () => {
@@ -33,7 +35,7 @@ function CallModal({ number }) {
   return (
     <div className="delete">
       <button onClick={handleOpen} className="call__link">
-        Qo’ng’iroq qilish
+        {t("hello31")}
       </button>
       <Modal
         className="delete-modal-product"
@@ -46,12 +48,10 @@ function CallModal({ number }) {
             <Box sx={style}>
               <div className="delete-list">
                 <img src={CloseButton} alt="" />
-                <h3 className="delete-name">Kunlik limit tugadi</h3>
-                <p className="delete-text">
-                  Sizning kunlik limitingiz tugagan!
-                </p>
+                <h3 className="delete-name">{t("hello23")}</h3>
+                <p className="delete-text">{t("hello24")}</p>
                 <button onClick={handleClose} className="call__link">
-                  Yopish
+                  {t("hello25")}
                 </button>
               </div>
             </Box>
@@ -60,11 +60,9 @@ function CallModal({ number }) {
               <div className="delete-list">
                 <img src={CallButton} alt="" />
                 <h3 className="delete-name">{number}</h3>
-                <p className="delete-text">
-                  Sizda kunlik 3 ta qo’ng’iroqdan {count} ta qoldi
-                </p>
+                <p className="delete-text">{t("hello26")}</p>
                 <a href={`tel:+${number}`} className="call__link">
-                  Qo‘ng‘iroq qilish
+                  {t("hello27")}
                 </a>
               </div>
             </Box>
@@ -73,13 +71,10 @@ function CallModal({ number }) {
           <Box sx={style}>
             <div className="delete-list">
               <img src={DeveloperIcon} alt="" />
-              <h3 className="delete-name">Ro‘yhatdan o‘tilmagan</h3>
-              <p className="delete-text">
-                Iltimos raqamni ko’rish va qo’ng’iroq qilish uchun saytdan
-                ro’yhatdan o’tishingizni so’raymiz.
-              </p>
+              <h3 className="delete-name">{t("hello28")}</h3>
+              <p className="delete-text">{t("hello29")}</p>
               <Link to="/" className="call__link">
-                Ro‘yhatdan o‘tish
+                {t("hello30")}
               </Link>
             </div>
           </Box>

@@ -21,10 +21,11 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import CallModal from "./components/Modal/Modal";
+import { useTranslation } from "react-i18next";
 
 function AboutProduct() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
+  const { t } = useTranslation();
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(["product", id], () =>
     getByIdProductData(id)
@@ -99,11 +100,11 @@ function AboutProduct() {
 
             <div className="blok__right_icons">
               {data?.quality === "NEW" ? (
-                <span className="icons__link card__new">Yangi</span>
+                <span className="icons__link card__new">{t("hello4")}</span>
               ) : data?.quality === "TOP" ? (
-                <span className="icons__link card__medium">O'rtacha</span>
+                <span className="icons__link card__medium">{t("hello5")}</span>
               ) : data?.quality === "AVERAGE" ? (
-                <span className="icons__link">Eski</span>
+                <span className="icons__link">{t("hello6")}</span>
               ) : (
                 ""
               )}
@@ -114,7 +115,7 @@ function AboutProduct() {
                   className="icons__oblast_location"
                 />
                 <p className="icons__oblast_subTitle">
-                  {data.region.name}, {data.district.name} tumani
+                  {data.region.name}, {data.district.name} {t("hello3")}
                 </p>
               </div>
               <div className="icons__oblast">
@@ -136,18 +137,15 @@ function AboutProduct() {
               <div className="call__children">
                 <img src={children} alt="children" />
                 <div className="call__children_orderer">
-                  <h4 className="orderer_title">E’lon beruvchi</h4>
+                  <h4 className="orderer_title">{t("hello32")}</h4>
                   <p className="orderer_subTitle">
-                    So’ngi faolligi {formattedDate}
+                    {t("hello33")} {"  "} {formattedDate}
                   </p>
                 </div>
               </div>
             </div>
             <p className="blok__right_note">
-              <b className="note__span">Muhim eslatma:</b> Qo’ngiroq qilish
-              uchun 1 oyga 10 ta limit beriladi va kunlik limit 3 ta. Undan
-              tashqari qo’ng’rioq qilishingiz uchun siz saytdan ro’yhatdan
-              o’tgan bo’lishingiz kerak bo’ladi.
+              <b className="note__span">{t("hello35")}</b> {t("hello34")}
             </p>
           </div>
         </div>
@@ -176,7 +174,7 @@ function AboutProduct() {
       <div className="about">
         <div className="container">
           <div className="about-top">
-            <button className="about-button">BOSHQA E’LONLARI</button>
+            <button className="about-button">{t("hello36")}</button>
           </div>
           <div className="products">
             {product?.content?.map((evt, index) => (
@@ -190,7 +188,7 @@ function AboutProduct() {
       <div className="about">
         <div className="container">
           <div className="about-top">
-            <button className="about-button">O‘XSHASH E’LONLAR</button>
+            <button className="about-button">{t("hello37")}</button>
           </div>
           <div className="products">
             {categoryData?.content?.map((evt, index) => (

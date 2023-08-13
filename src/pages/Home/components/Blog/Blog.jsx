@@ -4,10 +4,11 @@ import { getBlogData } from "../../../../api";
 import { useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import BlogData from "./BlogData";
+import { useTranslation } from "react-i18next";
 
 function Blog() {
   const { data, isLoading } = useQuery("blogData", getBlogData);
-
+  const { t } = useTranslation();
   if (isLoading) {
     return (
       <Box
@@ -25,7 +26,7 @@ function Blog() {
   return (
     <div className="blog">
       <div className="container">
-        <h2 className="blog-name">TEKIN MARKET BLOG</h2>
+        <h2 className="blog-name">{t("hello38")}</h2>
         <div className="blog-list">
           {data?.objectKoinot?.content?.map((blog) => (
             <BlogData blog={blog} />

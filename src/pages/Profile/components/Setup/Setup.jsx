@@ -7,6 +7,7 @@ import { useMutation, useQuery } from "react-query";
 import { API, editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { t } from "i18next";
 
 export default function Setup({ refetch, dataValue }) {
   const token = localStorage.getItem("tokenReview");
@@ -67,12 +68,11 @@ export default function Setup({ refetch, dataValue }) {
     navigate("/");
   }
 
-  console.log(dataValue);
 
   return (
     <div className="setup">
       <div className="setup-img">
-        <h3>Profil rasmi</h3>
+        <h3>{t("hello75")}</h3>
         <label htmlFor="setup-profile-img" className="setup-img-upload">
           {data ? (
             <img src={!!data && URL?.createObjectURL(data)} alt="error" />
@@ -92,7 +92,7 @@ export default function Setup({ refetch, dataValue }) {
               imageMutate({ key: e.target.files[0] });
             }}
           />
-          <span>Rasm yuklash</span>
+          <span>{t("hello76")}</span>
         </label>
       </div>
       <form className="product-create-form" onSubmit={handleSubmit}>
@@ -129,7 +129,7 @@ export default function Setup({ refetch, dataValue }) {
           />
         </label>
         <label className="product-create-label">
-          <h4>Telefon raqam</h4>
+          <h4>{t("hello45")}</h4>
           <input
             defaultValue={dataValue.objectKoinot.phoneNumber}
             onChange={(e) =>
@@ -165,7 +165,7 @@ export default function Setup({ refetch, dataValue }) {
         )} */}
         <div className="setup-btn-wrapper">
           <button className="product-create-form-button" type="submit">
-            Yangilash
+            {t("hello77")}
           </button>
           {/* {open === true ? (
             <button
@@ -183,7 +183,7 @@ export default function Setup({ refetch, dataValue }) {
             className="setup-logOut"
             type="button">
             <BiLogOut />
-            <span>Profildan chiqish</span>
+            <span>{t("hello78")}</span>
           </button>
         </div>
       </form>

@@ -3,6 +3,7 @@ import { PhoneSmsCode } from "../../api";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 function SmsCode({ phoneNumber, handleClose }) {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function SmsCode({ phoneNumber, handleClose }) {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  const { t } = useTranslation();
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate(formData);
@@ -55,10 +56,10 @@ function SmsCode({ phoneNumber, handleClose }) {
 
   return (
     <div>
-      <h3 className="register-name">SMS kod</h3>
+      <h3 className="register-name">{t("hello71")}</h3>
       <form onSubmit={handleSubmit} action="" className="register-form">
         <label htmlFor="code">
-          SMS kod
+          {t("hello71")}
           <input
             type="text"
             id="code"
@@ -69,12 +70,16 @@ function SmsCode({ phoneNumber, handleClose }) {
             required
           />
         </label>
-        <p>{phoneNumber} telefon raqamiga tasdiqlash kodi jo’natildi</p>
+        <p>
+          {phoneNumber} {t("hello72")}
+        </p>
         {remainingTime > 0 ? (
-          <p>{remainingTime} sekunddan keyin yana yuborishingiz mumkin.</p>
+          <p>
+            {remainingTime} {t("hello73")}
+          </p>
         ) : null}
         <button type="submit" className="form-button">
-          Tasdiqlash
+          {t("hello74")}
         </button>
       </form>
     </div>

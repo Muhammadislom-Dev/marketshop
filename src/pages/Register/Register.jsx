@@ -3,6 +3,7 @@ import { useMutation } from "react-query";
 import "./Register.css";
 import { registerUser } from "../../api";
 import SmsCode from "../SmsCode/SmsCode";
+import { useTranslation } from "react-i18next";
 
 function Register({ handleClose }) {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ function Register({ handleClose }) {
   });
   const [code, setCode] = useState(false);
   const mutation = useMutation((userData) => registerUser(userData, setCode));
-
+  const { t } = useTranslation();
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (/^[0-9+-]*$/.test(value)) {
@@ -40,10 +41,10 @@ function Register({ handleClose }) {
         <SmsCode handleClose={handleClose} phoneNumber={formData.phoneNumber} />
       ) : (
         <div>
-          <h3 className="register-name">Ro‘yhatdan o‘tish</h3>
+          <h3 className="register-name">{t("hello14")}</h3>
           <form onSubmit={handleSubmit} action="" className="register-form">
             <label htmlFor="phoneNumber">
-              Telefon raqam
+              {t("hello45")}
               <input
                 type="tell"
                 id="phoneNumber"
@@ -57,21 +58,13 @@ function Register({ handleClose }) {
                 pattern="^[0-9+-]*$"
               />
             </label>
-            <p style={{ width: "450px" }}>
-              Men <a href="#">xizmatdan foydalanish qoidalarini</a>, shuningdek
-              Tekin Marketga mening ma’lumotlarimni uzatish va qayta ishlashga
-              rozilik bildiraman. Men voyaga yetganligimni va e’lon
-              joylashtirish uchun javobgarligimni tasdiqlayman.
-            </p>
+            <p style={{ width: "450px" }}>{t("hello69")}</p>
             <div className="register-label">
               <input required type="checkbox" />
-              <p>
-                Ha, men Tekin Market dagi yangiliklar va aksiyalar haqida
-                ma’lumot olishni xohlayman.
-              </p>
+              <p>{t("hello70")}</p>
             </div>
             <button type="submit" className="form-button">
-              Ro‘yhatdan o‘tish
+              {t("hello14")}
             </button>
           </form>
         </div>

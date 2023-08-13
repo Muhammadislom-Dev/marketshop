@@ -15,10 +15,10 @@
 .header h1 {
   color: #fff;
   font-family: "Archivo", sans-serif;
-  font-size: 64px;
+  font-size: 60px;
   font-style: normal;
   font-weight: 700;
-  line-height: 80px;
+  line-height: 70px;
   padding-top: 74px;
   max-width: 600px;
   margin-left: 100px;
@@ -63,6 +63,7 @@
   outline: none;
   padding: 5px 12px;
   width: 100%;
+  font-size: 18px;
 }
 
 .header input::placeholder {
@@ -142,7 +143,7 @@
     height: 50px;
   }
 
-  .header-link-span svg{
+  .header-link-span svg {
     width: 20px;
     height: 20px;
   }

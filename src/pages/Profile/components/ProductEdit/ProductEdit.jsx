@@ -17,6 +17,7 @@ import {
 import { Box, CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import ProductModal from "../ProductModal/ProductModal";
+import { useTranslation } from "react-i18next";
 
 function ProductEdit({ editId }) {
   const [imgBox, setimageBox] = useState([]);
@@ -58,6 +59,8 @@ function ProductEdit({ editId }) {
     },
   });
 
+  const { t } = useTranslation();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate(product);
@@ -96,7 +99,7 @@ function ProductEdit({ editId }) {
     <div>
       {activeModal ? <ProductModal /> : null}
       <div className="addImage">
-        <h3 className="addImage-title">Rasm qo’shish</h3>
+        <h3 className="addImage-title">{t("hello53")}</h3>
         <div className="addImage-box">
           {imgBox?.map((el, index) =>
             el ? (
@@ -117,7 +120,7 @@ function ProductEdit({ editId }) {
           )}
           <label htmlFor="create-product-img" className="addImage-box-button">
             <BsPlusCircle />
-            <span>Rasm qo’shish</span>
+            <span>{t("hello53")}</span>
             <input
               type="file"
               id="create-product-img"
@@ -129,14 +132,12 @@ function ProductEdit({ editId }) {
             />
           </label>
         </div>
-        <h4 className="addImage-warning">Muhim</h4>
-        <span className="addImage-warning-desc">
-          Surat 1080X1080px boʻlishi va 5 MB dan oshmasligi kerak
-        </span>
+        <h4 className="addImage-warning">{t("hello54")}</h4>
+        <span className="addImage-warning-desc">{t("hello55")}</span>
       </div>
       <form className="product-create-form" onSubmit={handleSubmit}>
         <label className="product-create-label">
-          <h4>Sarlavha</h4>
+          <h4>{t("hello56")}</h4>
           <input
             onChange={(e) =>
               setProduct((state) => ({
@@ -152,7 +153,7 @@ function ProductEdit({ editId }) {
           />
         </label>
         <label className="product-create-label">
-          <h4>Tovar haqida</h4>
+          <h4>{t("hello57")}</h4>
           <textarea
             onChange={(e) =>
               setProduct((state) => ({
@@ -167,7 +168,7 @@ function ProductEdit({ editId }) {
             required></textarea>
         </label>
         <label className="product-create-label">
-          <h4>Kategoriya</h4>
+          <h4>{t("hello58")}</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               value={product.categoryId}
@@ -187,13 +188,13 @@ function ProductEdit({ editId }) {
                   </MenuItem>
                 ))
               ) : (
-                <MenuItem value={1}>Kiyim-Kechak</MenuItem>
+                <MenuItem value={1}>{t("hello59")}</MenuItem>
               )}
             </Select>
           </FormControl>
         </label>
         <label className="product-create-label">
-          <h4>Product Holati</h4>
+          <h4>{t("hello60")}</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               onChange={(e) =>
@@ -213,7 +214,7 @@ function ProductEdit({ editId }) {
           </FormControl>
         </label>
         <label className="product-create-label">
-          <h4>Shahar</h4>
+          <h4>{t("hello21")}</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               onChange={(e) =>
@@ -236,7 +237,7 @@ function ProductEdit({ editId }) {
           </FormControl>
         </label>
         <label className="product-create-label">
-          <h4>Tuman</h4>
+          <h4>{t("hello41")}</h4>
           {district.data ? (
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
@@ -277,7 +278,7 @@ function ProductEdit({ editId }) {
           </FormControl>
         </label>
         <label className="product-create-label">
-          <h4>Telefon raqamingiz</h4>
+          <h4>{t("hello61")}</h4>
           <input
             onChange={(e) =>
               setProduct((state) => ({
@@ -293,7 +294,7 @@ function ProductEdit({ editId }) {
           />
         </label>
         <label className="product-create-label">
-          <h4>Narxi</h4>
+          <h4>{t("hello62")}</h4>
           <input
             onChange={(e) =>
               setProduct((state) => ({
@@ -308,7 +309,7 @@ function ProductEdit({ editId }) {
           />
         </label>
         <label className="product-create-label">
-          <h4>Manzil</h4>
+          <h4>{t("hello63")}</h4>
           <input
             onChange={(e) =>
               setProduct((state) => ({
@@ -324,7 +325,7 @@ function ProductEdit({ editId }) {
         </label>
 
         <button className="product-create-form-button" type="submit">
-          Tahrirlash
+          {t("hello66")}
         </button>
       </form>
     </div>

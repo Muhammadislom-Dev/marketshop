@@ -163,7 +163,7 @@ export const fetchDistrictData = async (code, setData) => {
 
 export const getProductData = async () => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?page=0&size=20`,
+    `${API_BASE_URL}/product/v1?page=0&size=50`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -193,8 +193,6 @@ export const deleteProduct = async (id) => {
   });
   return response.data;
 };
-
-
 
 export const likeProductPost = async (id) => {
   const response = await axios
@@ -246,7 +244,7 @@ export const likeProductDelete = async (id) => {
 
 export const getLikeProductData = async () => {
   const response = await axios.get(
-    `${API_BASE_URL}/basket-favourite-product/v1/favourites?page=0&size=10`,
+    `${API_BASE_URL}/basket-favourite-product/v1/favourites?page=0&size=50`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -318,7 +316,7 @@ export const getProductTrueData = async () => {
 
 export const getProductNewsData = async () => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?page=0&size=24&sortBy=createdAt&sortDirection=DESC&top=false`,
+    `${API_BASE_URL}/product/v1?page=0&size=50&sortBy=createdAt&sortDirection=DESC&top=false`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -330,7 +328,7 @@ export const getProductNewsData = async () => {
 
 export const getParamsProductData = async (code, search) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=24&sortBy=createdAt&sortDirection=DESC&top=false`,
+    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=50&sortBy=createdAt&sortDirection=DESC&top=false`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -342,7 +340,7 @@ export const getParamsProductData = async (code, search) => {
 
 export const getProductParamsTrueData = async (code, search) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=24&top=true`,
+    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=50&top=true`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -363,7 +361,7 @@ export const getProfileData = async () => {
 
 export const getFilterProductData = async (regionId, search, category) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?active=true&category=${category}&page=0&region=${regionId}&search=${search}&size=24&top=true`,
+    `${API_BASE_URL}/product/v1?active=true&category=${category}&page=0&region=${regionId}&search=${search}&size=50&top=true`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -10,7 +10,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { toast } from "react-toastify";
 
-function Announcement() {
+function Announcement({ setValue, setEditId }) {
   const { data, isLoading, refetch } = useQuery(
     "profileData",
     getProfileProductData
@@ -27,6 +27,11 @@ function Announcement() {
         toast.danger("Mahsulot o'chirilmadi qaytadan urinib ko'ring");
       });
   });
+
+  const handleClickEdit = () => {
+    setValue(3);
+  };
+
   if (isLoading) {
     return (
       <Box
@@ -47,7 +52,7 @@ function Announcement() {
       <div className="container">
         <div className="announcement-list">
           {data?.content?.map((evt, index) => (
-            <div key={index} className="announcement-card">
+            <div key={evt.id} className="announcement-card">
               <div className="card__left">
                 {evt.photos ? (
                   <LazyLoadImage
@@ -78,12 +83,18 @@ function Announcement() {
                   ) : (
                     ""
                   )}
-                  <p className="blok__edit">
+                  <button
+                    value={evt.id}
+                    onClick={(e) => {
+                      handleClickEdit();
+                      setEditId(e.target.value);
+                    }}
+                    className="blok__edit">
                     <span>
                       <img src={edit} alt="edit" />
                     </span>
                     Tahrirlash
-                  </p>
+                  </button>
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                   {/* <img src={backet} alt="backet" className="blok__backet" /> */}
                 </div>

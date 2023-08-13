@@ -4,7 +4,7 @@ import heart from "../../assets/heart.svg";
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
-import { likeProductPost } from "../../api";
+import { likeProductDelete, likeProductPost } from "../../api";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
@@ -13,6 +13,9 @@ import { useTranslation } from "react-i18next";
 const Card = ({ data, key, like }) => {
   const { t } = useTranslation();
   const { mutate } = useMutation((productId) => likeProductPost(productId));
+  const { mutate: likeDeleteMutate } = useMutation((productId) =>
+    likeProductDelete(productId)
+  );
 
   const [hoverEffect, setHoverEffect] = useState(false);
   const handleHover = (id) => {
@@ -23,6 +26,10 @@ const Card = ({ data, key, like }) => {
 
   const handleLike = () => {
     mutate(data.id);
+  };
+
+  const handleLikeDelete = () => {
+    likeDeleteMutate(data.id);
   };
 
   function formatSecondsToDateString(seconds) {
@@ -41,7 +48,7 @@ const Card = ({ data, key, like }) => {
         onMouseLeave={() => setHoverEffect(false)}
         className="card">
         {like ? (
-          <button className="card-heart">
+          <button onClick={handleLikeDelete} className="card-heart">
             <img src={heart} alt="heart" className="card__heart" />
           </button>
         ) : (

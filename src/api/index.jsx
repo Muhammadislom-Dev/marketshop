@@ -194,6 +194,8 @@ export const deleteProduct = async (id) => {
   return response.data;
 };
 
+
+
 export const likeProductPost = async (id) => {
   const response = await axios
     .post(
@@ -207,6 +209,30 @@ export const likeProductPost = async (id) => {
     .then((res) => {
       toast.success(
         "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatiga qo'shildi!"
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+      toast.danger(
+        "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!"
+      );
+    });
+  return response.data;
+};
+
+export const likeProductDelete = async (id) => {
+  const response = await axios
+    .post(
+      `${API_BASE_URL}/basket-favourite-product/v1/favourites-save-remove?productId=${id}&searchType=WEB`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
+    .then((res) => {
+      toast.success(
+        "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatidan o'chirildi!"
       );
     })
     .catch((err) => {

@@ -88,6 +88,7 @@
 }
 
 .blok__edit {
+  border: none;
   display: flex;
   gap: 3px;
   padding: 4px 11px;

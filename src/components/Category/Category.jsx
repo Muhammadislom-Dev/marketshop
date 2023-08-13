@@ -13,6 +13,7 @@ import { useState } from "react";
 export default function Category({ setisCategory }) {
   const [activeCategory, setactiveCategory] = useState(1);
   const { data } = useQuery("get category", getCategory);
+  const i18next = localStorage.getItem("i18nextLng");
 
   return (
     <div className="category">
@@ -37,7 +38,7 @@ export default function Category({ setisCategory }) {
                     src={el.photo.filePath}
                   />
                 ) : null}
-                <span>{el.nameUz}</span>
+                <span>{i18next === "ru" ? el.nameRu : el.nameUz}</span>
                 <SlArrowRight />
               </li>
             ))
@@ -59,7 +60,7 @@ export default function Category({ setisCategory }) {
                   }>
                   <li className="category-section-secondary-item">
                     <SlArrowRight />
-                    <span>{el.nameUz}</span>
+                    <span>{i18next === "ru" ? el.nameRu : el.nameUz}</span>
                   </li>
                 </NavLink>
               ))

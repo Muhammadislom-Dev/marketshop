@@ -142,6 +142,11 @@
     height: 50px;
   }
 
+  .header-link-span svg{
+    width: 20px;
+    height: 20px;
+  }
+
   .header-icons {
     width: 25px;
     height: 25px;

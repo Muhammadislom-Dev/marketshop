@@ -13,6 +13,7 @@ import { AvatarIcon } from "../../assets/icon";
 import { useQuery } from "react-query";
 import { API_URL, getProfileData } from "../../api";
 import { CircularProgress } from "@mui/material";
+import ProductEdit from "./components/ProductEdit/ProductEdit";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,6 +50,7 @@ function a11yProps(index) {
 function Profile() {
   const [value, setValue] = React.useState(0);
   const { data, isLoading, refetch } = useQuery("profile", getProfileData);
+  const [editId, setEditId] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -137,16 +139,20 @@ function Profile() {
                 <Tab label="E’LONLARIM" {...a11yProps(0)} />
                 <Tab label="E’LON QO’SHISH" {...a11yProps(1)} />
                 <Tab label="SOZLAMALAR" {...a11yProps(2)} />
+                <Tab label="MAHSULOT TAHRIRLASH" {...a11yProps(3)} />
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-              <Announcement />
+              <Announcement setEditId={setEditId} setValue={setValue} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-              <ProductCreate />
+              <ProductCreate editId={editId} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
               <Setup dataValue={data} refetch={refetch} />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={3}>
+              <ProductEdit editId={editId} />
             </CustomTabPanel>
           </Box>
         </div>

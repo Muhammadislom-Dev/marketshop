@@ -1,4 +1,4 @@
-import "./ProductCreate.css";
+// import "./ProductCreate.css";
 import { BsPlusCircle } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,11 +14,11 @@ import {
   getCategory,
   uploadImage,
 } from "../../../../api";
-import ProductModal from "../ProductModal/ProductModal";
 import { Box, CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
+import ProductModal from "../ProductModal/ProductModal";
 
-export default function ProductCreate({ editId }) {
+function ProductEdit({ editId }) {
   const [imgBox, setimageBox] = useState([]);
   const [activeModal, setActiveModal] = useState(false);
   const [product, setProduct] = useState({
@@ -45,7 +45,9 @@ export default function ProductCreate({ editId }) {
         toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
       });
   });
- 
+  const { data: content } = useQuery(["dataId", editId], () =>
+    getByIdProductData(editId)
+  );
 
   const { mutate, isLoading } = useMutation((data) => createProduct(data), {
     onSuccess: (data) => {
@@ -90,7 +92,6 @@ export default function ProductCreate({ editId }) {
       </Box>
     );
   }
-
   return (
     <div>
       {activeModal ? <ProductModal /> : null}
@@ -105,7 +106,14 @@ export default function ProductCreate({ editId }) {
                 alt="error"
                 className="addImage-box-item"
               />
-            ) : null
+            ) : (
+              <img
+                key={index}
+                src={content.photos.filePath}
+                alt="error"
+                className="addImage-box-item"
+              />
+            )
           )}
           <label htmlFor="create-product-img" className="addImage-box-button">
             <BsPlusCircle />
@@ -139,6 +147,7 @@ export default function ProductCreate({ editId }) {
             type="text"
             maxLength={500}
             min={3}
+            defaultValue={content?.name}
             required
           />
         </label>
@@ -153,6 +162,7 @@ export default function ProductCreate({ editId }) {
             }
             rows="10"
             maxLength={500}
+            defaultValue={content?.description}
             min={3}
             required></textarea>
         </label>
@@ -161,6 +171,7 @@ export default function ProductCreate({ editId }) {
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               value={product.categoryId}
+              defaultValue={content?.category?.id}
               onChange={(e) =>
                 setProduct((state) => ({
                   ...state,
@@ -191,6 +202,7 @@ export default function ProductCreate({ editId }) {
                   productQuality: e.target.value,
                 }))
               }
+              defaultValue={content?.quality}
               value={product.productQuality}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}>
@@ -273,6 +285,7 @@ export default function ProductCreate({ editId }) {
                 phoneNumber: e.target.value,
               }))
             }
+            defaultValue={content?.phoneNumber}
             type="tel"
             maxLength={500}
             min={3}
@@ -311,9 +324,11 @@ export default function ProductCreate({ editId }) {
         </label>
 
         <button className="product-create-form-button" type="submit">
-          Joylashtirish
+          Tahrirlash
         </button>
       </form>
     </div>
   );
 }
+
+export default ProductEdit;

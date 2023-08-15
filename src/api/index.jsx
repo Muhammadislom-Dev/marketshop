@@ -173,6 +173,18 @@ export const getProductData = async () => {
   return response.data;
 };
 
+export const getPhoneProductData = async (id) => {
+  const response = await axios.get(
+    `${API_BASE_URL}/product/v1/get-phone?id=${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }
+  );
+  return response.data;
+};
+
 export const getProfileProductData = async () => {
   const response = await axios.get(
     `${API_BASE_URL}/product/v1?my=true&page=0&size=100`,

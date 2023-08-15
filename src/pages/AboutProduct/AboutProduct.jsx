@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import {
   getByIdCategoryData,
   getByIdProductData,
+  getPhoneProductData,
   getProductData,
 } from "../../api";
 import { useQuery } from "react-query";
@@ -30,7 +31,9 @@ function AboutProduct() {
   const { data, isLoading, isError } = useQuery(["product", id], () =>
     getByIdProductData(id)
   );
-
+  const { data: getPhone } = useQuery(["getPhone", id], () =>
+    getPhoneProductData(id)
+  );
   const category = data?.category?.id;
   const { data: product } = useQuery("productData", getProductData);
   const { data: categoryData } = useQuery(["category", category], () =>
@@ -49,6 +52,7 @@ function AboutProduct() {
   const secondDate = data?.uploadedAt / 1000;
   const formatUpdateDate = formatSecondsToDateString(secondDate);
 
+  console.log(getPhone);
   if (isLoading) {
     return (
       <Box
@@ -132,7 +136,7 @@ function AboutProduct() {
               </div>
             </div>
             <div className="blok__right_call">
-              <CallModal number={data.phoneNumber} />
+              <CallModal getPhone={getPhone} number={data.phoneNumber} />
 
               <div className="call__children">
                 <img src={children} alt="children" />

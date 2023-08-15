@@ -21,7 +21,7 @@ const style = {
   borderRadius: "15px",
 };
 
-function CallModal({ number }) {
+function CallModal({ number, getPhone }) {
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
   const accessToken = localStorage.getItem("accessToken");
@@ -44,7 +44,7 @@ function CallModal({ number }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         {accessToken ? (
-          count === 0 ? (
+          getPhone?.message === "Not reduced limits" ? (
             <Box sx={style}>
               <div className="delete-list">
                 <img src={CloseButton} alt="" />
@@ -59,8 +59,11 @@ function CallModal({ number }) {
             <Box sx={style}>
               <div className="delete-list">
                 <img src={CallButton} alt="" />
-                <h3 className="delete-name">{number}</h3>
-                <p className="delete-text">{t("hello26")}</p>
+                <h3 className="delete-name">{getPhone?.phoneNumber}</h3>
+                <p className="delete-text">
+                  Sizda kunlik {getPhone?.dailyLimitCount} ta qo’ng’iroqdan{" "}
+                  {getPhone?.lastDailyLimit} ta qoldi
+                </p>
                 <a href={`tel:+${number}`} className="call__link">
                   {t("hello27")}
                 </a>

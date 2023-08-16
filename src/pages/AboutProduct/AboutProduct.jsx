@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 import {
   getByIdCategoryData,
   getByIdProductData,
-  getPhoneProductData,
   getProductData,
 } from "../../api";
 import { useQuery } from "react-query";
@@ -22,18 +21,16 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import CallModal from "./components/Modal/Modal";
-import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 function AboutProduct() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { t } = useTranslation();
+
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(["product", id], () =>
     getByIdProductData(id)
   );
-  const { data: getPhone } = useQuery(["getPhone", id], () =>
-    getPhoneProductData(id)
-  );
+
   const category = data?.category?.id;
   const { data: product } = useQuery("productData", getProductData);
   const { data: categoryData } = useQuery(["category", category], () =>
@@ -52,7 +49,6 @@ function AboutProduct() {
   const secondDate = data?.uploadedAt / 1000;
   const formatUpdateDate = formatSecondsToDateString(secondDate);
 
-  console.log(getPhone);
   if (isLoading) {
     return (
       <Box
@@ -97,6 +93,26 @@ function AboutProduct() {
                 </SwiperSlide>
               ))}
             </Swiper>
+            <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={50}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            style={{paddingLeft: "10px", paddingRight: "0"}}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper">
+            {data?.photos?.map((evt, index) => (
+                <SwiperSlide key={index}>
+                <img
+                  className="aboutproduct-imgs"
+                  alt={evt?.name}
+                  src={evt?.filePath}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>  
           </div>
           <div className="blok__right">
             <h1 className="blok__right_title">{data.name}</h1>
@@ -104,11 +120,11 @@ function AboutProduct() {
 
             <div className="blok__right_icons">
               {data?.quality === "NEW" ? (
-                <span className="icons__link card__new">{t("hello4")}</span>
+                <span className="icons__link card__new">{t("hello110")}</span>
               ) : data?.quality === "TOP" ? (
-                <span className="icons__link card__medium">{t("hello5")}</span>
+                <span className="icons__link card__medium">O'rtacha</span>
               ) : data?.quality === "AVERAGE" ? (
-                <span className="icons__link">{t("hello6")}</span>
+                <span className="icons__link">Eski</span>
               ) : (
                 ""
               )}
@@ -119,7 +135,7 @@ function AboutProduct() {
                   className="icons__oblast_location"
                 />
                 <p className="icons__oblast_subTitle">
-                  {data.region.name}, {data.district.name} {t("hello3")}
+                  {data.region.name}, {data.district.name} tumani
                 </p>
               </div>
               <div className="icons__oblast">
@@ -136,49 +152,33 @@ function AboutProduct() {
               </div>
             </div>
             <div className="blok__right_call">
-              <CallModal getPhone={getPhone} number={data.phoneNumber} />
+              <CallModal number={data.phoneNumber} />
 
               <div className="call__children">
                 <img src={children} alt="children" />
                 <div className="call__children_orderer">
-                  <h4 className="orderer_title">{t("hello32")}</h4>
+                  <h4 className="orderer_title">E’lon beruvchi</h4>
                   <p className="orderer_subTitle">
-                    {t("hello33")} {"  "} {formattedDate}
+                    So’ngi faolligi {formattedDate}
                   </p>
                 </div>
               </div>
             </div>
             <p className="blok__right_note">
-              <b className="note__span">{t("hello35")}</b> {t("hello34")}
+              <b className="note__span">Muhim eslatma:</b> Qo’ngiroq qilish
+              uchun 1 oyga 10 ta limit beriladi va kunlik limit 3 ta. Undan
+              tashqari qo’ng’rioq qilishingiz uchun siz saytdan ro’yhatdan
+              o’tgan bo’lishingiz kerak bo’ladi.
             </p>
           </div>
         </div>
-        <div className="slider aboutproduct-slider">
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper">
-            {data?.photos?.map((evt, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  className="aboutproduct-imgs"
-                  alt={evt?.name}
-                  src={evt?.filePath}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+        {/* <div className="slider aboutproduct-slider">
+        </div> */}
       </div>
       <div className="about">
         <div className="container">
           <div className="about-top">
-            <button className="about-button">{t("hello36")}</button>
+            <button className="about-button">BOSHQA E’LONLARI</button>
           </div>
           <div className="products">
             {product?.content?.map((evt, index) => (
@@ -192,7 +192,7 @@ function AboutProduct() {
       <div className="about">
         <div className="container">
           <div className="about-top">
-            <button className="about-button">{t("hello37")}</button>
+            <button className="about-button">O‘XSHASH E’LONLAR</button>
           </div>
           <div className="products">
             {categoryData?.content?.map((evt, index) => (

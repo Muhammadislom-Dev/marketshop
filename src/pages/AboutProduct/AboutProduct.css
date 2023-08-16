@@ -5,9 +5,10 @@
 }
 
 .blok__left_img {
-  width: 516px;
+  max-width: 516px;
   height: 540px;
   border-radius: 40px;
+  /* border: 2px solid red; */
 }
 
 .blok__left {
@@ -15,13 +16,16 @@
 }
 
 .aboutproduct-img {
-  width: 516px;
+  /* max-width: 516px; */
+  width: 100%;
   height: 540px;
   border-radius: 40px;
+  /* border: 1px solid red; */
+  object-fit: cover;
 }
 
 .blok__right_title {
-  width: 584px;
+  max-width: 584px;
   color: #000;
   font-family: "Archivo", sans-serif;
   font-size: 40px;
@@ -36,7 +40,7 @@
 }
 
 .blok__right_subTitle {
-  width: 558px;
+  max-width: 558px;
   margin-top: -12px;
   color: #000;
   font-family: "Archivo", sans-serif;
@@ -47,9 +51,10 @@
 }
 
 .blok__right_icons {
+  max-width: 530px;
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: space-between;
 }
 
 .icons__link {
@@ -67,7 +72,7 @@
 .icons__oblast {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .icons__oblast_location {
@@ -127,12 +132,11 @@
   font-family: "Archivo", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  line-height: 5px;
   opacity: 0.6000000238418579;
 }
 
 .blok__right_note {
-  width: 480px;
+  max-width: 480px;
   margin-top: 30px;
   color: #222;
   font-family: "Archivo", sans-serif;
@@ -237,10 +241,59 @@
 
 .mySwiper {
   width: 100%;
+  margin-top: 15px;
+  display: flex;
+  /* justify-content: space-evenly; */
+}
+
+.mySwiper > .swiper-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .aboutproduct-slider {
   width: 35%;
   margin-right: auto;
   margin-left: 80px;
+}
+
+@media screen and (max-width: 1000px) {
+  .blok__right_title {
+    font-size: 35px;
+  }
+
+  .blok__right_subTitle {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .blok {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blok__left {
+    width: 100%;
+  }
+
+  .blok__left .mySwiper {
+    max-width: 500px;
+  }
+
+  .mySwiper2 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .call__link {
+    font-size: 15px;
+  }
+
+  .blok__right_icons {
+    flex-wrap: wrap;
+  }
 }

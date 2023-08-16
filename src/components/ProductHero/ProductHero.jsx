@@ -2,31 +2,22 @@ import {
   Box,
   CircularProgress,
   FormControl,
-  InputLabel,
   MenuItem,
   Select,
 } from "@mui/material";
 import "./ProductHero.css";
-import React from "react";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { SlArrowRight } from "react-icons/sl";
 import { LuSettings2 } from "react-icons/lu";
 import { useQuery } from "react-query";
-import {
-  fetchRegionData,
-  getCategory,
-  getFilterProductData,
-  getProductNewsData,
-} from "../../api";
+import { fetchRegionData, getCategory, getFilterProductData } from "../../api";
 import Card from "../Card/Card";
-import { useTranslation } from "react-i18next";
+import NotfindInfo from "../NotfindInfo/NotfindInfo";
 
 export default function ProductHero() {
-  const [age, setAge] = React.useState("");
-  const { t } = useTranslation();
   const [category, setCategory] = useState(1);
-  const [section, setSection] = useState(0);
+  const [section, setSection] = useState(1);
   const [top, setTop] = useState("");
   const [regionId, setRegionId] = useState("");
   const [search, setSearch] = useState("");
@@ -34,17 +25,13 @@ export default function ProductHero() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const { data: region } = useQuery("exampleData", fetchRegionData);
-  const { data: trueDataOne } = useQuery("productData", getProductNewsData);
+
   const { data } = useQuery("get category", getCategory);
+  const { data: region } = useQuery("exampleData", fetchRegionData);
   const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
     () => getFilterProductData(category, regionId, search)
   );
-  const handleChange = (event) => {
-    setAge(event?.target?.value);
-    setRegionId(event?.target?.value);
-  };
   if (isLoading) {
     return (
       <Box
@@ -64,24 +51,14 @@ export default function ProductHero() {
       <div className="product-hero">
         <form onSubmit={handleSubmit} className="product-hero-form">
           <div>
-            <FormControl
-              sx={{ m: 1, minWidth: 160, width: 160 }}
-              className="header-select">
-              <InputLabel id="demo-simple-select-label1">
-                {t("hello40")}
-              </InputLabel>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                labelId="demo-simple-select-label1"
-                id="demo-simple-select"
-                label={t("hello40")}
-                value={age}
-                onChange={handleChange}>
-                <MenuItem value="">{t("hello40")}</MenuItem>
-                {region?.objectKoinot?.content?.map((data) => (
-                  <MenuItem key={data.id} value={data.id}>
-                    {data.name}
-                  </MenuItem>
-                ))}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}>
+                <MenuItem value={1}>Barchasi</MenuItem>
+                <MenuItem value={2}>Kiyim-Kechak</MenuItem>
               </Select>
             </FormControl>
           </div>
@@ -106,7 +83,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 1 ? 0 : 1))}>
-                {t("hello18")}
+                Bo’lim
               </span>
               <SlArrowRight
                 style={section === 1 ? { rotate: "-90deg" } : null}
@@ -160,7 +137,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 2 ? 0 : 2))}>
-                {t("hello19")}
+                Ichki rukn
               </span>
               <SlArrowRight
                 style={section === 2 ? { rotate: "-90deg" } : null}
@@ -179,7 +156,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 3 ? 0 : 3))}>
-                {t("hello20")}
+                Holati
               </span>
               <SlArrowRight
                 style={section === 3 ? { rotate: "-90deg" } : null}
@@ -195,17 +172,49 @@ export default function ProductHero() {
                 </div>
               ) : null}
             </div>
+            <div className="product-hero-filter-item">
+              <span
+                onClick={() => setSection((state) => (state === 4 ? 0 : 4))}>
+                Shahar
+              </span>
+              <SlArrowRight
+                style={section === 4 ? { rotate: "-90deg" } : null}
+              />
+              {section === 4 ? (
+                <div className="product-hero-filter-category product-hero-category">
+                  {region?.objectKoinot?.content.length
+                    ? region.objectKoinot.content.map((el) => (
+                        <div
+                          key={el.id}
+                          onClick={() => setRegionId(el?.id)}
+                          className="product-hero-filter-category-item">
+                          <span
+                            style={
+                              subcategory === el.id
+                                ? { color: "#F26957" }
+                                : null
+                            }>
+                            {el.name}
+                          </span>
+                        </div>
+                      ))
+                    : null}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
+        {/*  */}
       </div>
       <div className="products filter-product">
-        {paramsData?.content?.length
-          ? paramsData?.content?.map((evt, index) => (
-              <Card data={evt} key={index} />
-            ))
-          : trueDataOne?.content?.map((evt, index) => (
-              <Card data={evt} key={index} />
-            ))}
+        {paramsData?.content?.length ? (
+          paramsData?.content?.map((evt, index) => (
+            <Card data={evt} key={index} />
+          ))
+        ) : (
+          // <div>Filter bo‘yicha hech qanday ma’lumot topilmadi!</div>
+          <NotfindInfo />
+        )}
       </div>
     </>
   );

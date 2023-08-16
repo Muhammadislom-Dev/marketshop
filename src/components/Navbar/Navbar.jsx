@@ -25,13 +25,13 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BiHomeAlt2 className="fixNavIconL" />
-                <h4>{t("hello16")}</h4>
+                <h4>Bosh sahifa</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BiCategory className="fixNavIconL" />
-                <h4>{t("hello17")}</h4>
+                <h4>Kategoriya</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox plus">
@@ -40,21 +40,23 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox">
-              <Link to="/like" className="fixed-navbar-Ic">
+              <Link to="/" className="fixed-navbar-Ic">
                 <BsHeart className="fixNavIconL" />
-                <h4> {t("like")}</h4>
+                <h4>Tanlanganlar</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox">
               <Link to="/profile" className="fixed-navbar-Ic">
                 <BiUser className="fixNavIconL" />
-                <h4>{t("profile")}</h4>
+                <h4>Hisobingiz</h4>
               </Link>
             </div>
           </div>
         </div>
       </div>
-      {isCategory ? <Category setisCategory={setisCategory} /> : null}
+      {isCategory ? (
+        <Category setisCategory={setisCategory} isCategory={isCategory} />
+      ) : null}
       <div className="container">
         <div className="navbar-left">
           <Link to="/">
@@ -62,7 +64,9 @@ function Navbar() {
           </Link>
           <button
             className="navbar-category"
-            onClick={() => setisCategory((state) => !state)}>
+            // onClick={() => setisCategory((state) => !state)}
+            onMouseEnter={() => setisCategory(true)}
+            onMouseLeave={() => setisCategory(false)}>
             <img src={CategoryIcon} alt="" className="navbar-icons" />
             {t("barcha")}
           </button>
@@ -78,10 +82,6 @@ function Navbar() {
           </Link>
           <Language />
           <LoginModal />
-          {/* <Link to="/profile" className="navbar-submit">
-            <span>+</span>
-            {t("give")}
-          </Link> */}
         </div>
       </div>
     </div>

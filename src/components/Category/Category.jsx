@@ -18,6 +18,8 @@ export default function Category({ setisCategory, isCategory }) {
   // const [showCat, setShowCat] = useState(false);
   // console.log(activeCategory);
 
+  console.log(data.objectKoinot)
+
   return (
     <div
       className={`${isCategory ? "viewCat" : null} category`}
@@ -35,16 +37,11 @@ export default function Category({ setisCategory, isCategory }) {
                     ? "category-section-main-item category-section-main-item-active"
                     : "category-section-main-item"
                 }>
-                {el.photo ? (
-                  <img
-                    style={{
-                      width: "24px",
-                      height: "24px",
-                      objectFit: "cover",
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: el.iconInSelect,
                     }}
-                    src={el.photo.filePath}
                   />
-                ) : null}
                 <span>{el.nameUz}</span>
                 <SlArrowRight />
               </li>

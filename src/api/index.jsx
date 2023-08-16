@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
-export const API_URL = "http://143.198.64.152:1777/api";
-const API_BASE_URL = "http://143.198.64.152:1777/api"; // API ning manzili
+export const API_URL = "https://tekinmarket.uz/api";
+const API_BASE_URL = "https://tekinmarket.uz/api"; // API ning manzili
 
 const axiosInstance = axios;
 axiosInstance.defaults.baseURL = API_BASE_URL;

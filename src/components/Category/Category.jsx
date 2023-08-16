@@ -4,27 +4,34 @@ import { SlArrowRight } from "react-icons/sl";
 import { useQuery } from "react-query";
 import { getCategory } from "../../api";
 import { useState } from "react";
-// import clothes from "../../assets/category-icons/clothes.svg";
-// import electronic from "../../assets/category-icons/electronic.svg";
-// import transport from "../../assets/category-icons/transport.svg";
-// import cat from "../../assets/category-icons/cat.svg";
-// import baby from "../../assets/category-icons/baby.svg";
+import clothes from "../../assets/category-icons/clothes.svg";
+import electronic from "../../assets/category-icons/electronic.svg";
+import transport from "../../assets/category-icons/transport.svg";
+import cat from "../../assets/category-icons/cat.svg";
+import baby from "../../assets/category-icons/baby.svg";
 
-export default function Category({ setisCategory }) {
+export default function Category({ setisCategory, isCategory }) {
   const [activeCategory, setactiveCategory] = useState(1);
   const { data } = useQuery("get category", getCategory);
-  const i18next = localStorage.getItem("i18nextLng");
+  const icons = [clothes, electronic, transport, cat, baby];
+  // onMouseEnter={() => setShowCat(true)} onMouseLeave={() => setShowCat(false)}
+  // const [showCat, setShowCat] = useState(false);
+  // console.log(activeCategory);
 
   return (
-    <div className="category">
+    <div
+      className={`${isCategory ? "viewCat" : null} category`}
+      onMouseEnter={() => setisCategory(true)}
+      onMouseLeave={() => setisCategory(false)}>
       <ul className="category-section-main">
         {data?.objectKoinot?.length
           ? data.objectKoinot.map((el, index) => (
               <li
                 key={el.id}
-                onClick={() => setactiveCategory(el.id)}
+                // onClick={() => setactiveCategory(el.id)}
+                onMouseEnter={() => setactiveCategory(el.id)}
                 className={
-                  activeCategory === el.id
+                  activeCategory == el.id
                     ? "category-section-main-item category-section-main-item-active"
                     : "category-section-main-item"
                 }>
@@ -38,7 +45,7 @@ export default function Category({ setisCategory }) {
                     src={el.photo.filePath}
                   />
                 ) : null}
-                <span>{i18next === "ru" ? el.nameRu : el.nameUz}</span>
+                <span>{el.nameUz}</span>
                 <SlArrowRight />
               </li>
             ))
@@ -60,7 +67,7 @@ export default function Category({ setisCategory }) {
                   }>
                   <li className="category-section-secondary-item">
                     <SlArrowRight />
-                    <span>{i18next === "ru" ? el.nameRu : el.nameUz}</span>
+                    <span>{el.nameUz}</span>
                   </li>
                 </NavLink>
               ))

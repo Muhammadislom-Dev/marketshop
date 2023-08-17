@@ -5,76 +5,46 @@ import { getProductNewsData, getProductTrueData } from "../../../../api";
 import { useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import NotfindInfo from "../../../../components/NotfindInfo/NotfindInfo";
 
-function Products({ code, product, paramsData }) {
-  const [popular, setPopular] = useState("YANGILARI");
-  const { data, isLoading } = useQuery("productData", getProductNewsData);
-  const { data: trueData } = useQuery("dataLoading", getProductTrueData);
+function Products({ paramsData, popular, setPopular }) {
   const { t } = useTranslation();
-  if (isLoading) {
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height={"80vh"}>
-        <CircularProgress
-          color="success"
-          style={{ width: "100px", height: "100px" }}
-        />
-      </Box>
-    );
-  }
 
   return (
     <div className="product-all-div">
       <div className="container">
         <div className="product-list">
           <button
-            value="YANGILARI"
-            onClick={(e) => setPopular(e.target.value)}
+            onClick={() => setPopular(false)}
             style={{
-              color: popular === "YANGILARI" ? "#000" : null,
-              borderBottom: popular === "YANGILARI" ? "2px solid #000" : null,
+              color: popular === false ? "#000" : null,
+              borderBottom: popular === false ? "2px solid #000" : null,
             }}
             className="product-name">
             {t("hello43")}
           </button>
           <button
-            value="OMMABOP"
-            onClick={(e) => setPopular(e.target.value)}
+            onClick={() => setPopular(true)}
             style={{
-              color: popular === "OMMABOP" ? "#000" : null,
-              borderBottom: popular === "OMMABOP" ? "2px solid #000" : null,
+              color: popular === true ? "#000" : null,
+              borderBottom: popular === true ? "2px solid #000" : null,
             }}
             className="product-name">
             {t("hello44")}
           </button>
         </div>
       </div>
-      {/* <div className="product-box"> */}
+
       <div className="container">
-        {popular === "YANGILARI" ? (
-          <div className="products">
-            {code === null
-              ? data?.content?.map((evt, index) => (
-                  <Card data={evt} key={index} />
-                ))
-              : paramsData?.content?.map((evt, index) => (
-                  <Card data={evt} key={index} />
-                ))}
-          </div>
-        ) : (
-          <div className="products">
-            {code === null
-              ? trueData?.content?.map((evt, index) => (
-                  <Card data={evt} key={index} />
-                ))
-              : product?.content?.map((evt, index) => (
-                  <Card data={evt} key={index} />
-                ))}
-          </div>
-        )}
+        <div className="products">
+          {paramsData?.content?.length > 0 ? (
+            paramsData?.content?.map((evt, index) => (
+              <Card data={evt} key={index} />
+            ))
+          ) : (
+            <NotfindInfo />
+          )}
+        </div>
       </div>
     </div>
   );

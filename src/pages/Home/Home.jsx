@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import Header from "./components/Header/Header";
-import Blog from "./components/Blog/Blog";
 import Products from "./components/Products/Products";
-import { getParamsProductData, getProductParamsTrueData } from "../../api";
+import { getProductParamsTrueData } from "../../api";
 import { useQuery } from "react-query";
 
 function Home() {
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState("");
+  const [popular, setPopular] = useState(false);
   const [age, setAge] = React.useState("");
   const [search, setSearch] = useState("");
-  const { data: product } = useQuery(["paramsData", code, search], () =>
-    getParamsProductData(code, search)
-  );
-  const { data: paramsData } = useQuery(["paramsData", code, search], () =>
-    getProductParamsTrueData(code, search)
+
+  const { data: paramsData } = useQuery(
+    ["paramsData", code, search, popular],
+    () => getProductParamsTrueData(code, search, popular)
   );
 
   const handleClear = () => {
     setSearch("");
     setCode("");
     setAge("");
+    setPopular("");
   };
-
-
-
   return (
     <>
       <Header
@@ -34,7 +31,11 @@ function Home() {
         setAge={setAge}
         setCode={setCode}
       />
-      <Products code={code} paramsData={paramsData} product={product} />
+      <Products
+        popular={popular}
+        setPopular={setPopular}
+        paramsData={paramsData}
+      />
     </>
   );
 }

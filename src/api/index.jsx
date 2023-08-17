@@ -350,9 +350,9 @@ export const getParamsProductData = async (code, search) => {
   return response.data;
 };
 
-export const getProductParamsTrueData = async (code, search) => {
+export const getProductParamsTrueData = async (code, search, popular) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=50&top=true`,
+    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=50&top=${popular}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

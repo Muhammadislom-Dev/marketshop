@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
 import { SearchIcon } from "../../../../assets/icon";
-import { data } from "./data";
 import { Link } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -27,8 +26,8 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
 
   const {
     data: region,
-    isLoading,
     isError,
+    isLoading,
   } = useQuery("exampleData", fetchRegionData);
 
   const { data: districtData } = useQuery(["product", code], () =>
@@ -65,7 +64,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
           <h1>{t("hello39")}</h1>
           <div className="header-item">
             <FormControl
-              sx={{ m: 1, minWidth: 160, width: 160 }}
+              sx={{ m: 1, minWidth: 170, width: 170 }}
               className="header-select">
               <InputLabel id="demo-simple-select-label1">
                 {t("hello40")}
@@ -79,7 +78,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 <MenuItem onClick={handleClear} value="">
                   {t("hello40")}
                 </MenuItem>
-                {region.objectKoinot.content.map((data) => (
+                {region?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
                     {data.name}
                   </MenuItem>
@@ -87,7 +86,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
               </Select>
             </FormControl>
             <FormControl
-              sx={{ m: 1, minWidth: 160, width: 160 }}
+              sx={{ m: 1, minWidth: 170, width: 170 }}
               className="header-select">
               <Select
                 labelId="demo-simple-select-label"

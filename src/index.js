@@ -15,13 +15,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ToastContainer />
-    <Suspense fallback={<Loading />}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
         <ScrollToTop />
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>
-      </BrowserRouter>
-    </Suspense>
+      </Suspense>
+    </BrowserRouter>
   </React.StrictMode>
 );

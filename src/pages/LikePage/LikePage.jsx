@@ -7,10 +7,12 @@ import { getLikeProductData } from "../../api";
 import { Box, CircularProgress } from "@mui/material";
 import { t } from "i18next";
 import FindResultIcon from "../../assets/notFindIcon.svg";
+import { useTranslation } from "react-i18next";
 
 function LikePage() {
   const { data, isLoading } = useQuery("likeData", getLikeProductData);
   const token = localStorage.getItem("accessToken");
+  const {t} = useTranslation()
   // if (isLoading) {
   //   return (
   //     <Box
@@ -46,9 +48,7 @@ function LikePage() {
                     <div className="not_find_flex">
                       <div className="div_icon">
                         <img src={FindResultIcon} alt="" />
-                        <h3 className="not_find_result_text">
-                          Siz saralagan bo'yicha hech qanday mahsulot topilmadi!
-                        </h3>
+                        <h3 className="not_find_result_text">{t("hello79")}</h3>
                       </div>
                     </div>
                   </div>
@@ -61,9 +61,7 @@ function LikePage() {
                 <div className="not_find_flex">
                   <div className="div_icon">
                     <img src={FindResultIcon} alt="" />
-                    <h3 className="not_find_result_text">
-                      Siz saralagan bo'yicha hech qanday mahsulot topilmadi!
-                    </h3>
+                    <h3 className="not_find_result_text">{t("hello79")}</h3>
                   </div>
                 </div>
               </div>

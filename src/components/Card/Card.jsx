@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
 import { likeProductDelete, likeProductPost } from "../../api";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
+import UploadImage from "../../assets/upload.png";
+import PlaceholderImage from "../LazyLoadImage/LazyLoadImage";
 
 const Card = ({ data, key, like }) => {
   const { t } = useTranslation();
@@ -58,17 +60,16 @@ const Card = ({ data, key, like }) => {
         )}
         <Link className="card-link" to={`/products/about/${data?.id}`}>
           {data.photos ? (
-            <LazyLoadImage
-              src={data.photos[0].filePath}
-              placeholderSrc={data.photos[0].filePath}
-              alt="Image"
-              draggable={false}
-              effect="blur"
-              className="card__img"
-              style={{
-                objectFit: "cover",
+            <PlaceholderImage
+              styles={{
+                width: "291px",
+                height: "164px",
                 borderRadius: "15px",
+                marginTop: "10px",
               }}
+              imageFor="announcement"
+              src={data.photos[0].filePath}
+              alt={data?.name}
             />
           ) : null}
 

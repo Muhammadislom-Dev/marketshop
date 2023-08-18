@@ -4,8 +4,6 @@ import Card from "../../components/Card/Card";
 import "./LikePage.css";
 import { useQuery } from "react-query";
 import { getLikeProductData } from "../../api";
-import { Box, CircularProgress } from "@mui/material";
-import { t } from "i18next";
 import FindResultIcon from "../../assets/notFindIcon.svg";
 import { useTranslation } from "react-i18next";
 
@@ -13,20 +11,6 @@ function LikePage() {
   const { data, isLoading } = useQuery("likeData", getLikeProductData);
   const token = localStorage.getItem("accessToken");
   const {t} = useTranslation()
-  // if (isLoading) {
-  //   return (
-  //     <Box
-  //       display="flex"
-  //       alignItems="center"
-  //       justifyContent="center"
-  //       height={"80vh"}>
-  //       <CircularProgress
-  //         color="success"
-  //         style={{ width: "100px", height: "100px" }}
-  //       />
-  //     </Box>
-  //   );
-  // }
 
   return (
     <div>

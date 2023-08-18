@@ -11,30 +11,31 @@ function Products({ paramsData, popular, setPopular }) {
   const { t } = useTranslation();
 
   return (
-    <div className="product-all-div">
-      <div className="container">
-        <div className="product-list">
-          <button
-            onClick={() => setPopular(false)}
-            style={{
-              color: popular === false ? "#000" : null,
-              borderBottom: popular === false ? "2px solid #000" : null,
-            }}
-            className="product-name">
-            {t("hello43")}
-          </button>
-          <button
-            onClick={() => setPopular(true)}
-            style={{
-              color: popular === true ? "#000" : null,
-              borderBottom: popular === true ? "2px solid #000" : null,
-            }}
-            className="product-name">
-            {t("hello44")}
-          </button>
+    <>
+      <div className="product-all-div">
+        <div className="container">
+          <div className="product-list">
+            <button
+              onClick={() => setPopular(false)}
+              style={{
+                color: popular === false ? "#000" : null,
+                borderBottom: popular === false ? "2px solid #000" : null,
+              }}
+              className="product-name">
+              {t("hello43")}
+            </button>
+            <button
+              onClick={() => setPopular(true)}
+              style={{
+                color: popular === true ? "#000" : null,
+                borderBottom: popular === true ? "2px solid #000" : null,
+              }}
+              className="product-name">
+              {t("hello44")}
+            </button>
+          </div>
         </div>
       </div>
-
       <div className="container">
         <div className="products">
           {paramsData?.content?.length > 0 ? (
@@ -46,7 +47,7 @@ function Products({ paramsData, popular, setPopular }) {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

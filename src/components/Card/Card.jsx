@@ -69,9 +69,6 @@ const Card = ({ data, key, like }) => {
                 objectFit: "cover",
                 borderRadius: "15px",
               }}
-              onError={(e) => {
-                e.target.onerror = null;
-              }}
             />
           ) : null}
 
@@ -80,7 +77,6 @@ const Card = ({ data, key, like }) => {
             {data?.region?.name}, {data?.district?.name} {t("hello3")} {"  "}
             {formattedDate}
           </p>
-          {/* </Link> */}
           {data?.quality === "NEW" ? (
             <span className="card__link card__new">{t("hello4")}</span>
           ) : data?.quality === "TOP" ? (

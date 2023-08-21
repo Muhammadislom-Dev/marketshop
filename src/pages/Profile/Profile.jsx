@@ -89,9 +89,9 @@ function Profile() {
               />
               <div className="profile-item">
                 <h3 className="profile-name">
-                  {data.objectKoinot.firstName === null
+                  {data?.objectKoinot?.firstName === null
                     ? ""
-                    : data.objectKoinot.firstName}
+                    : data?.objectKoinot?.firstName}
                 </h3>
                 <a
                   href={`tel:+${data?.objectKoinot?.phoneNumber}`}
@@ -114,9 +114,9 @@ function Profile() {
               />
               <div className="profile-item">
                 <h3 className="profile-name">
-                  {data.objectKoinot.firstName === null
+                  {data?.objectKoinot?.firstName === null
                     ? ""
-                    : data.objectKoinot.firstName}
+                    : data?.objectKoinot?.firstName}
                 </h3>
                 <a
                   href={`tel:+${data?.objectKoinot?.phoneNumber}`}

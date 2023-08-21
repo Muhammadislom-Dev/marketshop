@@ -28,6 +28,7 @@ export default function ProductCreate({ editId }) {
     productQuality: "AVERAGE",
     regionId: 1,
     districtId: 1,
+    photosId: [],
   });
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -35,7 +36,7 @@ export default function ProductCreate({ editId }) {
       .then((res) => {
         setProduct((prev) => ({
           ...prev,
-          photosId: [res.data.objectKoinot[0].id],
+          photosId: [...prev, res.data.objectKoinot[0].id],
         }));
         toast.success("Rasm muvaffaqiyatli yuklandi");
       })
@@ -190,9 +191,9 @@ export default function ProductCreate({ editId }) {
               value={product.productQuality}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}>
-              <MenuItem value="AVERAGE">AVERAGE</MenuItem>
-              <MenuItem value="NEW">NEW</MenuItem>
-              <MenuItem value="OLD">OLD</MenuItem>
+              <MenuItem value="AVERAGE">O'rta</MenuItem>
+              <MenuItem value="NEW">Yangi</MenuItem>
+              <MenuItem value="OLD">Eski</MenuItem>
             </Select>
           </FormControl>
         </label>

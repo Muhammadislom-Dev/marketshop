@@ -30,6 +30,7 @@ function ProductEdit({ editId }) {
     productQuality: "AVERAGE",
     regionId: 1,
     districtId: 1,
+    photosId: [],
   });
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -37,7 +38,7 @@ function ProductEdit({ editId }) {
       .then((res) => {
         setProduct((prev) => ({
           ...prev,
-          photosId: [res.data.objectKoinot[0].id],
+          photosId: [...prev, res.data.objectKoinot[0].id],
         }));
         toast.success("Rasm muvaffaqiyatli yuklandi");
       })

@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import {
   getByIdCategoryData,
   getByIdProductData,
+  getPhoneProductData,
   getProductData,
 } from "../../api";
 import { useQuery } from "react-query";
@@ -29,6 +30,9 @@ function AboutProduct() {
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(["product", id], () =>
     getByIdProductData(id)
+  );
+  const { data: getPhone } = useQuery(["get-phone", id], () =>
+    getPhoneProductData(id)
   );
 
   const category = data?.category?.id;
@@ -94,25 +98,25 @@ function AboutProduct() {
               ))}
             </Swiper>
             <Swiper
-            onSwiper={setThumbsSwiper}
-            loop={true}
-            spaceBetween={50}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            style={{paddingLeft: "10px", paddingRight: "0"}}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper">
-            {data?.photos?.map((evt, index) => (
+              onSwiper={setThumbsSwiper}
+              loop={true}
+              spaceBetween={50}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              style={{ paddingLeft: "10px", paddingRight: "0" }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="mySwiper">
+              {data?.photos?.map((evt, index) => (
                 <SwiperSlide key={index}>
-                <img
-                  className="aboutproduct-imgs"
-                  alt={evt?.name}
-                  src={evt?.filePath}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>  
+                  <img
+                    className="aboutproduct-imgs"
+                    alt={evt?.name}
+                    src={evt?.filePath}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
           <div className="blok__right">
             <h1 className="blok__right_title">{data.name}</h1>
@@ -152,7 +156,7 @@ function AboutProduct() {
               </div>
             </div>
             <div className="blok__right_call">
-              <CallModal number={data.phoneNumber} />
+              <CallModal getPhone={getPhone} />
 
               <div className="call__children">
                 <img src={children} alt="children" />

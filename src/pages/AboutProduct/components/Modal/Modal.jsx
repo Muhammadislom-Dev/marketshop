@@ -8,6 +8,7 @@ import {
 } from "../../../../assets/icon";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LoginModal from "../../Modal/Modal";
 
 const style = {
   position: "absolute",
@@ -21,7 +22,7 @@ const style = {
   borderRadius: "15px",
 };
 
-function CallModal({ number, getPhone }) {
+function CallModal({ getPhone }) {
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
   const accessToken = localStorage.getItem("accessToken");
@@ -64,7 +65,9 @@ function CallModal({ number, getPhone }) {
                   Sizda kunlik {getPhone?.dailyLimitCount} ta qo’ng’iroqdan{" "}
                   {getPhone?.lastDailyLimit} ta qoldi
                 </p>
-                <a href={`tel:+${number}`} className="call__link">
+                <a
+                  href={`tel:+${getPhone?.phoneNumber}`}
+                  className="call__link">
                   {t("hello27")}
                 </a>
               </div>
@@ -76,9 +79,7 @@ function CallModal({ number, getPhone }) {
               <img src={DeveloperIcon} alt="" />
               <h3 className="delete-name">{t("hello28")}</h3>
               <p className="delete-text">{t("hello29")}</p>
-              <Link to="/" className="call__link">
-                {t("hello30")}
-              </Link>
+              <LoginModal />
             </div>
           </Box>
         )}

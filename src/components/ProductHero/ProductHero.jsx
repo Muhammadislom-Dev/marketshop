@@ -50,18 +50,6 @@ export default function ProductHero() {
     <>
       <div className="product-hero">
         <form onSubmit={handleSubmit} className="product-hero-form">
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                displayEmpty
-                inputProps={{ "aria-label": "Without label" }}>
-                <MenuItem value={1}>Barchasi</MenuItem>
-                <MenuItem value={2}>Kiyim-Kechak</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
           <label htmlFor="product-hero-search" className="product-hero-label">
             <CiSearch />
             <input
@@ -137,7 +125,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 2 ? 0 : 2))}>
-                Ichki rukn
+                Holati
               </span>
               <SlArrowRight
                 style={section === 2 ? { rotate: "-90deg" } : null}
@@ -145,10 +133,10 @@ export default function ProductHero() {
               {section === 2 ? (
                 <div className="product-hero-filter-category">
                   <div className="product-hero-filter-category-item">
-                    <span onChange={(e) => setTop(e.target.value)}>True</span>
+                    <span value="true">Yaxshi</span>
                   </div>
                   <div className="product-hero-filter-category-item">
-                    <span onChange={(e) => setTop(e.target.value)}>False</span>
+                    <span value="false">Yomon</span>
                   </div>
                 </div>
               ) : null}
@@ -156,31 +144,12 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 3 ? 0 : 3))}>
-                Holati
+                Shahar
               </span>
               <SlArrowRight
                 style={section === 3 ? { rotate: "-90deg" } : null}
               />
               {section === 3 ? (
-                <div className="product-hero-filter-category">
-                  <div className="product-hero-filter-category-item">
-                    <span value="true">True</span>
-                  </div>
-                  <div className="product-hero-filter-category-item">
-                    <span value="false">False</span>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-            <div className="product-hero-filter-item">
-              <span
-                onClick={() => setSection((state) => (state === 4 ? 0 : 4))}>
-                Shahar
-              </span>
-              <SlArrowRight
-                style={section === 4 ? { rotate: "-90deg" } : null}
-              />
-              {section === 4 ? (
                 <div className="product-hero-filter-category product-hero-category">
                   {region?.objectKoinot?.content.length
                     ? region.objectKoinot.content.map((el) => (
@@ -204,7 +173,6 @@ export default function ProductHero() {
             </div>
           </div>
         </div>
-        {/*  */}
       </div>
       <div className="products filter-product">
         {paramsData?.content?.length ? (
@@ -212,7 +180,6 @@ export default function ProductHero() {
             <Card data={evt} key={index} />
           ))
         ) : (
-          // <div>Filter bo‘yicha hech qanday ma’lumot topilmadi!</div>
           <NotfindInfo />
         )}
       </div>

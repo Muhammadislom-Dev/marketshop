@@ -119,6 +119,18 @@ export const createProduct = async (data) => {
   return response.data;
 };
 
+export const postEmailRequest = async (data) => {
+  const response = await axios.post(`${API_BASE_URL}/email/v1?email=${data}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    toast.success("Email muvaffaqiyatli jo'natildi!");
+  })
+  return response.data
+};
+
 export const getCategory = async () => {
   const response = await axios.get(`${API_BASE_URL}/category/v1`);
   return response.data;

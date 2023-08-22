@@ -128,7 +128,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 <span className="header-link-span">
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: data.icon,
+                      __html: data.iconInSelect,
                     }}
                   />
                 </span>

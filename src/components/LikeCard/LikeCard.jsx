@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import headerLike from "../../assets/img/heart.svg";
 import heart from "../../assets/heart.svg";
-import "./Card.css";
+// import "./Card.css";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
 import { likeProductDelete, likeProductPost } from "../../api";
@@ -9,10 +9,8 @@ import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
 import PlaceholderImage from "../LazyLoadImage/LazyLoadImage";
 
-const Card = ({ data, key, refetch }) => {
-  const [likeTrue, setLikeTrue] = useState(false);
+const LikeCard = ({ data, key, refetch }) => {
   const { t } = useTranslation();
-  const { mutate } = useMutation((productId) => likeProductPost(productId));
   const { mutate: likeDeleteMutate } = useMutation((productId) =>
     likeProductDelete(productId)
   );
@@ -24,14 +22,15 @@ const Card = ({ data, key, refetch }) => {
     }
   };
 
-  const handleLike = () => {
-    mutate(data.id);
-    setLikeTrue(true);
-    // localStorage.setItem("likeValue", true);
+  //   const handleLike = () => {
+  //     mutate(data.id);
+  //     setLikeTrue(true);
+  //   };
+
+  const handleLikeDelete = () => {
+    likeDeleteMutate(data.id);
     refetch();
   };
-
-  // const likeGetActive = localStorage.getItem("likeValue");
 
   function formatSecondsToDateString(seconds) {
     const date = new Date(seconds * 1000);
@@ -48,17 +47,9 @@ const Card = ({ data, key, refetch }) => {
         onMouseEnter={() => handleHover(data.id)}
         onMouseLeave={() => setHoverEffect(false)}
         className="card">
-        {likeTrue === false ? (
-          <button onClick={handleLike} className="card-heart">
-            <img src={headerLike} alt="heart" className="card__heart" />
-          </button>
-        ) : likeTrue === true ? (
-          <button className="card-heart">
-            <img src={heart} alt="heart" className="card__heart" />
-          </button>
-        ) : (
-          ""
-        )}
+        <button onClick={handleLikeDelete} className="card-heart">
+          <img src={heart} alt="heart" className="card__heart" />
+        </button>
         <Link className="card-link" to={`/products/about/${data?.id}`}>
           {data.photos ? (
             <PlaceholderImage
@@ -99,4 +90,4 @@ const Card = ({ data, key, refetch }) => {
   );
 };
 
-export default Card;
+export default LikeCard;

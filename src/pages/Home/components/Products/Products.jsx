@@ -7,7 +7,7 @@ import { Box, CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import NotfindInfo from "../../../../components/NotfindInfo/NotfindInfo";
 
-function Products({ paramsData, popular, setPopular }) {
+function Products({ paramsData, popular, setPopular, refetch }) {
   const { t } = useTranslation();
 
   return (
@@ -40,7 +40,7 @@ function Products({ paramsData, popular, setPopular }) {
         <div className="products">
           {paramsData?.content?.length > 0 ? (
             paramsData?.content?.map((evt, index) => (
-              <Card data={evt} key={index} />
+              <Card refetch={refetch} data={evt} key={index} />
             ))
           ) : (
             <NotfindInfo />

@@ -41,7 +41,7 @@ function Login({ handleClose }) {
         <SmsCode handleClose={handleClose} phoneNumber={formData.phoneNumber} />
       ) : (
         <div>
-          <h3 className="register-name">{t("hello14")}</h3>
+          <h3 className="register-name">{t("hello15")}</h3>
           <form onSubmit={handleSubmit} action="" className="register-form">
             <label htmlFor="phoneNumber">
               {t("hello45")}
@@ -58,11 +58,6 @@ function Login({ handleClose }) {
                 pattern="^[0-9+-]*$"
               />
             </label>
-            <p style={{ width: "450px" }}>{t("hello69")}</p>
-            <div className="register-label">
-              <input required type="checkbox" />
-              <p>{t("hello70")}</p>
-            </div>
             <button type="submit" className="form-button">
               {t("hello14")}
             </button>

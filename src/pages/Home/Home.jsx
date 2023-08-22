@@ -10,7 +10,7 @@ function Home() {
   const [age, setAge] = React.useState("");
   const [search, setSearch] = useState("");
 
-  const { data: paramsData } = useQuery(
+  const { data: paramsData,refetch } = useQuery(
     ["paramsData", code, search, popular],
     () => getProductParamsTrueData(code, search, popular)
   );
@@ -35,6 +35,7 @@ function Home() {
         popular={popular}
         setPopular={setPopular}
         paramsData={paramsData}
+        refetch={refetch}
       />
     </>
   );

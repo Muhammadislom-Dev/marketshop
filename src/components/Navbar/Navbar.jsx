@@ -13,10 +13,15 @@ import LoginModal from "../Modal/Modal";
 import Language from "../Language/Language";
 import Category from "../Category/Category";
 import { useTranslation } from "react-i18next";
+import { getLikeProductData } from "../../api";
+import { useQuery } from "react-query";
 
 function Navbar() {
   const [isCategory, setisCategory] = useState(false);
+  const { data } = useQuery("likeData", getLikeProductData);
   const { t } = useTranslation();
+
+  console.log(data?.objectKoinot?.content?.length);
   return (
     <div className="navbar">
       <div className="responsiveNavbar">
@@ -64,7 +69,6 @@ function Navbar() {
           </Link>
           <button
             className="navbar-category"
-            // onClick={() => setisCategory((state) => !state)}
             onMouseEnter={() => setisCategory(true)}
             onMouseLeave={() => setisCategory(false)}>
             <img src={CategoryIcon} alt="" className="navbar-icons" />
@@ -79,6 +83,7 @@ function Navbar() {
           <Link to="/like" className="navbar-link">
             <img src={HeartIcon} alt="" className="navbar-icon" />
             {t("like")}
+            <span className="navbar-count">{data?.objectKoinot?.content?.length}</span>
           </Link>
           <Language />
           <LoginModal />

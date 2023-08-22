@@ -36,7 +36,7 @@ export default function ProductCreate({ editId }) {
       .then((res) => {
         setProduct((prev) => ({
           ...prev,
-          photosId: [...prev, res.data.objectKoinot[0].id],
+          photosId: [res.data.objectKoinot[0].id],
         }));
         toast.success("Rasm muvaffaqiyatli yuklandi");
       })

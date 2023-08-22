@@ -124,6 +124,10 @@
   background-color: #a65822;
 }
 
+.header-link-span p svg path {
+  fill: #fff;
+}
+
 .header-subname {
   margin-top: 5px;
 }

@@ -4,6 +4,17 @@
   padding-bottom: 0px;
 }
 
+.navbar-count {
+  background-color: #f26957;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 50%;
+  position: absolute;
+  top: 45%;
+  left: 66.2%;
+}
+
 .responsiveNavbar {
   position: fixed;
   bottom: 0;

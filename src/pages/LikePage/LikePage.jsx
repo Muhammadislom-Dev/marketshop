@@ -6,12 +6,28 @@ import { useQuery } from "react-query";
 import { getLikeProductData } from "../../api";
 import FindResultIcon from "../../assets/notFindIcon.svg";
 import { useTranslation } from "react-i18next";
+import LikeCard from "../../components/LikeCard/LikeCard";
+import { Box, CircularProgress } from "@mui/material";
 
 function LikePage() {
-  const { data, isLoading } = useQuery("likeData", getLikeProductData);
+  const { data, isLoading, refetch } = useQuery("likeData", getLikeProductData);
   const token = localStorage.getItem("accessToken");
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
+  if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height={"80vh"}>
+        <CircularProgress
+          color="success"
+          style={{ width: "100px", height: "100px" }}
+        />
+      </Box>
+    );
+  }
   return (
     <div>
       <Like />
@@ -24,7 +40,7 @@ function LikePage() {
             <div className="products">
               {data?.objectKoinot?.content?.length > 0 ? (
                 data?.objectKoinot?.content?.map((evt, index) => (
-                  <Card like="like" data={evt} key={index} />
+                  <LikeCard refetch={refetch} data={evt} key={index} />
                 ))
               ) : (
                 <div className="notfindComp">

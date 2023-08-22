@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -7,13 +7,21 @@ import {
 } from "../../assets/icon";
 import "./Footer.css";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "react-query";
-import { footerLinkApiData } from "../../api";
+import { useMutation, useQuery } from "react-query";
+import { footerLinkApiData, postEmailRequest } from "../../api";
 
 function Footer() {
   const { t } = useTranslation();
-
+  const [emailValue, setEmailValue] = useState("");
   const { data } = useQuery("footer", footerLinkApiData);
+
+  const { mutate } = useMutation((emailValue) => postEmailRequest(emailValue));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    mutate(emailValue);
+    setEmailValue("");
+  };
 
   return (
     <div className="footer">
@@ -70,16 +78,18 @@ function Footer() {
             </div>
             <div className="footer-right">
               <h4 className="footer-name">{t("hello10")}</h4>
-              <p className="footer-text">
-                {t("hello11")}
-              </p>
+              <p className="footer-text">{t("hello11")}</p>
               <label htmlFor="">
                 <input
                   type="email"
+                  value={emailValue}
                   placeholder="E-pochta kiriting"
                   className="footer-input"
+                  onChange={(e) => setEmailValue(e.target.value)}
                 />
-                <button className="footer-button">{t("hello10")}</button>
+                <button onClick={handleSubmit} className="footer-button">
+                  {t("hello10")}
+                </button>
               </label>
             </div>
           </div>
@@ -95,9 +105,7 @@ function Footer() {
             </a>
           </div>
 
-          <p className="footer-texts">
-            © 2023 - {t("hello12")}
-          </p>
+          <p className="footer-texts">© 2023 - {t("hello12")}</p>
         </div>
       </div>
     </div>

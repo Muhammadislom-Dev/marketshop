@@ -54,6 +54,7 @@
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  height: 60px;
 }
 
 .product-hero-label > input::placeholder {
@@ -140,8 +141,8 @@
 }
 
 .product-hero-category {
-  height: 100px;
-  min-height: 120px;
+  height: 120px;
+  min-height: 140px;
   overflow-y: scroll;
 }
 

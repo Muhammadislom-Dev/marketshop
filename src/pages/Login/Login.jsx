@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import "./Login.css";
-import { registerUser } from "../../api";
+import { registerUser, sendCodeLogin } from "../../api";
 import SmsCode from "../SmsCode/SmsCode";
 import { useTranslation } from "react-i18next";
 
 function Login({ handleClose }) {
   const [formData, setFormData] = useState({
     phoneNumber: "",
+    token: null,
+    code: null,
   });
   const [code, setCode] = useState(false);
-  const mutation = useMutation((userData) => registerUser(userData, setCode));
+  const mutation = useMutation((userData) => sendCodeLogin(userData, setCode));
   const { t } = useTranslation();
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (/^[0-9+-]*$/.test(value)) {
-      // 998 bilan boshlanganligini tekshiramiz
       if (value.startsWith("998")) {
         setFormData((prevFormData) => ({
           ...prevFormData,
@@ -59,7 +60,7 @@ function Login({ handleClose }) {
               />
             </label>
             <button type="submit" className="form-button">
-              {t("hello14")}
+              {t("hello15")}
             </button>
           </form>
         </div>

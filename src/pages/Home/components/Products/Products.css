@@ -53,3 +53,24 @@
     font-size: 20px;
   }
 }
+
+.products-all-button {
+  border-radius: 40px;
+  background: var(--foundation-orange-normal, #f26957);
+  color: #fff;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 220px;
+  height: 45px;
+  border: 2px solid #f26957;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+  cursor: pointer;
+  justify-content: center;
+}

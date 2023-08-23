@@ -7,7 +7,7 @@ import { Box, CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import NotfindInfo from "../../../../components/NotfindInfo/NotfindInfo";
 
-function Products({ paramsData, popular, setPopular, refetch }) {
+function Products({ paramsData, popular, setPopular, refetch, setPage }) {
   const { t } = useTranslation();
 
   return (
@@ -46,6 +46,9 @@ function Products({ paramsData, popular, setPopular, refetch }) {
             <NotfindInfo />
           )}
         </div>
+        <button onClick={() => setPage(100)} className="products-all-button">
+          Barchasi
+        </button>
       </div>
     </>
   );

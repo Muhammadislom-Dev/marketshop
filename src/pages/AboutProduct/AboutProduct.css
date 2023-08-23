@@ -119,6 +119,11 @@
   gap: 8px;
 }
 
+.call__icon-img {
+  width: 60px;
+  height: 60px;
+}
+
 .orderer_title {
   color: #000;
   font-family: "Archivo", sans-serif;

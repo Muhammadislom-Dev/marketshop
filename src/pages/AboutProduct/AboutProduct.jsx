@@ -16,6 +16,7 @@ import { useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { AvatarIcon } from "../../assets/icon";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -52,6 +53,8 @@ function AboutProduct() {
 
   const secondDate = data?.uploadedAt / 1000;
   const formatUpdateDate = formatSecondsToDateString(secondDate);
+
+  console.log(data);
 
   if (isLoading) {
     return (
@@ -159,9 +162,13 @@ function AboutProduct() {
               <CallModal getPhone={getPhone} />
 
               <div className="call__children">
-                <img src={children} alt="children" />
+                <img
+                  src={data.user.photo === null ? AvatarIcon : data.user.photo}
+                  alt="children"
+                  className="call__icon-img"
+                />
                 <div className="call__children_orderer">
-                  <h4 className="orderer_title">E’lon beruvchi</h4>
+                  <h4 className="orderer_title">{data.user.firstName}</h4>
                   <p className="orderer_subTitle">
                     So’ngi faolligi {formattedDate}
                   </p>
@@ -176,8 +183,6 @@ function AboutProduct() {
             </p>
           </div>
         </div>
-        {/* <div className="slider aboutproduct-slider">
-        </div> */}
       </div>
       <div className="about">
         <div className="container">
@@ -189,7 +194,6 @@ function AboutProduct() {
               <Card data={evt} key={index} />
             ))}
           </div>
-          {/* <button className="about-more">Barchasini ko‘rish</button> */}
         </div>
       </div>
 

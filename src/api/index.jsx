@@ -92,11 +92,25 @@ export const loginUser = async (userData, setCode, handleClose) => {
   return response.data;
 };
 
+export const sendCodeLogin = async (userData, setCode) => {
+  const response = await axios
+    .post(`${API_BASE_URL}/auth/v1/sendCode`, userData)
+    .then((res) => {
+      if (res.status === 200) {
+        setCode(true);
+      }
+      toast.success("Tabriklaymiz siz login qila oldingiz!");
+      localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
+    })
+    .catch((err) => console.log(err));
+  return response.data;
+};
+
 export const PhoneSmsCode = async (userData, handleClose) => {
   const response = await axios
     .post(`${API_BASE_URL}/auth/v1/verify`, userData)
     .then((res) => {
-      toast.success("Tabriklaymiz siz ro'yhatdan o'tdingiz!");
+      toast.success("Tabriklaymiz siz muvaffaqiyatli kirdingiz!");
       localStorage.setItem(
         "accessToken",
         `${res?.data?.objectKoinot?.accessToken}`
@@ -120,15 +134,17 @@ export const createProduct = async (data) => {
 };
 
 export const postEmailRequest = async (data) => {
-  const response = await axios.post(`${API_BASE_URL}/email/v1?email=${data}`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
-    toast.success("Email muvaffaqiyatli jo'natildi!");
-  })
-  return response.data
+  const response = await axios
+    .post(`${API_BASE_URL}/email/v1?email=${data}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      toast.success("Email muvaffaqiyatli jo'natildi!");
+    });
+  return response.data;
 };
 
 export const getCategory = async () => {
@@ -362,9 +378,9 @@ export const getParamsProductData = async (code, search) => {
   return response.data;
 };
 
-export const getProductParamsTrueData = async (code, search, popular) => {
+export const getProductParamsTrueData = async (code, search, page, popular) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=50&top=${popular}`,
+    `${API_BASE_URL}/product/v1?page=0&region=${code}&search=${search}&size=${page}&top=${popular}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

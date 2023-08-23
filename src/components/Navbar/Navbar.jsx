@@ -83,7 +83,9 @@ function Navbar() {
           <Link to="/like" className="navbar-link">
             <img src={HeartIcon} alt="" className="navbar-icon" />
             {t("like")}
-            <span className="navbar-count">{data?.objectKoinot?.content?.length}</span>
+            <span className="navbar-count">
+              {data ? data?.objectKoinot?.content?.length : "0"}
+            </span>
           </Link>
           <Language />
           <LoginModal />

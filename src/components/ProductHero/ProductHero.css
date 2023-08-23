@@ -89,9 +89,9 @@
 
 .product-hero-filter-wrapper {
   width: 100%;
-  max-width: 510px;
+  max-width: 480px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-radius: 10px 10px 0px 0px;
   height: 52px;
   background: rgba(0, 0, 0, 0.23);
@@ -131,7 +131,7 @@
 .product-hero-filter-category {
   padding: 0 24px;
   position: absolute;
-  width: 183px;
+  width: 160px;
   top: 52px;
   left: 0;
   box-sizing: border-box;
@@ -172,7 +172,7 @@
 .product-hero-filter-subcategory {
   padding: 0 24px;
   position: absolute;
-  width: 183px;
+  width: 160px;
   top: 0;
   left: 186px;
   box-sizing: border-box;

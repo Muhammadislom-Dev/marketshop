@@ -3,8 +3,12 @@ import headerLike from "../../assets/img/heart.svg";
 import heart from "../../assets/heart.svg";
 import "./Card.css";
 import { Link } from "react-router-dom";
-import { useMutation } from "react-query";
-import { likeProductDelete, likeProductPost } from "../../api";
+import { useMutation, useQuery } from "react-query";
+import {
+  getLikeProductData,
+  likeProductDelete,
+  likeProductPost,
+} from "../../api";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
 import PlaceholderImage from "../LazyLoadImage/LazyLoadImage";
@@ -13,9 +17,9 @@ const Card = ({ data, key, refetch }) => {
   const [likeTrue, setLikeTrue] = useState(false);
   const { t } = useTranslation();
   const { mutate } = useMutation((productId) => likeProductPost(productId));
-  const { mutate: likeDeleteMutate } = useMutation((productId) =>
-    likeProductDelete(productId)
-  );
+  // const { mutate: likeDeleteMutate } = useMutation((productId) =>
+  //   likeProductDelete(productId)
+  // );
 
   const [hoverEffect, setHoverEffect] = useState(false);
   const handleHover = (id) => {
@@ -38,6 +42,7 @@ const Card = ({ data, key, refetch }) => {
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
     return date.toLocaleDateString("en-US", options);
   }
+
 
   const seconds = data?.uploadedAt / 1000;
   const formattedDate = formatSecondsToDateString(seconds);

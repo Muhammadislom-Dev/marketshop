@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
-import { getProductParamsTrueData } from "../../api";
+import { getLikeProductData, getProductParamsTrueData } from "../../api";
 import { useQuery } from "react-query";
 
 function Home() {
   const [code, setCode] = useState("");
+  const [page, setPage] = useState("12");
   const [popular, setPopular] = useState(false);
   const [age, setAge] = React.useState("");
   const [search, setSearch] = useState("");
-
-  const { data: paramsData,refetch } = useQuery(
-    ["paramsData", code, search, popular],
-    () => getProductParamsTrueData(code, search, popular)
+  const { data: paramsData, refetch } = useQuery(
+    ["paramsData", code, search, page, popular],
+    () => getProductParamsTrueData(code, search, page, popular)
   );
 
   const handleClear = () => {
@@ -36,6 +36,7 @@ function Home() {
         setPopular={setPopular}
         paramsData={paramsData}
         refetch={refetch}
+        setPage={setPage}
       />
     </>
   );

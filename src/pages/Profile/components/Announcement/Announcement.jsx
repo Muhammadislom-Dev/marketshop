@@ -16,6 +16,10 @@ function Announcement({ setValue, setEditId }) {
     "profileData",
     getProfileProductData
   );
+  const [isToggled, setisToogle] = useState(false);
+  const handleToggle = () => {
+    setisToogle(!isToggled);
+  };
   const { t } = useTranslation();
   const { mutate: imageMutate } = useMutation(async (payload) => {
     return await API.deleteProductData(payload)
@@ -105,14 +109,14 @@ function Announcement({ setValue, setEditId }) {
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                   {/* <img src={backet} alt="backet" className="blok__backet" /> */}
                 </div>
-                {/* <label className="switch">
+                <label className="switch">
                   <input
                     type="checkbox"
                     checked={isToggled}
                     onChange={handleToggle}
                   />
                   <span className="slider round"></span>
-                </label> */}
+                </label>
               </div>
 
               <img src={cricle} alt="cricle" className="card__cricles" />

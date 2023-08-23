@@ -43,7 +43,6 @@ const Card = ({ data, key, refetch }) => {
     return date.toLocaleDateString("en-US", options);
   }
 
-
   const seconds = data?.uploadedAt / 1000;
   const formattedDate = formatSecondsToDateString(seconds);
   return (

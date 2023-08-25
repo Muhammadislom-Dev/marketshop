@@ -12,7 +12,29 @@
   border-radius: 50%;
   position: absolute;
   top: 45%;
-  left: 68.2%;
+  left: 55%;
+}
+
+.navbar-support {
+  border-radius: 100px;
+  border: 1px solid var(--foundation-orange-normal, #f26957);
+  background: #fff;
+  color: var(--foundation-orange-normal, #f26957);
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 45px;
+  transition: 0.3s all ease-in-out;
+}
+.navbar-support:hover {
+  background-color: #f26957;
+  color: #fff;
 }
 
 .responsiveNavbar {
@@ -85,7 +107,7 @@
   justify-content: space-between;
 }
 .navbar-right {
-  width: 480px;
+  width: 680px;
   display: flex;
   align-items: center;
   justify-content: space-between;

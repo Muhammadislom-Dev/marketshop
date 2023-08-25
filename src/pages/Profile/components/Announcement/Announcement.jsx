@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import "./Announcement.css";
 import edit from "../../../../assets/edit.svg";
 import cricle from "../../../../assets/cricle.svg";
-import { API, deleteProduct, getProfileProductData } from "../../../../api";
+import {
+  API,
+  deleteProduct,
+  getProfileProductData,
+  productActivePost,
+} from "../../../../api";
 import { useMutation, useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteProduct from "../../../../components/DeleteProduct/DeleteProduct";
@@ -16,9 +21,23 @@ function Announcement({ setValue, setEditId }) {
     "profileData",
     getProfileProductData
   );
-  const [isToggled, setisToogle] = useState(false);
-  const handleToggle = () => {
-    setisToogle(!isToggled);
+  const [activeStates, setActiveStates] = useState({});
+  const [newId, setNewId] = useState("");
+  const { mutate: activeMutate } = useMutation((isToggled, activeId) =>
+    productActivePost(isToggled, activeId)
+  );
+
+  const handleToggle = (id) => {
+    const updatedActiveStates = {
+      ...activeStates,
+      [id]: {
+        isToggled: !activeStates[id]?.isToggled,
+      },
+    };
+    setActiveStates(updatedActiveStates);
+
+    const { isToggled: newIsToggled, newId } = updatedActiveStates[id];
+    activeMutate(newIsToggled, newId);
   };
   const { t } = useTranslation();
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -107,16 +126,18 @@ function Announcement({ setValue, setEditId }) {
                     {t("hello52")}
                   </button>
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
-                  {/* <img src={backet} alt="backet" className="blok__backet" /> */}
                 </div>
-                <label className="switch">
+                {/* <label className="switch">
                   <input
                     type="checkbox"
-                    checked={isToggled}
-                    onChange={handleToggle}
+                    checked={activeStates[evt.id]?.isToggled || false}
+                    onChange={() => {
+                      handleToggle(evt.id);
+                      setNewId(evt.id);
+                    }}
                   />
                   <span className="slider round"></span>
-                </label>
+                </label> */}
               </div>
 
               <img src={cricle} alt="cricle" className="card__cricles" />

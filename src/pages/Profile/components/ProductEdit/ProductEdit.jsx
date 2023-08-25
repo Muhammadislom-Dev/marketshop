@@ -60,6 +60,7 @@ function ProductEdit({ editId }) {
     },
   });
 
+  console.log(content);
   const { t } = useTranslation();
 
   const handleSubmit = (e) => {
@@ -102,6 +103,14 @@ function ProductEdit({ editId }) {
       <div className="addImage">
         <h3 className="addImage-title">{t("hello53")}</h3>
         <div className="addImage-box">
+          {content?.photos?.map((evt, key) => (
+            <img
+              key={key}
+              src={evt.filePath}
+              alt=""
+              className="addImage-box-item"
+            />
+          ))}
           {imgBox?.map((el, index) =>
             el ? (
               <img

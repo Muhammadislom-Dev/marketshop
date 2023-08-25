@@ -250,10 +250,28 @@ export const likeProductPost = async (id) => {
       );
     })
     .catch((err) => {
-      console.log(err);
       toast.danger(
         "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!"
       );
+    });
+  return response.data;
+};
+
+export const productActivePost = async (isToggled, newId) => {
+  const response = await axios
+    .post(
+      `${API_BASE_URL}/product/v1/edit-active?active=${isToggled}&id=${newId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
+    .then((res) => {
+      toast.success("Siz mahsulotni holatini o'zgartirdingiz");
+    })
+    .catch((err) => {
+      toast.danger("Bu mahsulotning holati o'zgartirilgan");
     });
   return response.data;
 };

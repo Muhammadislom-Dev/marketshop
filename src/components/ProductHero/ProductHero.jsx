@@ -11,23 +11,32 @@ import { CiSearch } from "react-icons/ci";
 import { SlArrowRight } from "react-icons/sl";
 import { LuSettings2 } from "react-icons/lu";
 import { useQuery } from "react-query";
-import { fetchRegionData, getCategory, getFilterProductData } from "../../api";
+import {
+  fetchRegionData,
+  getByIdCategoryData,
+  getCategory,
+  getFilterProductData,
+} from "../../api";
 import Card from "../Card/Card";
 import NotfindInfo from "../NotfindInfo/NotfindInfo";
+import { useParams } from "react-router-dom";
 
 export default function ProductHero() {
+  const { id } = useParams();
   const [category, setCategory] = useState(1);
   const [section, setSection] = useState(1);
-  const [top, setTop] = useState("");
   const [regionId, setRegionId] = useState("");
   const [search, setSearch] = useState("");
   const [subcategory, setsubcategory] = useState(1);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
   const { data } = useQuery("get category", getCategory);
   const { data: region } = useQuery("exampleData", fetchRegionData);
+  const categoryByIdName = data?.objectKoinot?.find(
+    (evt) => evt.id === Number(id)
+  );
+  console.log(categoryByIdName);
   const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
     () => getFilterProductData(category, regionId, search)
@@ -173,6 +182,9 @@ export default function ProductHero() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="producthero-names">
+        <h2 className="producthero-name">{categoryByIdName?.nameUz}</h2>
       </div>
       <div className="products filter-product">
         {paramsData?.content?.length ? (

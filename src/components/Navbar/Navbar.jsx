@@ -89,6 +89,9 @@ function Navbar() {
           </Link>
           <Language />
           <LoginModal />
+          <Link to="/support" className="navbar-support">
+            Qo‘llab quvvatlash
+          </Link>
         </div>
       </div>
     </div>

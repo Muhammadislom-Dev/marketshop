@@ -9,6 +9,7 @@ import AboutProduct from "../pages/AboutProduct/AboutProduct";
 import Profile from "../pages/Profile/Profile";
 import BlogPage from "../components/BlogPage/BlogPage";
 import Product from "../pages/Product/Product";
+import Support from "../components/Support/Support";
 
 function AppRoutes() {
   const token = localStorage.getItem("accessToken");
@@ -51,6 +52,7 @@ function AppRoutes() {
         />
         <Route path="/profile" element={<>{token ? <Profile /> : ""}</>} />
         <Route path="/:id" element={<Product />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
     </>
   );

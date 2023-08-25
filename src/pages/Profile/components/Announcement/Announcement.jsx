@@ -22,22 +22,19 @@ function Announcement({ setValue, setEditId }) {
     getProfileProductData
   );
   const [activeStates, setActiveStates] = useState({});
+  const active = activeStates?.isToggled;
   const [newId, setNewId] = useState("");
-  const { mutate: activeMutate } = useMutation((isToggled, activeId) =>
-    productActivePost(isToggled, activeId)
+  const { mutate: activeMutate } = useMutation(
+    ["activeParams", active, newId],
+    () => productActivePost(active, newId)
   );
 
   const handleToggle = (id) => {
     const updatedActiveStates = {
-      ...activeStates,
-      [id]: {
-        isToggled: !activeStates[id]?.isToggled,
-      },
+      isToggled: !activeStates[id]?.isToggled,
     };
     setActiveStates(updatedActiveStates);
-
-    const { isToggled: newIsToggled, newId } = updatedActiveStates[id];
-    activeMutate(newIsToggled, newId);
+    activeMutate();
   };
   const { t } = useTranslation();
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -58,6 +55,8 @@ function Announcement({ setValue, setEditId }) {
   const handleClickEdit = () => {
     setValue(3);
   };
+
+  console.log(data.content)
 
   if (isLoading) {
     return (
@@ -127,17 +126,17 @@ function Announcement({ setValue, setEditId }) {
                   </button>
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                 </div>
-                {/* <label className="switch">
+                <label className="switch">
                   <input
                     type="checkbox"
-                    checked={activeStates[evt.id]?.isToggled || false}
+                    checked={activeStates[evt.id]?.isToggled}
                     onChange={() => {
                       handleToggle(evt.id);
                       setNewId(evt.id);
                     }}
                   />
-                  <span className="slider round"></span>
-                </label> */}
+                  <span className="sliderr round"></span>
+                </label>
               </div>
 
               <img src={cricle} alt="cricle" className="card__cricles" />

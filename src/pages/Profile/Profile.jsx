@@ -90,7 +90,7 @@ function Profile() {
               <div className="profile-item">
                 <h3 className="profile-name">
                   {data?.objectKoinot?.firstName === null
-                    ? ""
+                    ? "UserName"
                     : data?.objectKoinot?.firstName}
                 </h3>
                 <a

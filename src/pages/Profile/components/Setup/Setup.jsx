@@ -68,7 +68,6 @@ export default function Setup({ refetch, dataValue }) {
     navigate("/");
   }
 
-
   return (
     <div className="setup">
       <div className="setup-img">
@@ -99,7 +98,7 @@ export default function Setup({ refetch, dataValue }) {
         <label className="product-create-label">
           <h4>First Name</h4>
           <input
-            defaultValue={dataValue.objectKoinot.firstName}
+            // defaultValue={dataValue.objectKoinot.firstName}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
@@ -115,7 +114,7 @@ export default function Setup({ refetch, dataValue }) {
         <label className="product-create-label">
           <h4>Last Name</h4>
           <input
-            defaultValue={dataValue.objectKoinot.lastname}
+            // defaultValue={dataValue.objectKoinot.lastname}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
@@ -131,7 +130,7 @@ export default function Setup({ refetch, dataValue }) {
         <label className="product-create-label">
           <h4>{t("hello45")}</h4>
           <input
-            defaultValue={dataValue.objectKoinot.phoneNumber}
+            // defaultValue={dataValue.objectKoinot.phoneNumber}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,

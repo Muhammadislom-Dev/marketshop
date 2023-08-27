@@ -56,7 +56,6 @@ function Announcement({ setValue, setEditId }) {
     setValue(3);
   };
 
-  console.log(data.content)
 
   if (isLoading) {
     return (

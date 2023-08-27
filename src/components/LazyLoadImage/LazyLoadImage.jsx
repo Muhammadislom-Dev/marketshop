@@ -3,10 +3,6 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 import UploadImage from "../../assets/announcement-placeholder.png";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-const placeholders = {
-  announcement: UploadImage,
-};
-
 function PlaceholderImage({ src, alt, styles, imageFor }) {
   return (
     <LazyLoadImage
@@ -15,6 +11,7 @@ function PlaceholderImage({ src, alt, styles, imageFor }) {
       placeholderSrc={UploadImage}
       width={styles.width}
       height={styles.height}
+      threshold={100}
       draggable={false}
       effect="blur"
       style={{

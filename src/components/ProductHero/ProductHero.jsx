@@ -24,7 +24,7 @@ import { useParams } from "react-router-dom";
 export default function ProductHero() {
   const { id } = useParams();
   const [category, setCategory] = useState(1);
-  const [section, setSection] = useState(1);
+  const [section, setSection] = useState(0);
   const [regionId, setRegionId] = useState("");
   const [search, setSearch] = useState("");
   const [subcategory, setsubcategory] = useState(1);
@@ -36,7 +36,6 @@ export default function ProductHero() {
   const categoryByIdName = data?.objectKoinot?.find(
     (evt) => evt.id === Number(id)
   );
-  console.log(categoryByIdName);
   const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
     () => getFilterProductData(category, regionId, search)

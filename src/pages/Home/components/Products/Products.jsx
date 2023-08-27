@@ -47,7 +47,7 @@ function Products({ paramsData, popular, setPopular, refetch, setPage }) {
           )}
         </div>
         <button onClick={() => setPage(100)} className="products-all-button">
-          Barchasi
+          {t("hello82")}
         </button>
       </div>
     </>

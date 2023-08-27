@@ -83,7 +83,7 @@ function Footer() {
                 <input
                   type="email"
                   value={emailValue}
-                  placeholder="E-pochta kiriting"
+                  placeholder={t("hello81")}
                   className="footer-input"
                   onChange={(e) => setEmailValue(e.target.value)}
                 />

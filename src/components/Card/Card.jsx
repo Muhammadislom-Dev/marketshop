@@ -3,20 +3,15 @@ import headerLike from "../../assets/img/heart.svg";
 import heart from "../../assets/heart.svg";
 import "./Card.css";
 import { Link } from "react-router-dom";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { likeProductPost } from "../../api";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
-import PlaceholderImage from "../LazyLoadImage/LazyLoadImage";
 import UploadImage from "../../assets/announcement-placeholder.png";
-import { useInView } from "react-intersection-observer";
 
 const Card = ({ data, key, refetch }) => {
   const [likeTrue, setLikeTrue] = useState(false);
   const { t } = useTranslation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-  });
   const { mutate } = useMutation((productId) => likeProductPost(productId));
 
   const [hoverEffect, setHoverEffect] = useState(false);

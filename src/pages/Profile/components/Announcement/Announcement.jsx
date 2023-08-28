@@ -4,7 +4,6 @@ import edit from "../../../../assets/edit.svg";
 import cricle from "../../../../assets/cricle.svg";
 import {
   API,
-  deleteProduct,
   getProfileProductData,
   productActivePost,
 } from "../../../../api";

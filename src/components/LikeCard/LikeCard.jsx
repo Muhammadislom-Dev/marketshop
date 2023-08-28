@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import headerLike from "../../assets/img/heart.svg";
 import heart from "../../assets/heart.svg";
-// import "./Card.css";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
-import { likeProductDelete, likeProductPost } from "../../api";
+import { likeProductDelete } from "../../api";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
-import PlaceholderImage from "../LazyLoadImage/LazyLoadImage";
 
 const LikeCard = ({ data, key, refetch }) => {
   const { t } = useTranslation();

@@ -4,22 +4,20 @@ import heart from "../../assets/heart.svg";
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "react-query";
-import {
-  getLikeProductData,
-  likeProductDelete,
-  likeProductPost,
-} from "../../api";
+import { likeProductPost } from "../../api";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
 import PlaceholderImage from "../LazyLoadImage/LazyLoadImage";
+import UploadImage from "../../assets/announcement-placeholder.png";
+import { useInView } from "react-intersection-observer";
 
 const Card = ({ data, key, refetch }) => {
   const [likeTrue, setLikeTrue] = useState(false);
   const { t } = useTranslation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
   const { mutate } = useMutation((productId) => likeProductPost(productId));
-  // const { mutate: likeDeleteMutate } = useMutation((productId) =>
-  //   likeProductDelete(productId)
-  // );
 
   const [hoverEffect, setHoverEffect] = useState(false);
   const handleHover = (id) => {
@@ -31,11 +29,8 @@ const Card = ({ data, key, refetch }) => {
   const handleLike = () => {
     mutate(data.id);
     setLikeTrue(true);
-    // localStorage.setItem("likeValue", true);
     refetch();
   };
-
-  // const likeGetActive = localStorage.getItem("likeValue");
 
   function formatSecondsToDateString(seconds) {
     const date = new Date(seconds * 1000);
@@ -65,18 +60,29 @@ const Card = ({ data, key, refetch }) => {
         )}
         <Link className="card-link" to={`/products/about/${data?.id}`}>
           {data.photos ? (
-            <PlaceholderImage
+            <img
+              style={{
+                width: "291px",
+                height: "164px",
+                borderRadius: "15px",
+                marginTop: "10px",
+              }}
+              loading="lazy"
+              src={data.photos[0].filePath}
+              alt={data?.name}
+            />
+          ) : (
+            <img
               styles={{
                 width: "291px",
                 height: "164px",
                 borderRadius: "15px",
                 marginTop: "10px",
               }}
-              imageFor="announcement"
-              src={data.photos[0].filePath}
+              src={UploadImage}
               alt={data?.name}
             />
-          ) : null}
+          )}
 
           <h2 className="card__title">{data?.name}</h2>
           <p className="card__subTitle">

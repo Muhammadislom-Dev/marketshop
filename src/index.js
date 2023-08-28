@@ -17,7 +17,6 @@ root.render(
     <ToastContainer />
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
-        {/* <ScrollToTop /> */}
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>

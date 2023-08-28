@@ -30,13 +30,13 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BiHomeAlt2 className="fixNavIconL" />
-                <h4>Bosh sahifa</h4>
+                <h4>{t("hello16")}</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BiCategory className="fixNavIconL" />
-                <h4>Kategoriya</h4>
+                <h4>{t("hello58")}</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox plus">
@@ -47,13 +47,13 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <Link to="/" className="fixed-navbar-Ic">
                 <BsHeart className="fixNavIconL" />
-                <h4>Tanlanganlar</h4>
+                <h4>{t("hello13")}</h4>
               </Link>
             </div>
             <div className="fixedNavIconBox">
               <Link to="/profile" className="fixed-navbar-Ic">
                 <BiUser className="fixNavIconL" />
-                <h4>Hisobingiz</h4>
+                <h4>{t("profile")}</h4>
               </Link>
             </div>
           </div>
@@ -90,7 +90,7 @@ function Navbar() {
           <Language />
           <LoginModal />
           <Link to="/support" className="navbar-support">
-            Qo‘llab quvvatlash
+            {t("hello83")}
           </Link>
         </div>
       </div>

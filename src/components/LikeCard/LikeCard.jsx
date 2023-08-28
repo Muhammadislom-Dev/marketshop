@@ -22,11 +22,6 @@ const LikeCard = ({ data, key, refetch }) => {
     }
   };
 
-  //   const handleLike = () => {
-  //     mutate(data.id);
-  //     setLikeTrue(true);
-  //   };
-
   const handleLikeDelete = () => {
     likeDeleteMutate(data.id);
     refetch();
@@ -52,14 +47,14 @@ const LikeCard = ({ data, key, refetch }) => {
         </button>
         <Link className="card-link" to={`/products/about/${data?.id}`}>
           {data.photos ? (
-            <PlaceholderImage
-              styles={{
+            <img
+              style={{
                 width: "291px",
                 height: "164px",
                 borderRadius: "15px",
                 marginTop: "10px",
               }}
-              imageFor="announcement"
+              loading="lazy"
               src={data.photos[0].filePath}
               alt={data?.name}
             />

@@ -4,21 +4,11 @@ import { SlArrowRight } from "react-icons/sl";
 import { useQuery } from "react-query";
 import { getCategory } from "../../api";
 import { useState } from "react";
-import clothes from "../../assets/category-icons/clothes.svg";
-import electronic from "../../assets/category-icons/electronic.svg";
-import transport from "../../assets/category-icons/transport.svg";
-import cat from "../../assets/category-icons/cat.svg";
-import baby from "../../assets/category-icons/baby.svg";
 
 export default function Category({ setisCategory, isCategory }) {
   const [activeCategory, setactiveCategory] = useState(1);
   const { data } = useQuery("get category", getCategory);
-  const icons = [clothes, electronic, transport, cat, baby];
-  // onMouseEnter={() => setShowCat(true)} onMouseLeave={() => setShowCat(false)}
-  // const [showCat, setShowCat] = useState(false);
-  // console.log(activeCategory);
-
-  console.log(data.objectKoinot)
+  const i18next = localStorage.getItem("i18nextLng");
 
   return (
     <div
@@ -27,22 +17,21 @@ export default function Category({ setisCategory, isCategory }) {
       onMouseLeave={() => setisCategory(false)}>
       <ul className="category-section-main">
         {data?.objectKoinot?.length
-          ? data.objectKoinot.map((el, index) => (
+          ? data.objectKoinot.map((el) => (
               <li
                 key={el.id}
-                // onClick={() => setactiveCategory(el.id)}
                 onMouseEnter={() => setactiveCategory(el.id)}
                 className={
                   activeCategory == el.id
                     ? "category-section-main-item category-section-main-item-active"
                     : "category-section-main-item"
                 }>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: el.iconInSelect,
-                    }}
-                  />
-                <span>{el.nameUz}</span>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: el.iconInSelect,
+                  }}
+                />
+                <span>{i18next === "uz" ? el.nameUz : el.nameRu}</span>
                 <SlArrowRight />
               </li>
             ))
@@ -64,7 +53,7 @@ export default function Category({ setisCategory, isCategory }) {
                   }>
                   <li className="category-section-secondary-item">
                     <SlArrowRight />
-                    <span>{el.nameUz}</span>
+                    <span>{i18next === "uz" ? el.nameUz : el.nameRu}</span>
                   </li>
                 </NavLink>
               ))

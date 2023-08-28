@@ -14,7 +14,7 @@
 
 .support-name {
   color: #000;
-  font-family: Archivo;
+  font-family: Archivo, sans-serif;
   font-size: 40px;
   font-style: normal;
   font-weight: 600;
@@ -22,7 +22,7 @@
 }
 .support-text {
   color: var(--foundation-grey-normal, #232323);
-  font-family: Archivo;
+  font-family: Archivo, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;

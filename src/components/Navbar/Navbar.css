@@ -20,7 +20,7 @@
   border: 1px solid var(--foundation-orange-normal, #f26957);
   background: #fff;
   color: var(--foundation-orange-normal, #f26957);
-  font-family: Archivo;
+  font-family: Archivo, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

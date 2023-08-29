@@ -10,7 +10,7 @@ function SmsCode({ phoneNumber, handleClose }) {
   const token = localStorage.getItem("token");
   const [formData, setFormData] = useState({
     token: token,
-    phoneNumber: phoneNumber,
+    phoneNumber: phoneNumber.slice(1, 14),
     code: "",
   });
   const [remainingTime, setRemainingTime] = useState(120); // 2 daqiqa uchun
@@ -74,7 +74,7 @@ function SmsCode({ phoneNumber, handleClose }) {
           {phoneNumber} {t("hello72")}
         </p>
         {remainingTime > 0 ? (
-          <p>
+          <p style={{ color: "#f26957" }}>
             {remainingTime} {t("hello73")}
           </p>
         ) : null}

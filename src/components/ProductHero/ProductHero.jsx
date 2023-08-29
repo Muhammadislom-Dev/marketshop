@@ -23,7 +23,7 @@ import { useParams } from "react-router-dom";
 
 export default function ProductHero() {
   const { id } = useParams();
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState("");
   const [section, setSection] = useState(0);
   const [regionId, setRegionId] = useState("");
   const [search, setSearch] = useState("");
@@ -40,6 +40,8 @@ export default function ProductHero() {
     ["filterParams", category, regionId, search],
     () => getFilterProductData(category, regionId, search)
   );
+  console.log(regionId);
+  console.log(category);
   if (isLoading) {
     return (
       <Box

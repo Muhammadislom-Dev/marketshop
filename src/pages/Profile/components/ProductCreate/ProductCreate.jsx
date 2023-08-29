@@ -148,6 +148,7 @@ export default function ProductCreate({ editId }) {
                 description: e.target.value,
               }))
             }
+            style={{ padding: "8px" }}
             rows="10"
             maxLength={500}
             min={3}
@@ -244,24 +245,6 @@ export default function ProductCreate({ editId }) {
           ) : null}
         </label>
         <label className="product-create-label">
-          <h4>Top</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <Select
-              onChange={(e) =>
-                setProduct((state) => ({
-                  ...state,
-                  top: e.target.value,
-                }))
-              }
-              value={product.top}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}>
-              <MenuItem value={true}>True</MenuItem>
-              <MenuItem value={false}>False</MenuItem>
-            </Select>
-          </FormControl>
-        </label>
-        <label className="product-create-label">
           <h4> {t("hello61")}</h4>
           <input
             onChange={(e) =>
@@ -274,7 +257,7 @@ export default function ProductCreate({ editId }) {
             maxLength={14}
             min={3}
             required
-            placeholder="998"
+            placeholder="+998"
             pattern="^[0-9+-]*$"
           />
         </label>

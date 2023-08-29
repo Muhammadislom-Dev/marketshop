@@ -33,6 +33,8 @@ function CallModal({ getPhone }) {
   };
   const handleClose = () => setOpen(false);
 
+  console.log(getPhone);
+
   return (
     <div className="delete">
       <button onClick={handleOpen} className="call__link">
@@ -45,7 +47,7 @@ function CallModal({ getPhone }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         {accessToken ? (
-          getPhone?.message === "Not reduced limits" ? (
+          getPhone?.lastDailyLimit === 0 ? (
             <Box sx={style}>
               <div className="delete-list">
                 <img src={CloseButton} alt="" />

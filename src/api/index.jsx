@@ -51,6 +51,9 @@ export const registerUser = async (userData, setCode) => {
         setCode(true);
       }
       localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
+    })
+    .catch((err) => {
+      toast.error("Bu nomer ro'yhatdan o'tkan iltimos login qilib kiring!");
     });
   return response.data;
 };
@@ -99,10 +102,13 @@ export const sendCodeLogin = async (userData, setCode) => {
       if (res.status === 200) {
         setCode(true);
       }
-      toast.success("Tabriklaymiz siz login qila oldingiz!");
+      toast.success("Telefon raqamingizga tasdiqlash uchun sms yuborildi!");
       localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      toast.error("Siz bu nomer orqali ro'yhatdan o'tmagansiz!");
+    });
   return response.data;
 };
 
@@ -119,7 +125,9 @@ export const PhoneSmsCode = async (userData, handleClose) => {
       window.location.reload();
       handleClose();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+    });
   return response.data;
 };
 
@@ -334,7 +342,7 @@ export const getByIdCategoryData = async (id) => {
 };
 
 export const getBlogData = async () => {
-  const response = await axios.get(`${API_BASE_URL}/blog/v1?page=0`, {
+  const response = await axios.get(`${API_BASE_URL}/blog/v1?page=0&size=100`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },

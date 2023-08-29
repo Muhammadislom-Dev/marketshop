@@ -26,3 +26,7 @@
 .css-1aquho2-MuiTabs-indicator {
   background-color: #232323 !important ;
 }
+
+.PhoneInputCountry {
+  display: none !important;
+}

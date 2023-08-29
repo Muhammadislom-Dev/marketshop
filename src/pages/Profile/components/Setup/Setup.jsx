@@ -8,10 +8,12 @@ import { API, editUserPost, getSetupData, uploadImage } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { t } from "i18next";
+import PhoneInput from "react-phone-number-input";
 
 export default function Setup({ refetch, dataValue }) {
   const token = localStorage.getItem("tokenReview");
   const [data, setData] = useState(null);
+  const [value, setValue] = useState();
   const [product, setProduct] = useState({
     photosId: "",
     sendAgain: true,
@@ -64,7 +66,6 @@ export default function Setup({ refetch, dataValue }) {
 
   function handleDeleteProfile() {
     localStorage.removeItem("accessToken");
-    window.location.reload();
     navigate("/");
   }
 
@@ -129,7 +130,7 @@ export default function Setup({ refetch, dataValue }) {
         </label>
         <label className="product-create-label">
           <h4>{t("hello45")}</h4>
-          <input
+          {/* <input
             // defaultValue={dataValue.objectKoinot.phoneNumber}
             onChange={(e) =>
               setProduct((state) => ({
@@ -141,6 +142,17 @@ export default function Setup({ refetch, dataValue }) {
             maxLength={14}
             min={3}
             required
+          /> */}
+          <PhoneInput
+            international
+            defaultCountry="UZ"
+            limitMaxLength={14}
+            onChange={(e) =>
+              setProduct((state) => ({
+                ...state,
+                phoneNumber: e?.target?.value?.slice(1, 14),
+              }))
+            }
           />
         </label>
         {/* {open === true ? (

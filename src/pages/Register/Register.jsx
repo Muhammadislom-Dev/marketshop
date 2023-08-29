@@ -4,58 +4,37 @@ import "./Register.css";
 import { registerUser } from "../../api";
 import SmsCode from "../SmsCode/SmsCode";
 import { useTranslation } from "react-i18next";
+import PhoneInput from "react-phone-number-input";
 
 function Register({ handleClose }) {
-  const [formData, setFormData] = useState({
-    phoneNumber: "",
-  });
+  const [value, setValue] = useState();
   const [code, setCode] = useState(false);
   const mutation = useMutation((userData) => registerUser(userData, setCode));
   const { t } = useTranslation();
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (/^[0-9+-]*$/.test(value)) {
-      // 998 bilan boshlanganligini tekshiramiz
-      if (value.startsWith("998")) {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      } else {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: "998" + value, // 998 bilan boshlash
-        }));
-      }
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate(formData);
+    mutation.mutate({
+      phoneNumber: value?.slice(1, 14),
+    });
   };
 
   return (
     <>
       {code === true ? (
-        <SmsCode handleClose={handleClose} phoneNumber={formData.phoneNumber} />
+        <SmsCode handleClose={handleClose} phoneNumber={value} />
       ) : (
         <div>
           <h3 className="register-name">{t("hello14")}</h3>
           <form onSubmit={handleSubmit} action="" className="register-form">
             <label htmlFor="phoneNumber">
               {t("hello45")}
-              <input
-                type="tell"
-                id="phoneNumber"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                className="register-input"
-                maxLength="13"
-                required
-                placeholder="998"
-                pattern="^[0-9+-]*$"
+              <PhoneInput
+                value={value}
+                international
+                defaultCountry="UZ"
+                limitMaxLength={14}
+                onChange={setValue}
               />
             </label>
             <p style={{ width: "450px" }}>{t("hello69")}</p>

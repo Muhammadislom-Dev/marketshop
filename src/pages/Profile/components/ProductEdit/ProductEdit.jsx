@@ -171,6 +171,7 @@ function ProductEdit({ editId }) {
                 description: e.target.value,
               }))
             }
+            style={{ padding: "5px 15px" }}
             rows="10"
             maxLength={500}
             defaultValue={content?.description}
@@ -268,24 +269,6 @@ function ProductEdit({ editId }) {
               </Select>
             </FormControl>
           ) : null}
-        </label>
-        <label className="product-create-label">
-          <h4>Top</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <Select
-              onChange={(e) =>
-                setProduct((state) => ({
-                  ...state,
-                  top: e.target.value,
-                }))
-              }
-              value={product.top}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}>
-              <MenuItem value={true}>True</MenuItem>
-              <MenuItem value={false}>False</MenuItem>
-            </Select>
-          </FormControl>
         </label>
         <label className="product-create-label">
           <h4>{t("hello61")}</h4>

@@ -127,11 +127,11 @@ function AboutProduct() {
 
             <div className="blok__right_icons">
               {data?.quality === "NEW" ? (
-                <span className="icons__link card__new">{t("hello110")}</span>
+                <span className="icons__link card__new">{t("hello4")}</span>
               ) : data?.quality === "TOP" ? (
-                <span className="icons__link card__medium">O'rtacha</span>
+                <span className="icons__link card__medium">{t("hello5")}</span>
               ) : data?.quality === "AVERAGE" ? (
-                <span className="icons__link">Eski</span>
+                <span className="icons__link">{t("hello6")}</span>
               ) : (
                 ""
               )}
@@ -176,10 +176,7 @@ function AboutProduct() {
               </div>
             </div>
             <p className="blok__right_note">
-              <b className="note__span">Muhim eslatma:</b> Qo’ngiroq qilish
-              uchun 1 oyga 10 ta limit beriladi va kunlik limit 3 ta. Undan
-              tashqari qo’ng’rioq qilishingiz uchun siz saytdan ro’yhatdan
-              o’tgan bo’lishingiz kerak bo’ladi.
+              <b className="note__span">{t("hello89")}:</b> {t("hello88")}
             </p>
           </div>
         </div>

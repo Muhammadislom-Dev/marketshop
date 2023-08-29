@@ -50,7 +50,10 @@ function AppRoutes() {
             </>
           }
         />
-        <Route path="/profile" element={<>{token ? <Profile /> : ""}</>} />
+        <Route
+          path="/profile"
+          element={<>{token ? <Profile /> : <Home />}</>}
+        />
         <Route path="/:id" element={<Product />} />
         <Route path="/support" element={<Support />} />
       </Routes>

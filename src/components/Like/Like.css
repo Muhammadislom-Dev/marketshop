@@ -10,6 +10,10 @@
   margin-top: 30px;
 }
 
+.likes {
+  margin-top: 50px;
+}
+
 .likes .likes__page {
   display: flex;
   flex-direction: column;

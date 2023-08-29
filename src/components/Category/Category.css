@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-.category-section-main-item > span {
+.category-section-main-item > a {
   width: 100%;
   max-width: 110px;
   color: #000;

@@ -1,27 +1,17 @@
-import {
-  Box,
-  CircularProgress,
-  FormControl,
-  MenuItem,
-  Select,
-} from "@mui/material";
 import "./ProductHero.css";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { SlArrowRight } from "react-icons/sl";
 import { LuSettings2 } from "react-icons/lu";
 import { useQuery } from "react-query";
-import {
-  fetchRegionData,
-  getByIdCategoryData,
-  getCategory,
-  getFilterProductData,
-} from "../../api";
+import { fetchRegionData, getCategory, getFilterProductData } from "../../api";
 import Card from "../Card/Card";
 import NotfindInfo from "../NotfindInfo/NotfindInfo";
 import { useParams } from "react-router-dom";
+import { t } from "i18next";
 
 export default function ProductHero() {
+  const [page, setPage] = useState("12");
   const { id } = useParams();
   const [category, setCategory] = useState("");
   const [section, setSection] = useState(0);
@@ -38,24 +28,9 @@ export default function ProductHero() {
   );
   const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
-    () => getFilterProductData(category, regionId, search)
+    () => getFilterProductData(category, regionId, search, page)
   );
-  console.log(regionId);
-  console.log(category);
-  if (isLoading) {
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height={"80vh"}>
-        <CircularProgress
-          color="success"
-          style={{ width: "100px", height: "100px" }}
-        />
-      </Box>
-    );
-  }
+
   return (
     <>
       <div className="product-hero">
@@ -94,7 +69,10 @@ export default function ProductHero() {
                           key={el.id}
                           className="product-hero-filter-category-item">
                           <span
-                            onClick={() => setsubcategory(el.id)}
+                            onClick={() => {
+                              setsubcategory(el.id);
+                              setCategory(el.id);
+                            }}
                             style={
                               subcategory === el.id
                                 ? { color: "#F26957" }
@@ -196,6 +174,9 @@ export default function ProductHero() {
           <NotfindInfo />
         )}
       </div>
+      <button onClick={() => setPage(100)} className="products-all-button">
+        {t("hello82")}
+      </button>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Category.css";
 import { SlArrowRight } from "react-icons/sl";
 import { useQuery } from "react-query";
@@ -31,7 +31,9 @@ export default function Category({ setisCategory, isCategory }) {
                     __html: el.iconInSelect,
                   }}
                 />
-                <span>{i18next === "uz" ? el.nameUz : el.nameRu}</span>
+                <Link to={`/${el.id}`}>
+                  {i18next === "uz" ? el.nameUz : el.nameRu}
+                </Link>
                 <SlArrowRight />
               </li>
             ))

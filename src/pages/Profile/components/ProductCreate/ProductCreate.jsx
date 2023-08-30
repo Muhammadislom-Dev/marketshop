@@ -35,19 +35,23 @@ export default function ProductCreate({ editId }) {
   });
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
-    return await API.fileUpload(payload)
-      .then((res) => {
-        setProduct((prev) => ({
-          ...prev,
-          photosId: [res.data.objectKoinot[0].id],
-        }));
-        toast.success("Rasm muvaffaqiyatli yuklandi");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
-      });
+    try {
+      const res = await API.fileUpload(payload);
+      const newPhotoId = res.data.objectKoinot[0].id;
+
+      setProduct((prev) => ({
+        ...prev,
+        photosId: [...prev.photosId, newPhotoId], // Yangi id ni mavjud arrayga qo'shib qo'yamiz
+      }));
+
+      toast.success("Rasm muvaffaqiyatli yuklandi");
+    } catch (err) {
+      console.log(err);
+      toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
+    }
   });
+
+  console.log(product);
 
   const { data: categoryData } = useQuery(
     ["subcategory", category, setDataId],

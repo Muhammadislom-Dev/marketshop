@@ -37,6 +37,7 @@ function Login({ handleClose }) {
                 defaultCountry="UZ"
                 limitMaxLength={14}
                 onChange={setValue}
+                style={{ marginTop: "10px" }}
               />
             </label>
             <button type="submit" className="form-button">

@@ -19,14 +19,20 @@ export default function Setup({ refetch, dataValue }) {
     sendAgain: true,
     codeToVerifyPhoneNumber: null,
     tokenToVerifyPhoneNumber: null,
+    oldPassword: "stri1nglmn",
+    password: "stri1nglmn",
+    language: "uz",
   });
-  const [profile, setProfile] = useState({
-    photosId: null,
-    firstname: null,
-    lastname: null,
-    sendAgain: true,
-    tokenToVerifyPhoneNumber: token,
-  });
+  // const [profile, setProfile] = useState({
+  //   photosId: null,
+  //   firstname: null,
+  //   lastname: null,
+  //   sendAgain: true,
+  //   tokenToVerifyPhoneNumber: token,
+  //   password: "string",
+  //   oldPassword: "string",
+  //   language: "uz",
+  // });
   const navigate = useNavigate();
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -59,13 +65,14 @@ export default function Setup({ refetch, dataValue }) {
     mutate(product);
   };
 
-  const handleReview = (e) => {
-    e.preventDefault();
-    mutate(profile);
-  };
+  // const handleReview = (e) => {
+  //   e.preventDefault();
+  //   mutate(profile);
+  // };
 
   function handleDeleteProfile() {
     localStorage.removeItem("accessToken");
+    toast.success("Siz profilingizdan chiqdingiz!");
     navigate("/");
   }
 

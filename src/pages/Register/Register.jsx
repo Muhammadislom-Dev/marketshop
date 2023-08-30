@@ -32,6 +32,7 @@ function Register({ handleClose }) {
               <PhoneInput
                 value={value}
                 international
+                style={{ marginTop: "10px" }}
                 defaultCountry="UZ"
                 limitMaxLength={14}
                 onChange={setValue}

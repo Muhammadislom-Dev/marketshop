@@ -283,7 +283,7 @@ function ProductEdit({ editId }) {
             maxLength={14}
             min={3}
             required
-            placeholder="998"
+            placeholder="+998"
             pattern="^[0-9+-]*$"
           />
         </label>

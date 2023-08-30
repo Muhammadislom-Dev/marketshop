@@ -72,6 +72,9 @@ export const editUserPost = async (userData) => {
       // if (res.status === 200) {
       //   setOpen(true);
       // }
+    })
+    .catch((err) => {
+      toast.error("Iltimos keyinroq urinib ko'ring");
     });
   return response.data;
 };

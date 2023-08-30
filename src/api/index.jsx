@@ -160,6 +160,13 @@ export const getCategory = async () => {
   return response.data;
 };
 
+export const getCategoryById = async (id, setDataId) => {
+  const response = await axios
+    .get(`${API_BASE_URL}/category/v1/${id}`)
+    .then((res) => setDataId(res.data));
+  return response.data;
+};
+
 export const uploadImage = async (image) => {
   const response = await axios
     .post(`${API_BASE_URL}/attachment/v1/upload-photo`, image, {
@@ -427,12 +434,13 @@ export const getProfileData = async () => {
 
 export const getFilterProductData = async (
   category,
+  active,
   regionId,
   search,
   page
 ) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?active=true&category=${category}&page=0&region=${regionId}&search=${search}&size=${page}&top=true`,
+    `${API_BASE_URL}/product/v1?active=true&category=${category}&page=0&quality=${active}&region=${regionId}&search=${search}&size=${page}&top=true`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

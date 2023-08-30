@@ -181,6 +181,18 @@
   cursor: pointer;
 }
 
+.product-hero-filter-category-item > button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-family: "Archivo", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.36px;
+  cursor: pointer;
+}
+
 .product-hero-filter-category-item > svg {
   width: 20px;
   height: 20px;

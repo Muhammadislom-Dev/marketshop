@@ -13,6 +13,7 @@ import { t } from "i18next";
 export default function ProductHero() {
   const [page, setPage] = useState("12");
   const { id } = useParams();
+  const [active, setActive] = useState("");
   const [category, setCategory] = useState("");
   const [section, setSection] = useState(0);
   const [regionId, setRegionId] = useState("");
@@ -28,8 +29,10 @@ export default function ProductHero() {
   );
   const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
-    () => getFilterProductData(category, regionId, search, page)
+    () => getFilterProductData(category,active, regionId, search, page)
   );
+
+  console.log(active);
 
   return (
     <>
@@ -121,10 +124,25 @@ export default function ProductHero() {
               {section === 2 ? (
                 <div className="product-hero-filter-category">
                   <div className="product-hero-filter-category-item">
-                    <span value="true">Yaxshi</span>
+                    <button
+                      onClick={(e) => setActive(e.target.value)}
+                      value="NEW">
+                      Yangi
+                    </button>
                   </div>
                   <div className="product-hero-filter-category-item">
-                    <span value="false">Yomon</span>
+                    <button
+                      onClick={(e) => setActive(e.target.value)}
+                      value="TOP">
+                      O'rta
+                    </button>
+                  </div>
+                  <div className="product-hero-filter-category-item">
+                    <button
+                      onClick={(e) => setActive(e.target.value)}
+                      value="AVERAGE">
+                      Eski
+                    </button>
                   </div>
                 </div>
               ) : null}

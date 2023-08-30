@@ -11,6 +11,7 @@ import {
   fetchDistrictData,
   fetchRegionData,
   getCategory,
+  getCategoryById,
 } from "../../../../api";
 import ProductModal from "../ProductModal/ProductModal";
 import { Box, CircularProgress } from "@mui/material";
@@ -19,7 +20,9 @@ import { t } from "i18next";
 
 export default function ProductCreate({ editId }) {
   const [imgBox, setimageBox] = useState([]);
+  const [dataId, setDataId] = useState([]);
   const [activeModal, setActiveModal] = useState(false);
+  const [category, setCategory] = useState("");
   const [product, setProduct] = useState({
     categoryId: 1,
     active: true,
@@ -45,6 +48,11 @@ export default function ProductCreate({ editId }) {
         toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
       });
   });
+
+  const { data: categoryData } = useQuery(
+    ["subcategory", category, setDataId],
+    () => getCategoryById(category, setDataId)
+  );
 
   const { mutate, isLoading } = useMutation((data) => createProduct(data), {
     onSuccess: (data) => {
@@ -158,17 +166,34 @@ export default function ProductCreate({ editId }) {
           <h4>{t("hello58")}</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
-              value={product.categoryId}
-              onChange={(e) =>
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
                 setProduct((state) => ({
                   ...state,
                   categoryId: e.target.value,
-                }))
-              }
+                }));
+              }}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}>
               {data?.objectKoinot?.length ? (
                 data?.objectKoinot?.map((el, index) => (
+                  <MenuItem key={index} value={el?.id}>
+                    {el?.nameUz}
+                  </MenuItem>
+                ))
+              ) : (
+                <MenuItem value={1}>{t("hello59")}</MenuItem>
+              )}
+            </Select>
+          </FormControl>
+        </label>
+        <label className="product-create-label">
+          <h4>{t("hello58")}</h4>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Select displayEmpty inputProps={{ "aria-label": "Without label" }}>
+              {dataId?.objectKoinot?.children?.length ? (
+                dataId?.objectKoinot.children?.map((el, index) => (
                   <MenuItem key={index} value={el?.id}>
                     {el?.nameUz}
                   </MenuItem>

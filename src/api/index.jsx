@@ -69,9 +69,6 @@ export const editUserPost = async (userData) => {
       window.location.reload();
       localStorage.setItem("tokenReview", `${res?.data?.objectKoinot?.token}`);
       toast.success("Sizning profilingiz muvaffaqiyatli tahrirlandi!");
-      // if (res.status === 200) {
-      //   setOpen(true);
-      // }
     })
     .catch((err) => {
       toast.error("Iltimos keyinroq urinib ko'ring");

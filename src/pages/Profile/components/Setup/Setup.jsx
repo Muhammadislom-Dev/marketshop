@@ -19,20 +19,9 @@ export default function Setup({ refetch, dataValue }) {
     sendAgain: true,
     codeToVerifyPhoneNumber: null,
     tokenToVerifyPhoneNumber: null,
-    oldPassword: "stri1nglmn",
-    password: "stri1nglmn",
     language: "uz",
   });
-  // const [profile, setProfile] = useState({
-  //   photosId: null,
-  //   firstname: null,
-  //   lastname: null,
-  //   sendAgain: true,
-  //   tokenToVerifyPhoneNumber: token,
-  //   password: "string",
-  //   oldPassword: "string",
-  //   language: "uz",
-  // });
+
   const navigate = useNavigate();
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -64,11 +53,6 @@ export default function Setup({ refetch, dataValue }) {
     e.preventDefault();
     mutate(product);
   };
-
-  // const handleReview = (e) => {
-  //   e.preventDefault();
-  //   mutate(profile);
-  // };
 
   function handleDeleteProfile() {
     localStorage.removeItem("accessToken");
@@ -122,7 +106,6 @@ export default function Setup({ refetch, dataValue }) {
         <label className="product-create-label">
           <h4>Last Name</h4>
           <input
-            // defaultValue={dataValue.objectKoinot.lastname}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
@@ -137,19 +120,6 @@ export default function Setup({ refetch, dataValue }) {
         </label>
         <label className="product-create-label">
           <h4>{t("hello45")}</h4>
-          {/* <input
-            // defaultValue={dataValue.objectKoinot.phoneNumber}
-            onChange={(e) =>
-              setProduct((state) => ({
-                ...state,
-                name: e.target.value,
-              }))
-            }
-            type="number"
-            maxLength={14}
-            min={3}
-            required
-          /> */}
           <PhoneInput
             international
             defaultCountry="UZ"
@@ -162,40 +132,11 @@ export default function Setup({ refetch, dataValue }) {
             }
           />
         </label>
-        {/* {open === true ? (
-          <label className="product-create-label">
-            <h4>Sms Code</h4>
-            <input
-              onChange={(e) =>
-                setProfile((state) => ({
-                  ...state,
-                  codeToVerifyPhoneNumber: e.target.value,
-                }))
-              }
-              type="number"
-              maxLength={5}
-              min={3}
-              required
-            />
-          </label>
-        ) : (
-          " "
-        )} */}
+
         <div className="setup-btn-wrapper">
           <button className="product-create-form-button" type="submit">
             {t("hello77")}
           </button>
-          {/* {open === true ? (
-            <button
-              onClick={handleReview}
-              className="product-create-form-button">
-              Tasdiqlash
-            </button>
-          ) : (
-            <button className="product-create-form-button" type="submit">
-              Yangilash
-            </button>
-          )} */}
           <button
             onClick={handleDeleteProfile}
             className="setup-logOut"

@@ -18,7 +18,6 @@
 .navbar-support {
   border-radius: 100px;
   border: 1px solid var(--foundation-orange-normal, #f26957);
-  background: #fff;
   color: var(--foundation-orange-normal, #f26957);
   font-family: Archivo, sans-serif;
   font-size: 16px;
@@ -30,12 +29,29 @@
   align-items: center;
   width: 180px;
   height: 45px;
+  background-color: #fff;
   transition: 0.3s all ease-in-out;
+  animation-name: NavbarSupport;
+  animation-iteration-count: infinite;
+  animation-delay: 2s;
+  animation-duration: 2s;
 }
-.navbar-support:hover {
+
+@keyframes NavbarSupport {
+  0% {
+    background-color: #fff;
+    color: var(--foundation-orange-normal, #f26957);
+  }
+  100% {
+    background-color: var(--foundation-orange-normal, #f26957);
+    color: #fff;
+  }
+}
+
+/* .navbar-support:hover {
   background-color: #f26957;
   color: #fff;
-}
+} */
 
 .responsiveNavbar {
   position: fixed;

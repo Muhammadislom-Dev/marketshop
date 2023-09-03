@@ -19,6 +19,7 @@
   margin-left: 12px;
   width: 291px;
   height: 164px;
+  object-fit: contain;
   border-radius: 15px !important;
 }
 

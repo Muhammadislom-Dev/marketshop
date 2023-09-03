@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import "./Announcement.css";
 import edit from "../../../../assets/edit.svg";
 import cricle from "../../../../assets/cricle.svg";
-import {
-  API,
-  getProfileProductData,
-  productActivePost,
-} from "../../../../api";
+import { API, getProfileProductData, productActivePost } from "../../../../api";
 import { useMutation, useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteProduct from "../../../../components/DeleteProduct/DeleteProduct";
@@ -20,7 +16,7 @@ function Announcement({ setValue, setEditId }) {
     "profileData",
     getProfileProductData
   );
-  const [activeStates, setActiveStates] = useState({});
+  const [activeStates, setActiveStates] = useState({ isToggled: true });
   const active = activeStates?.isToggled;
   const [newId, setNewId] = useState("");
   const { mutate: activeMutate } = useMutation(
@@ -55,6 +51,7 @@ function Announcement({ setValue, setEditId }) {
     setValue(3);
   };
 
+  console.log(activeStates);
 
   if (isLoading) {
     return (
@@ -95,8 +92,7 @@ function Announcement({ setValue, setEditId }) {
               <div className="card__right">
                 <h2 className="card__right_title">{evt.name}</h2>
                 <div className="card__right_subTitle">
-                  {evt?.region?.name}, {evt?.district?.name} {t("hello3")} Bugun
-                  13:11
+                  {evt?.region?.name}, {evt?.district?.name} {t("hello3")}
                 </div>
                 <div className="card__right_blok">
                   {evt.quality === "NEW" ? (
@@ -125,14 +121,26 @@ function Announcement({ setValue, setEditId }) {
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                 </div>
                 <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={activeStates[evt.id]?.isToggled}
-                    onChange={() => {
-                      handleToggle(evt.id);
-                      setNewId(evt.id);
-                    }}
-                  />
+                  {activeStates?.isToggled === true ? (
+                    <input
+                      type="checkbox"
+                      defaultChecked
+                      // checked
+                      onChange={() => {
+                        handleToggle(evt.id);
+                        setNewId(evt.id);
+                      }}
+                    />
+                  ) : (
+                    <input
+                      type="checkbox" 
+                      checked={activeStates[evt.id]?.isToggled}
+                      onChange={() => {
+                        handleToggle(evt.id);
+                        setNewId(evt.id);
+                      }}
+                    />
+                  )}
                   <span className="sliderr round"></span>
                 </label>
               </div>

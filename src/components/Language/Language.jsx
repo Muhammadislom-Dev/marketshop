@@ -22,7 +22,6 @@ function Language() {
     setSelectedLanguage(lng);
   };
 
-  console.log(selectedLanguage);
   return (
     <div>
       <div className="navbarvictorina_language">
@@ -35,8 +34,7 @@ function Language() {
         </div>
         <div
           className="navbarvictorina_language-bar"
-          style={activeLang ? { display: "flex" } : null}
-          >
+          style={activeLang ? { display: "flex" } : null}>
           <div className="navbar-language-card">
             {languageList.map((el, index) => (
               <p

@@ -21,7 +21,6 @@ function Navbar() {
   const { data } = useQuery("likeData", getLikeProductData);
   const { t } = useTranslation();
 
-  console.log(data?.objectKoinot?.content?.length);
   return (
     <div className="navbar">
       <div className="responsiveNavbar">

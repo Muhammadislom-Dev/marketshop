@@ -51,7 +51,6 @@ export default function ProductCreate({ editId }) {
     }
   });
 
-  console.log(product);
 
   const { data: categoryData } = useQuery(
     ["subcategory", category, setDataId],

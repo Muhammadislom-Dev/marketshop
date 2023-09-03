@@ -34,18 +34,20 @@ function ProductEdit({ editId }) {
   });
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
-    return await API.fileUpload(payload)
-      .then((res) => {
-        setProduct((prev) => ({
-          ...prev,
-          photosId: [res.data.objectKoinot[0].id],
-        }));
-        toast.success("Rasm muvaffaqiyatli yuklandi");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
-      });
+    try {
+      const res = await API.fileUpload(payload);
+      const newPhotoId = res.data.objectKoinot[0].id;
+
+      setProduct((prev) => ({
+        ...prev,
+        photosId: [...prev.photosId, newPhotoId],
+      }));
+
+      toast.success("Rasm muvaffaqiyatli yuklandi");
+    } catch (err) {
+      console.log(err);
+      toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
+    }
   });
   const { data: content } = useQuery(["dataId", editId], () =>
     getByIdProductData(editId)

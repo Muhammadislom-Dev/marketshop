@@ -47,7 +47,7 @@ function CallModal({ getPhone }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         {accessToken ? (
-          getPhone?.message === "Limit exceeded" ? (
+          getPhone?.phoneNumber === null ? (
             <Box sx={style}>
               <div className="delete-list">
                 <img src={CloseButton} alt="" />

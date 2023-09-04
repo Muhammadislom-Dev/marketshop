@@ -118,14 +118,10 @@ function Navbar() {
           <Language />
           <LoginModal />
           <Link to="/support" className="navbar-support">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span> {t("hello83")}
+            <div class="in_btn">{t("hello83")}</div>
           </Link>
         </div>
       </div>
-
       <Modal
         open={open}
         className="modal-login-body"

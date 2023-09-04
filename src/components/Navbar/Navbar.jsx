@@ -62,10 +62,15 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox plus">
-              {/* <LoginModal /> */}
-              <div onClick={handleOpen} className="fixed-navbar-Ic">
-                <BsPlusCircleFill className="plusIconFixNAv" />
-              </div>
+              {token ? (
+                <Link to="/" className="fixed-navbar-Ic">
+                  <BsPlusCircleFill className="plusIconFixNAv" />
+                </Link>
+              ) : (
+                <div onClick={handleOpen} className="fixed-navbar-Ic">
+                  <BsPlusCircleFill className="plusIconFixNAv" />
+                </div>
+              )}
             </div>
             <div className="fixedNavIconBox">
               <Link to="/like" className="fixed-navbar-Ic">
@@ -113,7 +118,10 @@ function Navbar() {
           <Language />
           <LoginModal />
           <Link to="/support" className="navbar-support">
-            {t("hello83")}
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span> {t("hello83")}
           </Link>
         </div>
       </div>

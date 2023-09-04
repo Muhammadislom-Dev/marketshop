@@ -16,6 +16,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin-top: 6px;
+  justify-content: space-between;
 }
 
 .blok__section_left {

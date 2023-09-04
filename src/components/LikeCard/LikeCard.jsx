@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import heart from "../../assets/heart.svg";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
 import { likeProductDelete } from "../../api";
 import ArrowIcon from "../../assets/img/arrowIcon.svg";
 import { useTranslation } from "react-i18next";
+import UploadImage from "../../assets/announcement-placeholder.png";
 
 const LikeCard = ({ data, key, refetch }) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const { t } = useTranslation();
   const { mutate: likeDeleteMutate } = useMutation((productId) =>
     likeProductDelete(productId)
@@ -32,6 +34,18 @@ const LikeCard = ({ data, key, refetch }) => {
 
   const seconds = data?.uploadedAt / 1000;
   const formattedDate = formatSecondsToDateString(seconds);
+  useEffect(() => {
+    const img = new Image();
+    img.src = data.photos[0].filePath;
+
+    img.onload = () => {
+      setIsImageLoaded(true);
+    };
+
+    img.onerror = () => {
+      setIsImageLoaded(false);
+    };
+  }, [data.photos[0].filePath]);
   return (
     <>
       <div
@@ -52,11 +66,23 @@ const LikeCard = ({ data, key, refetch }) => {
                 marginTop: "10px",
                 objectFit: "cover",
               }}
-              loading="lazy"
-              src={data.photos[0].filePath}
+              loading={isImageLoaded ? "eager" : "lazy"}
+              src={isImageLoaded ? data.photos[0].filePath : UploadImage}
               alt={data?.name}
             />
-          ) : null}
+          ) : (
+            <img
+              styles={{
+                width: "291px",
+                height: "164px",
+                borderRadius: "15px",
+                marginTop: "10px",
+                objectFit: "cover",
+              }}
+              src={UploadImage}
+              alt={data?.name}
+            />
+          )}
 
           <h2 className="card__title">{data?.name}</h2>
           <p className="card__subTitle">

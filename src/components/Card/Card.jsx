@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import headerLike from "../../assets/img/heart.svg";
 import heart from "../../assets/heart.svg";
 import "./Card.css";
@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import UploadImage from "../../assets/announcement-placeholder.png";
 
 const Card = ({ data, key, refetch }) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [likeTrue, setLikeTrue] = useState(false);
   const { t } = useTranslation();
   const { mutate } = useMutation((productId) => likeProductPost(productId));
@@ -35,6 +36,18 @@ const Card = ({ data, key, refetch }) => {
 
   const seconds = data?.uploadedAt / 1000;
   const formattedDate = formatSecondsToDateString(seconds);
+  useEffect(() => {
+    const img = new Image();
+    img.src = data.photos[0].filePath;
+
+    img.onload = () => {
+      setIsImageLoaded(true);
+    };
+
+    img.onerror = () => {
+      setIsImageLoaded(false);
+    };
+  }, [data.photos[0].filePath]);
   return (
     <>
       <div
@@ -63,8 +76,8 @@ const Card = ({ data, key, refetch }) => {
                 marginTop: "10px",
                 objectFit: "cover",
               }}
-              loading="lazy"
-              src={data.photos[0].filePath}
+              loading={isImageLoaded ? "eager" : "lazy"}
+              src={isImageLoaded ? data.photos[0].filePath : UploadImage}
               alt={data?.name}
             />
           ) : (

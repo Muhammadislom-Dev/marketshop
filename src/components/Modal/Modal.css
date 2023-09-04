@@ -127,10 +127,15 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   .register-form p {
     width: 380px !important;
   }
+}
+
+.modal-responsive-icon {
+  display: none;
 }
 
 @media (max-width: 840px) {

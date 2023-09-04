@@ -47,6 +47,6 @@
     padding: 37px 70px;
   }
   .navbar-support {
-    display: none;
+    display: none !important;
   }
 }

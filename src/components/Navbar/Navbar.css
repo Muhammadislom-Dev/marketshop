@@ -30,28 +30,7 @@
   width: 180px;
   height: 45px;
   background-color: #fff;
-  transition: 0.3s all ease-in-out;
-  animation-name: NavbarSupport;
-  animation-iteration-count: infinite;
-  animation-delay: 2s;
-  animation-duration: 2s;
 }
-
-@keyframes NavbarSupport {
-  0% {
-    background-color: #fff;
-    color: var(--foundation-orange-normal, #f26957);
-  }
-  100% {
-    background-color: var(--foundation-orange-normal, #f26957);
-    color: #fff;
-  }
-}
-
-/* .navbar-support:hover {
-  background-color: #f26957;
-  color: #fff;
-} */
 
 .responsiveNavbar {
   position: fixed;
@@ -197,6 +176,9 @@
 @media (max-width: 840px) {
   .navbar-link {
     display: none;
+  }
+  .modal-responsive-icon {
+    display: block !important;
   }
 
   .navbar-link:first-child {

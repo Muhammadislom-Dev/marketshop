@@ -61,6 +61,7 @@ const Card = ({ data, key, refetch }) => {
                 height: "164px",
                 borderRadius: "15px",
                 marginTop: "10px",
+                objectFit: "cover",
               }}
               loading="lazy"
               src={data.photos[0].filePath}
@@ -73,6 +74,7 @@ const Card = ({ data, key, refetch }) => {
                 height: "164px",
                 borderRadius: "15px",
                 marginTop: "10px",
+                objectFit: "cover",
               }}
               src={UploadImage}
               alt={data?.name}

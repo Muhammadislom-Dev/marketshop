@@ -29,7 +29,7 @@ function Login({ handleClose }) {
         <div>
           <h3 className="register-name">{t("hello15")}</h3>
           <form onSubmit={handleSubmit} action="" className="register-form">
-            <label htmlFor="phoneNumber">
+            <label style={{ width: "100%" }} htmlFor="phoneNumber">
               {t("hello45")}
               <PhoneInput
                 value={value}

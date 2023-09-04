@@ -96,8 +96,23 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow-x: auto;
   margin-top: 69px;
   margin-left: 60px;
+}
+
+.header-list::-webkit-scrollbar {
+  width: 0px;
+}
+
+.header-list::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #ddf8f0;
+}
+
+.header-list::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: transparent;
 }
 
 .header-link {

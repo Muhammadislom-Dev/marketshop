@@ -10,6 +10,7 @@ import Register from "../../pages/Register/Register";
 import { ObjectIcon } from "../../assets/icon";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { BsHeart, BsPlusCircleFill } from "react-icons/bs";
 
 const style = {
   position: "absolute",
@@ -45,6 +46,17 @@ export default function LoginModal() {
           {t("hello15")}
         </div>
       )}
+      {/* <div className="modal-responsive-icon">
+        {token ? (
+          <div onClick={handleOpen} className="fixed-navbar-Ic">
+            <BsPlusCircleFill className="plusIconFixNAv" />
+          </div>
+        ) : (
+          <Link to="/" className="fixed-navbar-Ic">
+            <BsPlusCircleFill className="plusIconFixNAv" />
+          </Link>
+        )}
+      </div> */}
       <Modal
         open={open}
         className="modal-login-body"

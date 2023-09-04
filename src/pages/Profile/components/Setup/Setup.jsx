@@ -11,15 +11,10 @@ import { t } from "i18next";
 import PhoneInput from "react-phone-number-input";
 
 export default function Setup({ refetch, dataValue }) {
-  const token = localStorage.getItem("tokenReview");
   const [data, setData] = useState(null);
   const [value, setValue] = useState();
   const [product, setProduct] = useState({
-    photosId: "",
-    sendAgain: true,
-    codeToVerifyPhoneNumber: null,
-    tokenToVerifyPhoneNumber: null,
-    language: "uz",
+    language: null,
   });
 
   const navigate = useNavigate();
@@ -90,11 +85,10 @@ export default function Setup({ refetch, dataValue }) {
         <label className="product-create-label">
           <h4>First Name</h4>
           <input
-            // defaultValue={dataValue.objectKoinot.firstName}
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
-                firstname: e.target.value,
+                firstName: e.target.value,
               }))
             }
             type="text"
@@ -109,7 +103,7 @@ export default function Setup({ refetch, dataValue }) {
             onChange={(e) =>
               setProduct((state) => ({
                 ...state,
-                lastname: e.target.value,
+                lastName: e.target.value,
               }))
             }
             type="text"
@@ -121,15 +115,11 @@ export default function Setup({ refetch, dataValue }) {
         <label className="product-create-label">
           <h4>{t("hello45")}</h4>
           <PhoneInput
+            value={value}
+            onChange={setValue}
             international
             defaultCountry="UZ"
             limitMaxLength={14}
-            onChange={(e) =>
-              setProduct((state) => ({
-                ...state,
-                phoneNumber: e?.target?.value?.slice(1, 14),
-              }))
-            }
           />
         </label>
 

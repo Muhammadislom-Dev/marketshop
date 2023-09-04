@@ -31,3 +31,25 @@
   line-height: 80px; /* 125% */
   margin-top: 0;
 }
+
+@media (max-width: 1350px) {
+  .likes {
+    padding: 0 30px;
+    border-radius: 30px;
+  }
+  .likes .container {
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .likes h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .likes .container {
+    min-height: 300px;
+    width: 100%;
+    margin-top: 0;
+  }
+}

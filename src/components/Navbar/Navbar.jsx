@@ -15,11 +15,34 @@ import Category from "../Category/Category";
 import { useTranslation } from "react-i18next";
 import { getLikeProductData } from "../../api";
 import { useQuery } from "react-query";
+import Login from "../../pages/Login/Login";
+import Modal from "@mui/material/Modal";
+import Register from "../../pages/Register/Register";
+import { ObjectIcon } from "../../assets/icon";
+import { Box } from "@mui/material";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 1230,
+  height: 550,
+  bgcolor: "background.paper",
+  border: "2px solid #fff",
+  p: 4,
+  borderRadius: "24px",
+};
 
 function Navbar() {
   const [isCategory, setisCategory] = useState(false);
   const { data } = useQuery("likeData", getLikeProductData);
   const { t } = useTranslation();
+  const token = localStorage.getItem("accessToken");
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [login, setLogin] = React.useState("Kirish");
 
   return (
     <div className="navbar">
@@ -39,12 +62,13 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox plus">
-              <Link to="/" className="fixed-navbar-Ic">
+              {/* <LoginModal /> */}
+              <div onClick={handleOpen} className="fixed-navbar-Ic">
                 <BsPlusCircleFill className="plusIconFixNAv" />
-              </Link>
+              </div>
             </div>
             <div className="fixedNavIconBox">
-              <Link to="/" className="fixed-navbar-Ic">
+              <Link to="/like" className="fixed-navbar-Ic">
                 <BsHeart className="fixNavIconL" />
                 <h4>{t("hello13")}</h4>
               </Link>
@@ -93,6 +117,52 @@ function Navbar() {
           </Link>
         </div>
       </div>
+
+      <Modal
+        open={open}
+        className="modal-login-body"
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+        <Box sx={style}>
+          <div className="modal-page">
+            <div className="modal-left">
+              <div className="login-list">
+                <button
+                  value="Kirish"
+                  onClick={(e) => setLogin(e.target.value)}
+                  style={{
+                    backgroundColor: login === "Kirish" ? "#232323" : null,
+                    color: login === "Kirish" ? "#fff" : null,
+                  }}
+                  className="login-button">
+                  {t("hello15")}
+                </button>
+                <button
+                  value="Ro‘yhatdan o‘tish"
+                  onClick={(e) => setLogin(e.target.value)}
+                  style={{
+                    backgroundColor:
+                      login === "Ro‘yhatdan o‘tish" ? "#232323" : null,
+                    color: login === "Ro‘yhatdan o‘tish" ? "#fff" : null,
+                  }}
+                  className="login-button">
+                  {t("hello14")}
+                </button>
+              </div>
+
+              {login === "Kirish" ? (
+                <Login handleClose={handleClose} />
+              ) : (
+                <Register handleClose={handleClose} />
+              )}
+            </div>
+            <div className="modal-right">
+              <img src={ObjectIcon} className="modal-img" alt="" />
+            </div>
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 }

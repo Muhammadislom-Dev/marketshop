@@ -4,7 +4,7 @@
 }
 
 .header-bgimage {
-  background-image: url("../../../../assets/bannerBG.svg");
+  background-image: url("../../../../assets/newbanner.svg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 593px;
@@ -140,7 +140,8 @@
   align-items: center;
   justify-content: center;
   padding: 8px;
-  background-color: #a65822;
+  background-color: rgba(0, 0, 0, 0.33);
+  backdrop-filter: blur(6px);
 }
 
 .header-link-span p svg path {
@@ -243,13 +244,14 @@
   .header-list {
     margin-left: 0 !important;
     width: 100%;
-    gap: 25px;
+    gap: 0px;
   }
   .header-link {
     height: 100px;
+    padding: 0 2px;
   }
 
   .header-subname {
-    font-size: 8px;
+    font-size: 14px;
   }
 }

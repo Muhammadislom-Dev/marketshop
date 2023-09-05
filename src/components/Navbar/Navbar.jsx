@@ -117,6 +117,13 @@ function Navbar() {
           </Link>
           <Language />
           <LoginModal />
+          {token ? (
+            <Link to="/profile" className="navbar-profiles">
+              <span>+</span> {t("give")}
+            </Link>
+          ) : (
+            ""
+          )}
           <Link to="/support" className="navbar-support">
             <div class="in_btn">{t("hello83")}</div>
           </Link>

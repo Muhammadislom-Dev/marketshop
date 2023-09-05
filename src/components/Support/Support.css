@@ -5,7 +5,7 @@
 .support-top {
   border-radius: 16px;
   background: #5bc4bd;
-  padding: 37px 307px;
+  padding: 92px 307px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -47,6 +47,9 @@
     padding: 37px 70px;
   }
   .navbar-support {
+    display: none !important;
+  }
+  .navbar-profiles {
     display: none !important;
   }
 }

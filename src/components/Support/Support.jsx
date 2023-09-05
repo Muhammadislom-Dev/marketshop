@@ -1,5 +1,5 @@
 import React from "react";
-import SuppotrImage from "../../assets/support.svg";
+import SuppotrImage from "../../assets/click.svg";
 import "./Support.css";
 import { useTranslation } from "react-i18next";
 

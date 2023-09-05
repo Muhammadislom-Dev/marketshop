@@ -48,6 +48,7 @@ const Card = ({ data, key, refetch }) => {
       setIsImageLoaded(false);
     };
   }, [data.photos[0].filePath]);
+
   return (
     <>
       <div

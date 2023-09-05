@@ -7,7 +7,6 @@ import { useQuery } from "react-query";
 function Home() {
   const [code, setCode] = useState("");
   const [page, setPage] = useState("12");
-  const { data } = useQuery("likeData", getLikeProductData);
   const [popular, setPopular] = useState(false);
   const [age, setAge] = React.useState("");
   const [search, setSearch] = useState("");
@@ -15,7 +14,6 @@ function Home() {
     ["paramsData", code, search, page, popular],
     () => getProductParamsTrueData(code, search, page, popular)
   );
-
 
   const handleClear = () => {
     setSearch("");

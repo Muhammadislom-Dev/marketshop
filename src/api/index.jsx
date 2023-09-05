@@ -230,7 +230,7 @@ export const getPhoneProductData = async (id) => {
 
 export const getProfileProductData = async () => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?my=true&page=0&size=100`,
+    `${API_BASE_URL}/product/v1/my?page=0&size=3000`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -16,21 +16,19 @@ function Announcement({ setValue, setEditId }) {
     "profileData",
     getProfileProductData
   );
-  const [activeStates, setActiveStates] = useState({ isToggled: true });
-  const active = activeStates?.isToggled;
+
+  const [active, setActive] = useState(false);
   const [newId, setNewId] = useState("");
   const { mutate: activeMutate } = useMutation(
     ["activeParams", active, newId],
     () => productActivePost(active, newId)
   );
 
-  const handleToggle = (id) => {
-    const updatedActiveStates = {
-      isToggled: !activeStates[id]?.isToggled,
-    };
-    setActiveStates(updatedActiveStates);
+  const handleToogle = (e) => {
+    setActive(e.target.value);
     activeMutate();
   };
+
   const { t } = useTranslation();
   const { mutate: imageMutate } = useMutation(async (payload) => {
     return await API.deleteProductData(payload)
@@ -50,8 +48,6 @@ function Announcement({ setValue, setEditId }) {
   const handleClickEdit = () => {
     setValue(3);
   };
-
-  console.log(activeStates);
 
   if (isLoading) {
     return (
@@ -121,22 +117,22 @@ function Announcement({ setValue, setEditId }) {
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                 </div>
                 <label className="switch">
-                  {activeStates?.isToggled === true ? (
+                  {evt.active === true ? (
                     <input
                       type="checkbox"
+                      value={false}
                       defaultChecked
-                      // checked
-                      onChange={() => {
-                        handleToggle(evt.id);
+                      onChange={(e) => {
+                        handleToogle(e);
                         setNewId(evt.id);
                       }}
                     />
                   ) : (
                     <input
-                      type="checkbox" 
-                      checked={activeStates[evt.id]?.isToggled}
-                      onChange={() => {
-                        handleToggle(evt.id);
+                      type="checkbox"
+                      value={true}
+                      onChange={(e) => {
+                        handleToogle(e);
                         setNewId(evt.id);
                       }}
                     />

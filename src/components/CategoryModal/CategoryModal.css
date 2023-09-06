@@ -1,0 +1,22 @@
+.categorymodal-title a {
+  color: #000;
+  font-family: Archivo, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.categorymodal-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.modal-navbar-category .css-xhbw0r {
+  overflow-y: scroll;
+}
+
+.categorymodal-item{
+    margin-left: -15px;
+}

@@ -20,6 +20,7 @@ import Modal from "@mui/material/Modal";
 import Register from "../../pages/Register/Register";
 import { ObjectIcon } from "../../assets/icon";
 import { Box } from "@mui/material";
+import CategoryModal from "../CategoryModal/CategoryModal";
 
 const style = {
   position: "absolute",
@@ -56,10 +57,7 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox">
-              <Link to="/" className="fixed-navbar-Ic">
-                <BiCategory className="fixNavIconL" />
-                <h4>{t("hello58")}</h4>
-              </Link>
+              <CategoryModal />
             </div>
             <div className="fixedNavIconBox plus">
               {token ? (

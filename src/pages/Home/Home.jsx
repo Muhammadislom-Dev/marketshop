@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
-import { getLikeProductData, getProductParamsTrueData } from "../../api";
+import { getProductParamsTrueData } from "../../api";
 import { useQuery } from "react-query";
 
 function Home() {

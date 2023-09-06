@@ -38,7 +38,6 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
     setDistrict(event?.target?.value);
   };
 
-
   if (isLoading) {
     return (
       <Box

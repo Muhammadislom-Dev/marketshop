@@ -248,7 +248,6 @@
   width: 100%;
   margin-top: 15px;
   display: flex;
-  /* justify-content: space-evenly; */
 }
 
 .mySwiper > .swiper-wrapper {
@@ -291,6 +290,9 @@
   .mySwiper2 {
     width: 100%;
   }
+  .delete-modal-product .css-9naxxq {
+    width: 400px !important;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -300,5 +302,20 @@
 
   .blok__right_icons {
     flex-wrap: wrap;
+  }
+
+  .aboutproduct-img {
+    height: 400px;
+    border-radius: 16px;
+  }
+  .call__icon-img {
+    width: 45px;
+    height: 45px;
+  }
+  .blok__right_call {
+    gap: 15px;
+  }
+  .delete-modal-product .css-9naxxq {
+    width: 90% !important;
   }
 }

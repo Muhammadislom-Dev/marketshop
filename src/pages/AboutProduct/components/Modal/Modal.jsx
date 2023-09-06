@@ -59,7 +59,7 @@ function CallModal({ getPhone }) {
               </div>
             </Box>
           ) : (
-            <Box sx={style}>
+            <Box  sx={style}>
               <div className="delete-list">
                 <img src={CallButton} alt="" />
                 <h3 className="delete-name">{getPhone?.phoneNumber}</h3>

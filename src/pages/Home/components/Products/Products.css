@@ -37,16 +37,6 @@
   background-color: transparent;
 }
 
-/* .products-div {
-  border: 2px solid green;
-} */
-
-@media (max-width: 985px) {
-  .products {
-    justify-content: space-evenly;
-  }
-}
-
 @media (max-width: 450px) {
   .product-name {
     font-size: 20px;

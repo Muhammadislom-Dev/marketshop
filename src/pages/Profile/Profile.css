@@ -82,10 +82,20 @@
   }
 
   .delete-list {
-    width: 350px !important;
+    width: 90% !important;
+    margin: 0 auto;
   }
   .delete-submit {
     width: 100% !important;
+  }
+
+  .delete-name {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+  .delete-text{
+    font-size: 16px !important;
+    line-height: 20px !important;
   }
 
   .delete-img {

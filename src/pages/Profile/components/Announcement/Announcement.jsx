@@ -140,7 +140,6 @@ function Announcement({ setValue, setEditId }) {
                   <span className="sliderr round"></span>
                 </label>
               </div>
-
               <img src={cricle} alt="cricle" className="card__cricles" />
             </div>
           ))}

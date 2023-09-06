@@ -287,7 +287,7 @@ export const productActivePost = async (isToggled, newId) => {
       toast.success("Siz mahsulotni holatini o'zgartirdingiz");
     })
     .catch((err) => {
-      toast.danger("Bu mahsulotning holati o'zgartirilgan");
+      toast.error("Bu mahsulotning holati o'zgartirilgan");
     });
   return response.data;
 };

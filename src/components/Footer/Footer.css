@@ -170,4 +170,8 @@
   .footer-name {
     font-size: 20px;
   }
+
+  .footer .container {
+    padding: 0 8px;
+  }
 }

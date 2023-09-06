@@ -36,19 +36,21 @@ function Products({ paramsData, popular, setPopular, refetch, setPage }) {
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="products">
-          {paramsData?.content?.length > 0 ? (
-            paramsData?.content?.map((evt, index) => (
-              <Card refetch={refetch} data={evt} key={index} />
-            ))
-          ) : (
-            <NotfindInfo />
-          )}
+      <div className="products-all-home">
+        <div className="container">
+          <div className="products">
+            {paramsData?.content?.length > 0 ? (
+              paramsData?.content?.map((evt, index) => (
+                <Card refetch={refetch} data={evt} key={index} />
+              ))
+            ) : (
+              <NotfindInfo />
+            )}
+          </div>
+          <button onClick={() => setPage(100)} className="products-all-button">
+            {t("hello82")}
+          </button>
         </div>
-        <button onClick={() => setPage(100)} className="products-all-button">
-          {t("hello82")}
-        </button>
       </div>
     </>
   );

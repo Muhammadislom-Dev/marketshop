@@ -81,19 +81,19 @@
     height: auto;
   }
 
-  .delete-list{
+  .delete-list {
     width: 350px !important;
   }
-  .delete-submit{
+  .delete-submit {
     width: 100% !important;
   }
 
-  .delete-img{
+  .delete-img {
     width: 280px;
   }
 
   .announcement .container {
-    padding: 0 ;
+    padding: 0;
   }
 
   .announcement-card {
@@ -128,5 +128,15 @@
 
   .profile-item {
     margin-left: 0;
+  }
+
+  .addImage-box-item,
+  .addImage-box-button {
+    width: 45% !important;
+    height: 150px !important;
+  }
+  .addImage-box-button > svg {
+    width: 45px !important;
+    height: 45px !important;
   }
 }

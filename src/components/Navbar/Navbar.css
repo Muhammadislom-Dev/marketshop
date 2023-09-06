@@ -81,7 +81,8 @@
 }
 
 .fixedContainer {
-  width: 100%;
+  width: 100% !important;
+  padding: 0;
 }
 
 .fixedNav {
@@ -258,5 +259,11 @@
 
   .responsiveNavbar {
     display: flex;
+  }
+}
+
+@media (max-width: 450px) {
+  .navbar .container {
+    padding: 0 10px;
   }
 }

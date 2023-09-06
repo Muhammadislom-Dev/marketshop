@@ -106,3 +106,46 @@
   right: 0;
   bottom: 0;
 }
+
+.card-photo {
+  width: 291px;
+  height: 164px;
+  border-radius: 15px;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: 100%;
+  }
+  .card {
+    width: 48%;
+    height: 300px;
+    margin-top: 0;
+    margin: 10px 0;
+  }
+  .products {
+    gap: 10px;
+    width: 100% !important;
+  }
+  .card-photo {
+    width: 100%;
+    margin-top: -6px;
+    padding: 0 10px;
+    height: 125px;
+  }
+  .card__title {
+    width: 150px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 23px;
+  }
+  .card__subTitle {
+    width: 150px;
+  }
+
+  .products-all-home .container {
+    padding: 0 8px;
+  }
+}

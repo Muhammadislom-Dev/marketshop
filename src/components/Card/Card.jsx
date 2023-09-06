@@ -70,26 +70,15 @@ const Card = ({ data, key, refetch }) => {
         <Link className="card-link" to={`/products/about/${data?.id}`}>
           {data.photos ? (
             <img
-              style={{
-                width: "291px",
-                height: "164px",
-                borderRadius: "15px",
-                marginTop: "10px",
-                objectFit: "cover",
-              }}
+              className="card-photo"
+             
               loading={isImageLoaded ? "eager" : "lazy"}
               src={isImageLoaded ? data.photos[0].filePath : UploadImage}
               alt={data?.name}
             />
           ) : (
             <img
-              styles={{
-                width: "291px",
-                height: "164px",
-                borderRadius: "15px",
-                marginTop: "10px",
-                objectFit: "cover",
-              }}
+              className="card-photo"
               src={UploadImage}
               alt={data?.name}
             />

@@ -129,12 +129,16 @@ export const PhoneSmsCode = async (userData, handleClose) => {
 };
 
 export const createProduct = async (data) => {
-  const response = await axios.post(`${API_BASE_URL}/product/v1/`, data, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await axios
+    .post(`${API_BASE_URL}/product/v1/`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        "Content-Type": "application/json",
+      },
+    })
+    .catch((err) => {
+      toast.error("Sizda xatolik yuzaga keldi!");
+    });
   return response.data;
 };
 

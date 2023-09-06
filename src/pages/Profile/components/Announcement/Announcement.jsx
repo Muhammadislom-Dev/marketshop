@@ -93,12 +93,12 @@ function Announcement({ setValue, setEditId }) {
                 <div className="card__right_blok">
                   {evt.quality === "NEW" ? (
                     <span className="blok__old card__new">{t("hello4")}</span>
-                  ) : evt.quality === "TOP" ? (
+                  ) : evt.quality === "OLD" ? (
                     <span className="blok__old card__medium">
-                      {t("hello5")}
+                      {t("hello6")}
                     </span>
                   ) : evt.quality === "AVERAGE" ? (
-                    <span className="blok__old">{t("hello6")}</span>
+                    <span className="blok__old">{t("hello5")}</span>
                   ) : (
                     ""
                   )}
@@ -124,7 +124,7 @@ function Announcement({ setValue, setEditId }) {
                       defaultChecked
                       onChange={(e) => {
                         handleToogle(e);
-                        setNewId(evt.id);
+                        setNewId(evt?.id);
                       }}
                     />
                   ) : (
@@ -133,7 +133,7 @@ function Announcement({ setValue, setEditId }) {
                       value={true}
                       onChange={(e) => {
                         handleToogle(e);
-                        setNewId(evt.id);
+                        setNewId(evt?.id);
                       }}
                     />
                   )}

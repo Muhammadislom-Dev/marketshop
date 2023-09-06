@@ -11,9 +11,7 @@ import {
   createProduct,
   fetchDistrictData,
   fetchRegionData,
-  getByIdProductData,
   getCategory,
-  uploadImage,
 } from "../../../../api";
 import { Box, CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
@@ -72,6 +70,7 @@ function ProductEdit({ editId }) {
       photosId: idArray,
       name: moderData.name,
       description: moderData.description,
+      phoneNumber: moderData.phoneNumber.slice(1, 13),
     };
     mutate(submitData);
   };
@@ -292,7 +291,19 @@ function ProductEdit({ editId }) {
             placeholder="+998"
             pattern="^[0-9+-]*$"
             defaultValue="+998"
+            style={{
+              border:
+                moderData?.phoneNumber &&
+                !moderData.phoneNumber.startsWith("+998")
+                  ? "2px solid red"
+                  : "2px solid var(--foundation-grey-light-hover, #dedede)",
+            }}
           />
+          <p style={{ color: "red", fontSize: "14px" }}>
+            {moderData?.phoneNumber && !moderData.phoneNumber.startsWith("+998")
+              ? "+998 bilan yozing"
+              : ""}
+          </p>
         </label>
 
         <button className="product-create-form-button" type="submit">

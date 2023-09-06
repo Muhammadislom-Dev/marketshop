@@ -124,8 +124,7 @@ export const PhoneSmsCode = async (userData, handleClose) => {
       window.location.reload();
       handleClose();
     })
-    .catch((err) => {
-    });
+    .catch((err) => {});
   return response.data;
 };
 
@@ -324,12 +323,14 @@ export const getLikeProductData = async () => {
   return response.data;
 };
 
-export const getByIdProductData = async (id) => {
-  const response = await axios.get(`${API_BASE_URL}/product/v1/${id}`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  });
+export const getByIdProductData = async (id, setModerData) => {
+  const response = await axios
+    .get(`${API_BASE_URL}/product/v1/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+    .then((res) => setModerData(res?.data));
   return response.data;
 };
 

@@ -50,7 +50,6 @@ export default function ProductCreate({ editId }) {
     }
   });
 
-
   const { data: categoryData } = useQuery(
     ["subcategory", category, setDataId],
     () => getCategoryById(category, setDataId)
@@ -60,8 +59,7 @@ export default function ProductCreate({ editId }) {
     onSuccess: (data) => {
       setActiveModal(true);
     },
-    onError: (error) => {
-    },
+    onError: (error) => {},
   });
 
   const handleSubmit = (e) => {
@@ -83,7 +81,6 @@ export default function ProductCreate({ editId }) {
       districtId: district?.data?.objectKoinot?.content[0]?.id,
     }));
   }, [district.data]);
-
 
   if (isLoading) {
     return (
@@ -286,6 +283,7 @@ export default function ProductCreate({ editId }) {
             required
             placeholder="+998"
             pattern="^[0-9+-]*$"
+            defaultValue="+998"
           />
         </label>
 

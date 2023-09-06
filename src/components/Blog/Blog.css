@@ -71,8 +71,9 @@
 
 .blog-about-img {
   width: 100%;
-  height: 100%;
+  height: 347px;
   border-radius: 20px;
+  object-fit: cover;
 }
 
 .blok__section_right {
@@ -159,5 +160,10 @@
   .titels__light {
     font-size: 17px;
     line-height: 28px;
+  }
+
+  .blog-about-img {
+    height: 250px !important;
+    object-fit: cover;
   }
 }

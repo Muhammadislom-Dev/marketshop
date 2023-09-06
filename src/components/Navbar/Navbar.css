@@ -18,7 +18,7 @@
 .navbar-support {
   display: flex;
   height: 50px;
-  width: 150px;
+  width: 180px;
   text-decoration: none;
   background: transparent;
   align-items: center;
@@ -32,6 +32,9 @@
   font-weight: 500;
   line-height: normal;
   color: var(--foundation-orange-normal, #f26957);
+}
+.navbar-card {
+  width: 25px;
 }
 
 .navbar-support::after {
@@ -50,9 +53,10 @@
 
 .in_btn {
   background-color: #fff;
-  width: 146px;
+  width: 180px;
   height: 46px;
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   border-radius: 9px;

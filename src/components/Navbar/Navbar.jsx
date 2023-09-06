@@ -21,6 +21,7 @@ import Register from "../../pages/Register/Register";
 import { ObjectIcon } from "../../assets/icon";
 import { Box } from "@mui/material";
 import CategoryModal from "../CategoryModal/CategoryModal";
+import CreditCard from "../../assets/credit-card.svg";
 
 const style = {
   position: "absolute",
@@ -123,7 +124,10 @@ function Navbar() {
             ""
           )}
           <Link to="/support" className="navbar-support">
-            <div class="in_btn">{t("hello83")}</div>
+            <div class="in_btn">
+              <img src={CreditCard} alt="" className="navbar-card" />
+              {t("hello83")}
+            </div>
           </Link>
         </div>
       </div>

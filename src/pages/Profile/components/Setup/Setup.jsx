@@ -29,7 +29,6 @@ export default function Setup({ refetch, dataValue }) {
         toast.success("Rasim muvofaqiyatli yuklandi");
       })
       .catch((err) => {
-        console.log(err);
         toast.danger("Rasim yuklanmadi qaytadan urinib ko'ring");
       });
   });
@@ -37,11 +36,8 @@ export default function Setup({ refetch, dataValue }) {
   const { mutate, isLoading } = useMutation((data) => editUserPost(data), {
     onSuccess: (data) => {
       refetch();
-      console.log(data);
     },
-    onError: (error) => {
-      console.log(error);
-    },
+    onError: (error) => {},
   });
 
   const handleSubmit = (e) => {

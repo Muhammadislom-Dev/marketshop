@@ -46,7 +46,6 @@ export default function ProductCreate({ editId }) {
 
       toast.success("Rasm muvaffaqiyatli yuklandi");
     } catch (err) {
-      console.log(err);
       toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
     }
   });
@@ -62,7 +61,6 @@ export default function ProductCreate({ editId }) {
       setActiveModal(true);
     },
     onError: (error) => {
-      console.log(error.message);
     },
   });
 
@@ -85,6 +83,7 @@ export default function ProductCreate({ editId }) {
       districtId: district?.data?.objectKoinot?.content[0]?.id,
     }));
   }, [district.data]);
+
 
   if (isLoading) {
     return (

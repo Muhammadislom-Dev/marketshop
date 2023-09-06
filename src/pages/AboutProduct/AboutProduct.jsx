@@ -54,7 +54,6 @@ function AboutProduct() {
   const secondDate = data?.uploadedAt / 1000;
   const formatUpdateDate = formatSecondsToDateString(secondDate);
 
-  console.log(data);
 
   if (isLoading) {
     return (

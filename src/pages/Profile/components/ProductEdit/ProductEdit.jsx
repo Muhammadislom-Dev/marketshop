@@ -45,7 +45,6 @@ function ProductEdit({ editId }) {
 
       toast.success("Rasm muvaffaqiyatli yuklandi");
     } catch (err) {
-      console.log(err);
       toast.danger("Rasm yuklanmadi qaytadan urinib ko'ring");
     }
   });
@@ -58,11 +57,9 @@ function ProductEdit({ editId }) {
       setActiveModal(true);
     },
     onError: (error) => {
-      console.log(error.message);
     },
   });
 
-  console.log(content);
   const { t } = useTranslation();
 
   const handleSubmit = (e) => {

@@ -33,7 +33,6 @@ function CallModal({ getPhone }) {
   };
   const handleClose = () => setOpen(false);
 
-  console.log(getPhone);
 
   return (
     <div className="delete">

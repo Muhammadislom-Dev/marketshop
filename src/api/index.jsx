@@ -106,7 +106,6 @@ export const sendCodeLogin = async (userData, setCode) => {
       localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
     })
     .catch((err) => {
-      console.log(err);
       toast.error("Siz bu nomer orqali ro'yhatdan o'tmagansiz!");
     });
   return response.data;
@@ -126,7 +125,6 @@ export const PhoneSmsCode = async (userData, handleClose) => {
       handleClose();
     })
     .catch((err) => {
-      console.log(err);
     });
   return response.data;
 };
@@ -307,7 +305,6 @@ export const likeProductDelete = async (id) => {
       );
     })
     .catch((err) => {
-      console.log(err);
       toast.danger(
         "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!"
       );

@@ -32,7 +32,6 @@ export default function ProductHero() {
     () => getFilterProductData(category,active, regionId, search, page)
   );
 
-  console.log(active);
 
   return (
     <>

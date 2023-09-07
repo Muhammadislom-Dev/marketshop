@@ -22,6 +22,7 @@ export default function ProductHero() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const idCategory = category === "" ? id : category;
   const { data } = useQuery("get category", getCategory);
   const { data: region } = useQuery("exampleData", fetchRegionData);
   const categoryByIdName = data?.objectKoinot?.find(
@@ -29,9 +30,8 @@ export default function ProductHero() {
   );
   const { data: paramsData, isLoading } = useQuery(
     ["filterParams", category, regionId, search],
-    () => getFilterProductData(category,active, regionId, search, page)
+    () => getFilterProductData(idCategory, active, regionId, search, page)
   );
-
 
   return (
     <>

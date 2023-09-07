@@ -12,13 +12,13 @@
   border-radius: 50%;
   position: absolute;
   top: 45%;
-  left: 45%;
+  left: 47%;
 }
 
 .navbar-support {
   display: flex;
   height: 50px;
-  width: 180px;
+  width: 150px;
   text-decoration: none;
   background: transparent;
   align-items: center;
@@ -33,16 +33,13 @@
   line-height: normal;
   color: var(--foundation-orange-normal, #f26957);
 }
-.navbar-card {
-  width: 25px;
-}
 
 .navbar-support::after {
   content: "";
   display: flex;
   align-items: center;
   justify-self: center;
-  width: 180px;
+  width: 150px;
   height: 40px;
   position: absolute;
   background-color: var(--foundation-orange-normal, #f26957);
@@ -143,11 +140,11 @@
   justify-content: space-between;
 }
 .navbar-right {
-  width: 830px;
+  max-width: 830px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px 10px;
+  gap: 15px 20px;
 }
 
 .navbar-profiles {

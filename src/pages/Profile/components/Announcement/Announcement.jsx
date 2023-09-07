@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import "./Announcement.css";
 import edit from "../../../../assets/edit.svg";
 import cricle from "../../../../assets/cricle.svg";
-import { API, getProfileProductData, productActivePost } from "../../../../api";
+import {
+  API,
+  getProfileProductData,
+  productActivePost,
+  productActivePostFalse,
+} from "../../../../api";
 import { useMutation, useQuery } from "react-query";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteProduct from "../../../../components/DeleteProduct/DeleteProduct";
@@ -24,9 +29,17 @@ function Announcement({ setValue, setEditId }) {
     () => productActivePost(active, newId)
   );
 
+  const { mutate: falseActive } = useMutation(["falseParams", newId], () =>
+    productActivePostFalse(newId)
+  );
+
   const handleToogle = (e) => {
     setActive(e.target.value);
     activeMutate();
+  };
+
+  const handleToggleFalse = () => {
+    falseActive();
   };
 
   const { t } = useTranslation();
@@ -116,29 +129,27 @@ function Announcement({ setValue, setEditId }) {
                   </button>
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                 </div>
-                <label className="switch">
-                  {evt.active === true ? (
+
+                {evt.active === true ? (
+                  <label onClick={() => setNewId(evt?.id)} className="switch">
                     <input
                       type="checkbox"
                       value={false}
                       defaultChecked
                       onChange={(e) => {
                         handleToogle(e);
-                        setNewId(evt?.id);
                       }}
                     />
-                  ) : (
-                    <input
-                      type="checkbox"
-                      value={true}
-                      onChange={(e) => {
-                        handleToogle(e);
-                        setNewId(evt?.id);
-                      }}
-                    />
-                  )}
-                  <span className="sliderr round"></span>
-                </label>
+                    <span className="sliderr round"></span>
+                  </label>
+                ) : evt?.active === false ? (
+                  <label onClick={() => setNewId(evt?.id)} className="switch">
+                    <input type="checkbox" onChange={handleToggleFalse} />
+                    <span className="sliderr round"></span>
+                  </label>
+                ) : (
+                  ""
+                )}
               </div>
               <img src={cricle} alt="cricle" className="card__cricles" />
             </div>

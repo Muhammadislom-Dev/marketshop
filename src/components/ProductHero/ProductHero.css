@@ -156,6 +156,8 @@
   border-radius: 0px 0px 8px 8px;
   background: rgba(0, 0, 0, 0.23);
   backdrop-filter: blur(13px);
+  height: 200px;
+  overflow-y: scroll;
 }
 
 .product-hero-category {

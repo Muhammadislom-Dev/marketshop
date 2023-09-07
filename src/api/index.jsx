@@ -261,28 +261,42 @@ export const likeProductPost = async (id) => {
       }
     )
     .then((res) => {
-      toast.success(
-        "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatiga qo'shildi!"
-      );
+      toast.success("Mahsulot muvaffaqiyatli sevimlilar ro'yhatiga qo'shildi!");
     })
     .catch((err) => {
-      toast.danger(
-        "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!"
+      toast.error(
+        "Bu mahsulotni sevimlilar ro'yhatiga qo'shish uchun ro'yhatdan o'tishingiz kerak!"
       );
     });
   return response.data;
 };
 
-export const productActivePost = async (isToggled, newId) => {
+export const productActivePost = async (active, newId) => {
   const response = await axios
     .post(
-      `${API_BASE_URL}/product/v1/edit-active?active=${isToggled}&id=${newId}`,
+      `${API_BASE_URL}/product/v1/edit-active?active=${active}&id=${newId}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       }
     )
+    .then((res) => {
+      toast.success("Siz mahsulotni holatini o'zgartirdingiz");
+    })
+    .catch((err) => {
+      toast.error("Bu mahsulotning holati o'zgartirilgan");
+    });
+  return response.data;
+};
+
+export const productActivePostFalse = async (newId) => {
+  const response = await axios
+    .post(`${API_BASE_URL}/product/v1/edit-active?active=true&id=${newId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
     .then((res) => {
       toast.success("Siz mahsulotni holatini o'zgartirdingiz");
     })
@@ -435,14 +449,14 @@ export const getProfileData = async () => {
 };
 
 export const getFilterProductData = async (
-  category,
+  idCategory,
   active,
   regionId,
   search,
   page
 ) => {
   const response = await axios.get(
-    `${API_BASE_URL}/product/v1?active=true&category=${category}&page=0&quality=${active}&region=${regionId}&search=${search}&size=${page}&top=true`,
+    `${API_BASE_URL}/product/v1?active=&category=${idCategory}&page=0&quality=${active}&region=${regionId}&search=${search}&size=${page}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

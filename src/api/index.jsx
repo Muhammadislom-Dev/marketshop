@@ -352,6 +352,15 @@ export const getByIdProductData = async (id, setModerData) => {
   return response.data;
 };
 
+export const getByIdProductDataAbout = async (id) => {
+  const response = await axios.get(`${API_BASE_URL}/product/v1/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+  return response.data;
+};
+
 export const getByIdCategoryData = async (id) => {
   const response = await axios.get(
     `${API_BASE_URL}/product/v1?category=${id}&page=0&size=100`,

@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import {
   getByIdCategoryData,
   getByIdProductData,
+  getByIdProductDataAbout,
   getPhoneProductData,
   getProductData,
 } from "../../api";
@@ -30,7 +31,7 @@ function AboutProduct() {
 
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(["product", id], () =>
-    getByIdProductData(id)
+  getByIdProductDataAbout(id)
   );
   const { data: getPhone } = useQuery(["get-phone", id], () =>
     getPhoneProductData(id)
@@ -121,8 +122,8 @@ function AboutProduct() {
             </Swiper>
           </div>
           <div className="blok__right">
-            <h1 className="blok__right_title">{data.name}</h1>
-            <p className="blok__right_subTitle">{data.description}</p>
+            <h1 className="blok__right_title">{data?.name}</h1>
+            <p className="blok__right_subTitle">{data?.description}</p>
 
             <div className="blok__right_icons">
               {data?.quality === "NEW" ? (
@@ -141,7 +142,7 @@ function AboutProduct() {
                   className="icons__oblast_location"
                 />
                 <p className="icons__oblast_subTitle">
-                  {data.region.name}, {data.district.name} tumani
+                  {data?.region?.name}, {data?.district?.name} tumani
                 </p>
               </div>
               <div className="icons__oblast">
@@ -154,7 +155,7 @@ function AboutProduct() {
               </div>
               <div className="icons__oblast">
                 <img src={eye} alt="eye" className="icons__oblast_location" />
-                <p className="icons__oblast_subTitle">{data.see} +</p>
+                <p className="icons__oblast_subTitle">{data?.see} +</p>
               </div>
             </div>
             <div className="blok__right_call">
@@ -162,12 +163,12 @@ function AboutProduct() {
 
               <div className="call__children">
                 <img
-                  src={data.user.photo === null ? AvatarIcon : data.user.photo}
+                  src={data?.user?.photo === null ? AvatarIcon : data?.user?.photo}
                   alt="children"
                   className="call__icon-img"
                 />
                 <div className="call__children_orderer">
-                  <h4 className="orderer_title">{data.user.firstName}</h4>
+                  <h4 className="orderer_title">{data?.user?.firstName}</h4>
                   <p className="orderer_subTitle">
                     So’ngi faolligi {formattedDate}
                   </p>

@@ -110,7 +110,7 @@ function Navbar() {
           <Link to="/like" className="navbar-link">
             <img src={HeartIcon} alt="" className="navbar-icon" />
             {t("like")}
-            <span className="navbar-count">
+            <span className={`${token ? "navbar-count" : "navbar-counts"}`}>
               {data ? data?.objectKoinot?.content?.length : "0"}
             </span>
           </Link>

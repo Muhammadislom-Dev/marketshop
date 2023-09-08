@@ -1,4 +1,3 @@
-// import "./ProductCreate.css";
 import { BsPlusCircle } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
@@ -23,6 +22,7 @@ function ProductEdit({ editId }) {
   const [imgBox, setimageBox] = useState([]);
   const [moderData, setModerData] = useState([]);
   const [idArray, setIdArray] = useState([]);
+  const i18next = localStorage.getItem("i18nextLng");
   const [activeModal, setActiveModal] = useState(false);
   const [product, setProduct] = useState({
     id: editId,
@@ -205,7 +205,7 @@ function ProductEdit({ editId }) {
               {data?.objectKoinot?.length ? (
                 data?.objectKoinot?.map((el, index) => (
                   <MenuItem key={index} value={el?.id}>
-                    {el?.nameUz}
+                    {i18next === "uz" ? el.nameUz : el.nameRu}
                   </MenuItem>
                 ))
               ) : (
@@ -227,9 +227,9 @@ function ProductEdit({ editId }) {
               value={product.productQuality}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}>
-              <MenuItem value="AVERAGE">AVERAGE</MenuItem>
-              <MenuItem value="NEW">NEW</MenuItem>
-              <MenuItem value="OLD">OLD</MenuItem>
+              <MenuItem value="AVERAGE">{t("hello5")}</MenuItem>
+              <MenuItem value="NEW">{t("hello4")}</MenuItem>
+              <MenuItem value="OLD">{t("hello6")}</MenuItem>
             </Select>
           </FormControl>
         </label>

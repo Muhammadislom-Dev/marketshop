@@ -18,10 +18,11 @@ import { Box, CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import { t } from "i18next";
 
-export default function ProductCreate({ editId }) {
+export default function ProductCreate() {
   const [imgBox, setimageBox] = useState([]);
   const [dataId, setDataId] = useState([]);
   const [activeModal, setActiveModal] = useState(false);
+  const i18next = localStorage.getItem("i18nextLng");
   const [category, setCategory] = useState(1);
   const [product, setProduct] = useState({
     categoryId: 1,
@@ -81,8 +82,6 @@ export default function ProductCreate({ editId }) {
       districtId: district?.data?.objectKoinot?.content[0]?.id,
     }));
   }, [district.data]);
-
-  console.log(dataId);
 
   if (isLoading) {
     return (
@@ -180,7 +179,7 @@ export default function ProductCreate({ editId }) {
               {data?.objectKoinot?.length ? (
                 data?.objectKoinot?.map((el, index) => (
                   <MenuItem key={index} value={el?.id}>
-                    {el?.nameUz}
+                    {i18next === "uz" ? el.nameUz : el.nameRu}
                   </MenuItem>
                 ))
               ) : (
@@ -196,7 +195,7 @@ export default function ProductCreate({ editId }) {
               {dataId?.objectKoinot?.children?.length
                 ? dataId?.objectKoinot.children?.map((el, index) => (
                     <MenuItem key={index} value={el?.id}>
-                      {el?.nameUz}
+                      {i18next === "uz" ? el.nameUz : el.nameRu}
                     </MenuItem>
                   ))
                 : null}
@@ -216,9 +215,9 @@ export default function ProductCreate({ editId }) {
               value={product.productQuality}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}>
-              <MenuItem value="AVERAGE">O'rta</MenuItem>
-              <MenuItem value="NEW">Yangi</MenuItem>
-              <MenuItem value="OLD">Eski</MenuItem>
+              <MenuItem value="AVERAGE">{t("hello5")}</MenuItem>
+              <MenuItem value="NEW">{t("hello4")}</MenuItem>
+              <MenuItem value="OLD">{t("hello6")}</MenuItem>
             </Select>
           </FormControl>
         </label>

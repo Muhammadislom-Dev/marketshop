@@ -31,7 +31,7 @@ export default function Category({ setisCategory, isCategory }) {
                     __html: el.iconInSelect,
                   }}
                 />
-                <Link to={`/${el.id}`}>
+                <Link onClick={() => setisCategory(false)} to={`/${el.id}`}>
                   {i18next === "uz" ? el.nameUz : el.nameRu}
                 </Link>
                 <SlArrowRight />

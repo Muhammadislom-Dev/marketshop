@@ -133,6 +133,7 @@
   width: 148px;
   height: 163px;
   border-radius: 10px !important;
+  object-fit: cover;
 }
 
 .card__left__check:active {
@@ -220,7 +221,7 @@ input:checked + .sliderr:before {
 
 @media (max-width: 450px) {
   .announcement .container {
-    padding: 0 10px;
+    padding: 0;
   }
 
   .announcement-picture {

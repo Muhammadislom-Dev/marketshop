@@ -160,8 +160,8 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
 
 @media (max-width: 500px) {
   .css-1jdzi4o {
-    height: 90vh !important;
-    min-height: 90vh;
+    height: 85vh !important;
+    min-height: 85vh;
     width: 370px !important;
     padding: 15px 0 !important;
   }
@@ -178,7 +178,15 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   .form-button {
     width: 100% !important;
     padding: 0 20px !important;
-    margin-top: 30px !important;
+    margin-top: 10px !important;
+  }
+
+  .register-form label {
+    margin-top: 0 !important;
+  }
+  .aboutproduct-imgs {
+    width: 80px !important;
+    height: 80px !important;
   }
   .modal-left {
     width: 100% !important;

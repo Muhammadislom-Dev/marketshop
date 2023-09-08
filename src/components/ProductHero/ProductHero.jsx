@@ -33,6 +33,7 @@ export default function ProductHero() {
     () => getFilterProductData(idCategory, active, regionId, search, page)
   );
 
+
   return (
     <>
       <div className="product-hero">
@@ -121,26 +122,31 @@ export default function ProductHero() {
                 style={section === 2 ? { rotate: "-90deg" } : null}
               />
               {section === 2 ? (
-                <div className="product-hero-filter-category">
+                <div
+                  style={{ height: "130px" }}
+                  className="product-hero-filter-category">
                   <div className="product-hero-filter-category-item">
                     <button
+                      style={active === "NEW" ? { color: "#F26957" } : null}
                       onClick={(e) => setActive(e.target.value)}
                       value="NEW">
-                      Yangi
+                      {t("hello4")}
                     </button>
                   </div>
                   <div className="product-hero-filter-category-item">
                     <button
-                      onClick={(e) => setActive(e.target.value)}
-                      value="TOP">
-                      O'rta
-                    </button>
-                  </div>
-                  <div className="product-hero-filter-category-item">
-                    <button
+                      style={active === "AVERAGE" ? { color: "#F26957" } : null}
                       onClick={(e) => setActive(e.target.value)}
                       value="AVERAGE">
-                      Eski
+                      {t("hello5")}
+                    </button>
+                  </div>
+                  <div className="product-hero-filter-category-item">
+                    <button
+                      style={active === "OLD" ? { color: "#F26957" } : null}
+                      onClick={(e) => setActive(e.target.value)}
+                      value="OLD">
+                     {t("hello6")}
                     </button>
                   </div>
                 </div>

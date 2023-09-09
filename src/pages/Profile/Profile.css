@@ -8,6 +8,22 @@
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
 }
 
+.product-edit-input {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  color: #000;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.product-edit-input::after {
+  content: "+";
+  position: absolute;
+  left: 8.3%;
+}
+
 .profileBackground {
   width: 100%;
   background-image: url("../../assets/img/Banner\ \(2\).png");
@@ -93,7 +109,7 @@
     font-size: 24px !important;
     line-height: 28px !important;
   }
-  .delete-text{
+  .delete-text {
     font-size: 16px !important;
     line-height: 20px !important;
   }

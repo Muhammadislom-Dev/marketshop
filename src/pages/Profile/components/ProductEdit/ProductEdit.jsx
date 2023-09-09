@@ -70,7 +70,7 @@ function ProductEdit({ editId }) {
       photosId: idArray,
       name: moderData.name,
       description: moderData.description,
-      phoneNumber: moderData.phoneNumber.slice(1, 13),
+      phoneNumber: moderData.phoneNumber,
     };
     mutate(submitData);
   };
@@ -281,29 +281,18 @@ function ProductEdit({ editId }) {
         </label>
         <label className="product-create-label">
           <h4>{t("hello61")}</h4>
-          <input
-            value={moderData?.phoneNumber}
-            onChange={(e) => handleChange("phoneNumber", e.target.value)}
-            type="tell"
-            maxLength={14}
-            min={3}
-            required
-            placeholder="+998"
-            pattern="^[0-9+-]*$"
-            defaultValue="+998"
-            style={{
-              border:
-                moderData?.phoneNumber &&
-                !moderData.phoneNumber.startsWith("+998")
-                  ? "2px solid red"
-                  : "2px solid var(--foundation-grey-light-hover, #dedede)",
-            }}
-          />
-          <p style={{ color: "red", fontSize: "14px" }}>
-            {moderData?.phoneNumber && !moderData.phoneNumber.startsWith("+998")
-              ? "+998 bilan yozing"
-              : ""}
-          </p>
+          <div className="product-edit-input" style={{ width: "100%" }}>
+            <input
+              value={moderData?.phoneNumber}
+              onChange={(e) => handleChange("phoneNumber", e.target.value)}
+              type="tell"
+              maxLength={14}
+              className="product-edit-input"
+              min={3}
+              required
+              pattern="^[0-9+-]*$"
+            />
+          </div>
         </label>
 
         <button className="product-create-form-button" type="submit">

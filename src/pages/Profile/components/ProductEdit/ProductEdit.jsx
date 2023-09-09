@@ -294,7 +294,6 @@ function ProductEdit({ editId }) {
             />
           </div>
         </label>
-
         <button className="product-create-form-button" type="submit">
           {t("hello66")}
         </button>

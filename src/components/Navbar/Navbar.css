@@ -15,7 +15,7 @@
   left: 45.8%;
 }
 
-.navbar-counts{
+.navbar-counts {
   background-color: #f26957;
   color: #ffffff;
   font-size: 12px;
@@ -277,5 +277,12 @@
 @media (max-width: 450px) {
   .navbar .container {
     padding: 0 10px;
+  }
+
+  .navbar__icon {
+    width: 95px;
+  }
+  .navbar-right{
+    gap: 8px;
   }
 }

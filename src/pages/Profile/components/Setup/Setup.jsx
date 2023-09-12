@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { t } from "i18next";
 import PhoneInput from "react-phone-number-input";
 
-export default function Setup({ refetch, dataValue }) {
+export default function Setup({ refetch }) {
   const [data, setData] = useState(null);
   const [value, setValue] = useState();
   const [product, setProduct] = useState({

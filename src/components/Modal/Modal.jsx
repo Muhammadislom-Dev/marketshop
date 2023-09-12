@@ -1,7 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { UserIcon } from "../../assets/icon";
 import "./Modal.css";
@@ -10,7 +8,8 @@ import Register from "../../pages/Register/Register";
 import { ObjectIcon } from "../../assets/icon";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { BsHeart, BsPlusCircleFill } from "react-icons/bs";
+import { getProfileData } from "../../api";
+import { useQuery } from "react-query";
 
 const style = {
   position: "absolute",
@@ -27,36 +26,39 @@ const style = {
 
 export default function LoginModal() {
   const token = localStorage.getItem("accessToken");
+  const { data, isLoading, refetch } = useQuery("profile", getProfileData);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [login, setLogin] = React.useState("Kirish");
   const { t } = useTranslation();
 
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       {token ? (
-        <Link to="/profile" className="navbar-profile">
-          <img src={UserIcon} alt="" className="navbar-icon" />
-          {t("profile")}
-        </Link>
+        <>
+          {data?.objectKoinot === null ? (
+            <Link onClick={handleReload} to="/" className="navbar-profile">
+              <img src={UserIcon} alt="" className="navbar-icon" />
+              {t("profile")}
+            </Link>
+          ) : (
+            <Link to="/profile" className="navbar-profile">
+              <img src={UserIcon} alt="" className="navbar-icon" />
+              {t("profile")}
+            </Link>
+          )}
+        </>
       ) : (
         <div onClick={handleOpen} className="navbar-link">
           <img src={UserIcon} alt="" className="navbar-icon" />
           {t("hello15")}
         </div>
       )}
-      {/* <div className="modal-responsive-icon">
-        {token ? (
-          <div onClick={handleOpen} className="fixed-navbar-Ic">
-            <BsPlusCircleFill className="plusIconFixNAv" />
-          </div>
-        ) : (
-          <Link to="/" className="fixed-navbar-Ic">
-            <BsPlusCircleFill className="plusIconFixNAv" />
-          </Link>
-        )}
-      </div> */}
       <Modal
         open={open}
         className="modal-login-body"

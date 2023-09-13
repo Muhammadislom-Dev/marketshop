@@ -22,6 +22,8 @@ function Announcement({ setValue, setEditId }) {
     getProfileProductData
   );
 
+  console.log(data);
+
   const [active, setActive] = useState(false);
   const [newId, setNewId] = useState("");
   const { mutate: activeMutate } = useMutation(
@@ -99,6 +101,33 @@ function Announcement({ setValue, setEditId }) {
                 ) : null}
               </div>
               <div className="card__right">
+                {evt.status === "ACCEPTED" ? (
+                  <span
+                    style={{ width: "110px", marginBottom: "10px" }}
+                    className="blok__old card__new">
+                    Tasdiqlangan
+                  </span>
+                ) : evt.status === "REJECTED" ? (
+                  <span
+                    style={{ width: "110px", marginBottom: "10px" }}
+                    className="blok__old card__medium">
+                    Tasdiqlanmagan
+                  </span>
+                ) : evt.status === "EDITED" ? (
+                  <span
+                    style={{ width: "110px", marginBottom: "10px" }}
+                    className="blok__old">
+                    Jarayonda
+                  </span>
+                ) : evt.status === "CREATED" ? (
+                  <span
+                    style={{ width: "110px", marginBottom: "10px" }}
+                    className="blok__old">
+                    Jarayonda
+                  </span>
+                ) : (
+                  ""
+                )}
                 <h2 className="card__right_title">{evt.name}</h2>
                 <div className="card__right_subTitle">
                   {evt?.region?.name}, {evt?.district?.name} {t("hello3")}
@@ -115,6 +144,7 @@ function Announcement({ setValue, setEditId }) {
                   ) : (
                     ""
                   )}
+
                   <button
                     value={evt.id}
                     onClick={(e) => {
@@ -130,25 +160,37 @@ function Announcement({ setValue, setEditId }) {
                   <DeleteProduct mutate={imageMutate} data={evt.id} />
                 </div>
 
-                {evt.active === true ? (
-                  <label onClick={() => setNewId(evt?.id)} className="switch">
-                    <input
-                      type="checkbox"
-                      value={false}
-                      defaultChecked
-                      onChange={(e) => {
-                        handleToogle(e);
-                      }}
-                    />
-                    <span className="sliderr round"></span>
-                  </label>
-                ) : evt?.active === false ? (
-                  <label onClick={() => setNewId(evt?.id)} className="switch">
-                    <input type="checkbox" onChange={handleToggleFalse} />
-                    <span className="sliderr round"></span>
-                  </label>
-                ) : (
+                {evt.status === "REJECTED" ||
+                evt.status === "EDITED" ||
+                evt.status === "CREATED" ? (
                   ""
+                ) : (
+                  <>
+                    {evt.active === true ? (
+                      <label
+                        onClick={() => setNewId(evt?.id)}
+                        className="switch">
+                        <input
+                          type="checkbox"
+                          value={false}
+                          defaultChecked
+                          onChange={(e) => {
+                            handleToogle(e);
+                          }}
+                        />
+                        <span className="sliderr round"></span>
+                      </label>
+                    ) : evt?.active === false ? (
+                      <label
+                        onClick={() => setNewId(evt?.id)}
+                        className="switch">
+                        <input type="checkbox" onChange={handleToggleFalse} />
+                        <span className="sliderr round"></span>
+                      </label>
+                    ) : (
+                      ""
+                    )}
+                  </>
                 )}
               </div>
               <img src={cricle} alt="cricle" className="card__cricles" />

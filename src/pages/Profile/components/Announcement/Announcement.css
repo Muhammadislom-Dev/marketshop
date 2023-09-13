@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+.announcement .container{
+  padding: 0 !important;
+}
+
 .announcement-card {
   max-width: 415px;
   display: flex;
@@ -41,8 +45,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 
@@ -67,6 +71,7 @@
 .card__right_blok {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
 }
 

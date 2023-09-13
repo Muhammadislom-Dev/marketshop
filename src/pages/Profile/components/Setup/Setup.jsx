@@ -47,6 +47,7 @@ export default function Setup({ refetch }) {
 
   function handleDeleteProfile() {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("token");
     toast.success("Siz profilingizdan chiqdingiz!");
     navigate("/");
   }

@@ -30,3 +30,15 @@
 .PhoneInputCountry {
   display: none !important;
 }
+
+body .card__red {
+  background-color: red !important;
+}
+
+body .card__active {
+  background-color: #dd7a00 !important;
+}
+
+body .card__green {
+  background-color: #01a601 !important;
+}

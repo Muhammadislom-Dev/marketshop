@@ -104,25 +104,28 @@ function Announcement({ setValue, setEditId }) {
                 {evt.status === "ACCEPTED" ? (
                   <span
                     style={{ width: "110px", marginBottom: "10px" }}
-                    className="blok__old card__new">
+                    className="blok__old card__new card__green">
                     Tasdiqlangan
                   </span>
                 ) : evt.status === "REJECTED" ? (
                   <span
-                    style={{ width: "110px", marginBottom: "10px" }}
-                    className="blok__old card__medium">
-                    Tasdiqlanmagan
+                    style={{
+                      width: "110px",
+                      marginBottom: "10px",
+                    }}
+                    className="blok__old card__medium card__red">
+                    Bekor qilindi
                   </span>
                 ) : evt.status === "EDITED" ? (
                   <span
                     style={{ width: "110px", marginBottom: "10px" }}
-                    className="blok__old">
+                    className="blok__old card__active">
                     Jarayonda
                   </span>
                 ) : evt.status === "CREATED" ? (
                   <span
                     style={{ width: "110px", marginBottom: "10px" }}
-                    className="blok__old">
+                    className="blok__old card__active">
                     Jarayonda
                   </span>
                 ) : (

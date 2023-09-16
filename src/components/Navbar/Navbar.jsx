@@ -63,15 +63,15 @@ function Navbar() {
               <CategoryModal />
             </div>
             <div className="fixedNavIconBox plus">
-              {token ? (
+              {/* {token ? ( */}
                 <Link to="/" className="fixed-navbar-Ic">
                   <BsPlusCircleFill className="plusIconFixNAv" />
                 </Link>
-              ) : (
-                <div onClick={handleOpen} className="fixed-navbar-Ic">
+              {/* ) : ( */}
+                {/* <div onClick={handleOpen} className="fixed-navbar-Ic">
                   <BsPlusCircleFill className="plusIconFixNAv" />
                 </div>
-              )}
+              )} */}
             </div>
             <div className="fixedNavIconBox">
               <Link to="/like" className="fixed-navbar-Ic">

@@ -72,6 +72,8 @@ function Profile() {
     );
   }
 
+  console.log(data?.objectKoinot);
+
   return (
     <>
       <div className="profile">
@@ -105,7 +107,7 @@ function Profile() {
             <div className="profile-list">
               <img
                 src={
-                  data?.objectKoinot?.photo?.filePath === null
+                  data?.objectKoinot?.photo === null
                     ? AvatarIcon
                     : data?.objectKoinot?.photo?.filePath
                 }

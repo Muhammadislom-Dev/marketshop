@@ -105,7 +105,7 @@ function Announcement({ setValue, setEditId }) {
                   <span
                     style={{ width: "110px", marginBottom: "10px" }}
                     className="blok__old card__new card__green">
-                    Tasdiqlangan
+                    {t("hello90")}
                   </span>
                 ) : evt.status === "REJECTED" ? (
                   <span
@@ -114,19 +114,19 @@ function Announcement({ setValue, setEditId }) {
                       marginBottom: "10px",
                     }}
                     className="blok__old card__medium card__red">
-                    Bekor qilindi
+                    {t("hello91")}
                   </span>
                 ) : evt.status === "EDITED" ? (
                   <span
                     style={{ width: "110px", marginBottom: "10px" }}
                     className="blok__old card__active">
-                    Jarayonda
+                    {t("hello92")}
                   </span>
                 ) : evt.status === "CREATED" ? (
                   <span
                     style={{ width: "110px", marginBottom: "10px" }}
                     className="blok__old card__active">
-                    Jarayonda
+                    {t("hello92")}
                   </span>
                 ) : (
                   ""

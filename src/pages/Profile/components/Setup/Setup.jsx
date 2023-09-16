@@ -50,6 +50,7 @@ export default function Setup({ refetch }) {
     localStorage.removeItem("token");
     toast.success("Siz profilingizdan chiqdingiz!");
     navigate("/");
+    window.location.reload();
   }
 
   return (

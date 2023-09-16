@@ -46,6 +46,8 @@ function Navbar() {
   const handleClose = () => setOpen(false);
   const [login, setLogin] = React.useState("Kirish");
 
+  console.log(token);
+
   return (
     <div className="navbar">
       <div className="responsiveNavbar">
@@ -78,10 +80,17 @@ function Navbar() {
               </Link>
             </div>
             <div className="fixedNavIconBox">
-              <Link to="/profile" className="fixed-navbar-Ic">
-                <BiUser className="fixNavIconL" />
-                <h4>{t("profile")}</h4>
-              </Link>
+              {token ? (
+                <Link to="/profile" className="fixed-navbar-Ic">
+                  <BiUser className="fixNavIconL" />
+                  <h4>{t("profile")}</h4>
+                </Link>
+              ) : (
+                <div onClick={handleOpen} className="fixed-navbar-Ic">
+                  <BiUser className="fixNavIconL" />
+                  <h4>{t("profile")}</h4>
+                </div>
+              )}
             </div>
           </div>
         </div>

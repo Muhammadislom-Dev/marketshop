@@ -160,10 +160,13 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
 
 @media (max-width: 500px) {
   .css-1jdzi4o {
-    height: 85vh !important;
-    min-height: 85vh;
+    height: 80vh !important;
+    min-height: 80vh;
     width: 370px !important;
     padding: 15px 0 !important;
+  }
+  .login-list {
+    margin-top: -10px !important;
   }
   .register-input {
     width: 100% !important;
@@ -179,10 +182,12 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
     width: 100% !important;
     padding: 0 20px !important;
     margin-top: 10px !important;
+    height: 38px !important;
+    font-size: 16px !important;
   }
 
   .register-form label {
-    margin-top: 0 !important;
+    margin-top: -15px !important;
   }
   .aboutproduct-imgs {
     width: 80px !important;
@@ -200,5 +205,6 @@ body .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   }
   .register-label {
     width: 100%;
+    margin-top: -12px;
   }
 }

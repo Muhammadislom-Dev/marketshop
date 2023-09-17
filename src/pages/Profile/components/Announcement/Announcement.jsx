@@ -195,6 +195,7 @@ function Announcement({ setValue, setEditId }) {
                     )}
                   </>
                 )}
+                
               </div>
               <img src={cricle} alt="cricle" className="card__cricles" />
             </div>

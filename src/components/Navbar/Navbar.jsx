@@ -62,7 +62,7 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <CategoryModal />
             </div>
-            <div className="fixedNavIconBox plus">
+            {/* <div className="fixedNavIconBox plus">
               {token ? (
                 <Link to="/profile" className="fixed-navbar-Ic">
                   <BsPlusCircleFill className="plusIconFixNAv" />
@@ -72,7 +72,7 @@ function Navbar() {
                   <BsPlusCircleFill className="plusIconFixNAv" />
                 </div>
               )}
-            </div>
+            </div> */}
             <div className="fixedNavIconBox">
               <Link to="/like" className="fixed-navbar-Ic">
                 <BsHeart className="fixNavIconL" />

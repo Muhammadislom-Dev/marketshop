@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-.announcement .container{
+.announcement .container {
   padding: 0 !important;
 }
 
@@ -243,5 +243,6 @@ input:checked + .sliderr:before {
 
   .card__right_blok {
     flex-wrap: wrap;
+    gap: 5px 15px;
   }
 }

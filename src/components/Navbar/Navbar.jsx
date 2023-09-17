@@ -7,8 +7,8 @@ import {
   LogoIcon,
 } from "../../assets/icon";
 import { Link } from "react-router-dom";
-import { BiCategory, BiHomeAlt2, BiUser } from "react-icons/bi";
-import { BsHeart, BsPlusCircleFill } from "react-icons/bs";
+import { BiHomeAlt2, BiUser } from "react-icons/bi";
+import { BsHeart } from "react-icons/bs";
 import LoginModal from "../Modal/Modal";
 import Language from "../Language/Language";
 import Category from "../Category/Category";
@@ -21,7 +21,6 @@ import Register from "../../pages/Register/Register";
 import { ObjectIcon } from "../../assets/icon";
 import { Box } from "@mui/material";
 import CategoryModal from "../CategoryModal/CategoryModal";
-import CreditCard from "../../assets/credit-card.svg";
 
 const style = {
   position: "absolute",
@@ -46,7 +45,6 @@ function Navbar() {
   const handleClose = () => setOpen(false);
   const [login, setLogin] = React.useState("Kirish");
 
-
   return (
     <div className="navbar">
       <div className="responsiveNavbar">
@@ -61,17 +59,6 @@ function Navbar() {
             <div className="fixedNavIconBox">
               <CategoryModal />
             </div>
-            {/* <div className="fixedNavIconBox plus">
-              {token ? (
-                <Link to="/profile" className="fixed-navbar-Ic">
-                  <BsPlusCircleFill className="plusIconFixNAv" />
-                </Link>
-              ) : (
-                <div onClick={handleOpen} className="fixed-navbar-Ic">
-                  <BsPlusCircleFill className="plusIconFixNAv" />
-                </div>
-              )}
-            </div> */}
             <div className="fixedNavIconBox">
               <Link to="/like" className="fixed-navbar-Ic">
                 <BsHeart className="fixNavIconL" />

@@ -99,8 +99,6 @@ function ProductEdit({ editId }) {
     district.refetch();
   }, [moderData?.regionId]);
 
-  console.log(moderData);
-
   useEffect(() => {
     setProduct((state) => ({
       ...state,
@@ -167,8 +165,6 @@ function ProductEdit({ editId }) {
             />
           </label>
         </div>
-        <h4 className="addImage-warning">{t("hello54")}</h4>
-        <span className="addImage-warning-desc">{t("hello55")}</span>
       </div>
       {!!moderData && (
         <form className="product-create-form" onSubmit={handleSubmit}>
@@ -198,13 +194,6 @@ function ProductEdit({ editId }) {
             <h4>{t("hello58")}</h4>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                // value={product.categoryId}
-                // onChange={(e) =>
-                //   setProduct((state) => ({
-                //     ...state,
-                //     categoryId: e.target.value,
-                //   }))
-                // }
                 onChange={(e) => handleChange("categoryId", e.target.value)}
                 value={moderData?.categoryId}
                 inputProps={{ "aria-label": "Without label" }}>
@@ -220,13 +209,6 @@ function ProductEdit({ editId }) {
             <h4>{t("hello60")}</h4>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                // onChange={(e) =>
-                //   setProduct((state) => ({
-                //     ...state,
-                //     productQuality: e.target.value,
-                //   }))
-                // }
-                // value={product.productQuality} quality
                 onChange={(e) => handleChange("productQuality", e.target.value)}
                 value={moderData?.quality}
                 inputProps={{ "aria-label": "Without label" }}>
@@ -240,13 +222,6 @@ function ProductEdit({ editId }) {
             <h4>{t("hello21")}</h4>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                // onChange={(e) =>
-                //   setProduct((state) => ({
-                //     ...state,
-                //     regionId: e.target.value,
-                //   }))
-                // }
-                // value={product.regionId}
                 onChange={(e) => handleChange("regionId", e.target.value)}
                 value={moderData?.regionId}
                 inputProps={{ "aria-label": "Without label" }}>
@@ -262,13 +237,6 @@ function ProductEdit({ editId }) {
             <h4>{t("hello41")}</h4>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                // onChange={(e) =>
-                //   setProduct((state) => ({
-                //     ...state,
-                //     districtId: e.target.value,
-                //   }))
-                // }
-                // value={product.districtId}
                 onChange={(e) => handleChange("districtId", e.target.value)}
                 value={moderData?.districtId}
                 displayEmpty

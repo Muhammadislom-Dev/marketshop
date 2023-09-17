@@ -12,7 +12,7 @@
   border-radius: 50%;
   position: absolute;
   top: 45%;
-  left: 45.8%;
+  left: 47.8%;
 }
 
 .navbar-counts {
@@ -103,8 +103,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
-
 
 .fixedNavIconBox h4 {
   font-size: 12px;

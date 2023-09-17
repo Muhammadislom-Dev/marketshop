@@ -283,7 +283,6 @@ export default function ProductCreate() {
             defaultValue="+998"
           />
         </label>
-
         <button className="product-create-form-button" type="submit">
           {t("hello64")}
         </button>

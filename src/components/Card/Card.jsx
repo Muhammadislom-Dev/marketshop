@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import UploadImage from "../../assets/announcement-placeholder.png";
 
 const Card = ({ data, key, refetch }) => {
+  const i18next = localStorage.getItem("i18nextLng");
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [likeTrue, setLikeTrue] = useState(false);
   const { t } = useTranslation();
@@ -71,22 +72,19 @@ const Card = ({ data, key, refetch }) => {
           {data.photos ? (
             <img
               className="card-photo"
-             
               loading={isImageLoaded ? "eager" : "lazy"}
               src={isImageLoaded ? data.photos[0].filePath : UploadImage}
               alt={data?.name}
             />
           ) : (
-            <img
-              className="card-photo"
-              src={UploadImage}
-              alt={data?.name}
-            />
+            <img className="card-photo" src={UploadImage} alt={data?.name} />
           )}
 
           <h2 className="card__title">{data?.name}</h2>
           <p className="card__subTitle">
-            {data?.region?.name}, {data?.district?.name} {t("hello3")} {"  "}
+            {i18next === "uz" ? data?.region?.name : data?.region?.nameRu}{" "}
+            {i18next === "uz" ? data?.district?.name : data?.district?.nameRu}{" "}
+            {t("hello3")} {"  "}
             {formattedDate}
           </p>
           {data?.quality === "NEW" ? (

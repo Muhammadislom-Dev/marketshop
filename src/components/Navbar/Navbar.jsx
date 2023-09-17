@@ -46,7 +46,6 @@ function Navbar() {
   const handleClose = () => setOpen(false);
   const [login, setLogin] = React.useState("Kirish");
 
-  console.log(token);
 
   return (
     <div className="navbar">

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import UploadImage from "../../assets/announcement-placeholder.png";
 
 const LikeCard = ({ data, key, refetch }) => {
+  const i18next = localStorage.getItem("i18nextLng");
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const { t } = useTranslation();
   const { mutate: likeDeleteMutate } = useMutation((productId) =>
@@ -86,7 +87,9 @@ const LikeCard = ({ data, key, refetch }) => {
 
           <h2 className="card__title">{data?.name}</h2>
           <p className="card__subTitle">
-            {data?.region?.name}, {data?.district?.name} {t("hello3")} {"  "}
+            {i18next === "uz" ? data?.region?.name : data?.region?.nameRu}{" "}
+            {i18next === "uz" ? data?.district?.name : data?.district?.nameRu}{" "}
+            {t("hello3")} {"  "}
             {formattedDate}
           </p>
           {data?.quality === "NEW" ? (

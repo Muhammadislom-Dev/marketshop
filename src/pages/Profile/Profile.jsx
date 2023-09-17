@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
-import { PersonImage } from "../../assets/img";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";

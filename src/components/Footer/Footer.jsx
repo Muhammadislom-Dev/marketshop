@@ -50,7 +50,7 @@ function Footer() {
               <ul className="footer-item">
                 <li className="footer-items">
                   <a href="#" className="footer-link">
-                    {t("xavfsizlik")}
+                    {t("hello95")}
                   </a>
                 </li>
                 <li className="footer-items">

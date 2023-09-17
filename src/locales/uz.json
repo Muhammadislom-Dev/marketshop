@@ -2,7 +2,7 @@
   "barcha": "Barcha bo'limlar",
   "blog": "Blog",
   "like": "Sevimlilar",
-  "profile": "Profile",
+  "profile": "Profil",
   "give": "E'lon berish",
   "donation": "EHSONNING MUKOFATI EHSON",
   "new": "Yangilari",
@@ -105,5 +105,8 @@
   "hello89": "Muhim eslatma",
   "hello90": "Tasdiqlangan",
   "hello91": "Bekor qilindi",
-  "hello92": "Jarayonda"
+  "hello92": "Jarayonda",
+  "hello93": " Bo’lim",
+  "hello94": "Shahar",
+  "hello95": "xavfsizlik"
 }

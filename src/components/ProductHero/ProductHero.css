@@ -23,7 +23,7 @@
 .producthero-name {
   color: #000;
   text-align: center;
-  font-family: Archivo;
+  font-family: Archivo, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -241,13 +241,13 @@
     display: none;
   }
   .product-hero-label > input {
-    height: 50px;
+    height: 50px !important;
   }
 }
 
 @media (max-width: 450px) {
   .product-hero-label > input {
-    height: 40px;
+    height: 40px !important;
   }
   .product-hero-form {
     width: 97%;

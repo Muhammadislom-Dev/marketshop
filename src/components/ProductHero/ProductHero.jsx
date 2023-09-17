@@ -12,6 +12,7 @@ import { t } from "i18next";
 
 export default function ProductHero() {
   const [page, setPage] = useState("12");
+  const i18next = localStorage.getItem("i18nextLng");
   const { id } = useParams();
   const [active, setActive] = useState("");
   const [category, setCategory] = useState("");
@@ -33,7 +34,6 @@ export default function ProductHero() {
     () => getFilterProductData(idCategory, active, regionId, search, page)
   );
 
-
   return (
     <>
       <div className="product-hero">
@@ -47,7 +47,7 @@ export default function ProductHero() {
               onChange={(e) => setSearch(e.target.value)}
               maxLength={100}
               minLength={2}
-              placeholder="Nimadir qidiramizmi?"
+              placeholder={t("hello42")}
             />
           </label>
         </form>
@@ -59,7 +59,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 1 ? 0 : 1))}>
-                Bo’lim
+                {t("hello93")}
               </span>
               <SlArrowRight
                 style={section === 1 ? { rotate: "-90deg" } : null}
@@ -116,7 +116,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 2 ? 0 : 2))}>
-                Holati
+                {t("hello20")}
               </span>
               <SlArrowRight
                 style={section === 2 ? { rotate: "-90deg" } : null}
@@ -146,7 +146,7 @@ export default function ProductHero() {
                       style={active === "OLD" ? { color: "#F26957" } : null}
                       onClick={(e) => setActive(e.target.value)}
                       value="OLD">
-                     {t("hello6")}
+                      {t("hello6")}
                     </button>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ export default function ProductHero() {
             <div className="product-hero-filter-item">
               <span
                 onClick={() => setSection((state) => (state === 3 ? 0 : 3))}>
-                Shahar
+                {t("hello94")}
               </span>
               <SlArrowRight
                 style={section === 3 ? { rotate: "-90deg" } : null}
@@ -186,7 +186,12 @@ export default function ProductHero() {
         </div>
       </div>
       <div className="producthero-names">
-        <h2 className="producthero-name">{categoryByIdName?.nameUz}</h2>
+        <h2 className="producthero-name">
+          {" "}
+          {i18next === "uz"
+            ? categoryByIdName?.nameUz
+            : categoryByIdName?.nameRu}{" "}
+        </h2>
       </div>
       <div className="products filter-product">
         {paramsData?.content?.length ? (

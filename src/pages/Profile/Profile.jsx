@@ -52,6 +52,7 @@ function Profile() {
   const [value, setValue] = React.useState(0);
   const { data, isLoading, refetch } = useQuery("profile", getProfileData);
   const [editId, setEditId] = useState("");
+
   const { t } = useTranslation();
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,8 +72,6 @@ function Profile() {
       </Box>
     );
   }
-
-  console.log(data?.objectKoinot);
 
   return (
     <>

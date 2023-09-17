@@ -26,13 +26,13 @@ function ProductEdit({ editId }) {
   const [activeModal, setActiveModal] = useState(false);
   const [product, setProduct] = useState({
     id: editId,
-    categoryId: 1,
     active: true,
     delete: true,
     top: true,
     productQuality: "AVERAGE",
-    regionId: 1,
-    districtId: 1,
+    regionId: 5,
+    districtId: "",
+    categoryId: 4,
   });
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -50,7 +50,9 @@ function ProductEdit({ editId }) {
   useEffect(() => {
     axios
       .get(`${API_URL}/product/v1/${editId}`)
-      .then((res) => setModerData(res.data))
+      .then((res) => {
+        setModerData(res.data);
+      })
       .catch((err) => console.log(err));
   }, [editId]);
 
@@ -103,8 +105,6 @@ function ProductEdit({ editId }) {
       districtId: district?.data?.objectKoinot?.content[0]?.id,
     }));
   }, [district.data]);
-
-  console.log(moderData);
 
   if (isLoading) {
     return (
@@ -195,7 +195,7 @@ function ProductEdit({ editId }) {
           <h4>{t("hello58")}</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
-              value={moderData.categoryId}
+              value={product.categoryId}
               onChange={(e) =>
                 setProduct((state) => ({
                   ...state,

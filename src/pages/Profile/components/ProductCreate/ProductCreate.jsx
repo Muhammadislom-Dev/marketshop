@@ -102,7 +102,7 @@ export default function ProductCreate() {
     <div>
       {activeModal ? <ProductModal setActiveModal={setActiveModal} /> : null}
       <div className="addImage">
-        <h3 className="addImage-title">{t("hello53")}</h3>
+        <h3 className="addImage-title">{t("hello531")}</h3>
         <div className="addImage-box">
           {imgBox?.map((el, index) =>
             el ? (
@@ -128,8 +128,6 @@ export default function ProductCreate() {
             />
           </label>
         </div>
-        <h4 className="addImage-warning">{t("hello54")}</h4>
-        <span className="addImage-warning-desc">{t("hello55")}</span>
       </div>
       <form className="product-create-form" onSubmit={handleSubmit}>
         <label className="product-create-label">

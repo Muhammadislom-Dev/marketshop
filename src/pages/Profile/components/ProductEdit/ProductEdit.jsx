@@ -20,7 +20,7 @@ import axios from "axios";
 
 function ProductEdit({ editId }) {
   const [imgBox, setimageBox] = useState([]);
-  const [moderData, setModerData] = useState([]);
+  const [moderData, setModerData] = useState();
   const [idArray, setIdArray] = useState([]);
   const i18next = localStorage.getItem("i18nextLng");
   const [activeModal, setActiveModal] = useState(false);
@@ -29,10 +29,6 @@ function ProductEdit({ editId }) {
     active: true,
     delete: true,
     top: true,
-    productQuality: "AVERAGE",
-    regionId: 5,
-    districtId: "",
-    categoryId: 4,
   });
 
   const { mutate: imageMutate } = useMutation(async (payload) => {
@@ -69,17 +65,21 @@ function ProductEdit({ editId }) {
     e.preventDefault();
     const submitData = {
       ...product,
-      photosId: idArray,
       name: moderData.name,
       description: moderData.description,
-      phoneNumber: moderData.phoneNumber,
+      photosId: idArray,
+      regionId: moderData.regionId,
+      districtId: moderData.districtId,
+      categoryId: moderData.categoryId,
+      productQuality: moderData.quality,
+      phoneNumber: moderData?.phoneNumber,
     };
     mutate(submitData);
   };
   const { data } = useQuery("category", getCategory);
   const region = useQuery("regionId", fetchRegionData);
   const district = useQuery("districtId", () =>
-    fetchDistrictData(product.regionId)
+    fetchDistrictData(moderData?.regionId)
   );
 
   const handleChange = (key, value) => {
@@ -97,7 +97,9 @@ function ProductEdit({ editId }) {
 
   useEffect(() => {
     district.refetch();
-  }, [product.regionId]);
+  }, [moderData?.regionId]);
+
+  console.log(moderData);
 
   useEffect(() => {
     setProduct((state) => ({
@@ -124,7 +126,7 @@ function ProductEdit({ editId }) {
     <div>
       {activeModal ? <ProductModal /> : null}
       <div className="addImage">
-        <h3 className="addImage-title">{t("hello53")}</h3>
+        <h3 className="addImage-title">{t("hello531")}</h3>
         <div className="addImage-box">
           {moderData?.photos?.map((evt, key) => (
             <img
@@ -168,138 +170,137 @@ function ProductEdit({ editId }) {
         <h4 className="addImage-warning">{t("hello54")}</h4>
         <span className="addImage-warning-desc">{t("hello55")}</span>
       </div>
-      <form className="product-create-form" onSubmit={handleSubmit}>
-        <label className="product-create-label">
-          <h4>{t("hello56")}</h4>
-          <input
-            type="text"
-            maxLength={500}
-            min={3}
-            value={moderData?.name}
-            onChange={(e) => handleChange("name", e.target.value)}
-            required
-          />
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello57")}</h4>
-          <textarea
-            value={moderData?.description}
-            onChange={(e) => handleChange("description", e.target.value)}
-            style={{ padding: "5px 15px" }}
-            rows="10"
-            maxLength={500}
-            min={3}
-            required></textarea>
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello58")}</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <Select
-              value={product.categoryId}
-              onChange={(e) =>
-                setProduct((state) => ({
-                  ...state,
-                  categoryId: e.target.value,
-                }))
-              }
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}>
-              {data?.objectKoinot?.length ? (
-                data?.objectKoinot?.map((el, index) => (
+      {!!moderData && (
+        <form className="product-create-form" onSubmit={handleSubmit}>
+          <label className="product-create-label">
+            <h4>{t("hello56")}</h4>
+            <input
+              type="text"
+              maxLength={500}
+              min={3}
+              value={moderData?.name}
+              onChange={(e) => handleChange("name", e.target.value)}
+              required
+            />
+          </label>
+          <label className="product-create-label">
+            <h4>{t("hello57")}</h4>
+            <textarea
+              value={moderData?.description}
+              onChange={(e) => handleChange("description", e.target.value)}
+              style={{ padding: "5px 15px" }}
+              rows="10"
+              maxLength={500}
+              min={3}
+              required></textarea>
+          </label>
+          <label className="product-create-label">
+            <h4>{t("hello58")}</h4>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                // value={product.categoryId}
+                // onChange={(e) =>
+                //   setProduct((state) => ({
+                //     ...state,
+                //     categoryId: e.target.value,
+                //   }))
+                // }
+                onChange={(e) => handleChange("categoryId", e.target.value)}
+                value={moderData?.categoryId}
+                inputProps={{ "aria-label": "Without label" }}>
+                {data?.objectKoinot?.map((el, index) => (
                   <MenuItem key={index} value={el?.id}>
                     {i18next === "uz" ? el.nameUz : el.nameRu}
                   </MenuItem>
-                ))
-              ) : (
-                <MenuItem value={1}>{t("hello59")}</MenuItem>
-              )}
-            </Select>
-          </FormControl>
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello60")}</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <Select
-              onChange={(e) =>
-                setProduct((state) => ({
-                  ...state,
-                  productQuality: e.target.value,
-                }))
-              }
-              value={product.productQuality}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}>
-              <MenuItem value="AVERAGE">{t("hello5")}</MenuItem>
-              <MenuItem value="NEW">{t("hello4")}</MenuItem>
-              <MenuItem value="OLD">{t("hello6")}</MenuItem>
-            </Select>
-          </FormControl>
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello21")}</h4>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <Select
-              onChange={(e) =>
-                setProduct((state) => ({
-                  ...state,
-                  regionId: e.target.value,
-                }))
-              }
-              value={product.regionId}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}>
-              {region.data
-                ? region.data.objectKoinot.content.map((el) => (
-                    <MenuItem key={el.id} value={el.id}>
-                      {i18next === "ru" ? el.nameRu : el.name}
-                    </MenuItem>
-                  ))
-                : null}
-            </Select>
-          </FormControl>
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello41")}</h4>
-          {district.data ? (
+                ))}
+              </Select>
+            </FormControl>
+          </label>
+          <label className="product-create-label">
+            <h4>{t("hello60")}</h4>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                onChange={(e) =>
-                  setProduct((state) => ({
-                    ...state,
-                    districtId: e.target.value,
-                  }))
-                }
-                value={product.districtId}
-                displayEmpty
+                // onChange={(e) =>
+                //   setProduct((state) => ({
+                //     ...state,
+                //     productQuality: e.target.value,
+                //   }))
+                // }
+                // value={product.productQuality} quality
+                onChange={(e) => handleChange("productQuality", e.target.value)}
+                value={moderData?.quality}
                 inputProps={{ "aria-label": "Without label" }}>
-                {district.data.objectKoinot.content.map((el) => (
+                <MenuItem value="AVERAGE">{t("hello5")}</MenuItem>
+                <MenuItem value="NEW">{t("hello4")}</MenuItem>
+                <MenuItem value="OLD">{t("hello6")}</MenuItem>
+              </Select>
+            </FormControl>
+          </label>
+          <label className="product-create-label">
+            <h4>{t("hello21")}</h4>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                // onChange={(e) =>
+                //   setProduct((state) => ({
+                //     ...state,
+                //     regionId: e.target.value,
+                //   }))
+                // }
+                // value={product.regionId}
+                onChange={(e) => handleChange("regionId", e.target.value)}
+                value={moderData?.regionId}
+                inputProps={{ "aria-label": "Without label" }}>
+                {region.data.objectKoinot.content.map((el) => (
                   <MenuItem key={el.id} value={el.id}>
                     {i18next === "ru" ? el.nameRu : el.name}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
-          ) : null}
-        </label>
-        <label className="product-create-label">
-          <h4>{t("hello61")}</h4>
-          <div className="product-edit-input" style={{ width: "100%" }}>
-            <input
-              value={moderData?.phoneNumber}
-              onChange={(e) => handleChange("phoneNumber", e.target.value)}
-              type="tell"
-              maxLength={14}
-              className="product-edit-input"
-              min={3}
-              required
-              pattern="^[0-9+-]*$"
-            />
-          </div>
-        </label>
-        <button className="product-create-form-button" type="submit">
-          {t("hello66")}
-        </button>
-      </form>
+          </label>
+          <label className="product-create-label">
+            <h4>{t("hello41")}</h4>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                // onChange={(e) =>
+                //   setProduct((state) => ({
+                //     ...state,
+                //     districtId: e.target.value,
+                //   }))
+                // }
+                // value={product.districtId}
+                onChange={(e) => handleChange("districtId", e.target.value)}
+                value={moderData?.districtId}
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}>
+                {district?.data?.objectKoinot?.content?.map((el) => (
+                  <MenuItem key={el.id} value={el.id}>
+                    {i18next === "ru" ? el.nameRu : el.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </label>
+          <label className="product-create-label">
+            <h4>{t("hello61")}</h4>
+            <div className="product-edit-input" style={{ width: "100%" }}>
+              <input
+                value={moderData?.phoneNumber}
+                onChange={(e) => handleChange("phoneNumber", e.target.value)}
+                type="tell"
+                maxLength={14}
+                className="product-edit-input"
+                min={3}
+                required
+                pattern="^[0-9+-]*$"
+              />
+            </div>
+          </label>
+          <button className="product-create-form-button" type="submit">
+            {t("hello66")}
+          </button>
+        </form>
+      )}
     </div>
   );
 }

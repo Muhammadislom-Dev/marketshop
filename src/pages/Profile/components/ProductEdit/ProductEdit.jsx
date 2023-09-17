@@ -104,6 +104,8 @@ function ProductEdit({ editId }) {
     }));
   }, [district.data]);
 
+  console.log(moderData);
+
   if (isLoading) {
     return (
       <Box
@@ -193,7 +195,7 @@ function ProductEdit({ editId }) {
           <h4>{t("hello58")}</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
-              value={product.categoryId}
+              value={moderData.categoryId}
               onChange={(e) =>
                 setProduct((state) => ({
                   ...state,

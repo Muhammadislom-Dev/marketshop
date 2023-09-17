@@ -9,6 +9,7 @@ import "./Footer.css";
 import { useTranslation } from "react-i18next";
 import { useMutation, useQuery } from "react-query";
 import { footerLinkApiData, postEmailRequest } from "../../api";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const { t } = useTranslation();
@@ -45,6 +46,11 @@ function Footer() {
                   <a href="#" className="footer-link">
                     {t("security")}
                   </a>
+                </li>
+                <li className="footer-items">
+                  <Link to="/support" className="footer-link">
+                    {t("hello83")}
+                  </Link>
                 </li>
               </ul>
               <ul className="footer-item">

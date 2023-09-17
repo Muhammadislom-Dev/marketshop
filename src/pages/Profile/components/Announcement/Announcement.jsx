@@ -22,7 +22,6 @@ function Announcement({ setValue, setEditId }) {
     getProfileProductData
   );
 
-  console.log(data);
 
   const [active, setActive] = useState(false);
   const [newId, setNewId] = useState("");
@@ -48,7 +47,7 @@ function Announcement({ setValue, setEditId }) {
   const { mutate: imageMutate } = useMutation(async (payload) => {
     return await API.deleteProductData(payload)
       .then((res) => {
-        toast.success("Mahsulot muvaffaqiyatli o'chirildi");
+        toast.success(t("hello114"));
         refetch();
       })
       .catch((err) => {

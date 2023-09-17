@@ -1,4 +1,5 @@
 import axios from "axios";
+import { t } from "i18next";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export const API_URL = "https://tekinmarket.uz/api";
@@ -46,14 +47,14 @@ export const registerUser = async (userData, setCode) => {
   const response = await axios
     .post(`${API_BASE_URL}/auth/v1/register`, userData)
     .then((res) => {
-      toast.success("Telefon raqamingizga tasdiqlash uchun sms yuborildi!");
+      toast.success(t("hello98"));
       if (res.status === 200) {
         setCode(true);
       }
       localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
     })
     .catch((err) => {
-      toast.error("Bu nomer ro'yhatdan o'tkan iltimos login qilib kiring!");
+      toast.error(t("hello99"));
     });
   return response.data;
 };
@@ -68,10 +69,10 @@ export const editUserPost = async (userData) => {
     .then((res) => {
       window.location.reload();
       localStorage.setItem("tokenReview", `${res?.data?.objectKoinot?.token}`);
-      toast.success("Sizning profilingiz muvaffaqiyatli tahrirlandi!");
+      toast.success(t("hello100"));
     })
     .catch((err) => {
-      toast.error("Iltimos keyinroq urinib ko'ring");
+      toast.error(t("hello101"));
     });
   return response.data;
 };
@@ -80,7 +81,7 @@ export const loginUser = async (userData, setCode, handleClose) => {
   const response = await axios
     .post(`${API_BASE_URL}/auth/v1/login`, userData)
     .then((res) => {
-      toast.success("Siz muvaffaqiyatli login qildingiz!");
+      toast.success(t("hello102"));
       <Navigate to="/profile" replace />;
       window.location.reload();
       handleClose();
@@ -102,11 +103,11 @@ export const sendCodeLogin = async (userData, setCode) => {
       if (res.status === 200) {
         setCode(true);
       }
-      toast.success("Telefon raqamingizga tasdiqlash uchun sms yuborildi!");
+      toast.success(t("hello98"));
       localStorage.setItem("token", `${res?.data?.objectKoinot?.token}`);
     })
     .catch((err) => {
-      toast.error("Siz bu nomer orqali ro'yhatdan o'tmagansiz!");
+      toast.error(t("hello103"));
     });
   return response.data;
 };
@@ -115,7 +116,7 @@ export const PhoneSmsCode = async (userData, handleClose) => {
   const response = await axios
     .post(`${API_BASE_URL}/auth/v1/verify`, userData)
     .then((res) => {
-      toast.success("Tabriklaymiz siz muvaffaqiyatli kirdingiz!");
+      toast.success(t("hello104"));
       localStorage.setItem(
         "accessToken",
         `${res?.data?.objectKoinot?.accessToken}`
@@ -137,7 +138,7 @@ export const createProduct = async (data) => {
       },
     })
     .catch((err) => {
-      toast.error("Sizda xatolik yuzaga keldi!");
+      toast.error(t("hello105"));
     });
   return response.data;
 };
@@ -151,7 +152,7 @@ export const postEmailRequest = async (data) => {
       },
     })
     .then((res) => {
-      toast.success("Email muvaffaqiyatli jo'natildi!");
+      toast.success(t("hello106"));
     });
   return response.data;
 };
@@ -177,7 +178,7 @@ export const uploadImage = async (image) => {
       },
     })
     .then((res) => {
-      toast.success("Muvaffaqiyatli rasm yuklandi!");
+      toast.success(t("hello107"));
     });
   return response.data;
 };
@@ -261,12 +262,10 @@ export const likeProductPost = async (id) => {
       }
     )
     .then((res) => {
-      toast.success("Mahsulot muvaffaqiyatli sevimlilar ro'yhatiga qo'shildi!");
+      toast.success(t("hello108"));
     })
     .catch((err) => {
-      toast.error(
-        "Bu mahsulotni sevimlilar ro'yhatiga qo'shish uchun ro'yhatdan o'tishingiz kerak!"
-      );
+      toast.error(t("hello109"));
     });
   return response.data;
 };
@@ -282,10 +281,10 @@ export const productActivePost = async (active, newId) => {
       }
     )
     .then((res) => {
-      toast.success("Siz mahsulotni holatini o'zgartirdingiz");
+      toast.success(t("hello110"));
     })
     .catch((err) => {
-      toast.error("Bu mahsulotning holati o'zgartirilgan");
+      toast.error(t("hello111"));
     });
   return response.data;
 };
@@ -298,10 +297,10 @@ export const productActivePostFalse = async (newId) => {
       },
     })
     .then((res) => {
-      toast.success("Siz mahsulotni holatini o'zgartirdingiz");
+      toast.success(t("hello110"));
     })
     .catch((err) => {
-      toast.error("Bu mahsulotning holati o'zgartirilgan");
+      toast.error(t("hello111"));
     });
   return response.data;
 };
@@ -318,12 +317,12 @@ export const likeProductDelete = async (id) => {
     )
     .then((res) => {
       toast.success(
-        "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatidan o'chirildi!"
+        t("hello112")
       );
     })
     .catch((err) => {
       toast.danger(
-        "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!"
+        t("hello113")
       );
     });
   return response.data;

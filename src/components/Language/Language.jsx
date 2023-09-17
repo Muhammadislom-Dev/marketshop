@@ -3,13 +3,10 @@ import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import i18next from "i18next";
 import "./Language.css";
-
-const languageList = [
-  { id: 1, label: "O‘zbekcha", type: "uz" },
-  { id: 2, label: "Russian", type: "ru" },
-];
+import { useTranslation } from "react-i18next";
 
 function Language() {
+  const { t } = useTranslation();
   const [activeLang, setactiveLang] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(
     localStorage.getItem("i18nextLng")
@@ -22,6 +19,11 @@ function Language() {
     setSelectedLanguage(lng);
   };
 
+  const languageList = [
+    { id: 1, label: t("hello97"), type: "uz" },
+    { id: 2, label: t("hello96"), type: "ru" },
+  ];
+
   return (
     <div>
       <div className="navbarvictorina_language">
@@ -29,7 +31,7 @@ function Language() {
           className="navbarvictorina_language-wrapper"
           onClick={() => setactiveLang((el) => !el)}>
           <CiGlobe className="navbarvictorina_language-icon" />
-          <span>{selectedLanguage === "ru" ? "Russian" : "O'zbekcha"}</span>
+          <span>{selectedLanguage === "ru" ? t("hello96") : t("hello97")}</span>
           <IoMdArrowDropdown className="navbarvictorina_language-iconArrow" />
         </div>
         <div

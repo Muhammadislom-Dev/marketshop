@@ -27,11 +27,12 @@ import CallModal from "./components/Modal/Modal";
 import { t } from "i18next";
 
 function AboutProduct() {
+  const i18next = localStorage.getItem("i18nextLng");
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(["product", id], () =>
-  getByIdProductDataAbout(id)
+    getByIdProductDataAbout(id)
   );
   const { data: getPhone } = useQuery(["get-phone", id], () =>
     getPhoneProductData(id)
@@ -54,7 +55,6 @@ function AboutProduct() {
 
   const secondDate = data?.uploadedAt / 1000;
   const formatUpdateDate = formatSecondsToDateString(secondDate);
-
 
   if (isLoading) {
     return (
@@ -142,7 +142,9 @@ function AboutProduct() {
                   className="icons__oblast_location"
                 />
                 <p className="icons__oblast_subTitle">
-                  {data?.region?.name}, {data?.district?.name} tumani
+                  {i18next === "ru" ? data.region.nameRu : data.region.name},{" "}
+                  {i18next === "ru" ? data.district.nameRu : data.district.name}{" "}
+                  {t("hello3")}
                 </p>
               </div>
               <div className="icons__oblast">
@@ -163,7 +165,9 @@ function AboutProduct() {
 
               <div className="call__children">
                 <img
-                  src={data?.user?.photo === null ? AvatarIcon : data?.user?.photo}
+                  src={
+                    data?.user?.photo === null ? AvatarIcon : data?.user?.photo
+                  }
                   alt="children"
                   className="call__icon-img"
                 />

@@ -81,7 +81,8 @@ export default function ProductHero() {
                                 ? { color: "#F26957" }
                                 : null
                             }>
-                            {el.nameUz}
+                            {/* {el.nameUz} */}{" "}
+                            {i18next === "ru" ? el.nameUz : el.nameUz}
                           </span>
                           <SlArrowRight
                             style={
@@ -101,7 +102,10 @@ export default function ProductHero() {
                                       key={el.id}
                                       className="product-hero-filter-subcategory-item">
                                       <span onClick={() => setSection(0)}>
-                                        {el.nameUz}
+                                        {/* {el.nameUz} */}{" "}
+                                        {i18next === "ru"
+                                          ? el.nameRu
+                                          : el.nameUz}
                                       </span>
                                     </div>
                                   ))
@@ -174,7 +178,8 @@ export default function ProductHero() {
                                 ? { color: "#F26957" }
                                 : null
                             }>
-                            {el.name}
+                            {/* {el.name} */}{" "}
+                            {i18next === "ru" ? el.nameRu : el.name}
                           </span>
                         </div>
                       ))

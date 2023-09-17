@@ -251,7 +251,7 @@ function ProductEdit({ editId }) {
               {region.data
                 ? region.data.objectKoinot.content.map((el) => (
                     <MenuItem key={el.id} value={el.id}>
-                      {el.name}
+                      {i18next === "ru" ? el.nameRu : el.name}
                     </MenuItem>
                   ))
                 : null}
@@ -274,7 +274,7 @@ function ProductEdit({ editId }) {
                 inputProps={{ "aria-label": "Without label" }}>
                 {district.data.objectKoinot.content.map((el) => (
                   <MenuItem key={el.id} value={el.id}>
-                    {el.name}
+                    {i18next === "ru" ? el.nameRu : el.name}
                   </MenuItem>
                 ))}
               </Select>

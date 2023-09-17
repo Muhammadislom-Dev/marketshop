@@ -80,7 +80,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 </MenuItem>
                 {region?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
-                    {data.name}
+                    {i18next === "ru" ? data.nameRu : data.name}
                   </MenuItem>
                 ))}
               </Select>
@@ -96,7 +96,7 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                 <MenuItem value="Tuman">{t("hello41")}</MenuItem>
                 {districtData?.objectKoinot?.content?.map((data) => (
                   <MenuItem key={data.id} value={data.id}>
-                    {data.name}
+                    {i18next === "ru" ? data.nameRu : data.name}
                   </MenuItem>
                 ))}
               </Select>

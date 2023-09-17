@@ -22,6 +22,7 @@ function Announcement({ setValue, setEditId }) {
     getProfileProductData
   );
 
+  const i18next = localStorage.getItem("i18nextLng");
 
   const [active, setActive] = useState(false);
   const [newId, setNewId] = useState("");
@@ -132,7 +133,9 @@ function Announcement({ setValue, setEditId }) {
                 )}
                 <h2 className="card__right_title">{evt.name}</h2>
                 <div className="card__right_subTitle">
-                  {evt?.region?.name}, {evt?.district?.name} {t("hello3")}
+                  {i18next === "ru" ? evt.region.nameRu : evt.region.name},{" "}
+                  {i18next === "ru" ? evt.district.nameRu : evt.district.name}{" "}
+                  {t("hello3")}
                 </div>
                 <div className="card__right_blok">
                   {evt.quality === "NEW" ? (
@@ -194,7 +197,6 @@ function Announcement({ setValue, setEditId }) {
                     )}
                   </>
                 )}
-                
               </div>
               <img src={cricle} alt="cricle" className="card__cricles" />
             </div>

@@ -262,10 +262,14 @@
   }
   .header-link {
     height: 100px;
-    padding: 0 2px;
+    padding: 0 !important;
+    width: 95px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .header-subname {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

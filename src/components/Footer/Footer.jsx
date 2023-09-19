@@ -71,7 +71,7 @@ function Footer() {
                 </li>
                 <li className="footer-items">
                   <a href="tel:+998954409090" className="footer-link">
-                    +998 95440 90 90
+                    +998 95 440 90 90
                   </a>
                 </li>
               </ul>

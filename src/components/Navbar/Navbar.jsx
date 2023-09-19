@@ -98,7 +98,7 @@ function Navbar() {
           </button>
         </div>
         <div className="navbar-right">
-          <Link to="/blog" className="navbar-link">
+          <Link to="/blog" className="navbar-link navbar-blog">
             <img src={DocumentIcon} alt="" className="navbar-icon" />
             {t("blog")}
           </Link>

@@ -73,122 +73,131 @@ function AboutProduct() {
 
   return (
     <>
-      <div className="container">
-        <div className="blok">
-          <div className="blok__left">
-            <Swiper
-              style={{
-                "--swiper-navigation-color": "#fff",
-                "--swiper-pagination-color": "#fff",
-              }}
-              loop={true}
-              spaceBetween={10}
-              navigation={true}
-              thumbs={{
-                swiper:
-                  thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
-              }}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper2">
-              {data?.photos?.map((evt, index) => (
-                <SwiperSlide key={index}>
-                  <img
-                    className="aboutproduct-img"
-                    alt={evt?.name}
-                    src={evt?.filePath}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              loop={true}
-              spaceBetween={50}
-              slidesPerView={4}
-              freeMode={true}
-              watchSlidesProgress={true}
-              style={{ paddingLeft: "10px", paddingRight: "0" }}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper">
-              {data?.photos?.map((evt, index) => (
-                <SwiperSlide key={index}>
-                  <img
-                    className="aboutproduct-imgs"
-                    alt={evt?.name}
-                    src={evt?.filePath}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-          <div className="blok__right">
-            <h1 className="blok__right_title">{data?.name}</h1>
-            <p className="blok__right_subTitle">{data?.description}</p>
-
-            <div className="blok__right_icons">
-              {data?.quality === "NEW" ? (
-                <span className="icons__link card__new">{t("hello4")}</span>
-              ) : data?.quality === "TOP" ? (
-                <span className="icons__link card__medium">{t("hello5")}</span>
-              ) : data?.quality === "AVERAGE" ? (
-                <span className="icons__link">{t("hello6")}</span>
-              ) : (
-                ""
-              )}
-              <div className="icons__oblast">
-                <img
-                  src={location}
-                  alt="location"
-                  className="icons__oblast_location"
-                />
-                <p className="icons__oblast_subTitle">
-                  {i18next === "ru" ? data.region.nameRu : data.region.name},{" "}
-                  {i18next === "ru" ? data.district.nameRu : data.district.name}{" "}
-                  {t("hello3")}
-                </p>
-              </div>
-              <div className="icons__oblast">
-                <img
-                  src={clock}
-                  alt="clock"
-                  className="icons__oblast_location"
-                />
-                <p className="icons__oblast_subTitle">{formatUpdateDate}</p>
-              </div>
-              <div className="icons__oblast">
-                <img src={eye} alt="eye" className="icons__oblast_location" />
-                <p className="icons__oblast_subTitle">{data?.see} +</p>
-              </div>
+      {!!data && (
+        <div className="container">
+          <div className="blok">
+            <div className="blok__left">
+              <Swiper
+                style={{
+                  "--swiper-navigation-color": "#fff",
+                  "--swiper-pagination-color": "#fff",
+                }}
+                loop={true}
+                spaceBetween={10}
+                navigation={true}
+                thumbs={{
+                  swiper:
+                    thumbsSwiper && !thumbsSwiper.destroyed
+                      ? thumbsSwiper
+                      : null,
+                }}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper2">
+                {data?.photos?.map((evt, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      className="aboutproduct-img"
+                      alt={evt?.name}
+                      src={evt?.filePath}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={50}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                style={{ paddingLeft: "10px", paddingRight: "0" }}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper">
+                {data?.photos?.map((evt, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      className="aboutproduct-imgs"
+                      alt={evt?.name}
+                      src={evt?.filePath}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            <div className="blok__right_call">
-              <CallModal getPhone={getPhone} />
+            <div className="blok__right">
+              <h1 className="blok__right_title">{data?.name}</h1>
+              <p className="blok__right_subTitle">{data?.description}</p>
 
-              <div className="call__children">
-                <img
-                  src={
-                    data?.user?.photo === null ? AvatarIcon : data?.user?.photo
-                  }
-                  alt="children"
-                  className="call__icon-img"
-                />
-                <div className="call__children_orderer">
-                  <h4 className="orderer_title">{data?.user?.firstName}</h4>
-                  <p className="orderer_subTitle">
-                    So’ngi faolligi {formattedDate}
+              <div className="blok__right_icons">
+                {data?.quality === "NEW" ? (
+                  <span className="icons__link card__new">{t("hello4")}</span>
+                ) : data?.quality === "TOP" ? (
+                  <span className="icons__link card__medium">
+                    {t("hello5")}
+                  </span>
+                ) : data?.quality === "AVERAGE" ? (
+                  <span className="icons__link">{t("hello6")}</span>
+                ) : (
+                  ""
+                )}
+                <div className="icons__oblast">
+                  <img
+                    src={location}
+                    alt="location"
+                    className="icons__oblast_location"
+                  />
+                  <p className="icons__oblast_subTitle">
+                    {i18next === "ru" ? data.region.nameRu : data.region.name},{" "}
+                    {i18next === "ru"
+                      ? data.district.nameRu
+                      : data.district.name}{" "}
                   </p>
                 </div>
+                <div className="icons__oblast">
+                  <img
+                    src={clock}
+                    alt="clock"
+                    className="icons__oblast_location"
+                  />
+                  <p className="icons__oblast_subTitle">{formatUpdateDate}</p>
+                </div>
+                <div className="icons__oblast">
+                  <img src={eye} alt="eye" className="icons__oblast_location" />
+                  <p className="icons__oblast_subTitle">{data?.see} +</p>
+                </div>
               </div>
+              <div className="blok__right_call">
+                <CallModal getPhone={getPhone} />
+
+                <div className="call__children">
+                  <img
+                    src={
+                      data?.user?.photo === null
+                        ? AvatarIcon
+                        : data?.user?.photo
+                    }
+                    alt="children"
+                    className="call__icon-img"
+                  />
+                  <div className="call__children_orderer">
+                    <h4 className="orderer_title">{data?.user?.firstName}</h4>
+                    <p className="orderer_subTitle">
+                      {t("hello33")} {formattedDate}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p className="blok__right_note">
+                <b className="note__span">{t("hello89")}:</b> {t("hello88")}
+              </p>
             </div>
-            <p className="blok__right_note">
-              <b className="note__span">{t("hello89")}:</b> {t("hello88")}
-            </p>
           </div>
         </div>
-      </div>
+      )}
       <div className="about">
         <div className="container">
           <div className="about-top">
-            <button className="about-button">BOSHQA E’LONLARI</button>
+            <button className="about-button">{t("hello36")}</button>
           </div>
           <div className="products">
             {product?.content?.map((evt, index) => (
@@ -201,7 +210,7 @@ function AboutProduct() {
       <div className="about">
         <div className="container">
           <div className="about-top">
-            <button className="about-button">O‘XSHASH E’LONLAR</button>
+            <button className="about-button">{t("hello37")}</button>
           </div>
           <div className="products">
             {categoryData?.content?.map((evt, index) => (

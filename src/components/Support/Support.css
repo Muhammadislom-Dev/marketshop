@@ -47,7 +47,9 @@
     padding: 37px 70px;
   }
   .navbar-support {
-    display: none !important;
+    width: 100px !important;
+    font-size: 12px !important;
+    height: 40px !important;
   }
   .navbar-profiles {
     display: none !important;

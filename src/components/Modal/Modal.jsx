@@ -40,10 +40,6 @@ export default function LoginModal() {
   return (
     <>
       {token ? (
-        // <div onClick={handleOpen} className="navbar-link">
-        //   <img src={UserIcon} alt="" className="navbar-icon" />
-        //   {t("hello15")}
-        // </div>
         <Link to="/profile" className="navbar-link">
           <img src={UserIcon} alt="" className="navbar-icon" />
           {t("hello15")}

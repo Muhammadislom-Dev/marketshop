@@ -256,7 +256,7 @@
   }
 
   .header-list {
-    margin-left: 0 !important;
+    margin-left: 5px !important;
     width: 100%;
     gap: 0px;
   }

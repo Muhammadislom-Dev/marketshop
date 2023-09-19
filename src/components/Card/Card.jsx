@@ -84,7 +84,6 @@ const Card = ({ data, key, refetch }) => {
           <p className="card__subTitle">
             {i18next === "uz" ? data?.region?.name : data?.region?.nameRu}{" "}
             {i18next === "uz" ? data?.district?.name : data?.district?.nameRu}{" "}
-            {t("hello3")} {"  "}
             {formattedDate}
           </p>
           {data?.quality === "NEW" ? (

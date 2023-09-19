@@ -135,7 +135,6 @@ function Announcement({ setValue, setEditId }) {
                 <div className="card__right_subTitle">
                   {i18next === "ru" ? evt.region.nameRu : evt.region.name},{" "}
                   {i18next === "ru" ? evt.district.nameRu : evt.district.name}{" "}
-                  {t("hello3")}
                 </div>
                 <div className="card__right_blok">
                   {evt.quality === "NEW" ? (

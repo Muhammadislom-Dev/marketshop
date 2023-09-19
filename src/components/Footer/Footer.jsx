@@ -48,8 +48,8 @@ function Footer() {
                   </a>
                 </li>
                 <li className="footer-items">
-                  <Link to="/support" className="footer-link">
-                    {t("hello83")}
+                  <Link to="/blog" className="footer-link">
+                    {t("blog")}
                   </Link>
                 </li>
               </ul>
@@ -67,6 +67,11 @@ function Footer() {
                 <li className="footer-items">
                   <a href="#" className="footer-link">
                     {t("useful")}
+                  </a>
+                </li>
+                <li className="footer-items">
+                  <a href="tel:+998954409090" className="footer-link">
+                    +998 95440 90 90
                   </a>
                 </li>
               </ul>

@@ -245,7 +245,7 @@
   .navbar-link {
     display: none;
   }
-  .navbar-blog{
+  .navbar-blog {
     display: none !important;
   }
   .modal-responsive-icon {
@@ -281,7 +281,16 @@
   .navbar__icon {
     width: 95px;
   }
-  .navbar-right{
+  .navbar-right {
     gap: 8px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .fixedNav {
+    width: 100% !important;
+  }
+  .fixedNavIconBox {
+    max-width: 25% !important;
+    width: 25% !important;
   }
 }

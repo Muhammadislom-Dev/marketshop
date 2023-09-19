@@ -37,27 +37,20 @@ export default function LoginModal() {
     window.location.reload();
   };
 
+  console.log(data);
+
   return (
     <>
       {token ? (
-        <>
-          {data?.objectKoinot === null ? (
-            <Link onClick={handleReload} to="/" className="navbar-profile">
-              <img src={UserIcon} alt="" className="navbar-icon" />
-              {t("profile")}
-            </Link>
-          ) : (
-            <Link to="/profile" className="navbar-profile">
-              <img src={UserIcon} alt="" className="navbar-icon" />
-              {t("profile")}
-            </Link>
-          )}
-        </>
-      ) : (
         <div onClick={handleOpen} className="navbar-link">
           <img src={UserIcon} alt="" className="navbar-icon" />
           {t("hello15")}
         </div>
+      ) : (
+        <Link to="/" className="navbar-link">
+          <img src={UserIcon} alt="" className="navbar-icon" />
+          {t("hello15")}
+        </Link>
       )}
       <Modal
         open={open}

@@ -106,9 +106,6 @@ function ProductEdit({ editId }) {
     }));
   }, [district.data]);
 
-  console.log(moderData?.regionId);
-  console.log(moderData?.districtId);
-
   if (isLoading) {
     return (
       <Box
@@ -250,11 +247,17 @@ function ProductEdit({ editId }) {
                   value={!!moderData?.districtId && moderData?.districtId}
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}>
-                  {district?.data?.objectKoinot?.content?.map((el) => (
-                    <MenuItem key={el?.id} value={el?.id}>
-                      {i18next === "ru" ? el?.nameRu : el?.name}
-                    </MenuItem>
-                  ))}
+                  {moderData?.districtId ? (
+                    <>
+                      {district?.data?.objectKoinot?.content?.map((el) => (
+                        <MenuItem key={el?.id} value={el?.id}>
+                          {i18next === "ru" ? el?.nameRu : el?.name}
+                        </MenuItem>
+                      ))}
+                    </>
+                  ) : (
+                    "Hello world"
+                  )}
                 </Select>
               </FormControl>
             </label>

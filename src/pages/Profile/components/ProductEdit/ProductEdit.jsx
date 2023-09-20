@@ -50,7 +50,6 @@ function ProductEdit({ editId }) {
       .get(`${API_URL}/product/v1/${editId}`)
       .then((res) => {
         setModerData(res.data);
-        setDistrictProduct(res?.data?.regionId);
         setLoading(false);
       })
       .catch((err) => {
@@ -65,7 +64,6 @@ function ProductEdit({ editId }) {
     },
     onError: (error) => {},
   });
-
   const { t } = useTranslation();
 
   const handleSubmit = (e) => {
@@ -85,11 +83,9 @@ function ProductEdit({ editId }) {
   };
   const { data } = useQuery("category", getCategory);
   const region = useQuery("regionId", fetchRegionData);
-  const {
-    district,
-    isLoading: isLoadingDistrict,
-    refetch,
-  } = useQuery("districtId", () => fetchDistrictData(districtProduct));
+  const district = useQuery("districtId", () =>
+    fetchDistrictData(moderData?.regionId)
+  );
 
   const handleChange = (key, value) => {
     setModerData((prevState) => ({ ...prevState, [key]: value }));
@@ -105,8 +101,8 @@ function ProductEdit({ editId }) {
   }, [moderData]);
 
   useEffect(() => {
-    refetch();
-  }, [districtProduct]);
+    district.refetch();
+  }, [moderData?.regionId]);
 
   useEffect(() => {
     setProduct((state) => ({
@@ -114,6 +110,8 @@ function ProductEdit({ editId }) {
       districtId: district?.data?.objectKoinot?.content[0]?.id,
     }));
   }, [district?.data]);
+
+  console.log(district);
 
   if (isLoading) {
     return (
@@ -143,20 +141,7 @@ function ProductEdit({ editId }) {
       </Box>
     );
   }
-  if (isLoadingDistrict) {
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height={"80vh"}>
-        <CircularProgress
-          color="success"
-          style={{ width: "100px", height: "100px" }}
-        />
-      </Box>
-    );
-  }
+
   return (
     <div>
       {activeModal ? <ProductModal /> : null}
@@ -284,6 +269,11 @@ function ProductEdit({ editId }) {
                   value={!!moderData?.districtId && moderData?.districtId}
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}>
+                  <MenuItem value={moderData?.districtId}>
+                    {i18next === "ru"
+                      ? moderData.district.nameRu
+                      : moderData.district.name}
+                  </MenuItem>
                   {district?.data?.objectKoinot?.content?.map((el) => (
                     <MenuItem key={el?.id} value={el?.id}>
                       {i18next === "ru" ? el?.nameRu : el?.name}

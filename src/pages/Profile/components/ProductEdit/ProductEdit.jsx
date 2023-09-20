@@ -85,9 +85,11 @@ function ProductEdit({ editId }) {
   };
   const { data } = useQuery("category", getCategory);
   const region = useQuery("regionId", fetchRegionData);
-  const district = useQuery("districtId", () =>
-    fetchDistrictData(districtProduct)
-  );
+  const {
+    district,
+    isLoading: isLoadingDistrict,
+    refetch,
+  } = useQuery("districtId", () => fetchDistrictData(districtProduct));
 
   const handleChange = (key, value) => {
     setModerData((prevState) => ({ ...prevState, [key]: value }));
@@ -103,7 +105,7 @@ function ProductEdit({ editId }) {
   }, [moderData]);
 
   useEffect(() => {
-    district.refetch();
+    refetch();
   }, [districtProduct]);
 
   useEffect(() => {
@@ -111,7 +113,7 @@ function ProductEdit({ editId }) {
       ...state,
       districtId: district?.data?.objectKoinot?.content[0]?.id,
     }));
-  }, [district.data]);
+  }, [district?.data]);
 
   if (isLoading) {
     return (
@@ -128,6 +130,20 @@ function ProductEdit({ editId }) {
     );
   }
   if (loading) {
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height={"80vh"}>
+        <CircularProgress
+          color="success"
+          style={{ width: "100px", height: "100px" }}
+        />
+      </Box>
+    );
+  }
+  if (isLoadingDistrict) {
     return (
       <Box
         display="flex"

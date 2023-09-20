@@ -106,6 +106,9 @@ function ProductEdit({ editId }) {
     }));
   }, [district.data]);
 
+  console.log(moderData?.regionId);
+  console.log(moderData?.districtId);
+
   if (isLoading) {
     return (
       <Box
@@ -123,151 +126,158 @@ function ProductEdit({ editId }) {
   return (
     <div>
       {activeModal ? <ProductModal /> : null}
-      <div className="addImage">
-        <h3 className="addImage-title">{t("hello531")}</h3>
-        <div className="addImage-box">
-          {moderData?.photos?.map((evt, key) => (
-            <img
-              key={key}
-              src={evt.filePath}
-              alt=""
-              className="addImage-box-item"
-            />
-          ))}
-          {imgBox?.map((el, index) =>
-            el ? (
-              <img
-                key={index}
-                src={URL.createObjectURL(el)}
-                alt="error"
-                className="addImage-box-item"
-              />
-            ) : (
-              <img
-                key={index}
-                src={moderData.photos[0].filePath}
-                alt="error"
-                className="addImage-box-item"
-              />
-            )
-          )}
-          <label htmlFor="create-product-img" className="addImage-box-button">
-            <BsPlusCircle />
-            <span>{t("hello53")}</span>
-            <input
-              type="file"
-              id="create-product-img"
-              accept="image/*"
-              onChange={(e) => {
-                setimageBox((state) => [...state, e.target.files[0]]);
-                imageMutate({ key: e.target.files[0] });
-              }}
-            />
-          </label>
-        </div>
-      </div>
       {!!moderData && (
-        <form className="product-create-form" onSubmit={handleSubmit}>
-          <label className="product-create-label">
-            <h4>{t("hello56")}</h4>
-            <input
-              type="text"
-              maxLength={500}
-              min={3}
-              value={moderData?.name}
-              onChange={(e) => handleChange("name", e.target.value)}
-              required
-            />
-          </label>
-          <label className="product-create-label">
-            <h4>{t("hello57")}</h4>
-            <textarea
-              value={moderData?.description}
-              onChange={(e) => handleChange("description", e.target.value)}
-              style={{ padding: "5px 15px" }}
-              rows="10"
-              maxLength={500}
-              min={3}
-              required></textarea>
-          </label>
-          <label className="product-create-label">
-            <h4>{t("hello58")}</h4>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                onChange={(e) => handleChange("categoryId", e.target.value)}
-                value={moderData?.categoryId}
-                inputProps={{ "aria-label": "Without label" }}>
-                {data?.objectKoinot?.map((el, index) => (
-                  <MenuItem key={index} value={el?.id}>
-                    {i18next === "uz" ? el.nameUz : el.nameRu}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </label>
-          <label className="product-create-label">
-            <h4>{t("hello60")}</h4>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                onChange={(e) => handleChange("productQuality", e.target.value)}
-                value={moderData?.quality}
-                inputProps={{ "aria-label": "Without label" }}>
-                <MenuItem value="AVERAGE">{t("hello5")}</MenuItem>
-                <MenuItem value="NEW">{t("hello4")}</MenuItem>
-                <MenuItem value="OLD">{t("hello6")}</MenuItem>
-              </Select>
-            </FormControl>
-          </label>
-          <label className="product-create-label">
-            <h4>{t("hello21")}</h4>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                onChange={(e) => handleChange("regionId", e.target.value)}
-                value={moderData?.regionId}
-                inputProps={{ "aria-label": "Without label" }}>
-                {region.data.objectKoinot.content.map((el) => (
-                  <MenuItem key={el.id} value={el.id}>
-                    {i18next === "ru" ? el.nameRu : el.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </label>
-          <label className="product-create-label">
-            <h4>{t("hello41")}</h4>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                onChange={(e) => handleChange("districtId", e.target.value)}
-                value={moderData?.districtId}
-                displayEmpty
-                inputProps={{ "aria-label": "Without label" }}>
-                {district?.data?.objectKoinot?.content?.map((el) => (
-                  <MenuItem key={el.id} value={el.id}>
-                    {i18next === "ru" ? el.nameRu : el.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </label>
-          <label className="product-create-label">
-            <h4>{t("hello61")}</h4>
-            <div className="product-edit-input" style={{ width: "100%" }}>
-              <input
-                value={moderData?.phoneNumber}
-                onChange={(e) => handleChange("phoneNumber", e.target.value)}
-                type="tell"
-                maxLength={14}
-                className="product-edit-input"
-                min={3}
-                required
-                pattern="^[0-9+-]*$"
-              />
+        <>
+          <div className="addImage">
+            <h3 className="addImage-title">{t("hello531")}</h3>
+            <div className="addImage-box">
+              {moderData?.photos?.map((evt, key) => (
+                <img
+                  key={key}
+                  src={evt.filePath}
+                  alt=""
+                  className="addImage-box-item"
+                />
+              ))}
+              {imgBox?.map((el, index) =>
+                el ? (
+                  <img
+                    key={index}
+                    src={URL.createObjectURL(el)}
+                    alt="error"
+                    className="addImage-box-item"
+                  />
+                ) : (
+                  <img
+                    key={index}
+                    src={moderData.photos[0].filePath}
+                    alt="error"
+                    className="addImage-box-item"
+                  />
+                )
+              )}
+              <label
+                htmlFor="create-product-img"
+                className="addImage-box-button">
+                <BsPlusCircle />
+                <span>{t("hello53")}</span>
+                <input
+                  type="file"
+                  id="create-product-img"
+                  accept="image/*"
+                  onChange={(e) => {
+                    setimageBox((state) => [...state, e.target.files[0]]);
+                    imageMutate({ key: e.target.files[0] });
+                  }}
+                />
+              </label>
             </div>
-          </label>
-          <button className="product-create-form-button" type="submit">
-            {t("hello66")}
-          </button>
-        </form>
+          </div>
+
+          <form className="product-create-form" onSubmit={handleSubmit}>
+            <label className="product-create-label">
+              <h4>{t("hello56")}</h4>
+              <input
+                type="text"
+                maxLength={500}
+                min={3}
+                value={moderData?.name}
+                onChange={(e) => handleChange("name", e.target.value)}
+                required
+              />
+            </label>
+            <label className="product-create-label">
+              <h4>{t("hello57")}</h4>
+              <textarea
+                value={moderData?.description}
+                onChange={(e) => handleChange("description", e.target.value)}
+                style={{ padding: "5px 15px" }}
+                rows="10"
+                maxLength={500}
+                min={3}
+                required></textarea>
+            </label>
+            <label className="product-create-label">
+              <h4>{t("hello58")}</h4>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  onChange={(e) => handleChange("categoryId", e.target.value)}
+                  value={moderData?.categoryId}
+                  inputProps={{ "aria-label": "Without label" }}>
+                  {data?.objectKoinot?.map((el, index) => (
+                    <MenuItem key={index} value={el?.id}>
+                      {i18next === "uz" ? el.nameUz : el.nameRu}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </label>
+            <label className="product-create-label">
+              <h4>{t("hello60")}</h4>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  onChange={(e) =>
+                    handleChange("productQuality", e.target.value)
+                  }
+                  value={moderData?.quality}
+                  inputProps={{ "aria-label": "Without label" }}>
+                  <MenuItem value="AVERAGE">{t("hello5")}</MenuItem>
+                  <MenuItem value="NEW">{t("hello4")}</MenuItem>
+                  <MenuItem value="OLD">{t("hello6")}</MenuItem>
+                </Select>
+              </FormControl>
+            </label>
+            <label className="product-create-label">
+              <h4>{t("hello21")}</h4>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  onChange={(e) => handleChange("regionId", e.target.value)}
+                  value={moderData?.regionId}
+                  inputProps={{ "aria-label": "Without label" }}>
+                  {region.data.objectKoinot.content.map((el) => (
+                    <MenuItem key={el.id} value={el.id}>
+                      {i18next === "ru" ? el.nameRu : el.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </label>
+            <label className="product-create-label">
+              <h4>{t("hello41")}</h4>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  onChange={(e) => handleChange("districtId", e.target.value)}
+                  value={!!moderData?.districtId && moderData?.districtId}
+                  displayEmpty
+                  inputProps={{ "aria-label": "Without label" }}>
+                  {district?.data?.objectKoinot?.content?.map((el) => (
+                    <MenuItem key={el?.id} value={el?.id}>
+                      {i18next === "ru" ? el?.nameRu : el?.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </label>
+            <label className="product-create-label">
+              <h4>{t("hello61")}</h4>
+              <div className="product-edit-input" style={{ width: "100%" }}>
+                <input
+                  value={moderData?.phoneNumber}
+                  onChange={(e) => handleChange("phoneNumber", e.target.value)}
+                  type="tell"
+                  maxLength={14}
+                  className="product-edit-input"
+                  min={3}
+                  required
+                  pattern="^[0-9+-]*$"
+                />
+              </div>
+            </label>
+            <button className="product-create-form-button" type="submit">
+              {t("hello66")}
+            </button>
+          </form>
+        </>
       )}
     </div>
   );

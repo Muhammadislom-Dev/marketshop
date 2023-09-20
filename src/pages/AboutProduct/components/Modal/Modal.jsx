@@ -33,7 +33,6 @@ function CallModal({ getPhone }) {
   };
   const handleClose = () => setOpen(false);
 
-
   return (
     <div className="delete">
       <button onClick={handleOpen} className="call__link">
@@ -58,13 +57,13 @@ function CallModal({ getPhone }) {
               </div>
             </Box>
           ) : (
-            <Box  sx={style}>
+            <Box sx={style}>
               <div className="delete-list">
                 <img src={CallButton} alt="" />
                 <h3 className="delete-name">{getPhone?.phoneNumber}</h3>
                 <p className="delete-text">
-                  Sizda kunlik {getPhone?.dailyLimitCount} ta qo’ng’iroqdan{" "}
-                  {getPhone?.lastDailyLimit} ta qoldi
+                  {t("hello26")} {getPhone?.dailyLimitCount} {t("hello116")}{" "}
+                  {getPhone?.lastDailyLimit} {t("hello117")}{" "}
                 </p>
                 <a
                   href={`tel:+${getPhone?.phoneNumber}`}

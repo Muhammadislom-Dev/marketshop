@@ -39,7 +39,7 @@
   "hello23": "Kunlik limit tugadi",
   "hello24": "Sizning kunlik limitingiz tugagan!",
   "hello25": "Yopish",
-  "hello26": "  Sizda kunlik 3 ta qo’ng’iroqdan qoldi.",
+  "hello26": "Sizda kunlik",
   "hello27": " Qo‘ng‘iroq qilish",
   "hello28": "Ro‘yhatdan o‘tilmagan",
   "hello29": "Iltimos raqamni ko’rish va qo’ng’iroq qilish uchun saytdan ro’yhatdan o’tishingizni so’raymiz.",
@@ -129,5 +129,7 @@
   "hello112": "Mahsulot muvaffaqiyatli tanlanganlar ro'yhatidan o'chirildi!",
   "hello113": "Bu mahsulotni siz tanlanganlar ro'yhatiga qo'sha olmaysiz!",
   "hello114": "Mahsulot muvaffaqiyatli o'chirildi",
-  "hello115": "Mahsulot o'chirish uchun admin tomonidan ruxsat olishingiz kerak"
+  "hello115": "Mahsulot o'chirish uchun admin tomonidan ruxsat olishingiz kerak",
+  "hello116": "ta qo’ng’iroqdan",
+  "hello117": "ta qoldi"
 }

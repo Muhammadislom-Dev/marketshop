@@ -199,7 +199,7 @@ export const fetchRegionData = async () => {
   return response.data;
 };
 
-export const fetchDistrictData = async (code, setData) => {
+export const fetchDistrictData = async (code) => {
   const response = await axios.get(
     `${API_BASE_URL}/district/v1/all?regionId=${code}`
   );
@@ -316,14 +316,10 @@ export const likeProductDelete = async (id) => {
       }
     )
     .then((res) => {
-      toast.success(
-        t("hello112")
-      );
+      toast.success(t("hello112"));
     })
     .catch((err) => {
-      toast.danger(
-        t("hello113")
-      );
+      toast.danger(t("hello113"));
     });
   return response.data;
 };

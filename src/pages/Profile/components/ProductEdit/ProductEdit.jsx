@@ -20,7 +20,9 @@ import axios from "axios";
 
 function ProductEdit({ editId }) {
   const [imgBox, setimageBox] = useState([]);
+  const [districtProduct, setDistrictProduct] = useState("");
   const [moderData, setModerData] = useState();
+  const [loading, setLoading] = useState(true);
   const [idArray, setIdArray] = useState([]);
   const i18next = localStorage.getItem("i18nextLng");
   const [activeModal, setActiveModal] = useState(false);
@@ -48,8 +50,13 @@ function ProductEdit({ editId }) {
       .get(`${API_URL}/product/v1/${editId}`)
       .then((res) => {
         setModerData(res.data);
+        setDistrictProduct(res?.data?.regionId);
+        setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   }, [editId]);
 
   const { mutate, isLoading } = useMutation((data) => createProduct(data), {
@@ -79,7 +86,7 @@ function ProductEdit({ editId }) {
   const { data } = useQuery("category", getCategory);
   const region = useQuery("regionId", fetchRegionData);
   const district = useQuery("districtId", () =>
-    fetchDistrictData(moderData?.regionId)
+    fetchDistrictData(districtProduct)
   );
 
   const handleChange = (key, value) => {
@@ -97,7 +104,7 @@ function ProductEdit({ editId }) {
 
   useEffect(() => {
     district.refetch();
-  }, [moderData?.regionId]);
+  }, [districtProduct]);
 
   useEffect(() => {
     setProduct((state) => ({
@@ -107,6 +114,20 @@ function ProductEdit({ editId }) {
   }, [district.data]);
 
   if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height={"80vh"}>
+        <CircularProgress
+          color="success"
+          style={{ width: "100px", height: "100px" }}
+        />
+      </Box>
+    );
+  }
+  if (loading) {
     return (
       <Box
         display="flex"
@@ -231,7 +252,7 @@ function ProductEdit({ editId }) {
                   onChange={(e) => handleChange("regionId", e.target.value)}
                   value={moderData?.regionId}
                   inputProps={{ "aria-label": "Without label" }}>
-                  {region.data.objectKoinot.content.map((el) => (
+                  {region?.data?.objectKoinot?.content?.map((el) => (
                     <MenuItem key={el.id} value={el.id}>
                       {i18next === "ru" ? el.nameRu : el.name}
                     </MenuItem>
@@ -247,17 +268,11 @@ function ProductEdit({ editId }) {
                   value={!!moderData?.districtId && moderData?.districtId}
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}>
-                  {moderData?.districtId ? (
-                    <>
-                      {district?.data?.objectKoinot?.content?.map((el) => (
-                        <MenuItem key={el?.id} value={el?.id}>
-                          {i18next === "ru" ? el?.nameRu : el?.name}
-                        </MenuItem>
-                      ))}
-                    </>
-                  ) : (
-                    "Hello world"
-                  )}
+                  {district?.data?.objectKoinot?.content?.map((el) => (
+                    <MenuItem key={el?.id} value={el?.id}>
+                      {i18next === "ru" ? el?.nameRu : el?.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </label>

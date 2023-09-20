@@ -111,8 +111,6 @@ function ProductEdit({ editId }) {
     }));
   }, [district?.data]);
 
-  console.log(district);
-
   if (isLoading) {
     return (
       <Box

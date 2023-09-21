@@ -95,7 +95,7 @@ export default function Setup({ refetch }) {
                 <img src={!!data && URL?.createObjectURL(data)} alt="error" />
               ) : (
                 <div className="setup-img-default">
-                  <img src={userData?.photo?.filePath} alt="error" />
+                  <img src={userData?.photo?.filePath} />
                   <FaCamera />
                 </div>
               )}

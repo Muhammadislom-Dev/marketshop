@@ -23,14 +23,14 @@ code {
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
-  font-family: "Archivo", sans-serif;
+  font-family: "Archivo", sans-serif !important;
 }
 
 * {
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  font-family: "Archivo", sans-serif;
+  font-family: "Archivo", sans-serif !important;
 }
 
 input::-webkit-outer-spin-button,

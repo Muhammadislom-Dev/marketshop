@@ -33,42 +33,17 @@ function Footer() {
             <div className="footer-left">
               <ul className="footer-item">
                 <li className="footer-items">
-                  <a href="#" className="footer-link">
-                    {t("yordam")}
-                  </a>
-                </li>
-                <li className="footer-items">
-                  <a href="#" className="footer-link">
-                    {t("site")}
-                  </a>
-                </li>
-                <li className="footer-items">
-                  <a href="#" className="footer-link">
-                    {t("security")}
-                  </a>
-                </li>
-                <li className="footer-items">
                   <Link to="/blog" className="footer-link">
                     {t("blog")}
                   </Link>
                 </li>
+                <li>
+                  <Link to="/support" className="footer-link">
+                    {t("hello83")}
+                  </Link>
+                </li>
               </ul>
               <ul className="footer-item">
-                <li className="footer-items">
-                  <a href="#" className="footer-link">
-                    {t("hello95")}
-                  </a>
-                </li>
-                <li className="footer-items">
-                  <a href="#" className="footer-link">
-                    {t("website")}
-                  </a>
-                </li>
-                <li className="footer-items">
-                  <a href="#" className="footer-link">
-                    {t("useful")}
-                  </a>
-                </li>
                 <li className="footer-items">
                   <a href="tel:+998954409090" className="footer-link">
                     +998 95 440 90 90

@@ -122,6 +122,7 @@
 .call__icon-img {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
 }
 
 .orderer_title {
@@ -298,7 +299,12 @@
 @media screen and (max-width: 470px) {
   .call__link {
     font-size: 13px;
-    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+  }
+  .delete {
+    width: 100%;
   }
 
   .product-modal-wrapper {
@@ -316,7 +322,7 @@
     max-width: 200px;
     padding: 15px 10px;
   }
-  .product-modal-wrapper>p{
+  .product-modal-wrapper > p {
     margin-top: 0;
   }
   .blok__right_icons {
@@ -330,9 +336,14 @@
   .call__icon-img {
     width: 45px;
     height: 45px;
+    border-radius: 50%;
   }
   .blok__right_call {
-    gap: 0px;
+    gap: 5px;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
   }
   .delete-modal-product .css-9naxxq {
     width: 90% !important;

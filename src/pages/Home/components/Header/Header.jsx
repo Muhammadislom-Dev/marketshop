@@ -79,7 +79,10 @@ function Header({ code, setCode, setSearch, handleClear, age, setAge }) {
                   {t("hello40")}
                 </MenuItem>
                 {region?.objectKoinot?.content?.map((data) => (
-                  <MenuItem key={data.id} value={data.id}>
+                  <MenuItem
+                    style={{ fontFamily: "Archivo, sans-serif" }}
+                    key={data.id}
+                    value={data.id}>
                     {i18next === "ru" ? data.nameRu : data.name}
                   </MenuItem>
                 ))}

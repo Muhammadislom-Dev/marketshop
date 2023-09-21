@@ -444,11 +444,17 @@ export const getProductParamsTrueData = async (code, search, page, popular) => {
 };
 
 export const getProfileData = async () => {
-  const response = await axios.get(`${API_BASE_URL}/auth/v1/me`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  });
+  const response = await axios
+    .get(`${API_BASE_URL}/auth/v1/me`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+    .then((res) => {
+      if (res?.data?.objectKoinot === null) {
+        <Navigate to="/" replace />;
+      }
+    });
   return response.data;
 };
 

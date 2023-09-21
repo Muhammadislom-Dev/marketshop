@@ -9,11 +9,11 @@ import Announcement from "./components/Announcement/Announcement";
 import ProductCreate from "./components/ProductCreate/ProductCreate";
 import Setup from "./components/Setup/Setup";
 import { AvatarIcon } from "../../assets/icon";
-import { useQuery } from "react-query";
-import { API_URL, getProfileData } from "../../api";
-import { CircularProgress } from "@mui/material";
+import { API_URL } from "../../api";
 import ProductEdit from "./components/ProductEdit/ProductEdit";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,7 +49,7 @@ function a11yProps(index) {
 
 function Profile() {
   const [value, setValue] = React.useState(0);
-  const { data, isLoading, refetch } = useQuery("profile", getProfileData);
+  const [userData, setUserData] = useState();
   const [editId, setEditId] = useState("");
   const [category, setCategory] = useState("");
 
@@ -58,74 +58,79 @@ function Profile() {
     setValue(newValue);
   };
 
-  if (isLoading) {
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        height={"80vh"}>
-        <CircularProgress
-          color="success"
-          style={{ width: "100px", height: "100px" }}
-        />
-      </Box>
-    );
-  }
+  useEffect(() => {
+    const response = axios
+      .get(`${API_URL}/auth/v1/me`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        setUserData(res.data);
+        if (res?.data?.objectKoinot === null) {
+          <Navigate to="/" replace />;
+        }
+      });
+    return response.data;
+  });
 
   return (
     <>
       <div className="profile">
         <div className="container">
           <div className="profileBackground">
-            <div className="profile-list">
-              <img
-                src={
-                  data?.objectKoinot?.photo === null
-                    ? AvatarIcon
-                    : data?.objectKoinot?.photo?.filePath
-                }
-                alt=""
-                className="profile-img"
-              />
-              <div className="profile-item">
-                <h3 className="profile-name">
-                  {data?.objectKoinot?.firstName === null
-                    ? "UserName"
-                    : data?.objectKoinot?.firstName}
-                </h3>
-                <a
-                  href={`tel:+${data?.objectKoinot?.phoneNumber}`}
-                  className="profile-number">
-                  +{data?.objectKoinot?.phoneNumber}
-                </a>
+            {!!userData && (
+              <div className="profile-list">
+                <img
+                  src={
+                    userData?.objectKoinot?.photo === null
+                      ? AvatarIcon
+                      : userData?.objectKoinot?.photo?.filePath
+                  }
+                  alt=""
+                  className="profile-img"
+                />
+                <div className="profile-item">
+                  <h3 className="profile-name">
+                    {userData?.objectKoinot?.firstName === null
+                      ? "UserName"
+                      : userData?.objectKoinot?.firstName}
+                  </h3>
+                  <a
+                    href={`tel:+${userData?.objectKoinot?.phoneNumber}`}
+                    className="profile-number">
+                    +{userData?.objectKoinot?.phoneNumber}
+                  </a>
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="profileBackground-mobile">
-            <div className="profile-list">
-              <img
-                src={
-                  data?.objectKoinot?.photo === null
-                    ? AvatarIcon
-                    : data?.objectKoinot?.photo?.filePath
-                }
-                alt=""
-                className="profile-img"
-              />
-              <div className="profile-item">
-                <h3 className="profile-name">
-                  {data?.objectKoinot?.firstName === null
-                    ? ""
-                    : data?.objectKoinot?.firstName}
-                </h3>
-                <a
-                  href={`tel:+${data?.objectKoinot?.phoneNumber}`}
-                  className="profile-number">
-                  +{data?.objectKoinot?.phoneNumber}
-                </a>
+            {!!userData && (
+              <div className="profile-list">
+                <img
+                  src={
+                    userData?.objectKoinot?.photo === null
+                      ? AvatarIcon
+                      : userData?.objectKoinot?.photo?.filePath
+                  }
+                  alt=""
+                  className="profile-img"
+                />
+                <div className="profile-item">
+                  <h3 className="profile-name">
+                    {userData?.objectKoinot?.firstName === null
+                      ? ""
+                      : userData?.objectKoinot?.firstName}
+                  </h3>
+                  <a
+                    href={`tel:+${userData?.objectKoinot?.phoneNumber}`}
+                    className="profile-number">
+                    +{userData?.objectKoinot?.phoneNumber}
+                  </a>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -155,7 +160,7 @@ function Profile() {
               <ProductCreate editId={editId} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-              <Setup dataValue={data} refetch={refetch} />
+              <Setup />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={3}>
               <ProductEdit editId={editId} />

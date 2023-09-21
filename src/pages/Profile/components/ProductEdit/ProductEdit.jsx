@@ -54,7 +54,6 @@ function ProductEdit({ editId }) {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
       });
   }, [editId]);
 

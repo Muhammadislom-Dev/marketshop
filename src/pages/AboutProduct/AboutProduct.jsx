@@ -57,7 +57,6 @@ function AboutProduct() {
   const formatUpdateDate = formatSecondsToDateString(secondDate);
 
 
-  console.log(data)
 
   if (isLoading) {
     return (

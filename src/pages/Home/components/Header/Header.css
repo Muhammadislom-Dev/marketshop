@@ -101,7 +101,7 @@ body .header .css-fvipm8 {
   gap: 20px;
   align-items: center;
   justify-content: space-around;
-  overflow: auto;
+  overflow-x: scroll;
   margin-top: 69px;
   margin-left: 30px;
   position: relative;
@@ -272,7 +272,7 @@ body .header .css-fvipm8 {
     align-items: center;
   }
   body .header-link:nth-child(1) {
-    margin-left: 260px !important;
+    margin-left: 600px !important;
   }
 
   .header-subname {

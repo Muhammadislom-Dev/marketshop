@@ -4,27 +4,18 @@ import defaultImg from "../../../../assets/img/default-profile-img.png";
 import { FaCamera } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { useMutation, useQuery } from "react-query";
-import {
-  API,
-  API_URL,
-  editUserPost,
-  getSetupData,
-  uploadImage,
-} from "../../../../api";
+import { API, API_URL, editUserPost } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { t } from "i18next";
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";
 
-export default function Setup({ refetch }) {
+export default function Setup() {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [value, setValue] = useState();
   const [userData, setUserData] = useState();
-  // const [product, setProduct] = useState({
-  //   language: null,
-  // });
 
   const phone = `+${userData?.phoneNumber}`;
 
@@ -49,13 +40,13 @@ export default function Setup({ refetch }) {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       })
-      .then((res) => setUserData(res?.data?.objectKoinot));
+      .then((res) => {
+        setUserData(res?.data?.objectKoinot);
+      });
   }, []);
 
   const { mutate, isLoading } = useMutation((data) => editUserPost(data), {
-    onSuccess: (data) => {
-      refetch();
-    },
+    onSuccess: (data) => {},
     onError: (error) => {},
   });
 
@@ -81,8 +72,6 @@ export default function Setup({ refetch }) {
     navigate("/");
     window.location.reload();
   }
-
-  console.log(userData);
 
   return (
     <>

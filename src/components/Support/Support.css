@@ -20,10 +20,23 @@
   font-weight: 600;
   line-height: 52px; /* 130% */
 }
+
+.support-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--foundation-grey-normal, #232323);
+  font-family: Archivo, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+}
+
 .support-text {
   color: var(--foundation-grey-normal, #232323);
   font-family: Archivo, sans-serif;
-  font-size: 24px;
+  font-size: 25px;
   font-style: normal;
   font-weight: 400;
   line-height: 36px; /* 150% */

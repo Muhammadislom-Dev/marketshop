@@ -100,7 +100,8 @@
   "hello83": "Qo'llab quvvatlash",
   "hello84": "Tekin Market loyihamizni qo’llab quvvatlang!",
   "hello85": "Tekin-Market loyihasi ehson va savob maqsadida qilingan proyekt.",
-  "hello86": "Shu proyektni moliyaviy qo’llab quvvatlash niyatingiz bo’lsa iltimos 8600 0610 5637 0785 Xamarayeva Nazokat kartasiga ehsoningizni o’tqazing. Sizning yordamingiz bu savobli proyektni yana ham ommalashishiga turtki bo’ladi. ",
+  "hello86": "Shu proyektni moliyaviy qo’llab quvvatlash niyatingiz bo’lsa iltimos",
+  "hello867": "Xamarayeva Nazokat kartasiga ehsoningizni o’tqazing. Sizning yordamingiz bu savobli proyektni yana ham ommalashishiga turtki bo’ladi. ",
   "hello87": "Hurmat bilan sayt mamuriyati!",
   "hello88": "Qo’ngiroq qilish uchun 1 oyga 10 ta limit beriladi va kunlik limit 3 ta. Undan tashqari qo’ng’rioq qilishingiz uchun siz saytdan ro’yhatdan, o’tgan bo’lishingiz kerak bo’ladi.",
   "hello89": "Muhim eslatma",
@@ -131,5 +132,6 @@
   "hello114": "Mahsulot muvaffaqiyatli o'chirildi",
   "hello115": "Mahsulot o'chirish uchun admin tomonidan ruxsat olishingiz kerak",
   "hello116": "ta qo’ng’iroqdan",
-  "hello117": "ta qoldi"
+  "hello117": "ta qoldi",
+  "hello118":"Karta raqami nusxa olindi!"
 }

@@ -62,8 +62,7 @@ function CallModal({ getPhone }) {
                 <img src={CallButton} alt="" />
                 <h3 className="delete-name">{getPhone?.phoneNumber}</h3>
                 <p className="delete-text">
-                  {t("hello26")} {getPhone?.dailyLimitCount} {t("hello116")}{" "}
-                  {getPhone?.lastDailyLimit} {t("hello117")}{" "}
+                  {t("hello26")} {getPhone?.lastDailyLimit} {t("hello117")}{" "}
                 </p>
                 <a
                   href={`tel:+${getPhone?.phoneNumber}`}

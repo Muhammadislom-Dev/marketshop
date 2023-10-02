@@ -5,7 +5,7 @@ import { FaCamera } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { useMutation, useQuery } from "react-query";
 import { API, API_URL, editUserPost } from "../../../../api";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { t } from "i18next";
 import PhoneInput from "react-phone-number-input";
@@ -42,6 +42,9 @@ export default function Setup() {
       })
       .then((res) => {
         setUserData(res?.data?.objectKoinot);
+        if (res?.data?.objectKoinot === null) {
+          <Navigate to="/" replace />;
+        }
       });
   }, []);
 
@@ -75,10 +78,10 @@ export default function Setup() {
 
   return (
     <>
-      {!!userData && (
-        <div className="setup">
-          <div className="setup-img">
-            <h3>{t("hello75")}</h3>
+      <div className="setup">
+        <div className="setup-img">
+          <h3>{t("hello75")}</h3>
+          {!!userData && (
             <label htmlFor="setup-profile-img" className="setup-img-upload">
               {data ? (
                 <img src={!!data && URL?.createObjectURL(data)} alt="error" />
@@ -100,8 +103,10 @@ export default function Setup() {
               />
               <span>{t("hello76")}</span>
             </label>
-          </div>
-          <form className="product-create-form" onSubmit={handleSubmit}>
+          )}
+        </div>
+        <form className="product-create-form" onSubmit={handleSubmit}>
+          {!!userData && (
             <label className="product-create-label">
               <h4>First Name</h4>
               <input
@@ -113,6 +118,8 @@ export default function Setup() {
                 required
               />
             </label>
+          )}
+          {!!userData && (
             <label className="product-create-label">
               <h4>Last Name</h4>
               <input
@@ -124,6 +131,8 @@ export default function Setup() {
                 value={userData.lastName}
               />
             </label>
+          )}
+          {!!userData && (
             <label className="product-create-label">
               <h4>{t("hello45")}</h4>
               <PhoneInput
@@ -134,22 +143,22 @@ export default function Setup() {
                 limitMaxLength={14}
               />
             </label>
+          )}
 
-            <div className="setup-btn-wrapper">
-              <button className="product-create-form-button" type="submit">
-                {t("hello77")}
-              </button>
-              <button
-                onClick={handleDeleteProfile}
-                className="setup-logOut"
-                type="button">
-                <BiLogOut />
-                <span>{t("hello78")}</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+          <div className="setup-btn-wrapper">
+            <button className="product-create-form-button" type="submit">
+              {t("hello77")}
+            </button>
+            <button
+              onClick={handleDeleteProfile}
+              className="setup-logOut"
+              type="button">
+              <BiLogOut />
+              <span>{t("hello78")}</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

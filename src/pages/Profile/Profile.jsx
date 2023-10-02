@@ -51,7 +51,6 @@ function Profile() {
   const [value, setValue] = React.useState(0);
   const [userData, setUserData] = useState();
   const [editId, setEditId] = useState("");
-  const [category, setCategory] = useState("");
 
   const { t } = useTranslation();
   const handleChange = (event, newValue) => {
@@ -151,7 +150,6 @@ function Profile() {
             </Box>
             <CustomTabPanel value={value} index={0}>
               <Announcement
-                setCategory={setCategory}
                 setEditId={setEditId}
                 setValue={setValue}
               />

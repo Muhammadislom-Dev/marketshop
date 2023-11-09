@@ -133,5 +133,17 @@
   "hello115": "Mahsulot o'chirish uchun admin tomonidan ruxsat olishingiz kerak",
   "hello116": "ta qo’ng’iroqdan",
   "hello117": "ta qoldi",
-  "hello118":"Karta raqami nusxa olindi!"
+  "hello118": "Karta raqami nusxa olindi!",
+  "privacy1": "Maxfiylik siyosati",
+  "privacy2": "Sizning maxfiyligingiz biz uchun juda muhim. WPBeginner-da biz amal qiladigan bir nechta asosiy tamoyillarga egamiz:",
+  "privacy3": "Biz sizdan shaxsiy ma'lumotlaringizni so'ramaymiz, agar kerak bo'lmasa. (Biz hech qanday sababsiz jinsingiz yoki daromad darajangiz kabi narsalarni so'raydigan xizmatlarga chiday olmaymiz.)",
+  "privacy4": "Biz sizning shaxsiy ma'lumotlaringizni qonunga rioya qilish, mahsulotlarimizni ishlab chiqish yoki huquqlarimizni himoya qilishdan tashqari hech kimga bermaymiz.",
+  "privacy5": "Saytimizning doimiy ishlashi uchun talab qilinmasa, biz shaxsiy ma'lumotlarni serverlarimizda saqlamaymiz.",
+  "privacy6": "Saytga tashrif buyuruvchilar",
+  "privacy7": "Aksariyat veb-sayt operatorlari singari, Awesome Motive veb-brauzerlar va serverlar odatda mavjud bo'ladigan shaxsiy ma'lumotni to'playdi, masalan, brauzer turi, til afzalligi, havola qilingan sayt va har bir tashrifchi so'rovining sanasi va vaqti. Awesome Motive-ning shaxsiy bo'lmagan ma'lumotlarni to'plashdan maqsadi Awesome Motive-ga tashrif buyuruvchilar uning veb-saytidan qanday foydalanishini yaxshiroq tushunishdir. Vaqti-vaqti bilan Awesome Motive o'z veb-saytidan foydalanish tendentsiyalari to'g'risidagi hisobotni e'lon qilish orqali jami shaxsiy identifikator bo'lmagan ma'lumotlarni chiqarishi mumkin.",
+  "privacy8":"Awesome Motive shuningdek, tizimga kirgan foydalanuvchilar va bloglarimizda sharh qoldiradigan foydalanuvchilar uchun Internet Protocol (IP) manzillari kabi potentsial shaxsni identifikatsiya qiluvchi ma'lumotlarni to'playdi. Awesome Motive faqat tizimga kirgan foydalanuvchi va sharhlovchining IP manzillarini quyida tavsiflanganidek ishlatadigan va shaxsni identifikatsiya qiluvchi ma'lumotlarni oshkor qiladi, bundan tashqari blog sharhlovchilarining IP manzillari ko'rinib turadi va sharh qoldirilgan blog ma'murlariga oshkor qilinadi.",
+  "privacy9":"Umumiy statistika",
+  "privacy10":"Awesome Motive o'z veb-saytlariga tashrif buyuruvchilarning xatti-harakatlari haqida statistik ma'lumotlarni to'plashi mumkin. Masalan, Awesome Motive wpbeginner.com saytidagi eng mashhur sahifalarni kuzatishi yoki spamni aniqlashga yordam berish uchun Akismet xizmati tomonidan tekshirilgan spamdan foydalanishi mumkin. Awesome Motive bu maʼlumotni ochiq koʻrsatishi yoki boshqalarga taqdim qilishi mumkin. Biroq, Awesome Motive quyida tavsiflanganidan tashqari, shaxsni identifikatsiya qiluvchi ma'lumotlarni oshkor qilmaydi.",
+  "privacy11":"Cookies",
+  "privacy12":"Cookie - bu veb-sayt tashrif buyuruvchining kompyuterida saqlaydigan va tashrif buyuruvchining brauzeri tashrif buyuruvchi har safar qaytganida veb-saytga taqdim etadigan ma'lumotlar to'plami. Awesome Motive tashrif buyuruvchilarni, ularning Awesome Motive veb-saytidan foydalanishini va veb-saytga kirish afzalliklarini aniqlash va kuzatishga yordam berish uchun cookie-fayllardan foydalanadi. Kompyuterlarida cookie-fayllar joylashishini istamagan Awesome Motive tashrif buyuruvchilari Awesome Motive veb-saytlaridan foydalanishdan oldin o‘z brauzerlarini cookie-fayllardan voz kechadigan qilib sozlashlari kerak, shu bilan birga Awesome Motive veb-saytlarining ayrim xususiyatlari cookie-fayllarsiz to‘g‘ri ishlamasligi mumkin."
 }

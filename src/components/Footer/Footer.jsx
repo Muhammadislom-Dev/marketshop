@@ -49,6 +49,11 @@ function Footer() {
                     +998 95 440 90 90
                   </a>
                 </li>
+                <li className="footer-items">
+                  <Link to="/privacy" className="footer-link">
+                    {t("privacy1")}
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="footer-bottom">

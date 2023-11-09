@@ -40,3 +40,19 @@ h5 {
 .privacy-list {
   list-style: circle !important;
 }
+
+@media (max-width: 450px) {
+  .privacy {
+    padding: 10px;
+  }
+  .privacy-name {
+    font-size: 25px;
+    line-height: 35px;
+  }
+  .privacy-text {
+    font-size: 16px;
+  }
+  .privacy-item {
+    font-size: 16px;
+  }
+}
